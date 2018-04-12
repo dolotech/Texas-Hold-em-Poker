@@ -3,7 +3,7 @@ package chanrpc
 import (
 	"errors"
 	"fmt"
-	"github.com/name5566/leaf/conf"
+	"github.com/dolotech/leaf/conf"
 	"github.com/golang/glog"
 	"runtime"
 )

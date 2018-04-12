@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"github.com/name5566/leaf/db/mongodb"
+	"github.com/dolotech/leaf/db/mongodb"
 	"github.com/golang/glog"
 	"server/conf"
 )

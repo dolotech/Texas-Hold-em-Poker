@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/name5566/leaf/chanrpc"
+	"github.com/dolotech/leaf/chanrpc"
 	"github.com/golang/glog"
 	"reflect"
 )

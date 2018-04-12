@@ -1,4 +1,4 @@
-package g_test
+package g
 
 import (
 	"fmt"

@@ -1,4 +1,4 @@
-package timer_test
+package timer
 
 import (
 	"fmt"

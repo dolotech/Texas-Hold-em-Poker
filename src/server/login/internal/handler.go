@@ -3,7 +3,7 @@ package internal
 import (
 	"reflect"
 	"server/msg"
-	"github.com/name5566/leaf/gate"
+	"github.com/dolotech/leaf/gate"
 	"server/game"
 )
 

@@ -2,8 +2,8 @@ package internal
 
 import (
 	//"leaf/gate"
-	"github.com/name5566/leaf/gate"
-	"github.com/name5566/leaf/go"
+	"github.com/dolotech/leaf/gate"
+	"github.com/dolotech/leaf/go"
 	"server/msg"
 )
 

@@ -1,9 +1,9 @@
 package gate
 
 import (
-	"github.com/name5566/leaf/chanrpc"
+	"github.com/dolotech/leaf/chanrpc"
 	"github.com/golang/glog"
-	"github.com/name5566/leaf/network"
+	"github.com/dolotech/leaf/network"
 	"net"
 	"reflect"
 	"time"

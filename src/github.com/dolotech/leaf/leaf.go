@@ -1,10 +1,10 @@
 package leaf
 
 import (
-	"github.com/name5566/leaf/cluster"
-	"github.com/name5566/leaf/console"
+	"github.com/dolotech/leaf/cluster"
+	"github.com/dolotech/leaf/console"
 	"github.com/golang/glog"
-	"github.com/name5566/leaf/module"
+	"github.com/dolotech/leaf/module"
 	"os"
 	"os/signal"
 )

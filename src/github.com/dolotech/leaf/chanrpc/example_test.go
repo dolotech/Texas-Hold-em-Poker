@@ -1,4 +1,4 @@
-package chanrpc_test
+package chanrpc
 
 import (
 	"github.com/name5566/leaf/chanrpc"

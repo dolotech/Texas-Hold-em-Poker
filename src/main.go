@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/name5566/leaf"
-	lconf "github.com/name5566/leaf/conf"
+	"github.com/dolotech/leaf"
+	lconf "github.com/dolotech/leaf/conf"
 	"server/conf"
 	"server/game"
 	"server/gate"

@@ -2,8 +2,8 @@ package console
 
 import (
 	"fmt"
-	"github.com/name5566/leaf/chanrpc"
-	"github.com/name5566/leaf/conf"
+	"github.com/dolotech/leaf/chanrpc"
+	"github.com/dolotech/leaf/conf"
 	"github.com/golang/glog"
 	"os"
 	"path"

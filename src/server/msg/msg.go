@@ -1,7 +1,7 @@
 package msg
 
 import (
-	"github.com/name5566/leaf/network/json"
+	"github.com/dolotech/leaf/network/json"
 )
 //注册消息内容 即 类型(结构体)
 //var Processor network.Processor

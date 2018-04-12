@@ -1,10 +1,10 @@
 package internal
 
 import (
-	"github.com/name5566/leaf/go"
+	"github.com/dolotech/leaf/go"
 	"server/msg"
 	"time"
-	"github.com/name5566/leaf/gate"
+	"github.com/dolotech/leaf/gate"
 )
 
 type position int // 位置 1-4
