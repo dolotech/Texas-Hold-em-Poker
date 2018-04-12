@@ -1,44 +1,45 @@
 package g
 
 import (
-	"container/list"
 	"github.com/dolotech/leaf/conf"
 	"github.com/golang/glog"
 	"runtime"
-	"sync"
 	"github.com/dolotech/lib/grpool"
 )
 
 // one Go per goroutine (goroutine not safe)
-type Go struct {
-	ChanCb    chan func()
-	pendingGo int
-}
+//type Go struct {
+//	//ChanCb    chan func()
+//	pendingGo int
+//}
 
+/*
 type LinearGo struct {
 	f  func()
 	cb func()
 }
+*/
 
-type LinearContext struct {
+/*type LinearContext struct {
 	g              *Go
 	linearGo       *list.List
 	mutexLinearGo  sync.Mutex
 	mutexExecution sync.Mutex
-}
+}*/
 
-func New(l int) *Go {
-	g := new(Go)
-	g.ChanCb = make(chan func(), l)
-	return g
-}
+//func New(l int) *Go {
+//	g := new(Go)
+	//g.ChanCb = make(chan func(), l)
+	//return g
+//}
 
-var pool = grpool.NewPool(runtime.NumCPU() *2, 1024*10)
-func (g *Go) Go(f func(), cb func()) {
-	g.pendingGo++
+var pool = grpool.NewPool(runtime.NumCPU()*2, 1024*10)
+//func (g *Go) Go(f func(), cb func()) {
+func Go(f func(), cb func()) {
+	//g.pendingGo++
 	pool.JobQueue <- func() {
 		defer func() {
-			g.ChanCb <- cb
+			pool.JobQueue  <- cb
 			if r := recover(); r != nil {
 				if conf.LenStackBuf > 0 {
 					buf := make([]byte, conf.LenStackBuf)
@@ -53,9 +54,9 @@ func (g *Go) Go(f func(), cb func()) {
 	}
 }
 
-func (g *Go) Cb(cb func()) {
+/*func  Cb(cb func()) {
 	defer func() {
-		g.pendingGo--
+		//g.pendingGo--
 		if r := recover(); r != nil {
 			if conf.LenStackBuf > 0 {
 				buf := make([]byte, conf.LenStackBuf)
@@ -70,7 +71,8 @@ func (g *Go) Cb(cb func()) {
 	if cb != nil {
 		cb()
 	}
-}
+}*/
+/*
 
 func (g *Go) Close() {
 	for g.pendingGo > 0 {
@@ -81,6 +83,9 @@ func (g *Go) Close() {
 func (g *Go) Idle() bool {
 	return g.pendingGo == 0
 }
+*/
+
+/*
 
 func (g *Go) NewLinearContext() *LinearContext {
 	c := new(LinearContext)
@@ -120,3 +125,4 @@ func (c *LinearContext) Go(f func(), cb func()) {
 		e.f()
 	}()
 }
+*/

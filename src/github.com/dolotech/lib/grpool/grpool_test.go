@@ -69,7 +69,7 @@ func TestRelease(t *testing.T) {
 	grNum := runtime.NumGoroutine()
 	pool := NewPool(5, 10)
 
-	t.Log(runtime.NumCPU())
+	//t.Log(runtime.NumCPU())
 	defer func() {
 		pool.Release()
 
@@ -86,7 +86,7 @@ func TestRelease(t *testing.T) {
 
 		pool.JobQueue <- job
 	}
-
+	t.Log(runtime.NumCPU())
 	pool.WaitAll()
 }
 

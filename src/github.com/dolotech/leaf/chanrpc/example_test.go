@@ -1,13 +1,12 @@
 package chanrpc
 
 import (
-	"github.com/name5566/leaf/chanrpc"
 	"sync"
-	"github.com/golang/glog"
+	"testing"
 )
 
-func Example() {
-	s := chanrpc.NewServer(10)
+func TestClient_AsynCall(t *testing.T) {
+	s := NewServer(10)
 
 	var wg sync.WaitGroup
 	wg.Add(1)
@@ -49,58 +48,58 @@ func Example() {
 		// sync
 		err := c.Call0("f0")
 		if err != nil {
-			glog.Infoln(err)
+			t.Log(err)
 		}
 
 		r1, err := c.Call1("f1")
 		if err != nil {
-			glog.Infoln(err)
+			t.Log(err)
 		} else {
-			glog.Infoln(r1)
+			t.Log(r1)
 		}
 
 		rn, err := c.CallN("fn")
 		if err != nil {
-			glog.Infoln(err)
+			t.Log(err)
 		} else {
-			glog.Infoln(rn[0], rn[1], rn[2])
+			t.Log(rn[0], rn[1], rn[2])
 		}
 
 		ra, err := c.Call1("add", 1, 2)
 		if err != nil {
-			glog.Infoln(err)
+			t.Log(err)
 		} else {
-			glog.Infoln(ra)
+			t.Log(ra)
 		}
 
 		// asyn
 		c.AsynCall("f0", func(err error) {
 			if err != nil {
-				glog.Infoln(err)
+				t.Log(err)
 			}
 		})
 
 		c.AsynCall("f1", func(ret interface{}, err error) {
 			if err != nil {
-				glog.Infoln(err)
+				t.Log(err)
 			} else {
-				glog.Infoln(ret)
+				t.Log(ret)
 			}
 		})
 
 		c.AsynCall("fn", func(ret []interface{}, err error) {
 			if err != nil {
-				glog.Infoln(err)
+				t.Log(err)
 			} else {
-				glog.Infoln(ret[0], ret[1], ret[2])
+				t.Log(ret[0], ret[1], ret[2])
 			}
 		})
 
 		c.AsynCall("add", 1, 2, func(ret interface{}, err error) {
 			if err != nil {
-				glog.Infoln(err)
+				t.Log(err)
 			} else {
-				glog.Infoln(ret)
+				t.Log(ret)
 			}
 		})
 

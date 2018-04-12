@@ -1,24 +1,23 @@
 package timer
 
 import (
-	"fmt"
-	"github.com/name5566/leaf/timer"
 	"time"
+	"testing"
 )
 
-func ExampleTimer() {
-	d := timer.NewDispatcher(10)
+func TestTimer(t *testing.T) {
+	d := NewDispatcher(10)
 
 	// timer 1
 	d.AfterFunc(1, func() {
-		glog.Infoln("My name is Leaf")
+		t.Log("My name is Leaf")
 	})
 
 	// timer 2
-	t := d.AfterFunc(1, func() {
-		glog.Infoln("will not print")
+	tim := d.AfterFunc(1, func() {
+		t.Log("will not print")
 	})
-	t.Stop()
+	tim.Stop()
 
 	// dispatch
 	(<-d.ChanTimer).Cb()
@@ -27,13 +26,13 @@ func ExampleTimer() {
 	// My name is Leaf
 }
 
-func ExampleCronExpr() {
-	cronExpr, err := timer.NewCronExpr("0 * * * *")
+func TestNewCronExpr(t *testing.T) {
+	cronExpr, err := NewCronExpr("0 * * * *")
 	if err != nil {
 		return
 	}
 
-	glog.Infoln(cronExpr.Next(time.Date(
+	t.Log(cronExpr.Next(time.Date(
 		2000, 1, 1,
 		20, 10, 5,
 		0, time.UTC,
@@ -43,19 +42,20 @@ func ExampleCronExpr() {
 	// 2000-01-01 21:00:00 +0000 UTC
 }
 
-func ExampleCron() {
-	d := timer.NewDispatcher(10)
+func TestDispatcher_CronFunc(t *testing.T) {
+	d := NewDispatcher(10)
 
 	// cron expr
-	cronExpr, err := timer.NewCronExpr("* * * * * *")
+	cronExpr, err := NewCronExpr("* * * * * *")
 	if err != nil {
+		t.Log(err)
 		return
 	}
 
 	// cron
-	var c *timer.Cron
+	var c *Cron
 	c = d.CronFunc(cronExpr, func() {
-		glog.Infoln("My name is Leaf")
+		t.Log("My name is Leaf")
 		c.Stop()
 	})
 

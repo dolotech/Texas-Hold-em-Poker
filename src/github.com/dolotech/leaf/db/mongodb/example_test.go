@@ -1,16 +1,14 @@
 package mongodb
 
 import (
-	"fmt"
-	"github.com/name5566/leaf/db/mongodb"
 	"gopkg.in/mgo.v2"
-	"github.com/golang/glog"
+	"testing"
 )
 
-func Example() {
-	c, err := mongodb.Dial("localhost", 10)
+func TestDial(t *testing.T) {
+	c, err := Dial("localhost", 10)
 	if err != nil {
-		glog.Infoln(err)
+		t.Log(err)
 		return
 	}
 	defer c.Close()
@@ -20,23 +18,23 @@ func Example() {
 	defer c.UnRef(s)
 	err = s.DB("test").C("counters").RemoveId("test")
 	if err != nil && err != mgo.ErrNotFound {
-		glog.Infoln(err)
+		t.Log(err)
 		return
 	}
 
 	// auto increment
 	err = c.EnsureCounter("test", "counters", "test")
 	if err != nil {
-		glog.Infoln(err)
+		t.Log(err)
 		return
 	}
 	for i := 0; i < 3; i++ {
 		id, err := c.NextSeq("test", "counters", "test")
 		if err != nil {
-			glog.Infoln(err)
+			t.Log(err)
 			return
 		}
-		glog.Infoln(id)
+		t.Log(id)
 	}
 
 	// index
