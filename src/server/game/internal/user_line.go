@@ -128,8 +128,10 @@ func (u *UserLine) closeRoom() {
 
 func register(userInfo *msg.RegisterUserInfo) (err error) { //注册
 	skeleton.Go(func() {
-		u := &model.UserData{}
-		err = u.Register(userInfo)
+		u := &model.UserData{
+			AccountID:userInfo.Name,
+		}
+		err = u.Register()
 	}, nil)
 	return
 }
@@ -143,8 +145,7 @@ func login(userInfo *msg.UserLoginInfo) (err error) {
 }
 
 //检查用户是否已注册过
-func checkExitedUser(userName string) (err error) {
-	u := &model.UserData{}
-	err = u.ExitedUser(userName)
-	return
+func checkExitedUser(userName string)bool {
+	u := &model.UserData{AccountID:userName}
+	return u.ExistByAccountID()
 }

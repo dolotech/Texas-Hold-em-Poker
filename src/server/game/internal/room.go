@@ -7,7 +7,6 @@ import (
 	"server/model"
 )
 
-type position int // 位置 1-4
 var allRooms []*Room
 
 type Room struct {
