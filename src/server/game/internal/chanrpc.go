@@ -39,7 +39,7 @@ func rpcLoginAgent(args []interface{}) {
 	m := args[1].(*msg.UserLoginInfo)
 	err := login(m)
 	if err != nil {
-		a.WriteMsg(&msg.CodeState{MSG_STATE: msg.MSG_DB_Error})
+		a.WriteMsg( msg.MSG_DB_Error)
 		return
 	}
 }
@@ -50,12 +50,12 @@ func rpcRigesterAgent(args []interface{}) {
 	m := args[1].(*msg.RegisterUserInfo)
 	err := checkExitedUser(m.Name)
 	if err == nil {
-		a.WriteMsg(&msg.CodeState{MSG_STATE: msg.MSG_Register_Existed})
+		a.WriteMsg(msg.MSG_Register_Existed)
 		return
 	}
 	err = register(m)
 	if err != nil {
-		a.WriteMsg(&msg.CodeState{MSG_STATE: msg.MSG_DB_Error})
+		a.WriteMsg(msg.MSG_DB_Error)
 		return
 	}
 }

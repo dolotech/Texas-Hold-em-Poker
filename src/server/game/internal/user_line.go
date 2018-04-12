@@ -58,7 +58,7 @@ func (u *UserLine) createdRoom(roomInfo *msg.RoomInfo) {
 
 		room.gameStart()
 	} else {
-		u.WriteMsg(&msg.CodeState{msg.MSG_ROOM_OVERVOLUME, "你已在其他房间！"})
+		u.WriteMsg(msg.MSG_ROOM_OVERVOLUME)
 	}
 }
 
@@ -76,7 +76,7 @@ func (u *UserLine) FindRoom(roomNumber string) (room *Room) {
 			roomData.RoomNumber})
 
 	} else {
-		u.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOROOM, "没有该 " + roomNumber + " 的记录!"})
+		u.WriteMsg(msg.MSG_ROOM_NOROOM)
 	}
 	return
 }
@@ -88,15 +88,15 @@ func (u *UserLine) joinRoom(room *Room, pwd string) {
 			if JoinRoom(u, room) {
 
 			} else {
-				u.WriteMsg(&msg.CodeState{msg.MSG_ROOM_OVERVOLUME, "你已在其他房间进行游戏了，请退出房间，后操作！"})
+				u.WriteMsg(msg.MSG_ROOM_OVERVOLUME)
 			}
 
 		} else {
-			u.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOMONEY, "你的起始资金不够支付该房间的费用!"})
+			u.WriteMsg(msg.MSG_ROOM_NOMONEY)
 		}
 
 	} else {
-		u.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOTAUTH, "房间密码输入有误!"})
+		u.WriteMsg(msg.MSG_ROOM_NOTAUTH)
 	}
 }
 
@@ -117,7 +117,7 @@ func (u *UserLine) changeRoomInfo(roomInfo *msg.RoomInfo) {
 	if ChangeRoomInfo(u, roomInfo) {
 		//	修改成功
 	} else {
-		userLine.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOTAUTH, "你不是房主"})
+		userLine.WriteMsg(msg.MSG_ROOM_NOTAUTH)
 	}
 }
 

@@ -31,7 +31,7 @@ func (r *Room) CheckPlayerAndPwd(pwd string) bool {
 	if r.RoomData.RoomPwd == pwd && r.Players < r.RoomData.Volume { //密码正确 且 不满人
 		return true
 	} else {
-		r.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOTAUTH, "密码错误"})
+		r.WriteMsg(msg.MSG_ROOM_NOTAUTH)
 		return false
 	}
 }
@@ -198,11 +198,11 @@ func CloseRoom(userLine *UserLine) {
 			userLine.RoomLine = nil
 			room.Close()
 		} else {
-			userLine.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOTAUTH, "你不是房主，无权关闭房间!"})
+			userLine.WriteMsg(msg.MSG_ROOM_NOTAUTH)
 			//return false
 		}
 	} else {
-		userLine.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOTEMPTY, "房间里多于一人存在，无法操作!"})
+		userLine.WriteMsg(msg.MSG_ROOM_NOTEMPTY)
 		//return false
 	}
 }

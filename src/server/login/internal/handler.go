@@ -25,7 +25,7 @@ func handlRegisterUserInfo(args []interface{})  {
 	//交给 game 模块处理
 	game.ChanRPC.Go("RegisterAgent",a, m )
 
-	a.WriteMsg(&msg.CodeState{MSG_STATE:msg.MSG_Register_OK})
+	a.WriteMsg(msg.MSG_SUCCESS)
 
 }
 
@@ -35,6 +35,6 @@ func handlLoginUser(args []interface{})  {
 
 	//交给 game
 	game.ChanRPC.Go("LoginAgent", a, m )
-	a.WriteMsg(&msg.CodeState{MSG_STATE:msg.MSG_Login_OK})
+	a.WriteMsg(msg.MSG_SUCCESS)
 	
 }
