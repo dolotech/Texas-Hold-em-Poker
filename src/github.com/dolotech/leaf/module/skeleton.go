@@ -12,11 +12,10 @@ import (
 )
 
 type Skeleton struct {
-	//GoLen              int
+	GoLen              int
 	TimerDispatcherLen int
 	AsynCallLen        int
 	ChanRPCServer      *chanrpc.Server
-	//g                  *g.Go
 	dispatcher    *timer.Dispatcher
 	client        *chanrpc.Client
 	server        *chanrpc.Server
@@ -26,13 +25,11 @@ type Skeleton struct {
 }
 
 func (s *Skeleton) Init() {
-	/*	if s.GoLen <= 0 {
-			s.GoLen = 0
-		}*/
+	if s.GoLen < runtime.NumCPU()*2 {
+		s.GoLen = runtime.NumCPU()*4
+	}
 
-	//if s.pool == nil {
-	s.pool = grpool.NewPool(runtime.NumCPU()*2, 1024)
-	//}
+	s.pool = grpool.NewPool(runtime.NumCPU()*2, s.GoLen)
 	if s.TimerDispatcherLen <= 0 {
 		s.TimerDispatcherLen = 0
 	}
@@ -40,7 +37,6 @@ func (s *Skeleton) Init() {
 		s.AsynCallLen = 0
 	}
 
-	//s.g = g.New(s.GoLen)
 	s.dispatcher = timer.NewDispatcher(s.TimerDispatcherLen)
 	s.client = chanrpc.NewClient(s.AsynCallLen)
 	s.server = s.ChanRPCServer
@@ -52,8 +48,6 @@ func (s *Skeleton) Init() {
 }
 
 func (s *Skeleton) Run(closeSig chan bool) {
-	//glog.Errorln("aa")
-
 	for {
 		select {
 		case <-closeSig:

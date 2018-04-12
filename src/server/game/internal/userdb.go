@@ -60,8 +60,7 @@ func register(userInfo *msg.RegisterUserInfo) (err error) { //注册
 		defer mongoDB.UnRef(db)
 		err := db.DB(DB).C(USERDB).Insert(userInfo)
 		if err != nil {
-			//glog.Fatal("err register --%v",err)
-			glog.Fatal("err register - %v, err ", err)
+			glog.Errorln( err)
 			return
 		}
 	}, nil)
@@ -83,7 +82,7 @@ func login(user *msg.UserLoginInfo) (err error) {
 			//glog.Infoln("---over----?")
 			//time.Sleep(15*time.Second)
 			//a.WriteMsg(&msg.LoginError{State:-1,Message:"no user"})
-			glog.Fatal("login err - %v", err)
+			glog.Errorln( err)
 
 			return
 
@@ -94,20 +93,12 @@ func login(user *msg.UserLoginInfo) (err error) {
 
 //检查用户是否已注册过
 func checkExitedUser(userName string) (err error) {
-	//skeleton.Go(func() {
-	//	db := mongoDB.Ref()
-	//	defer mongoDB.UnRef(db)
-	//	err := db.DB(DB).C(USERDB).Find(bson.M{"name":bson.M{"$exists":userName}})
-	//	if err != nil {
-	//
-	//	}
-	//},nil)
-
 	db := mongoDB.Ref()
 	defer mongoDB.UnRef(db)
 	var userInfo msg.RegisterUserInfo
 	err = db.DB(DB).C(USERDB).Find(bson.M{"name": userName}).One(&userInfo)
 	if err != nil {
+		glog.Errorln( err)
 		return err
 	}
 	return nil

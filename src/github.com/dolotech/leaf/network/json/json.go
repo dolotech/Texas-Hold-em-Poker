@@ -128,11 +128,16 @@ func (p *Processor) Route(msg interface{}, userData interface{}) error {
 
 // goroutine safe
 func (p *Processor) Unmarshal(data []byte) (interface{}, error) {
+	 if len(data) == 0 {
+		 return nil, errors.New("json data len == 0")
+	}
+
 	var m map[string]json.RawMessage
 	err := json.Unmarshal(data, &m)
 	if err != nil {
 		return nil, err
 	}
+
 	if len(m) != 1 {
 		return nil, errors.New("invalid json data")
 	}
@@ -152,7 +157,7 @@ func (p *Processor) Unmarshal(data []byte) (interface{}, error) {
 		}
 	}
 
-	panic("bug")
+	return nil, errors.New("invalid json data")
 }
 
 // goroutine safe

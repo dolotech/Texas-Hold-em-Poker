@@ -8,8 +8,6 @@ import (
 )
 
 var Server struct {
-	LogLevel    string
-	LogPath     string
 	WSAddr      string
 	CertFile    string
 	KeyFile     string
