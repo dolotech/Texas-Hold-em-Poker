@@ -6,6 +6,7 @@ import (
 	"github.com/name5566/leaf/log"
 	"runtime"
 	"sync"
+	"github.com/dolotech/lib/grpool"
 )
 
 // one Go per goroutine (goroutine not safe)
@@ -32,10 +33,10 @@ func New(l int) *Go {
 	return g
 }
 
+var pool = grpool.NewPool(runtime.NumCPU() *2, 1024*10)
 func (g *Go) Go(f func(), cb func()) {
 	g.pendingGo++
-
-	go func() {
+	pool.JobQueue <- func() {
 		defer func() {
 			g.ChanCb <- cb
 			if r := recover(); r != nil {
@@ -48,9 +49,8 @@ func (g *Go) Go(f func(), cb func()) {
 				}
 			}
 		}()
-
 		f()
-	}()
+	}
 }
 
 func (g *Go) Cb(cb func()) {
