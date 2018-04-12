@@ -23,7 +23,7 @@ type Processor struct {
 type MsgInfo struct {
 	msgType       reflect.Type
 	msgRouter     *chanrpc.Server
-	msgHandler    MsgHandler
+	msgHandler    *reflect.Value
 	msgRawHandler MsgHandler
 }
 
@@ -47,7 +47,7 @@ func (p *Processor) SetByteOrder(littleEndian bool) {
 }
 
 // It's dangerous to call the method on routing or marshaling (unmarshaling)
-func (p *Processor) Register(msg proto.Message) uint16 {
+func (p *Processor) Register(msg interface{}) uint16 {
 	msgType := reflect.TypeOf(msg)
 	if msgType == nil || msgType.Kind() != reflect.Ptr {
 		glog.Fatal("protobuf message pointer required")
@@ -68,7 +68,7 @@ func (p *Processor) Register(msg proto.Message) uint16 {
 }
 
 // It's dangerous to call the method on routing or marshaling (unmarshaling)
-func (p *Processor) SetRouter(msg proto.Message, msgRouter *chanrpc.Server) {
+func (p *Processor) SetRouter(msg  interface{}, msgRouter *chanrpc.Server) {
 	msgType := reflect.TypeOf(msg)
 	id, ok := p.msgID[msgType]
 	if !ok {
@@ -79,14 +79,14 @@ func (p *Processor) SetRouter(msg proto.Message, msgRouter *chanrpc.Server) {
 }
 
 // It's dangerous to call the method on routing or marshaling (unmarshaling)
-func (p *Processor) SetHandler(msg proto.Message, msgHandler MsgHandler) {
+func (p *Processor) SetHandler(msg , msgHandler interface{}) {
 	msgType := reflect.TypeOf(msg)
 	id, ok := p.msgID[msgType]
 	if !ok {
 		glog.Fatal("message %s not registered", msgType)
 	}
-
-	p.msgInfo[id].msgHandler = msgHandler
+	v:=reflect.ValueOf(msgHandler)
+	p.msgInfo[id].msgHandler = &v
 }
 
 // It's dangerous to call the method on routing or marshaling (unmarshaling)
@@ -99,7 +99,7 @@ func (p *Processor) SetRawHandler(id uint16, msgRawHandler MsgHandler) {
 }
 
 // goroutine safe
-func (p *Processor) Route(msg interface{}, userData interface{}) error {
+func (p *Processor) Route(msg , userData interface{}) error {
 	// raw
 	if msgRaw, ok := msg.(MsgRaw); ok {
 		if msgRaw.msgID >= uint16(len(p.msgInfo)) {
@@ -120,7 +120,8 @@ func (p *Processor) Route(msg interface{}, userData interface{}) error {
 	}
 	i := p.msgInfo[id]
 	if i.msgHandler != nil {
-		i.msgHandler([]interface{}{msg, userData})
+		//i.msgHandler([]interface{}{msg, userData})
+		i.msgHandler.Call([]reflect.Value{reflect.ValueOf(msg), reflect.ValueOf(userData)})
 	}
 	if i.msgRouter != nil {
 		i.msgRouter.Go(msgType, msg, userData)

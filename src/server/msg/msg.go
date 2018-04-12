@@ -1,11 +1,12 @@
 package msg
 
 import (
+	//"github.com/dolotech/leaf/network/protobuf"
 	"github.com/dolotech/leaf/network/json"
 )
 
 //注册消息内容 即 类型(结构体)
-//var Processor network.Processor
+//var Processor =  protobuf.NewProcessor()
 var Processor = json.NewProcessor()
 
 var (

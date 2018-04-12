@@ -95,7 +95,7 @@ func (p *Processor) SetRawHandler(msgID string, msgRawHandler MsgHandler) {
 }
 
 // goroutine safe
-func (p *Processor) Route(msg interface{}, userData interface{}) error {
+func (p *Processor) Route(msg, userData interface{}) error {
 	// raw
 	if msgRaw, ok := msg.(MsgRaw); ok {
 		i, ok := p.msgInfo[msgRaw.msgID]
