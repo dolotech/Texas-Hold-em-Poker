@@ -204,34 +204,15 @@ func (c *Client) call(ci *CallInfo, block bool) (err error) {
 	return
 }
 
-func (c *Client) f(id interface{}, n int) (f interface{}, err error) {
+func (c *Client) f(id interface{}, n int) (*reflect.Value,  error) {
 	if c.s == nil {
-		err = errors.New("server not attached")
-		return
+		return nil, errors.New("server not attached")
 	}
-
-	f = c.s.functions[id]
+	f := c.s.functions[id]
 	if f == nil {
-		err = fmt.Errorf("function id %v: function not registered", id)
-		return
+		return nil,fmt.Errorf("function id %v: function not registered", id)
 	}
-
-	var ok bool
-	switch n {
-	case 0:
-		_, ok = f.(func([]interface{}))
-	case 1:
-		_, ok = f.(func([]interface{}) interface{})
-	case 2:
-		_, ok = f.(func([]interface{}) []interface{})
-	default:
-		panic("bug")
-	}
-
-	if !ok {
-		err = fmt.Errorf("function id %v: return type mismatch", id)
-	}
-	return
+	return f,nil
 }
 
 func (c *Client) Call0(id interface{}, args ...interface{}) error {
@@ -240,9 +221,8 @@ func (c *Client) Call0(id interface{}, args ...interface{}) error {
 		return err
 	}
 
-	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       &v,
+		f:       f,
 		args:    args,
 		chanRet: c.chanSyncRet,
 	}, true)
@@ -259,9 +239,8 @@ func (c *Client) Call1(id interface{}, args ...interface{}) (interface{}, error)
 	if err != nil {
 		return nil, err
 	}
-	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       &v,
+		f:       f,
 		args:    args,
 		chanRet: c.chanSyncRet,
 	}, true)
@@ -279,9 +258,8 @@ func (c *Client) CallN(id interface{}, args ...interface{}) ([]interface{}, erro
 		return nil, err
 	}
 
-	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       &v,
+		f:       f,
 		args:    args,
 		chanRet: c.chanSyncRet,
 	}, true)
@@ -299,9 +277,8 @@ func (c *Client) asynCall(id interface{}, args []interface{}, cb interface{}, n 
 		c.ChanAsynRet <- &RetInfo{err: err, cb: cb}
 		return
 	}
-	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       &v,
+		f:       f,
 		args:    args,
 		chanRet: c.ChanAsynRet,
 		cb:      cb,
