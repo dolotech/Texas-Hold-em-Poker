@@ -22,5 +22,5 @@ func handleHello(args []interface{})  {
 	a := args[1].(gate.Agent)
 
 	glog.Errorf("hello %v",m.Name)
-	a.WriteMsg(&msg.Hello{ Name : "Client", })
+	a.WriteMsg(&msg.Hello{ Name : m.Name, })
 }
