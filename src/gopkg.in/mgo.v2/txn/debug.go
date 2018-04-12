@@ -18,7 +18,7 @@ type log_Logger interface {
 	Output(calldepth int, s string) error
 }
 
-// Specify the *log.Logger where logged messages should be sent to.
+// Specify the *glog.Logger where logged messages should be sent to.
 func SetLogger(l log_Logger) {
 	logger = l
 }

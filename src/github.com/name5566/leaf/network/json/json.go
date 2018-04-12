@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/name5566/leaf/chanrpc"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"reflect"
 )
 
@@ -37,14 +37,14 @@ func NewProcessor() *Processor {
 func (p *Processor) Register(msg interface{}) string {
 	msgType := reflect.TypeOf(msg)
 	if msgType == nil || msgType.Kind() != reflect.Ptr {
-		log.Fatal("json message pointer required")
+		glog.Fatal("json message pointer required")
 	}
 	msgID := msgType.Elem().Name()
 	if msgID == "" {
-		log.Fatal("unnamed json message")
+		glog.Fatal("unnamed json message")
 	}
 	if _, ok := p.msgInfo[msgID]; ok {
-		log.Fatal("message %v is already registered", msgID)
+		glog.Fatal("message %v is already registered", msgID)
 	}
 
 	i := new(MsgInfo)
@@ -57,12 +57,12 @@ func (p *Processor) Register(msg interface{}) string {
 func (p *Processor) SetRouter(msg interface{}, msgRouter *chanrpc.Server) {
 	msgType := reflect.TypeOf(msg)
 	if msgType == nil || msgType.Kind() != reflect.Ptr {
-		log.Fatal("json message pointer required")
+		glog.Fatal("json message pointer required")
 	}
 	msgID := msgType.Elem().Name()
 	i, ok := p.msgInfo[msgID]
 	if !ok {
-		log.Fatal("message %v not registered", msgID)
+		glog.Fatal("message %v not registered", msgID)
 	}
 
 	i.msgRouter = msgRouter
@@ -72,12 +72,12 @@ func (p *Processor) SetRouter(msg interface{}, msgRouter *chanrpc.Server) {
 func (p *Processor) SetHandler(msg interface{}, msgHandler MsgHandler) {
 	msgType := reflect.TypeOf(msg)
 	if msgType == nil || msgType.Kind() != reflect.Ptr {
-		log.Fatal("json message pointer required")
+		glog.Fatal("json message pointer required")
 	}
 	msgID := msgType.Elem().Name()
 	i, ok := p.msgInfo[msgID]
 	if !ok {
-		log.Fatal("message %v not registered", msgID)
+		glog.Fatal("message %v not registered", msgID)
 	}
 
 	i.msgHandler = msgHandler
@@ -87,7 +87,7 @@ func (p *Processor) SetHandler(msg interface{}, msgHandler MsgHandler) {
 func (p *Processor) SetRawHandler(msgID string, msgRawHandler MsgHandler) {
 	i, ok := p.msgInfo[msgID]
 	if !ok {
-		log.Fatal("message %v not registered", msgID)
+		glog.Fatal("message %v not registered", msgID)
 	}
 
 	i.msgRawHandler = msgRawHandler

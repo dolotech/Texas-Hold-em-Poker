@@ -142,7 +142,7 @@ func finalizeFile(file *GridFile) {
 //
 //     file, err := db.GridFS("fs").Create("myfile.txt")
 //     check(err)
-//     messages, err := os.Open("/var/log/messages")
+//     messages, err := os.Open("/var/glog/messages")
 //     check(err)
 //     defer messages.Close()
 //     err = io.Copy(file, messages)

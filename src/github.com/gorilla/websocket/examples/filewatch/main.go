@@ -183,7 +183,7 @@ const homeHTML = `<!DOCTYPE html>
                     data.textContent = 'Connection closed';
                 }
                 conn.onmessage = function(evt) {
-                    console.log('file updated');
+                    console.glog('file updated');
                     data.textContent = evt.data;
                 }
             })();

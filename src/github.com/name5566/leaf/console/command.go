@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/name5566/leaf/chanrpc"
 	"github.com/name5566/leaf/conf"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"os"
 	"path"
 	"runtime/pprof"
@@ -63,7 +63,7 @@ func (c *ExternalCommand) run(_args []string) string {
 func Register(name string, help string, f interface{}, server *chanrpc.Server) {
 	for _, c := range commands {
 		if c.name() == name {
-			log.Fatal("command %v is already registered", name)
+			glog.Fatal("command %v is already registered", name)
 		}
 	}
 

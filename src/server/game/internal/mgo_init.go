@@ -2,7 +2,7 @@ package internal
 
 import (
 	"github.com/name5566/leaf/db/mongodb"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"server/conf"
 )
 
@@ -17,8 +17,8 @@ func init()  {
 	//db, err := mongodb.Dial(DB_INFO,10)
 	//if err != nil{
 	//	//fmt.Println("----connecting----")
-	//	//log.Fatal("db %v",err)
-	//	log.Fatal("db-err %v",err)
+	//	//glog.Fatal("db %v",err)
+	//	glog.Fatal("db-err %v",err)
 	//	//fmt.Println("------connected----")
 	//	return
 	//}
@@ -30,18 +30,18 @@ func init()  {
 	}
 	db, err := mongodb.Dial(conf.Server.DBUrl, conf.Server.DBMaxConnNum)
 	if err != nil {
-		log.Fatal("dial mongodb error: %v", err)
+		glog.Fatalf("dial mongodb error: %v", err)
 	}
 	mongoDB = db
 
 	err = db.EnsureCounter(DB, "counters", "users")
 	if err != nil {
-		log.Fatal("ensure counter error: %v", err)
+		glog.Fatalf("ensure counter error: %v", err)
 	}
 
 	err = db.EnsureCounter(DB, "counters", "rooms")
 	if err != nil {
-		log.Fatal("ensure counter error: %v", err)
+		glog.Fatalf("ensure counter error: %v", err)
 	}
 }
 

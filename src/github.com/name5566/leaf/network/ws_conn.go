@@ -3,7 +3,7 @@ package network
 import (
 	"errors"
 	"github.com/gorilla/websocket"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"net"
 	"sync"
 )
@@ -75,7 +75,7 @@ func (wsConn *WSConn) Close() {
 
 func (wsConn *WSConn) doWrite(b []byte) {
 	if len(wsConn.writeChan) == cap(wsConn.writeChan) {
-		log.Debug("close conn: channel full")
+		glog.Errorf("close conn: channel full")
 		wsConn.doDestroy()
 		return
 	}

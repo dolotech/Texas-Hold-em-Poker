@@ -180,7 +180,7 @@ func simulate(c *C, server *dbtest.DBServer, params params) {
 
 	runner := txn.NewRunner(tc)
 
-	tclog := db.C("tc.log")
+	tclog := db.C("tc.glog")
 	if params.changelog {
 		info := mgo.CollectionInfo{
 			Capped:   true,

@@ -2,9 +2,8 @@ package leaf
 
 import (
 	"github.com/name5566/leaf/cluster"
-	"github.com/name5566/leaf/conf"
 	"github.com/name5566/leaf/console"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"github.com/name5566/leaf/module"
 	"os"
 	"os/signal"
@@ -12,16 +11,16 @@ import (
 
 func Run(mods ...module.Module) {
 	// logger
-	if conf.LogLevel != "" {
-		logger, err := log.New(conf.LogLevel, conf.LogPath, conf.LogFlag)
-		if err != nil {
-			panic(err)
-		}
-		log.Export(logger)
-		defer logger.Close()
-	}
+	//if conf.LogLevel != "" {
+	//logger, err := glog.New(conf.LogLevel, conf.LogPath, conf.LogFlag)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//glog.Errorf(logger)
+	//defer logger.Close()
+	//}
 
-	log.Release("Leaf %v starting up", version)
+	glog.Errorf("Leaf %v starting up", version)
 
 	// module
 	for i := 0; i < len(mods); i++ {
@@ -39,7 +38,7 @@ func Run(mods ...module.Module) {
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt, os.Kill)
 	sig := <-c
-	log.Release("Leaf closing down (signal: %v)", sig)
+	glog.Errorf("Leaf closing down (signal: %v)", sig)
 	console.Destroy()
 	cluster.Destroy()
 	module.Destroy()

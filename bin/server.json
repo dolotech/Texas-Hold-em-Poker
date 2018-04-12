@@ -4,5 +4,5 @@
 	"TCPAddr": "127.0.0.1:3563",
 	"WSAddr" : "127.0.0.1:3653",
 	"MaxConnNum": 20000,
-	"DBUrl": "mongodb://root:root@localhost:27017/admin"
+	"DBUrl": "mongodb://admin:123456@localhost:27017/admin"
 }

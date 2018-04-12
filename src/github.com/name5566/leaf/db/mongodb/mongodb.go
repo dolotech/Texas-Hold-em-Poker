@@ -2,7 +2,7 @@ package mongodb
 
 import (
 	"container/heap"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"sync"
@@ -61,7 +61,7 @@ func Dial(url string, sessionNum int) (*DialContext, error) {
 func DialWithTimeout(url string, sessionNum int, dialTimeout time.Duration, timeout time.Duration) (*DialContext, error) {
 	if sessionNum <= 0 {
 		sessionNum = 100
-		log.Release("invalid sessionNum, reset to %v", sessionNum)
+		glog.Errorf("invalid sessionNum, reset to %v", sessionNum)
 	}
 
 	s, err := mgo.DialWithTimeout(url, dialTimeout)
@@ -90,7 +90,7 @@ func (c *DialContext) Close() {
 	for _, s := range c.sessions {
 		s.Close()
 		if s.ref != 0 {
-			log.Error("session ref = %v", s.ref)
+			glog.Error("session ref = %v", s.ref)
 		}
 	}
 	c.Unlock()

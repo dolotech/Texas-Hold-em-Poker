@@ -2,7 +2,7 @@ package module
 
 import (
 	"github.com/name5566/leaf/conf"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"runtime"
 	"sync"
 )
@@ -61,9 +61,9 @@ func destroy(m *module) {
 			if conf.LenStackBuf > 0 {
 				buf := make([]byte, conf.LenStackBuf)
 				l := runtime.Stack(buf, false)
-				log.Error("%v: %s", r, buf[:l])
+				glog.Error("%v: %s", r, buf[:l])
 			} else {
-				log.Error("%v", r)
+				glog.Error("%v", r)
 			}
 		}
 	}()

@@ -7,18 +7,19 @@ import (
 	"server/game"
 	"server/gate"
 	"server/login"
+	"github.com/golang/glog"
+	"flag"
 )
 
 func main() {
-	lconf.LogLevel = conf.Server.LogLevel
-	lconf.LogPath = conf.Server.LogPath
-	lconf.LogFlag = conf.LogFlag
+	flag.Parse()
 	lconf.ConsolePort = conf.Server.ConsolePort
 	lconf.ProfilePath = conf.Server.ProfilePath
-
+	glog.Errorf("%v", 12312)
 	leaf.Run(
 		game.Module,
 		gate.Module,
 		login.Module,
 	)
+
 }

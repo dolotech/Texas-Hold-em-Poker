@@ -5,7 +5,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 
 	"fmt"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"time"
 	"strconv"
 )
@@ -59,8 +59,8 @@ func register(userInfo *msg.RegisterUserInfo)  (err error) {//注册
 		defer mongoDB.UnRef(db)
 		err := db.DB(DB).C(USERDB).Insert(userInfo)
 		if err != nil{
-			//log.Fatal("err register --%v",err)
-			log.Fatal("err register - %v, err ",err )
+			//glog.Fatal("err register --%v",err)
+			glog.Fatal("err register - %v, err ",err )
 			return
  		}
 	},nil)
@@ -79,13 +79,13 @@ func login(user  *msg.UserLoginInfo)(err error) {
 		// check user
 		err := db.DB(DB).C(USERDB).Find(bson.M{"name":user.Name,"pwd":user.Pwd}).One(&result)
 		if err != nil{
-			//log.Fatal("login err - %v",err)
+			//glog.Fatal("login err - %v",err)
 			//a := args[1].(gate.Agent)
 			//ChanRPC.Go("LoginAgent",&msg.LoginError{1,"no user"})
 			//fmt.Println("---over----?")
 			//time.Sleep(15*time.Second)
 			//a.WriteMsg(&msg.LoginError{State:-1,Message:"no user"})
-			log.Fatal("login err - %v",err)
+			glog.Fatal("login err - %v",err)
 
 			return
 

@@ -34,7 +34,7 @@ import (
 // ---------------------------------------------------------------------------
 // Logging integration.
 
-// Avoid importing the log type information unnecessarily.  There's a small cost
+// Avoid importing the glog type information unnecessarily.  There's a small cost
 // associated with using an interface rather than the type.  Depending on how
 // often the logger is plugged in, it would be worth using the type instead.
 type log_Logger interface {
@@ -53,7 +53,7 @@ var (
 // the application starts. Having raceDetector as a constant, the compiler
 // should elide the locks altogether in actual use.
 
-// Specify the *log.Logger object where log messages should be sent to.
+// Specify the *glog.Logger object where glog messages should be sent to.
 func SetLogger(logger log_Logger) {
 	if raceDetector {
 		globalMutex.Lock()

@@ -2669,7 +2669,7 @@ type CollectionInfo struct {
 	// ValidationAction determines how MongoDB handles documents that
 	// violate the validation rules. It may be set to "error" (the default)
 	// to reject inserts or updates that violate the rules, or to "warn"
-	// to log invalid operations but allow them to proceed.
+	// to glog invalid operations but allow them to proceed.
 	ValidationAction string
 
 	// StorageEngine allows specifying collection options for the

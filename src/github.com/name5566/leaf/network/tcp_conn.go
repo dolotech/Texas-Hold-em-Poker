@@ -1,7 +1,7 @@
 package network
 
 import (
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"net"
 	"sync"
 )
@@ -73,7 +73,7 @@ func (tcpConn *TCPConn) Close() {
 
 func (tcpConn *TCPConn) doWrite(b []byte) {
 	if len(tcpConn.writeChan) == cap(tcpConn.writeChan) {
-		log.Debug("close conn: channel full")
+		glog.Error("close conn: channel full")
 		tcpConn.doDestroy()
 		return
 	}

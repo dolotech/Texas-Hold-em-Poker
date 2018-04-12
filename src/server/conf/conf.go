@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	// log conf
+	// glog conf
 	LogFlag = log.LstdFlags
 
 	// gate conf

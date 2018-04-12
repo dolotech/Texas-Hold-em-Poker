@@ -218,7 +218,7 @@ type bufferT struct {
 func (t *bufferT) Errorf(format string, args ...interface{}) {
 	// implementation of decorate is copied from testing.T
 	decorate := func(s string) string {
-		_, file, line, ok := runtime.Caller(3) // decorate + log + public function.
+		_, file, line, ok := runtime.Caller(3) // decorate + glog + public function.
 		if ok {
 			// Truncate file name at last file name separator.
 			if index := strings.LastIndex(file, "/"); index >= 0 {

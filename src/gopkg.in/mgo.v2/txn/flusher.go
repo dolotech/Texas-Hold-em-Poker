@@ -870,7 +870,7 @@ func (f *flusher) apply(t *transaction, pull map[bson.ObjectId]*transaction) err
 		}
 
 		if f.lc != nil && op.isChange() {
-			// Add change to the log document.
+			// Add change to the glog document.
 			var dr bson.D
 			for li := range logDoc {
 				elem := &logDoc[li]
@@ -890,8 +890,8 @@ func (f *flusher) apply(t *transaction, pull map[bson.ObjectId]*transaction) err
 	t.State = tapplied
 
 	if f.lc != nil {
-		// Insert log document into the changelog collection.
-		f.debugf("Inserting %s into change log", t)
+		// Insert glog document into the changelog collection.
+		f.debugf("Inserting %s into change glog", t)
 		err := f.lc.Insert(logDoc)
 		if err != nil && !mgo.IsDup(err) {
 			return err

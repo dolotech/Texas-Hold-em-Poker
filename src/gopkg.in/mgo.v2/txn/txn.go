@@ -218,7 +218,7 @@ const (
 type Runner struct {
 	tc *mgo.Collection // txns
 	sc *mgo.Collection // stash
-	lc *mgo.Collection // log
+	lc *mgo.Collection // glog
 }
 
 // NewRunner returns a new transaction runner that uses tc to hold its

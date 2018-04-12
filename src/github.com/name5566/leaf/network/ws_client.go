@@ -2,7 +2,7 @@ package network
 
 import (
 	"github.com/gorilla/websocket"
-	"github.com/name5566/leaf/log"
+	"github.com/golang/glog"
 	"sync"
 	"time"
 )
@@ -38,29 +38,29 @@ func (client *WSClient) init() {
 
 	if client.ConnNum <= 0 {
 		client.ConnNum = 1
-		log.Release("invalid ConnNum, reset to %v", client.ConnNum)
+		glog.Errorf("invalid ConnNum, reset to %v", client.ConnNum)
 	}
 	if client.ConnectInterval <= 0 {
 		client.ConnectInterval = 3 * time.Second
-		log.Release("invalid ConnectInterval, reset to %v", client.ConnectInterval)
+		glog.Errorf("invalid ConnectInterval, reset to %v", client.ConnectInterval)
 	}
 	if client.PendingWriteNum <= 0 {
 		client.PendingWriteNum = 100
-		log.Release("invalid PendingWriteNum, reset to %v", client.PendingWriteNum)
+		glog.Errorf("invalid PendingWriteNum, reset to %v", client.PendingWriteNum)
 	}
 	if client.MaxMsgLen <= 0 {
 		client.MaxMsgLen = 4096
-		log.Release("invalid MaxMsgLen, reset to %v", client.MaxMsgLen)
+		glog.Errorf("invalid MaxMsgLen, reset to %v", client.MaxMsgLen)
 	}
 	if client.HandshakeTimeout <= 0 {
 		client.HandshakeTimeout = 10 * time.Second
-		log.Release("invalid HandshakeTimeout, reset to %v", client.HandshakeTimeout)
+		glog.Errorf("invalid HandshakeTimeout, reset to %v", client.HandshakeTimeout)
 	}
 	if client.NewAgent == nil {
-		log.Fatal("NewAgent must not be nil")
+		glog.Fatal("NewAgent must not be nil")
 	}
 	if client.conns != nil {
-		log.Fatal("client is running")
+		glog.Fatal("client is running")
 	}
 
 	client.conns = make(WebsocketConnSet)
@@ -77,7 +77,7 @@ func (client *WSClient) dial() *websocket.Conn {
 			return conn
 		}
 
-		log.Release("connect to %v error: %v", client.Addr, err)
+		glog.Errorf("connect to %v error: %v", client.Addr, err)
 		time.Sleep(client.ConnectInterval)
 		continue
 	}

@@ -3,10 +3,10 @@ package conf
 var (
 	LenStackBuf = 4096
 
-	// log
-	LogLevel string
+	// glog
+/*	LogLevel string
 	LogPath  string
-	LogFlag  int
+	LogFlag  int*/
 
 	// console
 	ConsolePort   int
