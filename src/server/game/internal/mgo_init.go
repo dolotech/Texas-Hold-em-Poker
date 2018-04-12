@@ -6,25 +6,14 @@ import (
 	"server/conf"
 )
 
-//const DB_INFO  = "mongodb://yin_test:123456@localhost:27017/runmongo"
+
+
 var mongoDB *mongodb.DialContext
 
-//const DB  = "runmongo"
 const DB  = "mahjongdb"
 
 func init()  {
 
-	//db, err := mongodb.Dial(DB_INFO,10)
-	//if err != nil{
-	//	//glog.Infoln("----connecting----")
-	//	//glog.Fatal("db %v",err)
-	//	glog.Fatal("db-err %v",err)
-	//	//glog.Infoln("------connected----")
-	//	return
-	//}
-	//mongoDB = db
-	////glog.Infoln("------connected----")
-	// mongodb
 	if conf.Server.DBMaxConnNum <= 0 {
 		conf.Server.DBMaxConnNum = 100
 	}

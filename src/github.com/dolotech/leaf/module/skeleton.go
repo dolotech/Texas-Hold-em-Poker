@@ -56,6 +56,7 @@ func (s *Skeleton) Run(closeSig chan bool) {
 			//for !s.g.Idle() || !s.client.Idle() {
 			for !s.client.Idle() {
 				//s.g.Close()
+				s.pool.Release()
 				s.client.Close()
 			}
 			return

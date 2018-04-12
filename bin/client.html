@@ -20,8 +20,7 @@
 
     function ok_button() {
 
-             ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
-/*
+             // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
             var msg= {
                 RegisterUserInfo: {
                     Name: "Michael",
@@ -30,14 +29,14 @@
                     Email :"dolotech@163.com"
                 }
             }
-            ws.send(JSON.stringify(msg))*/
+            ws.send(JSON.stringify(msg))
 
         ws.onmessage = function (evt) {
             var re = evt.data;
             var reader = new FileReader()
             reader.readAsText(re)
             reader.onload = function () {
-                // console.log(this.result);
+                console.log(this.result);
                 document.getElementById("result").innerHTML = this.result;
             }
         }
