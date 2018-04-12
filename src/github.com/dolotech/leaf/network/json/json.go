@@ -16,7 +16,8 @@ type Processor struct {
 type MsgInfo struct {
 	msgType       reflect.Type
 	msgRouter     *chanrpc.Server
-	msgHandler    MsgHandler
+	//msgHandler    MsgHandler
+	msgHandler    *reflect.Value
 	msgRawHandler MsgHandler
 }
 
@@ -69,7 +70,7 @@ func (p *Processor) SetRouter(msg interface{}, msgRouter *chanrpc.Server) {
 }
 
 // It's dangerous to call the method on routing or marshaling (unmarshaling)
-func (p *Processor) SetHandler(msg interface{}, msgHandler MsgHandler) {
+func (p *Processor) SetHandler(msg interface{}, msgHandler interface{}) {
 	msgType := reflect.TypeOf(msg)
 	if msgType == nil || msgType.Kind() != reflect.Ptr {
 		glog.Fatal("json message pointer required")
@@ -80,7 +81,8 @@ func (p *Processor) SetHandler(msg interface{}, msgHandler MsgHandler) {
 		glog.Fatal("message %v not registered", msgID)
 	}
 
-	i.msgHandler = msgHandler
+	v:=reflect.ValueOf(msgHandler)
+	i.msgHandler = &v
 }
 
 // It's dangerous to call the method on routing or marshaling (unmarshaling)
@@ -118,7 +120,10 @@ func (p *Processor) Route(msg interface{}, userData interface{}) error {
 		return fmt.Errorf("message %v not registered", msgID)
 	}
 	if i.msgHandler != nil {
-		i.msgHandler([]interface{}{msg, userData})
+		//i.msgHandler([]interface{}{msg, userData})
+		//i.msgHandler([]interface{}{msg, userData})
+		glog.Errorln(msg)
+		i.msgHandler.Call([]reflect.Value{reflect.ValueOf(msg), reflect.ValueOf(userData)})
 	}
 	if i.msgRouter != nil {
 		i.msgRouter.Go(msgType, msg, userData)

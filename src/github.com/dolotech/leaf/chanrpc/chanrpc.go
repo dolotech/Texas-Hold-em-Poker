@@ -6,6 +6,7 @@ import (
 	"github.com/dolotech/leaf/conf"
 	"github.com/golang/glog"
 	"runtime"
+	"reflect"
 )
 
 // one server per goroutine (goroutine not safe)
@@ -17,12 +18,12 @@ type Server struct {
 	// func(args []interface{})
 	// func(args []interface{}) interface{}
 	// func(args []interface{}) []interface{}
-	functions map[interface{}]interface{}
+	functions map[interface{}]*reflect.Value
 	ChanCall  chan *CallInfo
 }
 
 type CallInfo struct {
-	f       interface{}
+	f       *reflect.Value
 	args    []interface{}
 	chanRet chan *RetInfo
 	cb      interface{}
@@ -50,7 +51,7 @@ type Client struct {
 
 func NewServer(l int) *Server {
 	s := new(Server)
-	s.functions = make(map[interface{}]interface{})
+	s.functions = make(map[interface{}]*reflect.Value)
 	s.ChanCall = make(chan *CallInfo, l)
 	return s
 }
@@ -65,19 +66,25 @@ func assert(i interface{}) []interface{} {
 
 // you must call the function before calling Open and Go
 func (s *Server) Register(id interface{}, f interface{}) {
-	switch f.(type) {
+	/*switch f.(type) {
 	case func([]interface{}):
 	case func([]interface{}) interface{}:
 	case func([]interface{}) []interface{}:
 	default:
 		panic(fmt.Sprintf("function id %v: definition of function is invalid", id))
 	}
+*/
 
+	if reflect.TypeOf(f).Kind() != reflect.Func {
+		glog.Warning("消息处理不是函数",id)
+		return
+	}
 	if _, ok := s.functions[id]; ok {
 		panic(fmt.Sprintf("function id %v: already registered", id))
 	}
 
-	s.functions[id] = f
+	v:=reflect.ValueOf(f)
+	s.functions[id] = &v
 }
 
 func (s *Server) ret(ci *CallInfo, ri *RetInfo) (err error) {
@@ -111,8 +118,20 @@ func (s *Server) exec(ci *CallInfo) (err error) {
 		}
 	}()
 
+
+	if len(ci.args) == 2{
+		glog.Errorln(reflect.TypeOf(ci.args[0]).Elem().Name())
+		glog.Errorln(reflect.TypeOf(ci.args[1]).Elem().Name())
+		ci.f.Call([]reflect.Value{reflect.ValueOf(ci.args[0]), reflect.ValueOf(ci.args[1])})
+	}else if len(ci.args) == 1{
+
+		glog.Errorln(ci,len(ci.args),reflect.TypeOf(ci.args[0]).Elem().Name())
+		ci.f.Call([]reflect.Value{reflect.ValueOf(ci.args[0])})
+	}
+
+
 	// execute
-	switch ci.f.(type) {
+	/*switch ci.f.(type) {
 	case func([]interface{}):
 		ci.f.(func([]interface{}))(ci.args)
 		return s.ret(ci, &RetInfo{})
@@ -122,21 +141,22 @@ func (s *Server) exec(ci *CallInfo) (err error) {
 	case func([]interface{}) []interface{}:
 		ret := ci.f.(func([]interface{}) []interface{})(ci.args)
 		return s.ret(ci, &RetInfo{ret: ret})
-	}
+	}*/
 
-	panic("bug")
+	//panic("bug")
+	return nil
 }
 
 func (s *Server) Exec(ci *CallInfo) {
 	err := s.exec(ci)
 	if err != nil {
-		glog.Error("%v", err)
+		glog.Errorf("%v", err)
 	}
 }
 
 // goroutine safe
 func (s *Server) Go(id interface{}, args ...interface{}) {
-	f := s.functions[id]
+	f ,_:= s.functions[id]
 	if f == nil {
 		return
 	}
@@ -249,8 +269,9 @@ func (c *Client) Call0(id interface{}, args ...interface{}) error {
 		return err
 	}
 
+	v:=reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       f,
+		f:       &v,
 		args:    args,
 		chanRet: c.chanSyncRet,
 	}, true)
@@ -267,9 +288,9 @@ func (c *Client) Call1(id interface{}, args ...interface{}) (interface{}, error)
 	if err != nil {
 		return nil, err
 	}
-
+	v:=reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       f,
+		f:       &v,
 		args:    args,
 		chanRet: c.chanSyncRet,
 	}, true)
@@ -287,8 +308,9 @@ func (c *Client) CallN(id interface{}, args ...interface{}) ([]interface{}, erro
 		return nil, err
 	}
 
+	v:=reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       f,
+		f:       &v,
 		args:    args,
 		chanRet: c.chanSyncRet,
 	}, true)
@@ -306,9 +328,9 @@ func (c *Client) asynCall(id interface{}, args []interface{}, cb interface{}, n 
 		c.ChanAsynRet <- &RetInfo{err: err, cb: cb}
 		return
 	}
-
+	v:=reflect.ValueOf(f)
 	err = c.call(&CallInfo{
-		f:       f,
+		f:       &v,
 		args:    args,
 		chanRet: c.ChanAsynRet,
 		cb:      cb,
