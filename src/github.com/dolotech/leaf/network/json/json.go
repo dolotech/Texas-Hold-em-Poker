@@ -16,7 +16,6 @@ type Processor struct {
 type MsgInfo struct {
 	msgType       reflect.Type
 	msgRouter     *chanrpc.Server
-	//msgHandler    MsgHandler
 	msgHandler    *reflect.Value
 	msgRawHandler MsgHandler
 }
@@ -120,9 +119,6 @@ func (p *Processor) Route(msg interface{}, userData interface{}) error {
 		return fmt.Errorf("message %v not registered", msgID)
 	}
 	if i.msgHandler != nil {
-		//i.msgHandler([]interface{}{msg, userData})
-		//i.msgHandler([]interface{}{msg, userData})
-		glog.Errorln(msg)
 		i.msgHandler.Call([]reflect.Value{reflect.ValueOf(msg), reflect.ValueOf(userData)})
 	}
 	if i.msgRouter != nil {

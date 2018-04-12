@@ -66,15 +66,6 @@ func assert(i interface{}) []interface{} {
 
 // you must call the function before calling Open and Go
 func (s *Server) Register(id interface{}, f interface{}) {
-	/*switch f.(type) {
-	case func([]interface{}):
-	case func([]interface{}) interface{}:
-	case func([]interface{}) []interface{}:
-	default:
-		panic(fmt.Sprintf("function id %v: definition of function is invalid", id))
-	}
-*/
-
 	if reflect.TypeOf(f).Kind() != reflect.Func {
 		glog.Warning("消息处理不是函数", id)
 		return

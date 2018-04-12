@@ -90,11 +90,6 @@ func (s *Skeleton) CronFunc(cronExpr *timer.CronExpr, cb func()) *timer.Cron {
 }
 
 func (s *Skeleton) Go(f func(), cb func()) {
-	/*if s.GoLen == 0 {
-		panic("invalid GoLen")
-	}
-	s.g.Go(f, cb)*/
-
 	s.pool.JobQueue <- func() {
 		defer func() {
 			if nil != cb {
@@ -113,14 +108,6 @@ func (s *Skeleton) Go(f func(), cb func()) {
 		f()
 	}
 }
-
-/*func (s *Skeleton) NewLinearContext() *g.LinearContext {
-	if s.GoLen == 0 {
-		panic("invalid GoLen")
-	}
-
-	return s.g.NewLinearContext()
-}*/
 
 func (s *Skeleton) AsynCall(server *chanrpc.Server, id interface{}, args ...interface{}) {
 	if s.AsynCallLen == 0 {

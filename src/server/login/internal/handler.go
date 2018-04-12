@@ -19,8 +19,7 @@ func handler(m interface{}, h interface{}) {
 
 func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
 	//交给 game 模块处理
-	game.ChanRPC.Go("RegisterAgent",  m,a)
-
+	game.ChanRPC.Go("RegisterAgent",  m,a,"hello")
 	a.WriteMsg(msg.MSG_SUCCESS)
 
 }
