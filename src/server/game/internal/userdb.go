@@ -53,14 +53,12 @@ func (data *UserData) initValue() error {
 }
 
 func register(userInfo *msg.RegisterUserInfo) (err error) { //注册
-	//var user User
-	//userInfo := args[0].(*msg.RegisterUserInfo)
 	skeleton.Go(func() {
 		db := mongoDB.Ref()
 		defer mongoDB.UnRef(db)
 		err := db.DB(DB).C(USERDB).Insert(userInfo)
 		if err != nil {
-			glog.Errorln( err)
+			glog.Errorln(err)
 			return
 		}
 	}, nil)
@@ -68,7 +66,6 @@ func register(userInfo *msg.RegisterUserInfo) (err error) { //注册
 }
 
 func login(user *msg.UserLoginInfo) (err error) {
-	//var user User
 	var result UserData
 	skeleton.Go(func() {
 		db := mongoDB.Ref()
@@ -82,7 +79,8 @@ func login(user *msg.UserLoginInfo) (err error) {
 			//glog.Infoln("---over----?")
 			//time.Sleep(15*time.Second)
 			//a.WriteMsg(&msg.LoginError{State:-1,Message:"no user"})
-			glog.Errorln( err)
+
+			glog.Errorln(err)
 
 			return
 
@@ -98,7 +96,7 @@ func checkExitedUser(userName string) (err error) {
 	var userInfo msg.RegisterUserInfo
 	err = db.DB(DB).C(USERDB).Find(bson.M{"name": userName}).One(&userInfo)
 	if err != nil {
-		glog.Errorln( err)
+		glog.Errorln(err)
 		return err
 	}
 	return nil

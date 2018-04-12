@@ -76,14 +76,14 @@ func (s *Server) Register(id interface{}, f interface{}) {
 */
 
 	if reflect.TypeOf(f).Kind() != reflect.Func {
-		glog.Warning("消息处理不是函数",id)
+		glog.Warning("消息处理不是函数", id)
 		return
 	}
 	if _, ok := s.functions[id]; ok {
 		panic(fmt.Sprintf("function id %v: already registered", id))
 	}
 
-	v:=reflect.ValueOf(f)
+	v := reflect.ValueOf(f)
 	s.functions[id] = &v
 }
 
@@ -103,60 +103,31 @@ func (s *Server) ret(ci *CallInfo, ri *RetInfo) (err error) {
 	return
 }
 
-func (s *Server) exec(ci *CallInfo) (err error) {
+func (s *Server) Exec(ci *CallInfo) {
 	defer func() {
 		if r := recover(); r != nil {
 			if conf.LenStackBuf > 0 {
 				buf := make([]byte, conf.LenStackBuf)
 				l := runtime.Stack(buf, false)
-				err = fmt.Errorf("%v: %s", r, buf[:l])
+				fmt.Errorf("%v: %s", r, buf[:l])
 			} else {
-				err = fmt.Errorf("%v", r)
+				fmt.Errorf("%v", r)
 			}
 
 			s.ret(ci, &RetInfo{err: fmt.Errorf("%v", r)})
 		}
 	}()
 
-
-	if len(ci.args) == 2{
-		glog.Errorln(reflect.TypeOf(ci.args[0]).Elem().Name())
-		glog.Errorln(reflect.TypeOf(ci.args[1]).Elem().Name())
-		ci.f.Call([]reflect.Value{reflect.ValueOf(ci.args[0]), reflect.ValueOf(ci.args[1])})
-	}else if len(ci.args) == 1{
-
-		glog.Errorln(ci,len(ci.args),reflect.TypeOf(ci.args[0]).Elem().Name())
-		ci.f.Call([]reflect.Value{reflect.ValueOf(ci.args[0])})
+	agrs := make([]reflect.Value, 0, len(ci.args))
+	for i := 0; i < len(ci.args); i++ {
+		agrs = append(agrs, reflect.ValueOf(ci.args[i]))
 	}
-
-
-	// execute
-	/*switch ci.f.(type) {
-	case func([]interface{}):
-		ci.f.(func([]interface{}))(ci.args)
-		return s.ret(ci, &RetInfo{})
-	case func([]interface{}) interface{}:
-		ret := ci.f.(func([]interface{}) interface{})(ci.args)
-		return s.ret(ci, &RetInfo{ret: ret})
-	case func([]interface{}) []interface{}:
-		ret := ci.f.(func([]interface{}) []interface{})(ci.args)
-		return s.ret(ci, &RetInfo{ret: ret})
-	}*/
-
-	//panic("bug")
-	return nil
-}
-
-func (s *Server) Exec(ci *CallInfo) {
-	err := s.exec(ci)
-	if err != nil {
-		glog.Errorf("%v", err)
-	}
+	ci.f.Call(agrs)
 }
 
 // goroutine safe
 func (s *Server) Go(id interface{}, args ...interface{}) {
-	f ,_:= s.functions[id]
+	f, _ := s.functions[id]
 	if f == nil {
 		return
 	}
@@ -269,7 +240,7 @@ func (c *Client) Call0(id interface{}, args ...interface{}) error {
 		return err
 	}
 
-	v:=reflect.ValueOf(f)
+	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
 		f:       &v,
 		args:    args,
@@ -288,7 +259,7 @@ func (c *Client) Call1(id interface{}, args ...interface{}) (interface{}, error)
 	if err != nil {
 		return nil, err
 	}
-	v:=reflect.ValueOf(f)
+	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
 		f:       &v,
 		args:    args,
@@ -308,7 +279,7 @@ func (c *Client) CallN(id interface{}, args ...interface{}) ([]interface{}, erro
 		return nil, err
 	}
 
-	v:=reflect.ValueOf(f)
+	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
 		f:       &v,
 		args:    args,
@@ -328,7 +299,7 @@ func (c *Client) asynCall(id interface{}, args []interface{}, cb interface{}, n 
 		c.ChanAsynRet <- &RetInfo{err: err, cb: cb}
 		return
 	}
-	v:=reflect.ValueOf(f)
+	v := reflect.ValueOf(f)
 	err = c.call(&CallInfo{
 		f:       &v,
 		args:    args,
