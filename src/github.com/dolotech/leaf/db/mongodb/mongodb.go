@@ -135,12 +135,12 @@ func (c *DialContext) EnsureCounter(db string, collection string, id string) err
 }
 
 // goroutine safe
-func (c *DialContext) NextSeq(db string, collection string, id string) (int, error) {
+func (c *DialContext) NextSeq(db string, collection string, id string) (uint32, error) {
 	s := c.Ref()
 	defer c.UnRef(s)
 
 	var res struct {
-		Seq int
+		Seq uint32
 	}
 	_, err := s.DB(db).C(collection).FindId(id).Apply(mgo.Change{
 		Update:    bson.M{"$inc": bson.M{"seq": 1}},

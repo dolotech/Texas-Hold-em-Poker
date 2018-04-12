@@ -3,8 +3,19 @@ package mongodb
 import (
 	"gopkg.in/mgo.v2"
 	"testing"
+	"server/conf"
 )
 
+func TestDialContext_NextSeq(t *testing.T) {
+	c, err := Dial(conf.Server.DBUrl, conf.Server.DBMaxConnNum)
+	if err != nil {
+		t.Log(err)
+		return
+	}
+	defer c.Close()
+
+
+}
 func TestDial(t *testing.T) {
 	c, err := Dial("localhost", 10)
 	if err != nil {

@@ -4,21 +4,22 @@ import (
 	"server/msg"
 	"time"
 	"github.com/dolotech/leaf/gate"
+	"server/model"
 )
 
 type position int // 位置 1-4
 var allRooms []*Room
 
 type Room struct {
-	RoomData *RoomData
-	MapUsers map[int]*UserData //玩家信息以及座位 int 为位置 1-4
+	RoomData *model.RoomData
+	MapUsers map[uint32]*model.UserData //玩家信息以及座位 int 为位置 1-4
 	//RoomState	int	//房间状态
-	RoomOwner *UserData //房管
+	RoomOwner *model.UserData //房管
 	//*g.LinearContext
 	gate.Agent
-	Players        int //玩家数量
-	ReadySignCount int //准备信号 数量
-	Playing        int //房间已开始游戏 0--没有开始 1--开始
+	Players        uint32 //玩家数量
+	ReadySignCount uint32 //准备信号 数量
+	Playing        uint32 //房间已开始游戏 0--没有开始 1--开始
 	//RoomTime	int //房间有效期限
 }
 
@@ -61,7 +62,7 @@ func FindRoomsByRoomNumber(roomNumber string) (room *Room) {
 }
 
 //通过 房间的 RoomID 确定某个房间
-func FindRoomByRoomNameAndOwner(roomID int) (room *Room) {
+func FindRoomByRoomNameAndOwner(roomID uint32) (room *Room) {
 	for _, v := range allRooms {
 		if v.RoomData.RoomID == roomID {
 			room = v
@@ -73,18 +74,18 @@ func FindRoomByRoomNameAndOwner(roomID int) (room *Room) {
 //初始化房间信息 创建房间
 func InitRoom(msgRoomInfo *msg.RoomInfo, userLine *UserLine) (room *Room) {
 	if userLine.RoomLine == nil { //没有关联任何的房间
-		r := RoomData{
+		r := &model.RoomData{
 			RoomName:  msgRoomInfo.RoomName,
 			Volume:    msgRoomInfo.Volume,
 			GameType:  msgRoomInfo.GameType,
 			PayValue:  msgRoomInfo.PayValue,
 			BaseMoney: msgRoomInfo.BaseMoney,
 			RoomPwd:   msgRoomInfo.RoomPwd,
-			CreatedAt: time.Now().UnixNano(),
+			CreatedAt: uint32(time.Now().Unix()),
 			RoomState: 1,
 		}
 		room.Players = 1
-		room.RoomData = &r
+		room.RoomData = r
 		room.RoomOwner = userLine.UserData
 		room.MapUsers[1] = userLine.UserData //房主做一号位 创建房间的
 		//room.LinearContext = skeleton.NewLinearContext()
@@ -98,17 +99,17 @@ func InitRoom(msgRoomInfo *msg.RoomInfo, userLine *UserLine) (room *Room) {
 //修改房间基本信息 仅有房主修改
 func ChangeRoomInfo(userLine *UserLine, msgRoomInfo *msg.RoomInfo) bool {
 	if userLine.RoomLine.RoomOwner != userLine.UserData { //不是房主
-		r := RoomData{
+		r := &model.RoomData{
 			RoomName:  msgRoomInfo.RoomName,
 			Volume:    msgRoomInfo.Volume,
 			GameType:  msgRoomInfo.GameType,
 			PayValue:  msgRoomInfo.PayValue,
 			BaseMoney: msgRoomInfo.BaseMoney,
 			RoomPwd:   msgRoomInfo.RoomPwd,
-			CreatedAt: time.Now().UnixNano(),
+			CreatedAt: uint32(time.Now().Unix()),
 			//RoomState:0,
 		}
-		userLine.RoomLine.RoomData = &r
+		userLine.RoomLine.RoomData = r
 		return true
 	} else { //不是房主
 		return false
@@ -121,7 +122,7 @@ func JoinRoom(userLine *UserLine, room *Room) bool {
 	if userLine.RoomLine == nil { //确定是没有房间的人 可以进入
 		//	分配位置 并进行初始赋值
 		room.Players = room.Players + 1
-		for i := 1; i <= room.RoomData.Volume; i++ {
+		for i := uint32(1); i <= room.RoomData.Volume; i++ {
 			if v, ok := room.MapUsers[i]; !ok || v == nil { //空位置 添加玩家
 				room.MapUsers[i] = userLine.UserData
 				break
@@ -139,7 +140,7 @@ func JoinRoom(userLine *UserLine, room *Room) bool {
 
 //加入房间前 检查是否 有“资本” 进入
 func CheckConditionForJoining(userLine *UserLine, room *Room) bool {
-	if userLine.UserData.Money >= room.RoomData.PayValue {
+	if userLine.UserData.Chips >= room.RoomData.PayValue {
 		return true
 	} else {
 		//userLine.WriteMsg(&msg.CodeState{msg.MSG_ROOM_NOMONEY,"你的资金不足，该房间的要求!"})
@@ -210,7 +211,7 @@ func CloseRoom(userLine *UserLine) {
 //每局后调用 检查玩家是否还有“资格”留在房间 资金量
 func CheckPlayerMoney(userLine *UserLine) bool {
 	room := userLine.RoomLine
-	if room.RoomData.BaseMoney <= userLine.UserData.Money { //
+	if room.RoomData.BaseMoney <= userLine.UserData.Chips { //
 		return true
 	} else {
 		return false

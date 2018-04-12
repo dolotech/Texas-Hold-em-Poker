@@ -1,0 +1,7464 @@
+TOTAL    FIVE CARDS     HAND VALUE                     POKER HAND
+=====================================================================
+   4     T J Q K A      Royal Flush                    ROYAL FLUSH
+   4     9 T J Q K      King High Straight Flush       STRAIGHT FLUSH
+   4     8 9 T J Q      Queen High Straight Flush
+   4     7 8 9 T J      Jack High Straight Flush
+   4     6 7 8 9 T      Ten High Straight Flush
+   4     5 6 7 8 9      Nine High Straight Flush
+   4     4 5 6 7 8      Eight High Straight Flush
+   4     3 4 5 6 7      Seven High Straight Flush
+   4     2 3 4 5 6      Six High Straight Flush
+   4     A 2 3 4 5      Five High Straight Flush
+   4     A A A A K      Four Aces                      FOUR OF A KIND
+   4     A A A A Q
+   4     A A A A J
+   4     A A A A T
+   4     A A A A 9
+   4     A A A A 8
+   4     A A A A 7
+   4     A A A A 6
+   4     A A A A 5
+   4     A A A A 4
+   4     A A A A 3
+   4     A A A A 2
+   4     K K K K A      Four Kings
+   4     K K K K Q
+   4     K K K K J
+   4     K K K K T
+   4     K K K K 9
+   4     K K K K 8
+   4     K K K K 7
+   4     K K K K 6
+   4     K K K K 5
+   4     K K K K 4
+   4     K K K K 3
+   4     K K K K 2
+   4     Q Q Q Q A      Four Queens
+   4     Q Q Q Q K
+   4     Q Q Q Q J
+   4     Q Q Q Q T
+   4     Q Q Q Q 9
+   4     Q Q Q Q 8
+   4     Q Q Q Q 7
+   4     Q Q Q Q 6
+   4     Q Q Q Q 5
+   4     Q Q Q Q 4
+   4     Q Q Q Q 3
+   4     Q Q Q Q 2
+   4     J J J J A      Four Jacks
+   4     J J J J K
+   4     J J J J Q
+   4     J J J J T
+   4     J J J J 9
+   4     J J J J 8
+   4     J J J J 7
+   4     J J J J 6
+   4     J J J J 5
+   4     J J J J 4
+   4     J J J J 3
+   4     J J J J 2
+   4     T T T T A      Four Tens
+   4     T T T T K
+   4     T T T T Q
+   4     T T T T J
+   4     T T T T 9
+   4     T T T T 8
+   4     T T T T 7
+   4     T T T T 6
+   4     T T T T 5
+   4     T T T T 4
+   4     T T T T 3
+   4     T T T T 2
+   4     9 9 9 9 A      Four Nines
+   4     9 9 9 9 K
+   4     9 9 9 9 Q
+   4     9 9 9 9 J
+   4     9 9 9 9 T
+   4     9 9 9 9 8
+   4     9 9 9 9 7
+   4     9 9 9 9 6
+   4     9 9 9 9 5
+   4     9 9 9 9 4
+   4     9 9 9 9 3
+   4     9 9 9 9 2
+   4     8 8 8 8 A      Four Eights
+   4     8 8 8 8 K
+   4     8 8 8 8 Q
+   4     8 8 8 8 J
+   4     8 8 8 8 T
+   4     8 8 8 8 9
+   4     8 8 8 8 7
+   4     8 8 8 8 6
+   4     8 8 8 8 5
+   4     8 8 8 8 4
+   4     8 8 8 8 3
+   4     8 8 8 8 2
+   4     7 7 7 7 A      Four Sevens
+   4     7 7 7 7 K
+   4     7 7 7 7 Q
+   4     7 7 7 7 J
+   4     7 7 7 7 T
+   4     7 7 7 7 9
+   4     7 7 7 7 8
+   4     7 7 7 7 6
+   4     7 7 7 7 5
+   4     7 7 7 7 4
+   4     7 7 7 7 3
+   4     7 7 7 7 2
+   4     6 6 6 6 A      Four Sixes
+   4     6 6 6 6 K
+   4     6 6 6 6 Q
+   4     6 6 6 6 J
+   4     6 6 6 6 T
+   4     6 6 6 6 9
+   4     6 6 6 6 8
+   4     6 6 6 6 7
+   4     6 6 6 6 5
+   4     6 6 6 6 4
+   4     6 6 6 6 3
+   4     6 6 6 6 2
+   4     5 5 5 5 A      Four Fives
+   4     5 5 5 5 K
+   4     5 5 5 5 Q
+   4     5 5 5 5 J
+   4     5 5 5 5 T
+   4     5 5 5 5 9
+   4     5 5 5 5 8
+   4     5 5 5 5 7
+   4     5 5 5 5 6
+   4     5 5 5 5 4
+   4     5 5 5 5 3
+   4     5 5 5 5 2
+   4     4 4 4 4 A      Four Fours
+   4     4 4 4 4 K
+   4     4 4 4 4 Q
+   4     4 4 4 4 J
+   4     4 4 4 4 T
+   4     4 4 4 4 9
+   4     4 4 4 4 8
+   4     4 4 4 4 7
+   4     4 4 4 4 6
+   4     4 4 4 4 5
+   4     4 4 4 4 3
+   4     4 4 4 4 2
+   4     3 3 3 3 A      Four Treys
+   4     3 3 3 3 K
+   4     3 3 3 3 Q
+   4     3 3 3 3 J
+   4     3 3 3 3 T
+   4     3 3 3 3 9
+   4     3 3 3 3 8
+   4     3 3 3 3 7
+   4     3 3 3 3 6
+   4     3 3 3 3 5
+   4     3 3 3 3 4
+   4     3 3 3 3 2
+   4     2 2 2 2 A      Four Deuces
+   4     2 2 2 2 K
+   4     2 2 2 2 Q
+   4     2 2 2 2 J
+   4     2 2 2 2 T
+   4     2 2 2 2 9
+   4     2 2 2 2 8
+   4     2 2 2 2 7
+   4     2 2 2 2 6
+   4     2 2 2 2 5
+   4     2 2 2 2 4
+   4     2 2 2 2 3
+  24     A A A K K      Aces Full                      FULL HOUSE
+  24     A A A Q Q
+  24     A A A J J
+  24     A A A T T
+  24     A A A 9 9
+  24     A A A 8 8
+  24     A A A 7 7
+  24     A A A 6 6
+  24     A A A 5 5
+  24     A A A 4 4
+  24     A A A 3 3
+  24     A A A 2 2
+  24     K K K A A      Kings Full
+  24     K K K Q Q
+  24     K K K J J
+  24     K K K T T
+  24     K K K 9 9
+  24     K K K 8 8
+  24     K K K 7 7
+  24     K K K 6 6
+  24     K K K 5 5
+  24     K K K 4 4
+  24     K K K 3 3
+  24     K K K 2 2
+  24     Q Q Q A A      Queens Full
+  24     Q Q Q K K
+  24     Q Q Q J J
+  24     Q Q Q T T
+  24     Q Q Q 9 9
+  24     Q Q Q 8 8
+  24     Q Q Q 7 7
+  24     Q Q Q 6 6
+  24     Q Q Q 5 5
+  24     Q Q Q 4 4
+  24     Q Q Q 3 3
+  24     Q Q Q 2 2
+  24     J J J A A      Jacks Full
+  24     J J J K K
+  24     J J J Q Q
+  24     J J J T T
+  24     J J J 9 9
+  24     J J J 8 8
+  24     J J J 7 7
+  24     J J J 6 6
+  24     J J J 5 5
+  24     J J J 4 4
+  24     J J J 3 3
+  24     J J J 2 2
+  24     T T T A A      Tens Full
+  24     T T T K K
+  24     T T T Q Q
+  24     T T T J J
+  24     T T T 9 9
+  24     T T T 8 8
+  24     T T T 7 7
+  24     T T T 6 6
+  24     T T T 5 5
+  24     T T T 4 4
+  24     T T T 3 3
+  24     T T T 2 2
+  24     9 9 9 A A      Nines Full
+  24     9 9 9 K K
+  24     9 9 9 Q Q
+  24     9 9 9 J J
+  24     9 9 9 T T
+  24     9 9 9 8 8
+  24     9 9 9 7 7
+  24     9 9 9 6 6
+  24     9 9 9 5 5
+  24     9 9 9 4 4
+  24     9 9 9 3 3
+  24     9 9 9 2 2
+  24     8 8 8 A A      Eights Full
+  24     8 8 8 K K
+  24     8 8 8 Q Q
+  24     8 8 8 J J
+  24     8 8 8 T T
+  24     8 8 8 9 9
+  24     8 8 8 7 7
+  24     8 8 8 6 6
+  24     8 8 8 5 5
+  24     8 8 8 4 4
+  24     8 8 8 3 3
+  24     8 8 8 2 2
+  24     7 7 7 A A      Sevens Full
+  24     7 7 7 K K
+  24     7 7 7 Q Q
+  24     7 7 7 J J
+  24     7 7 7 T T
+  24     7 7 7 9 9
+  24     7 7 7 8 8
+  24     7 7 7 6 6
+  24     7 7 7 5 5
+  24     7 7 7 4 4
+  24     7 7 7 3 3
+  24     7 7 7 2 2
+  24     6 6 6 A A      Sixes Full
+  24     6 6 6 K K
+  24     6 6 6 Q Q
+  24     6 6 6 J J
+  24     6 6 6 T T
+  24     6 6 6 9 9
+  24     6 6 6 8 8
+  24     6 6 6 7 7
+  24     6 6 6 5 5
+  24     6 6 6 4 4
+  24     6 6 6 3 3
+  24     6 6 6 2 2
+  24     5 5 5 A A      Fives Full
+  24     5 5 5 K K
+  24     5 5 5 Q Q
+  24     5 5 5 J J
+  24     5 5 5 T T
+  24     5 5 5 9 9
+  24     5 5 5 8 8
+  24     5 5 5 7 7
+  24     5 5 5 6 6
+  24     5 5 5 4 4
+  24     5 5 5 3 3
+  24     5 5 5 2 2
+  24     4 4 4 A A      Fours Full
+  24     4 4 4 K K
+  24     4 4 4 Q Q
+  24     4 4 4 J J
+  24     4 4 4 T T
+  24     4 4 4 9 9
+  24     4 4 4 8 8
+  24     4 4 4 7 7
+  24     4 4 4 6 6
+  24     4 4 4 5 5
+  24     4 4 4 3 3
+  24     4 4 4 2 2
+  24     3 3 3 A A      Threes Full
+  24     3 3 3 K K
+  24     3 3 3 Q Q
+  24     3 3 3 J J
+  24     3 3 3 T T
+  24     3 3 3 9 9
+  24     3 3 3 8 8
+  24     3 3 3 7 7
+  24     3 3 3 6 6
+  24     3 3 3 5 5
+  24     3 3 3 4 4
+  24     3 3 3 2 2
+  24     2 2 2 A A      Deuces Full
+  24     2 2 2 K K
+  24     2 2 2 Q Q
+  24     2 2 2 J J
+  24     2 2 2 T T
+  24     2 2 2 9 9
+  24     2 2 2 8 8
+  24     2 2 2 7 7
+  24     2 2 2 6 6
+  24     2 2 2 5 5
+  24     2 2 2 4 4
+  24     2 2 2 3 3
+   4     9 J Q K A      Ace High Flush                 FLUSH
+   4     8 J Q K A
+   4     7 J Q K A
+   4     6 J Q K A
+   4     5 J Q K A
+   4     4 J Q K A
+   4     3 J Q K A
+   4     2 J Q K A
+   4     9 T Q K A
+   4     8 T Q K A
+   4     7 T Q K A
+   4     6 T Q K A
+   4     5 T Q K A
+   4     4 T Q K A
+   4     3 T Q K A
+   4     2 T Q K A
+   4     8 9 Q K A
+   4     7 9 Q K A
+   4     6 9 Q K A
+   4     5 9 Q K A
+   4     4 9 Q K A
+   4     3 9 Q K A
+   4     2 9 Q K A
+   4     7 8 Q K A
+   4     6 8 Q K A
+   4     5 8 Q K A
+   4     4 8 Q K A
+   4     3 8 Q K A
+   4     2 8 Q K A
+   4     6 7 Q K A
+   4     5 7 Q K A
+   4     4 7 Q K A
+   4     3 7 Q K A
+   4     2 7 Q K A
+   4     5 6 Q K A
+   4     4 6 Q K A
+   4     3 6 Q K A
+   4     2 6 Q K A
+   4     4 5 Q K A
+   4     3 5 Q K A
+   4     2 5 Q K A
+   4     3 4 Q K A
+   4     2 4 Q K A
+   4     2 3 Q K A
+   4     9 T J K A
+   4     8 T J K A
+   4     7 T J K A
+   4     6 T J K A
+   4     5 T J K A
+   4     4 T J K A
+   4     3 T J K A
+   4     2 T J K A
+   4     8 9 J K A
+   4     7 9 J K A
+   4     6 9 J K A
+   4     5 9 J K A
+   4     4 9 J K A
+   4     3 9 J K A
+   4     2 9 J K A
+   4     7 8 J K A
+   4     6 8 J K A
+   4     5 8 J K A
+   4     4 8 J K A
+   4     3 8 J K A
+   4     2 8 J K A
+   4     6 7 J K A
+   4     5 7 J K A
+   4     4 7 J K A
+   4     3 7 J K A
+   4     2 7 J K A
+   4     5 6 J K A
+   4     4 6 J K A
+   4     3 6 J K A
+   4     2 6 J K A
+   4     4 5 J K A
+   4     3 5 J K A
+   4     2 5 J K A
+   4     3 4 J K A
+   4     2 4 J K A
+   4     2 3 J K A
+   4     8 9 T K A
+   4     7 9 T K A
+   4     6 9 T K A
+   4     5 9 T K A
+   4     4 9 T K A
+   4     3 9 T K A
+   4     2 9 T K A
+   4     7 8 T K A
+   4     6 8 T K A
+   4     5 8 T K A
+   4     4 8 T K A
+   4     3 8 T K A
+   4     2 8 T K A
+   4     6 7 T K A
+   4     5 7 T K A
+   4     4 7 T K A
+   4     3 7 T K A
+   4     2 7 T K A
+   4     5 6 T K A
+   4     4 6 T K A
+   4     3 6 T K A
+   4     2 6 T K A
+   4     4 5 T K A
+   4     3 5 T K A
+   4     2 5 T K A
+   4     3 4 T K A
+   4     2 4 T K A
+   4     2 3 T K A
+   4     7 8 9 K A
+   4     6 8 9 K A
+   4     5 8 9 K A
+   4     4 8 9 K A
+   4     3 8 9 K A
+   4     2 8 9 K A
+   4     6 7 9 K A
+   4     5 7 9 K A
+   4     4 7 9 K A
+   4     3 7 9 K A
+   4     2 7 9 K A
+   4     5 6 9 K A
+   4     4 6 9 K A
+   4     3 6 9 K A
+   4     2 6 9 K A
+   4     4 5 9 K A
+   4     3 5 9 K A
+   4     2 5 9 K A
+   4     3 4 9 K A
+   4     2 4 9 K A
+   4     2 3 9 K A
+   4     6 7 8 K A
+   4     5 7 8 K A
+   4     4 7 8 K A
+   4     3 7 8 K A
+   4     2 7 8 K A
+   4     5 6 8 K A
+   4     4 6 8 K A
+   4     3 6 8 K A
+   4     2 6 8 K A
+   4     4 5 8 K A
+   4     3 5 8 K A
+   4     2 5 8 K A
+   4     3 4 8 K A
+   4     2 4 8 K A
+   4     2 3 8 K A
+   4     5 6 7 K A
+   4     4 6 7 K A
+   4     3 6 7 K A
+   4     2 6 7 K A
+   4     4 5 7 K A
+   4     3 5 7 K A
+   4     2 5 7 K A
+   4     3 4 7 K A
+   4     2 4 7 K A
+   4     2 3 7 K A
+   4     4 5 6 K A
+   4     3 5 6 K A
+   4     2 5 6 K A
+   4     3 4 6 K A
+   4     2 4 6 K A
+   4     2 3 6 K A
+   4     3 4 5 K A
+   4     2 4 5 K A
+   4     2 3 5 K A
+   4     2 3 4 K A
+   4     9 T J Q A
+   4     8 T J Q A
+   4     7 T J Q A
+   4     6 T J Q A
+   4     5 T J Q A
+   4     4 T J Q A
+   4     3 T J Q A
+   4     2 T J Q A
+   4     8 9 J Q A
+   4     7 9 J Q A
+   4     6 9 J Q A
+   4     5 9 J Q A
+   4     4 9 J Q A
+   4     3 9 J Q A
+   4     2 9 J Q A
+   4     7 8 J Q A
+   4     6 8 J Q A
+   4     5 8 J Q A
+   4     4 8 J Q A
+   4     3 8 J Q A
+   4     2 8 J Q A
+   4     6 7 J Q A
+   4     5 7 J Q A
+   4     4 7 J Q A
+   4     3 7 J Q A
+   4     2 7 J Q A
+   4     5 6 J Q A
+   4     4 6 J Q A
+   4     3 6 J Q A
+   4     2 6 J Q A
+   4     4 5 J Q A
+   4     3 5 J Q A
+   4     2 5 J Q A
+   4     3 4 J Q A
+   4     2 4 J Q A
+   4     2 3 J Q A
+   4     8 9 T Q A
+   4     7 9 T Q A
+   4     6 9 T Q A
+   4     5 9 T Q A
+   4     4 9 T Q A
+   4     3 9 T Q A
+   4     2 9 T Q A
+   4     7 8 T Q A
+   4     6 8 T Q A
+   4     5 8 T Q A
+   4     4 8 T Q A
+   4     3 8 T Q A
+   4     2 8 T Q A
+   4     6 7 T Q A
+   4     5 7 T Q A
+   4     4 7 T Q A
+   4     3 7 T Q A
+   4     2 7 T Q A
+   4     5 6 T Q A
+   4     4 6 T Q A
+   4     3 6 T Q A
+   4     2 6 T Q A
+   4     4 5 T Q A
+   4     3 5 T Q A
+   4     2 5 T Q A
+   4     3 4 T Q A
+   4     2 4 T Q A
+   4     2 3 T Q A
+   4     7 8 9 Q A
+   4     6 8 9 Q A
+   4     5 8 9 Q A
+   4     4 8 9 Q A
+   4     3 8 9 Q A
+   4     2 8 9 Q A
+   4     6 7 9 Q A
+   4     5 7 9 Q A
+   4     4 7 9 Q A
+   4     3 7 9 Q A
+   4     2 7 9 Q A
+   4     5 6 9 Q A
+   4     4 6 9 Q A
+   4     3 6 9 Q A
+   4     2 6 9 Q A
+   4     4 5 9 Q A
+   4     3 5 9 Q A
+   4     2 5 9 Q A
+   4     3 4 9 Q A
+   4     2 4 9 Q A
+   4     2 3 9 Q A
+   4     6 7 8 Q A
+   4     5 7 8 Q A
+   4     4 7 8 Q A
+   4     3 7 8 Q A
+   4     2 7 8 Q A
+   4     5 6 8 Q A
+   4     4 6 8 Q A
+   4     3 6 8 Q A
+   4     2 6 8 Q A
+   4     4 5 8 Q A
+   4     3 5 8 Q A
+   4     2 5 8 Q A
+   4     3 4 8 Q A
+   4     2 4 8 Q A
+   4     2 3 8 Q A
+   4     5 6 7 Q A
+   4     4 6 7 Q A
+   4     3 6 7 Q A
+   4     2 6 7 Q A
+   4     4 5 7 Q A
+   4     3 5 7 Q A
+   4     2 5 7 Q A
+   4     3 4 7 Q A
+   4     2 4 7 Q A
+   4     2 3 7 Q A
+   4     4 5 6 Q A
+   4     3 5 6 Q A
+   4     2 5 6 Q A
+   4     3 4 6 Q A
+   4     2 4 6 Q A
+   4     2 3 6 Q A
+   4     3 4 5 Q A
+   4     2 4 5 Q A
+   4     2 3 5 Q A
+   4     2 3 4 Q A
+   4     8 9 T J A
+   4     7 9 T J A
+   4     6 9 T J A
+   4     5 9 T J A
+   4     4 9 T J A
+   4     3 9 T J A
+   4     2 9 T J A
+   4     7 8 T J A
+   4     6 8 T J A
+   4     5 8 T J A
+   4     4 8 T J A
+   4     3 8 T J A
+   4     2 8 T J A
+   4     6 7 T J A
+   4     5 7 T J A
+   4     4 7 T J A
+   4     3 7 T J A
+   4     2 7 T J A
+   4     5 6 T J A
+   4     4 6 T J A
+   4     3 6 T J A
+   4     2 6 T J A
+   4     4 5 T J A
+   4     3 5 T J A
+   4     2 5 T J A
+   4     3 4 T J A
+   4     2 4 T J A
+   4     2 3 T J A
+   4     7 8 9 J A
+   4     6 8 9 J A
+   4     5 8 9 J A
+   4     4 8 9 J A
+   4     3 8 9 J A
+   4     2 8 9 J A
+   4     6 7 9 J A
+   4     5 7 9 J A
+   4     4 7 9 J A
+   4     3 7 9 J A
+   4     2 7 9 J A
+   4     5 6 9 J A
+   4     4 6 9 J A
+   4     3 6 9 J A
+   4     2 6 9 J A
+   4     4 5 9 J A
+   4     3 5 9 J A
+   4     2 5 9 J A
+   4     3 4 9 J A
+   4     2 4 9 J A
+   4     2 3 9 J A
+   4     6 7 8 J A
+   4     5 7 8 J A
+   4     4 7 8 J A
+   4     3 7 8 J A
+   4     2 7 8 J A
+   4     5 6 8 J A
+   4     4 6 8 J A
+   4     3 6 8 J A
+   4     2 6 8 J A
+   4     4 5 8 J A
+   4     3 5 8 J A
+   4     2 5 8 J A
+   4     3 4 8 J A
+   4     2 4 8 J A
+   4     2 3 8 J A
+   4     5 6 7 J A
+   4     4 6 7 J A
+   4     3 6 7 J A
+   4     2 6 7 J A
+   4     4 5 7 J A
+   4     3 5 7 J A
+   4     2 5 7 J A
+   4     3 4 7 J A
+   4     2 4 7 J A
+   4     2 3 7 J A
+   4     4 5 6 J A
+   4     3 5 6 J A
+   4     2 5 6 J A
+   4     3 4 6 J A
+   4     2 4 6 J A
+   4     2 3 6 J A
+   4     3 4 5 J A
+   4     2 4 5 J A
+   4     2 3 5 J A
+   4     2 3 4 J A
+   4     7 8 9 T A
+   4     6 8 9 T A
+   4     5 8 9 T A
+   4     4 8 9 T A
+   4     3 8 9 T A
+   4     2 8 9 T A
+   4     6 7 9 T A
+   4     5 7 9 T A
+   4     4 7 9 T A
+   4     3 7 9 T A
+   4     2 7 9 T A
+   4     5 6 9 T A
+   4     4 6 9 T A
+   4     3 6 9 T A
+   4     2 6 9 T A
+   4     4 5 9 T A
+   4     3 5 9 T A
+   4     2 5 9 T A
+   4     3 4 9 T A
+   4     2 4 9 T A
+   4     2 3 9 T A
+   4     6 7 8 T A
+   4     5 7 8 T A
+   4     4 7 8 T A
+   4     3 7 8 T A
+   4     2 7 8 T A
+   4     5 6 8 T A
+   4     4 6 8 T A
+   4     3 6 8 T A
+   4     2 6 8 T A
+   4     4 5 8 T A
+   4     3 5 8 T A
+   4     2 5 8 T A
+   4     3 4 8 T A
+   4     2 4 8 T A
+   4     2 3 8 T A
+   4     5 6 7 T A
+   4     4 6 7 T A
+   4     3 6 7 T A
+   4     2 6 7 T A
+   4     4 5 7 T A
+   4     3 5 7 T A
+   4     2 5 7 T A
+   4     3 4 7 T A
+   4     2 4 7 T A
+   4     2 3 7 T A
+   4     4 5 6 T A
+   4     3 5 6 T A
+   4     2 5 6 T A
+   4     3 4 6 T A
+   4     2 4 6 T A
+   4     2 3 6 T A
+   4     3 4 5 T A
+   4     2 4 5 T A
+   4     2 3 5 T A
+   4     2 3 4 T A
+   4     6 7 8 9 A
+   4     5 7 8 9 A
+   4     4 7 8 9 A
+   4     3 7 8 9 A
+   4     2 7 8 9 A
+   4     5 6 8 9 A
+   4     4 6 8 9 A
+   4     3 6 8 9 A
+   4     2 6 8 9 A
+   4     4 5 8 9 A
+   4     3 5 8 9 A
+   4     2 5 8 9 A
+   4     3 4 8 9 A
+   4     2 4 8 9 A
+   4     2 3 8 9 A
+   4     5 6 7 9 A
+   4     4 6 7 9 A
+   4     3 6 7 9 A
+   4     2 6 7 9 A
+   4     4 5 7 9 A
+   4     3 5 7 9 A
+   4     2 5 7 9 A
+   4     3 4 7 9 A
+   4     2 4 7 9 A
+   4     2 3 7 9 A
+   4     4 5 6 9 A
+   4     3 5 6 9 A
+   4     2 5 6 9 A
+   4     3 4 6 9 A
+   4     2 4 6 9 A
+   4     2 3 6 9 A
+   4     3 4 5 9 A
+   4     2 4 5 9 A
+   4     2 3 5 9 A
+   4     2 3 4 9 A
+   4     5 6 7 8 A
+   4     4 6 7 8 A
+   4     3 6 7 8 A
+   4     2 6 7 8 A
+   4     4 5 7 8 A
+   4     3 5 7 8 A
+   4     2 5 7 8 A
+   4     3 4 7 8 A
+   4     2 4 7 8 A
+   4     2 3 7 8 A
+   4     4 5 6 8 A
+   4     3 5 6 8 A
+   4     2 5 6 8 A
+   4     3 4 6 8 A
+   4     2 4 6 8 A
+   4     2 3 6 8 A
+   4     3 4 5 8 A
+   4     2 4 5 8 A
+   4     2 3 5 8 A
+   4     2 3 4 8 A
+   4     4 5 6 7 A
+   4     3 5 6 7 A
+   4     2 5 6 7 A
+   4     3 4 6 7 A
+   4     2 4 6 7 A
+   4     2 3 6 7 A
+   4     3 4 5 7 A
+   4     2 4 5 7 A
+   4     2 3 5 7 A
+   4     2 3 4 7 A
+   4     3 4 5 6 A
+   4     2 4 5 6 A
+   4     2 3 5 6 A
+   4     2 3 4 6 A
+   4     8 T J Q K      King High Flush
+   4     7 T J Q K
+   4     6 T J Q K
+   4     5 T J Q K
+   4     4 T J Q K
+   4     3 T J Q K
+   4     2 T J Q K
+   4     8 9 J Q K
+   4     7 9 J Q K
+   4     6 9 J Q K
+   4     5 9 J Q K
+   4     4 9 J Q K
+   4     3 9 J Q K
+   4     2 9 J Q K
+   4     7 8 J Q K
+   4     6 8 J Q K
+   4     5 8 J Q K
+   4     4 8 J Q K
+   4     3 8 J Q K
+   4     2 8 J Q K
+   4     6 7 J Q K
+   4     5 7 J Q K
+   4     4 7 J Q K
+   4     3 7 J Q K
+   4     2 7 J Q K
+   4     5 6 J Q K
+   4     4 6 J Q K
+   4     3 6 J Q K
+   4     2 6 J Q K
+   4     4 5 J Q K
+   4     3 5 J Q K
+   4     2 5 J Q K
+   4     3 4 J Q K
+   4     2 4 J Q K
+   4     2 3 J Q K
+   4     8 9 T Q K
+   4     7 9 T Q K
+   4     6 9 T Q K
+   4     5 9 T Q K
+   4     4 9 T Q K
+   4     3 9 T Q K
+   4     2 9 T Q K
+   4     7 8 T Q K
+   4     6 8 T Q K
+   4     5 8 T Q K
+   4     4 8 T Q K
+   4     3 8 T Q K
+   4     2 8 T Q K
+   4     6 7 T Q K
+   4     5 7 T Q K
+   4     4 7 T Q K
+   4     3 7 T Q K
+   4     2 7 T Q K
+   4     5 6 T Q K
+   4     4 6 T Q K
+   4     3 6 T Q K
+   4     2 6 T Q K
+   4     4 5 T Q K
+   4     3 5 T Q K
+   4     2 5 T Q K
+   4     3 4 T Q K
+   4     2 4 T Q K
+   4     2 3 T Q K
+   4     7 8 9 Q K
+   4     6 8 9 Q K
+   4     5 8 9 Q K
+   4     4 8 9 Q K
+   4     3 8 9 Q K
+   4     2 8 9 Q K
+   4     6 7 9 Q K
+   4     5 7 9 Q K
+   4     4 7 9 Q K
+   4     3 7 9 Q K
+   4     2 7 9 Q K
+   4     5 6 9 Q K
+   4     4 6 9 Q K
+   4     3 6 9 Q K
+   4     2 6 9 Q K
+   4     4 5 9 Q K
+   4     3 5 9 Q K
+   4     2 5 9 Q K
+   4     3 4 9 Q K
+   4     2 4 9 Q K
+   4     2 3 9 Q K
+   4     6 7 8 Q K
+   4     5 7 8 Q K
+   4     4 7 8 Q K
+   4     3 7 8 Q K
+   4     2 7 8 Q K
+   4     5 6 8 Q K
+   4     4 6 8 Q K
+   4     3 6 8 Q K
+   4     2 6 8 Q K
+   4     4 5 8 Q K
+   4     3 5 8 Q K
+   4     2 5 8 Q K
+   4     3 4 8 Q K
+   4     2 4 8 Q K
+   4     2 3 8 Q K
+   4     5 6 7 Q K
+   4     4 6 7 Q K
+   4     3 6 7 Q K
+   4     2 6 7 Q K
+   4     4 5 7 Q K
+   4     3 5 7 Q K
+   4     2 5 7 Q K
+   4     3 4 7 Q K
+   4     2 4 7 Q K
+   4     2 3 7 Q K
+   4     4 5 6 Q K
+   4     3 5 6 Q K
+   4     2 5 6 Q K
+   4     3 4 6 Q K
+   4     2 4 6 Q K
+   4     2 3 6 Q K
+   4     3 4 5 Q K
+   4     2 4 5 Q K
+   4     2 3 5 Q K
+   4     2 3 4 Q K
+   4     8 9 T J K
+   4     7 9 T J K
+   4     6 9 T J K
+   4     5 9 T J K
+   4     4 9 T J K
+   4     3 9 T J K
+   4     2 9 T J K
+   4     7 8 T J K
+   4     6 8 T J K
+   4     5 8 T J K
+   4     4 8 T J K
+   4     3 8 T J K
+   4     2 8 T J K
+   4     6 7 T J K
+   4     5 7 T J K
+   4     4 7 T J K
+   4     3 7 T J K
+   4     2 7 T J K
+   4     5 6 T J K
+   4     4 6 T J K
+   4     3 6 T J K
+   4     2 6 T J K
+   4     4 5 T J K
+   4     3 5 T J K
+   4     2 5 T J K
+   4     3 4 T J K
+   4     2 4 T J K
+   4     2 3 T J K
+   4     7 8 9 J K
+   4     6 8 9 J K
+   4     5 8 9 J K
+   4     4 8 9 J K
+   4     3 8 9 J K
+   4     2 8 9 J K
+   4     6 7 9 J K
+   4     5 7 9 J K
+   4     4 7 9 J K
+   4     3 7 9 J K
+   4     2 7 9 J K
+   4     5 6 9 J K
+   4     4 6 9 J K
+   4     3 6 9 J K
+   4     2 6 9 J K
+   4     4 5 9 J K
+   4     3 5 9 J K
+   4     2 5 9 J K
+   4     3 4 9 J K
+   4     2 4 9 J K
+   4     2 3 9 J K
+   4     6 7 8 J K
+   4     5 7 8 J K
+   4     4 7 8 J K
+   4     3 7 8 J K
+   4     2 7 8 J K
+   4     5 6 8 J K
+   4     4 6 8 J K
+   4     3 6 8 J K
+   4     2 6 8 J K
+   4     4 5 8 J K
+   4     3 5 8 J K
+   4     2 5 8 J K
+   4     3 4 8 J K
+   4     2 4 8 J K
+   4     2 3 8 J K
+   4     5 6 7 J K
+   4     4 6 7 J K
+   4     3 6 7 J K
+   4     2 6 7 J K
+   4     4 5 7 J K
+   4     3 5 7 J K
+   4     2 5 7 J K
+   4     3 4 7 J K
+   4     2 4 7 J K
+   4     2 3 7 J K
+   4     4 5 6 J K
+   4     3 5 6 J K
+   4     2 5 6 J K
+   4     3 4 6 J K
+   4     2 4 6 J K
+   4     2 3 6 J K
+   4     3 4 5 J K
+   4     2 4 5 J K
+   4     2 3 5 J K
+   4     2 3 4 J K
+   4     7 8 9 T K
+   4     6 8 9 T K
+   4     5 8 9 T K
+   4     4 8 9 T K
+   4     3 8 9 T K
+   4     2 8 9 T K
+   4     6 7 9 T K
+   4     5 7 9 T K
+   4     4 7 9 T K
+   4     3 7 9 T K
+   4     2 7 9 T K
+   4     5 6 9 T K
+   4     4 6 9 T K
+   4     3 6 9 T K
+   4     2 6 9 T K
+   4     4 5 9 T K
+   4     3 5 9 T K
+   4     2 5 9 T K
+   4     3 4 9 T K
+   4     2 4 9 T K
+   4     2 3 9 T K
+   4     6 7 8 T K
+   4     5 7 8 T K
+   4     4 7 8 T K
+   4     3 7 8 T K
+   4     2 7 8 T K
+   4     5 6 8 T K
+   4     4 6 8 T K
+   4     3 6 8 T K
+   4     2 6 8 T K
+   4     4 5 8 T K
+   4     3 5 8 T K
+   4     2 5 8 T K
+   4     3 4 8 T K
+   4     2 4 8 T K
+   4     2 3 8 T K
+   4     5 6 7 T K
+   4     4 6 7 T K
+   4     3 6 7 T K
+   4     2 6 7 T K
+   4     4 5 7 T K
+   4     3 5 7 T K
+   4     2 5 7 T K
+   4     3 4 7 T K
+   4     2 4 7 T K
+   4     2 3 7 T K
+   4     4 5 6 T K
+   4     3 5 6 T K
+   4     2 5 6 T K
+   4     3 4 6 T K
+   4     2 4 6 T K
+   4     2 3 6 T K
+   4     3 4 5 T K
+   4     2 4 5 T K
+   4     2 3 5 T K
+   4     2 3 4 T K
+   4     6 7 8 9 K
+   4     5 7 8 9 K
+   4     4 7 8 9 K
+   4     3 7 8 9 K
+   4     2 7 8 9 K
+   4     5 6 8 9 K
+   4     4 6 8 9 K
+   4     3 6 8 9 K
+   4     2 6 8 9 K
+   4     4 5 8 9 K
+   4     3 5 8 9 K
+   4     2 5 8 9 K
+   4     3 4 8 9 K
+   4     2 4 8 9 K
+   4     2 3 8 9 K
+   4     5 6 7 9 K
+   4     4 6 7 9 K
+   4     3 6 7 9 K
+   4     2 6 7 9 K
+   4     4 5 7 9 K
+   4     3 5 7 9 K
+   4     2 5 7 9 K
+   4     3 4 7 9 K
+   4     2 4 7 9 K
+   4     2 3 7 9 K
+   4     4 5 6 9 K
+   4     3 5 6 9 K
+   4     2 5 6 9 K
+   4     3 4 6 9 K
+   4     2 4 6 9 K
+   4     2 3 6 9 K
+   4     3 4 5 9 K
+   4     2 4 5 9 K
+   4     2 3 5 9 K
+   4     2 3 4 9 K
+   4     5 6 7 8 K
+   4     4 6 7 8 K
+   4     3 6 7 8 K
+   4     2 6 7 8 K
+   4     4 5 7 8 K
+   4     3 5 7 8 K
+   4     2 5 7 8 K
+   4     3 4 7 8 K
+   4     2 4 7 8 K
+   4     2 3 7 8 K
+   4     4 5 6 8 K
+   4     3 5 6 8 K
+   4     2 5 6 8 K
+   4     3 4 6 8 K
+   4     2 4 6 8 K
+   4     2 3 6 8 K
+   4     3 4 5 8 K
+   4     2 4 5 8 K
+   4     2 3 5 8 K
+   4     2 3 4 8 K
+   4     4 5 6 7 K
+   4     3 5 6 7 K
+   4     2 5 6 7 K
+   4     3 4 6 7 K
+   4     2 4 6 7 K
+   4     2 3 6 7 K
+   4     3 4 5 7 K
+   4     2 4 5 7 K
+   4     2 3 5 7 K
+   4     2 3 4 7 K
+   4     3 4 5 6 K
+   4     2 4 5 6 K
+   4     2 3 5 6 K
+   4     2 3 4 6 K
+   4     2 3 4 5 K
+   4     7 9 T J Q      Queen High Flush
+   4     6 9 T J Q
+   4     5 9 T J Q
+   4     4 9 T J Q
+   4     3 9 T J Q
+   4     2 9 T J Q
+   4     7 8 T J Q
+   4     6 8 T J Q
+   4     5 8 T J Q
+   4     4 8 T J Q
+   4     3 8 T J Q
+   4     2 8 T J Q
+   4     6 7 T J Q
+   4     5 7 T J Q
+   4     4 7 T J Q
+   4     3 7 T J Q
+   4     2 7 T J Q
+   4     5 6 T J Q
+   4     4 6 T J Q
+   4     3 6 T J Q
+   4     2 6 T J Q
+   4     4 5 T J Q
+   4     3 5 T J Q
+   4     2 5 T J Q
+   4     3 4 T J Q
+   4     2 4 T J Q
+   4     2 3 T J Q
+   4     7 8 9 J Q
+   4     6 8 9 J Q
+   4     5 8 9 J Q
+   4     4 8 9 J Q
+   4     3 8 9 J Q
+   4     2 8 9 J Q
+   4     6 7 9 J Q
+   4     5 7 9 J Q
+   4     4 7 9 J Q
+   4     3 7 9 J Q
+   4     2 7 9 J Q
+   4     5 6 9 J Q
+   4     4 6 9 J Q
+   4     3 6 9 J Q
+   4     2 6 9 J Q
+   4     4 5 9 J Q
+   4     3 5 9 J Q
+   4     2 5 9 J Q
+   4     3 4 9 J Q
+   4     2 4 9 J Q
+   4     2 3 9 J Q
+   4     6 7 8 J Q
+   4     5 7 8 J Q
+   4     4 7 8 J Q
+   4     3 7 8 J Q
+   4     2 7 8 J Q
+   4     5 6 8 J Q
+   4     4 6 8 J Q
+   4     3 6 8 J Q
+   4     2 6 8 J Q
+   4     4 5 8 J Q
+   4     3 5 8 J Q
+   4     2 5 8 J Q
+   4     3 4 8 J Q
+   4     2 4 8 J Q
+   4     2 3 8 J Q
+   4     5 6 7 J Q
+   4     4 6 7 J Q
+   4     3 6 7 J Q
+   4     2 6 7 J Q
+   4     4 5 7 J Q
+   4     3 5 7 J Q
+   4     2 5 7 J Q
+   4     3 4 7 J Q
+   4     2 4 7 J Q
+   4     2 3 7 J Q
+   4     4 5 6 J Q
+   4     3 5 6 J Q
+   4     2 5 6 J Q
+   4     3 4 6 J Q
+   4     2 4 6 J Q
+   4     2 3 6 J Q
+   4     3 4 5 J Q
+   4     2 4 5 J Q
+   4     2 3 5 J Q
+   4     2 3 4 J Q
+   4     7 8 9 T Q
+   4     6 8 9 T Q
+   4     5 8 9 T Q
+   4     4 8 9 T Q
+   4     3 8 9 T Q
+   4     2 8 9 T Q
+   4     6 7 9 T Q
+   4     5 7 9 T Q
+   4     4 7 9 T Q
+   4     3 7 9 T Q
+   4     2 7 9 T Q
+   4     5 6 9 T Q
+   4     4 6 9 T Q
+   4     3 6 9 T Q
+   4     2 6 9 T Q
+   4     4 5 9 T Q
+   4     3 5 9 T Q
+   4     2 5 9 T Q
+   4     3 4 9 T Q
+   4     2 4 9 T Q
+   4     2 3 9 T Q
+   4     6 7 8 T Q
+   4     5 7 8 T Q
+   4     4 7 8 T Q
+   4     3 7 8 T Q
+   4     2 7 8 T Q
+   4     5 6 8 T Q
+   4     4 6 8 T Q
+   4     3 6 8 T Q
+   4     2 6 8 T Q
+   4     4 5 8 T Q
+   4     3 5 8 T Q
+   4     2 5 8 T Q
+   4     3 4 8 T Q
+   4     2 4 8 T Q
+   4     2 3 8 T Q
+   4     5 6 7 T Q
+   4     4 6 7 T Q
+   4     3 6 7 T Q
+   4     2 6 7 T Q
+   4     4 5 7 T Q
+   4     3 5 7 T Q
+   4     2 5 7 T Q
+   4     3 4 7 T Q
+   4     2 4 7 T Q
+   4     2 3 7 T Q
+   4     4 5 6 T Q
+   4     3 5 6 T Q
+   4     2 5 6 T Q
+   4     3 4 6 T Q
+   4     2 4 6 T Q
+   4     2 3 6 T Q
+   4     3 4 5 T Q
+   4     2 4 5 T Q
+   4     2 3 5 T Q
+   4     2 3 4 T Q
+   4     6 7 8 9 Q
+   4     5 7 8 9 Q
+   4     4 7 8 9 Q
+   4     3 7 8 9 Q
+   4     2 7 8 9 Q
+   4     5 6 8 9 Q
+   4     4 6 8 9 Q
+   4     3 6 8 9 Q
+   4     2 6 8 9 Q
+   4     4 5 8 9 Q
+   4     3 5 8 9 Q
+   4     2 5 8 9 Q
+   4     3 4 8 9 Q
+   4     2 4 8 9 Q
+   4     2 3 8 9 Q
+   4     5 6 7 9 Q
+   4     4 6 7 9 Q
+   4     3 6 7 9 Q
+   4     2 6 7 9 Q
+   4     4 5 7 9 Q
+   4     3 5 7 9 Q
+   4     2 5 7 9 Q
+   4     3 4 7 9 Q
+   4     2 4 7 9 Q
+   4     2 3 7 9 Q
+   4     4 5 6 9 Q
+   4     3 5 6 9 Q
+   4     2 5 6 9 Q
+   4     3 4 6 9 Q
+   4     2 4 6 9 Q
+   4     2 3 6 9 Q
+   4     3 4 5 9 Q
+   4     2 4 5 9 Q
+   4     2 3 5 9 Q
+   4     2 3 4 9 Q
+   4     5 6 7 8 Q
+   4     4 6 7 8 Q
+   4     3 6 7 8 Q
+   4     2 6 7 8 Q
+   4     4 5 7 8 Q
+   4     3 5 7 8 Q
+   4     2 5 7 8 Q
+   4     3 4 7 8 Q
+   4     2 4 7 8 Q
+   4     2 3 7 8 Q
+   4     4 5 6 8 Q
+   4     3 5 6 8 Q
+   4     2 5 6 8 Q
+   4     3 4 6 8 Q
+   4     2 4 6 8 Q
+   4     2 3 6 8 Q
+   4     3 4 5 8 Q
+   4     2 4 5 8 Q
+   4     2 3 5 8 Q
+   4     2 3 4 8 Q
+   4     4 5 6 7 Q
+   4     3 5 6 7 Q
+   4     2 5 6 7 Q
+   4     3 4 6 7 Q
+   4     2 4 6 7 Q
+   4     2 3 6 7 Q
+   4     3 4 5 7 Q
+   4     2 4 5 7 Q
+   4     2 3 5 7 Q
+   4     2 3 4 7 Q
+   4     3 4 5 6 Q
+   4     2 4 5 6 Q
+   4     2 3 5 6 Q
+   4     2 3 4 6 Q
+   4     2 3 4 5 Q
+   4     6 8 9 T J       Jack High Flush
+   4     5 8 9 T J
+   4     4 8 9 T J
+   4     3 8 9 T J
+   4     2 8 9 T J
+   4     6 7 9 T J
+   4     5 7 9 T J
+   4     4 7 9 T J
+   4     3 7 9 T J
+   4     2 7 9 T J
+   4     5 6 9 T J
+   4     4 6 9 T J
+   4     3 6 9 T J
+   4     2 6 9 T J
+   4     4 5 9 T J
+   4     3 5 9 T J
+   4     2 5 9 T J
+   4     3 4 9 T J
+   4     2 4 9 T J
+   4     2 3 9 T J
+   4     6 7 8 T J
+   4     5 7 8 T J
+   4     4 7 8 T J
+   4     3 7 8 T J
+   4     2 7 8 T J
+   4     5 6 8 T J
+   4     4 6 8 T J
+   4     3 6 8 T J
+   4     2 6 8 T J
+   4     4 5 8 T J
+   4     3 5 8 T J
+   4     2 5 8 T J
+   4     3 4 8 T J
+   4     2 4 8 T J
+   4     2 3 8 T J
+   4     5 6 7 T J
+   4     4 6 7 T J
+   4     3 6 7 T J
+   4     2 6 7 T J
+   4     4 5 7 T J
+   4     3 5 7 T J
+   4     2 5 7 T J
+   4     3 4 7 T J
+   4     2 4 7 T J
+   4     2 3 7 T J
+   4     4 5 6 T J
+   4     3 5 6 T J
+   4     2 5 6 T J
+   4     3 4 6 T J
+   4     2 4 6 T J
+   4     2 3 6 T J
+   4     3 4 5 T J
+   4     2 4 5 T J
+   4     2 3 5 T J
+   4     2 3 4 T J
+   4     6 7 8 9 J
+   4     5 7 8 9 J
+   4     4 7 8 9 J
+   4     3 7 8 9 J
+   4     2 7 8 9 J
+   4     5 6 8 9 J
+   4     4 6 8 9 J
+   4     3 6 8 9 J
+   4     2 6 8 9 J
+   4     4 5 8 9 J
+   4     3 5 8 9 J
+   4     2 5 8 9 J
+   4     3 4 8 9 J
+   4     2 4 8 9 J
+   4     2 3 8 9 J
+   4     5 6 7 9 J
+   4     4 6 7 9 J
+   4     3 6 7 9 J
+   4     2 6 7 9 J
+   4     4 5 7 9 J
+   4     3 5 7 9 J
+   4     2 5 7 9 J
+   4     3 4 7 9 J
+   4     2 4 7 9 J
+   4     2 3 7 9 J
+   4     4 5 6 9 J
+   4     3 5 6 9 J
+   4     2 5 6 9 J
+   4     3 4 6 9 J
+   4     2 4 6 9 J
+   4     2 3 6 9 J
+   4     3 4 5 9 J
+   4     2 4 5 9 J
+   4     2 3 5 9 J
+   4     2 3 4 9 J
+   4     5 6 7 8 J
+   4     4 6 7 8 J
+   4     3 6 7 8 J
+   4     2 6 7 8 J
+   4     4 5 7 8 J
+   4     3 5 7 8 J
+   4     2 5 7 8 J
+   4     3 4 7 8 J
+   4     2 4 7 8 J
+   4     2 3 7 8 J
+   4     4 5 6 8 J
+   4     3 5 6 8 J
+   4     2 5 6 8 J
+   4     3 4 6 8 J
+   4     2 4 6 8 J
+   4     2 3 6 8 J
+   4     3 4 5 8 J
+   4     2 4 5 8 J
+   4     2 3 5 8 J
+   4     2 3 4 8 J
+   4     4 5 6 7 J
+   4     3 5 6 7 J
+   4     2 5 6 7 J
+   4     3 4 6 7 J
+   4     2 4 6 7 J
+   4     2 3 6 7 J
+   4     3 4 5 7 J
+   4     2 4 5 7 J
+   4     2 3 5 7 J
+   4     2 3 4 7 J
+   4     3 4 5 6 J
+   4     2 4 5 6 J
+   4     2 3 5 6 J
+   4     2 3 4 6 J
+   4     2 3 4 5 J
+   4     5 7 8 9 T      Ten High Flush
+   4     4 7 8 9 T
+   4     3 7 8 9 T
+   4     2 7 8 9 T
+   4     5 6 8 9 T
+   4     4 6 8 9 T
+   4     3 6 8 9 T
+   4     2 6 8 9 T
+   4     4 5 8 9 T
+   4     3 5 8 9 T
+   4     2 5 8 9 T
+   4     3 4 8 9 T
+   4     2 4 8 9 T
+   4     2 3 8 9 T
+   4     5 6 7 9 T
+   4     4 6 7 9 T
+   4     3 6 7 9 T
+   4     2 6 7 9 T
+   4     4 5 7 9 T
+   4     3 5 7 9 T
+   4     2 5 7 9 T
+   4     3 4 7 9 T
+   4     2 4 7 9 T
+   4     2 3 7 9 T
+   4     4 5 6 9 T
+   4     3 5 6 9 T
+   4     2 5 6 9 T
+   4     3 4 6 9 T
+   4     2 4 6 9 T
+   4     2 3 6 9 T
+   4     3 4 5 9 T
+   4     2 4 5 9 T
+   4     2 3 5 9 T
+   4     2 3 4 9 T
+   4     5 6 7 8 T
+   4     4 6 7 8 T
+   4     3 6 7 8 T
+   4     2 6 7 8 T
+   4     4 5 7 8 T
+   4     3 5 7 8 T
+   4     2 5 7 8 T
+   4     3 4 7 8 T
+   4     2 4 7 8 T
+   4     2 3 7 8 T
+   4     4 5 6 8 T
+   4     3 5 6 8 T
+   4     2 5 6 8 T
+   4     3 4 6 8 T
+   4     2 4 6 8 T
+   4     2 3 6 8 T
+   4     3 4 5 8 T
+   4     2 4 5 8 T
+   4     2 3 5 8 T
+   4     2 3 4 8 T
+   4     4 5 6 7 T
+   4     3 5 6 7 T
+   4     2 5 6 7 T
+   4     3 4 6 7 T
+   4     2 4 6 7 T
+   4     2 3 6 7 T
+   4     3 4 5 7 T
+   4     2 4 5 7 T
+   4     2 3 5 7 T
+   4     2 3 4 7 T
+   4     3 4 5 6 T
+   4     2 4 5 6 T
+   4     2 3 5 6 T
+   4     2 3 4 6 T
+   4     2 3 4 5 T
+   4     4 6 7 8 9      Nine High Flush
+   4     3 6 7 8 9
+   4     2 6 7 8 9
+   4     4 5 7 8 9
+   4     3 5 7 8 9
+   4     2 5 7 8 9
+   4     3 4 7 8 9
+   4     2 4 7 8 9
+   4     2 3 7 8 9
+   4     4 5 6 8 9
+   4     3 5 6 8 9
+   4     2 5 6 8 9
+   4     3 4 6 8 9
+   4     2 4 6 8 9
+   4     2 3 6 8 9
+   4     3 4 5 8 9
+   4     2 4 5 8 9
+   4     2 3 5 8 9
+   4     2 3 4 8 9
+   4     4 5 6 7 9
+   4     3 5 6 7 9
+   4     2 5 6 7 9
+   4     3 4 6 7 9
+   4     2 4 6 7 9
+   4     2 3 6 7 9
+   4     3 4 5 7 9
+   4     2 4 5 7 9
+   4     2 3 5 7 9
+   4     2 3 4 7 9
+   4     3 4 5 6 9
+   4     2 4 5 6 9
+   4     2 3 5 6 9
+   4     2 3 4 6 9
+   4     2 3 4 5 9
+   4     3 5 6 7 8      Eight High Flush
+   4     2 5 6 7 8
+   4     3 4 6 7 8
+   4     2 4 6 7 8
+   4     2 3 6 7 8
+   4     3 4 5 7 8
+   4     2 4 5 7 8
+   4     2 3 5 7 8
+   4     2 3 4 7 8
+   4     3 4 5 6 8
+   4     2 4 5 6 8
+   4     2 3 5 6 8
+   4     2 3 4 6 8
+   4     2 3 4 5 8
+   4     2 4 5 6 7      Seven High Flush
+   4     2 3 5 6 7
+   4     2 3 4 6 7
+   4     2 3 4 5 7
+1024     T J Q K A      Ace High Straight              STRAIGHT
+1024     9 T J Q K      King High Straight
+1024     8 9 T J Q      Queen High Straight
+1024     7 8 9 T J      Jack High Straight
+1024     6 7 8 9 T      Ten High Straight
+1024     5 6 7 8 9      Nine High Straight
+1024     4 5 6 7 8      Eight High Straight
+1024     3 4 5 6 7      Seven High Straight
+1024     2 3 4 5 6      Six High Straight
+1024     A 2 3 4 5      Five High Straight
+  64     Q K A A A      Three Aces                     THREE OF A KIND
+  64     J K A A A
+  64     T K A A A
+  64     9 K A A A
+  64     8 K A A A
+  64     7 K A A A
+  64     6 K A A A
+  64     5 K A A A
+  64     4 K A A A
+  64     3 K A A A
+  64     2 K A A A
+  64     J Q A A A
+  64     T Q A A A
+  64     9 Q A A A
+  64     8 Q A A A
+  64     7 Q A A A
+  64     6 Q A A A
+  64     5 Q A A A
+  64     4 Q A A A
+  64     3 Q A A A
+  64     2 Q A A A
+  64     T J A A A
+  64     9 J A A A
+  64     8 J A A A
+  64     7 J A A A
+  64     6 J A A A
+  64     5 J A A A
+  64     4 J A A A
+  64     3 J A A A
+  64     2 J A A A
+  64     9 T A A A
+  64     8 T A A A
+  64     7 T A A A
+  64     6 T A A A
+  64     5 T A A A
+  64     4 T A A A
+  64     3 T A A A
+  64     2 T A A A
+  64     8 9 A A A
+  64     7 9 A A A
+  64     6 9 A A A
+  64     5 9 A A A
+  64     4 9 A A A
+  64     3 9 A A A
+  64     2 9 A A A
+  64     7 8 A A A
+  64     6 8 A A A
+  64     5 8 A A A
+  64     4 8 A A A
+  64     3 8 A A A
+  64     2 8 A A A
+  64     6 7 A A A
+  64     5 7 A A A
+  64     4 7 A A A
+  64     3 7 A A A
+  64     2 7 A A A
+  64     5 6 A A A
+  64     4 6 A A A
+  64     3 6 A A A
+  64     2 6 A A A
+  64     4 5 A A A
+  64     3 5 A A A
+  64     2 5 A A A
+  64     3 4 A A A
+  64     2 4 A A A
+  64     2 3 A A A
+  64     Q K K K A      Three Kings
+  64     J K K K A
+  64     T K K K A
+  64     9 K K K A
+  64     8 K K K A
+  64     7 K K K A
+  64     6 K K K A
+  64     5 K K K A
+  64     4 K K K A
+  64     3 K K K A
+  64     2 K K K A
+  64     J Q K K K
+  64     T Q K K K
+  64     9 Q K K K
+  64     8 Q K K K
+  64     7 Q K K K
+  64     6 Q K K K
+  64     5 Q K K K
+  64     4 Q K K K
+  64     3 Q K K K
+  64     2 Q K K K
+  64     T J K K K
+  64     9 J K K K
+  64     8 J K K K
+  64     7 J K K K
+  64     6 J K K K
+  64     5 J K K K
+  64     4 J K K K
+  64     3 J K K K
+  64     2 J K K K
+  64     9 T K K K
+  64     8 T K K K
+  64     7 T K K K
+  64     6 T K K K
+  64     5 T K K K
+  64     4 T K K K
+  64     3 T K K K
+  64     2 T K K K
+  64     8 9 K K K
+  64     7 9 K K K
+  64     6 9 K K K
+  64     5 9 K K K
+  64     4 9 K K K
+  64     3 9 K K K
+  64     2 9 K K K
+  64     7 8 K K K
+  64     6 8 K K K
+  64     5 8 K K K
+  64     4 8 K K K
+  64     3 8 K K K
+  64     2 8 K K K
+  64     6 7 K K K
+  64     5 7 K K K
+  64     4 7 K K K
+  64     3 7 K K K
+  64     2 7 K K K
+  64     5 6 K K K
+  64     4 6 K K K
+  64     3 6 K K K
+  64     2 6 K K K
+  64     4 5 K K K
+  64     3 5 K K K
+  64     2 5 K K K
+  64     3 4 K K K
+  64     2 4 K K K
+  64     2 3 K K K
+  64     Q Q Q K A      Three Queens
+  64     J Q Q Q A
+  64     T Q Q Q A
+  64     9 Q Q Q A
+  64     8 Q Q Q A
+  64     7 Q Q Q A
+  64     6 Q Q Q A
+  64     5 Q Q Q A
+  64     4 Q Q Q A
+  64     3 Q Q Q A
+  64     2 Q Q Q A
+  64     J Q Q Q K
+  64     T Q Q Q K
+  64     9 Q Q Q K
+  64     8 Q Q Q K
+  64     7 Q Q Q K
+  64     6 Q Q Q K
+  64     5 Q Q Q K
+  64     4 Q Q Q K
+  64     3 Q Q Q K
+  64     2 Q Q Q K
+  64     T J Q Q Q
+  64     9 J Q Q Q
+  64     8 J Q Q Q
+  64     7 J Q Q Q
+  64     6 J Q Q Q
+  64     5 J Q Q Q
+  64     4 J Q Q Q
+  64     3 J Q Q Q
+  64     2 J Q Q Q
+  64     9 T Q Q Q
+  64     8 T Q Q Q
+  64     7 T Q Q Q
+  64     6 T Q Q Q
+  64     5 T Q Q Q
+  64     4 T Q Q Q
+  64     3 T Q Q Q
+  64     2 T Q Q Q
+  64     8 9 Q Q Q
+  64     7 9 Q Q Q
+  64     6 9 Q Q Q
+  64     5 9 Q Q Q
+  64     4 9 Q Q Q
+  64     3 9 Q Q Q
+  64     2 9 Q Q Q
+  64     7 8 Q Q Q
+  64     6 8 Q Q Q
+  64     5 8 Q Q Q
+  64     4 8 Q Q Q
+  64     3 8 Q Q Q
+  64     2 8 Q Q Q
+  64     6 7 Q Q Q
+  64     5 7 Q Q Q
+  64     4 7 Q Q Q
+  64     3 7 Q Q Q
+  64     2 7 Q Q Q
+  64     5 6 Q Q Q
+  64     4 6 Q Q Q
+  64     3 6 Q Q Q
+  64     2 6 Q Q Q
+  64     4 5 Q Q Q
+  64     3 5 Q Q Q
+  64     2 5 Q Q Q
+  64     3 4 Q Q Q
+  64     2 4 Q Q Q
+  64     2 3 Q Q Q
+  64     J J J K A      Three Jacks
+  64     J J J Q A
+  64     T J J J A
+  64     9 J J J A
+  64     8 J J J A
+  64     7 J J J A
+  64     6 J J J A
+  64     5 J J J A
+  64     4 J J J A
+  64     3 J J J A
+  64     2 J J J A
+  64     J J J Q K
+  64     T J J J K
+  64     9 J J J K
+  64     8 J J J K
+  64     7 J J J K
+  64     6 J J J K
+  64     5 J J J K
+  64     4 J J J K
+  64     3 J J J K
+  64     2 J J J K
+  64     T J J J Q
+  64     9 J J J Q
+  64     8 J J J Q
+  64     7 J J J Q
+  64     6 J J J Q
+  64     5 J J J Q
+  64     4 J J J Q
+  64     3 J J J Q
+  64     2 J J J Q
+  64     9 T J J J
+  64     8 T J J J
+  64     7 T J J J
+  64     6 T J J J
+  64     5 T J J J
+  64     4 T J J J
+  64     3 T J J J
+  64     2 T J J J
+  64     8 9 J J J
+  64     7 9 J J J
+  64     6 9 J J J
+  64     5 9 J J J
+  64     4 9 J J J
+  64     3 9 J J J
+  64     2 9 J J J
+  64     7 8 J J J
+  64     6 8 J J J
+  64     5 8 J J J
+  64     4 8 J J J
+  64     3 8 J J J
+  64     2 8 J J J
+  64     6 7 J J J
+  64     5 7 J J J
+  64     4 7 J J J
+  64     3 7 J J J
+  64     2 7 J J J
+  64     5 6 J J J
+  64     4 6 J J J
+  64     3 6 J J J
+  64     2 6 J J J
+  64     4 5 J J J
+  64     3 5 J J J
+  64     2 5 J J J
+  64     3 4 J J J
+  64     2 4 J J J
+  64     2 3 J J J
+  64     T T T K A      Three Tens
+  64     T T T Q A
+  64     T T T J A
+  64     9 T T T A
+  64     8 T T T A
+  64     7 T T T A
+  64     6 T T T A
+  64     5 T T T A
+  64     4 T T T A
+  64     3 T T T A
+  64     2 T T T A
+  64     T T T Q K
+  64     T T T J K
+  64     9 T T T K
+  64     8 T T T K
+  64     7 T T T K
+  64     6 T T T K
+  64     5 T T T K
+  64     4 T T T K
+  64     3 T T T K
+  64     2 T T T K
+  64     T T T J Q
+  64     9 T T T Q
+  64     8 T T T Q
+  64     7 T T T Q
+  64     6 T T T Q
+  64     5 T T T Q
+  64     4 T T T Q
+  64     3 T T T Q
+  64     2 T T T Q
+  64     9 T T T J
+  64     8 T T T J
+  64     7 T T T J
+  64     6 T T T J
+  64     5 T T T J
+  64     4 T T T J
+  64     3 T T T J
+  64     2 T T T J
+  64     8 9 T T T
+  64     7 9 T T T
+  64     6 9 T T T
+  64     5 9 T T T
+  64     4 9 T T T
+  64     3 9 T T T
+  64     2 9 T T T
+  64     7 8 T T T
+  64     6 8 T T T
+  64     5 8 T T T
+  64     4 8 T T T
+  64     3 8 T T T
+  64     2 8 T T T
+  64     6 7 T T T
+  64     5 7 T T T
+  64     4 7 T T T
+  64     3 7 T T T
+  64     2 7 T T T
+  64     5 6 T T T
+  64     4 6 T T T
+  64     3 6 T T T
+  64     2 6 T T T
+  64     4 5 T T T
+  64     3 5 T T T
+  64     2 5 T T T
+  64     3 4 T T T
+  64     2 4 T T T
+  64     2 3 T T T
+  64     9 9 9 K A      Three Nines
+  64     9 9 9 Q A
+  64     9 9 9 J A
+  64     9 9 9 T A
+  64     8 9 9 9 A
+  64     7 9 9 9 A
+  64     6 9 9 9 A
+  64     5 9 9 9 A
+  64     4 9 9 9 A
+  64     3 9 9 9 A
+  64     2 9 9 9 A
+  64     9 9 9 Q K
+  64     9 9 9 J K
+  64     9 9 9 T K
+  64     8 9 9 9 K
+  64     7 9 9 9 K
+  64     6 9 9 9 K
+  64     5 9 9 9 K
+  64     4 9 9 9 K
+  64     3 9 9 9 K
+  64     2 9 9 9 K
+  64     9 9 9 J Q
+  64     9 9 9 T Q
+  64     8 9 9 9 Q
+  64     7 9 9 9 Q
+  64     6 9 9 9 Q
+  64     5 9 9 9 Q
+  64     4 9 9 9 Q
+  64     3 9 9 9 Q
+  64     2 9 9 9 Q
+  64     9 9 9 T J
+  64     8 9 9 9 J
+  64     7 9 9 9 J
+  64     6 9 9 9 J
+  64     5 9 9 9 J
+  64     4 9 9 9 J
+  64     3 9 9 9 J
+  64     2 9 9 9 J
+  64     8 9 9 9 T
+  64     7 9 9 9 T
+  64     6 9 9 9 T
+  64     5 9 9 9 T
+  64     4 9 9 9 T
+  64     3 9 9 9 T
+  64     2 9 9 9 T
+  64     7 8 9 9 9
+  64     6 8 9 9 9
+  64     5 8 9 9 9
+  64     4 8 9 9 9
+  64     3 8 9 9 9
+  64     2 8 9 9 9
+  64     6 7 9 9 9
+  64     5 7 9 9 9
+  64     4 7 9 9 9
+  64     3 7 9 9 9
+  64     2 7 9 9 9
+  64     5 6 9 9 9
+  64     4 6 9 9 9
+  64     3 6 9 9 9
+  64     2 6 9 9 9
+  64     4 5 9 9 9
+  64     3 5 9 9 9
+  64     2 5 9 9 9
+  64     3 4 9 9 9
+  64     2 4 9 9 9
+  64     2 3 9 9 9
+  64     8 8 8 K A      Three Eights
+  64     8 8 8 Q A
+  64     8 8 8 J A
+  64     8 8 8 T A
+  64     8 8 8 9 A
+  64     7 8 8 8 A
+  64     6 8 8 8 A
+  64     5 8 8 8 A
+  64     4 8 8 8 A
+  64     3 8 8 8 A
+  64     2 8 8 8 A
+  64     8 8 8 Q K
+  64     8 8 8 J K
+  64     8 8 8 T K
+  64     8 8 8 9 K
+  64     7 8 8 8 K
+  64     6 8 8 8 K
+  64     5 8 8 8 K
+  64     4 8 8 8 K
+  64     3 8 8 8 K
+  64     2 8 8 8 K
+  64     8 8 8 J Q
+  64     8 8 8 T Q
+  64     8 8 8 9 Q
+  64     7 8 8 8 Q
+  64     6 8 8 8 Q
+  64     5 8 8 8 Q
+  64     4 8 8 8 Q
+  64     3 8 8 8 Q
+  64     2 8 8 8 Q
+  64     8 8 8 T J
+  64     8 8 8 9 J
+  64     7 8 8 8 J
+  64     6 8 8 8 J
+  64     5 8 8 8 J
+  64     4 8 8 8 J
+  64     3 8 8 8 J
+  64     2 8 8 8 J
+  64     8 8 8 9 T
+  64     7 8 8 8 T
+  64     6 8 8 8 T
+  64     5 8 8 8 T
+  64     4 8 8 8 T
+  64     3 8 8 8 T
+  64     2 8 8 8 T
+  64     7 8 8 8 9
+  64     6 8 8 8 9
+  64     5 8 8 8 9
+  64     4 8 8 8 9
+  64     3 8 8 8 9
+  64     2 8 8 8 9
+  64     6 7 8 8 8
+  64     5 7 8 8 8
+  64     4 7 8 8 8
+  64     3 7 8 8 8
+  64     2 7 8 8 8
+  64     5 6 8 8 8
+  64     4 6 8 8 8
+  64     3 6 8 8 8
+  64     2 6 8 8 8
+  64     4 5 8 8 8
+  64     3 5 8 8 8
+  64     2 5 8 8 8
+  64     3 4 8 8 8
+  64     2 4 8 8 8
+  64     2 3 8 8 8
+  64     7 7 7 K A      Three Sevens
+  64     7 7 7 Q A
+  64     7 7 7 J A
+  64     7 7 7 T A
+  64     7 7 7 9 A
+  64     7 7 7 8 A
+  64     6 7 7 7 A
+  64     5 7 7 7 A
+  64     4 7 7 7 A
+  64     3 7 7 7 A
+  64     2 7 7 7 A
+  64     7 7 7 Q K
+  64     7 7 7 J K
+  64     7 7 7 T K
+  64     7 7 7 9 K
+  64     7 7 7 8 K
+  64     6 7 7 7 K
+  64     5 7 7 7 K
+  64     4 7 7 7 K
+  64     3 7 7 7 K
+  64     2 7 7 7 K
+  64     7 7 7 J Q
+  64     7 7 7 T Q
+  64     7 7 7 9 Q
+  64     7 7 7 8 Q
+  64     6 7 7 7 Q
+  64     5 7 7 7 Q
+  64     4 7 7 7 Q
+  64     3 7 7 7 Q
+  64     2 7 7 7 Q
+  64     7 7 7 T J
+  64     7 7 7 9 J
+  64     7 7 7 8 J
+  64     6 7 7 7 J
+  64     5 7 7 7 J
+  64     4 7 7 7 J
+  64     3 7 7 7 J
+  64     2 7 7 7 J
+  64     7 7 7 9 T
+  64     7 7 7 8 T
+  64     6 7 7 7 T
+  64     5 7 7 7 T
+  64     4 7 7 7 T
+  64     3 7 7 7 T
+  64     2 7 7 7 T
+  64     7 7 7 8 9
+  64     6 7 7 7 9
+  64     5 7 7 7 9
+  64     4 7 7 7 9
+  64     3 7 7 7 9
+  64     2 7 7 7 9
+  64     6 7 7 7 8
+  64     5 7 7 7 8
+  64     4 7 7 7 8
+  64     3 7 7 7 8
+  64     2 7 7 7 8
+  64     5 6 7 7 7
+  64     4 6 7 7 7
+  64     3 6 7 7 7
+  64     2 6 7 7 7
+  64     4 5 7 7 7
+  64     3 5 7 7 7
+  64     2 5 7 7 7
+  64     3 4 7 7 7
+  64     2 4 7 7 7
+  64     2 3 7 7 7
+  64     6 6 6 K A      Three Sixes
+  64     6 6 6 Q A
+  64     6 6 6 J A
+  64     6 6 6 T A
+  64     6 6 6 9 A
+  64     6 6 6 8 A
+  64     6 6 6 7 A
+  64     5 6 6 6 A
+  64     4 6 6 6 A
+  64     3 6 6 6 A
+  64     2 6 6 6 A
+  64     6 6 6 Q K
+  64     6 6 6 J K
+  64     6 6 6 T K
+  64     6 6 6 9 K
+  64     6 6 6 8 K
+  64     6 6 6 7 K
+  64     5 6 6 6 K
+  64     4 6 6 6 K
+  64     3 6 6 6 K
+  64     2 6 6 6 K
+  64     6 6 6 J Q
+  64     6 6 6 T Q
+  64     6 6 6 9 Q
+  64     6 6 6 8 Q
+  64     6 6 6 7 Q
+  64     5 6 6 6 Q
+  64     4 6 6 6 Q
+  64     3 6 6 6 Q
+  64     2 6 6 6 Q
+  64     6 6 6 T J
+  64     6 6 6 9 J
+  64     6 6 6 8 J
+  64     6 6 6 7 J
+  64     5 6 6 6 J
+  64     4 6 6 6 J
+  64     3 6 6 6 J
+  64     2 6 6 6 J
+  64     6 6 6 9 T
+  64     6 6 6 8 T
+  64     6 6 6 7 T
+  64     5 6 6 6 T
+  64     4 6 6 6 T
+  64     3 6 6 6 T
+  64     2 6 6 6 T
+  64     6 6 6 8 9
+  64     6 6 6 7 9
+  64     5 6 6 6 9
+  64     4 6 6 6 9
+  64     3 6 6 6 9
+  64     2 6 6 6 9
+  64     6 6 6 7 8
+  64     5 6 6 6 8
+  64     4 6 6 6 8
+  64     3 6 6 6 8
+  64     2 6 6 6 8
+  64     5 6 6 6 7
+  64     4 6 6 6 7
+  64     3 6 6 6 7
+  64     2 6 6 6 7
+  64     4 5 6 6 6
+  64     3 5 6 6 6
+  64     2 5 6 6 6
+  64     3 4 6 6 6
+  64     2 4 6 6 6
+  64     2 3 6 6 6
+  64     5 5 5 K A      Three Fives
+  64     5 5 5 Q A
+  64     5 5 5 J A
+  64     5 5 5 T A
+  64     5 5 5 9 A
+  64     5 5 5 8 A
+  64     5 5 5 7 A
+  64     5 5 5 6 A
+  64     4 5 5 5 A
+  64     3 5 5 5 A
+  64     2 5 5 5 A
+  64     5 5 5 Q K
+  64     5 5 5 J K
+  64     5 5 5 T K
+  64     5 5 5 9 K
+  64     5 5 5 8 K
+  64     5 5 5 7 K
+  64     5 5 5 6 K
+  64     4 5 5 5 K
+  64     3 5 5 5 K
+  64     2 5 5 5 K
+  64     5 5 5 J Q
+  64     5 5 5 T Q
+  64     5 5 5 9 Q
+  64     5 5 5 8 Q
+  64     5 5 5 7 Q
+  64     5 5 5 6 Q
+  64     4 5 5 5 Q
+  64     3 5 5 5 Q
+  64     2 5 5 5 Q
+  64     5 5 5 T J
+  64     5 5 5 9 J
+  64     5 5 5 8 J
+  64     5 5 5 7 J
+  64     5 5 5 6 J
+  64     4 5 5 5 J
+  64     3 5 5 5 J
+  64     2 5 5 5 J
+  64     5 5 5 9 T
+  64     5 5 5 8 T
+  64     5 5 5 7 T
+  64     5 5 5 6 T
+  64     4 5 5 5 T
+  64     3 5 5 5 T
+  64     2 5 5 5 T
+  64     5 5 5 8 9
+  64     5 5 5 7 9
+  64     5 5 5 6 9
+  64     4 5 5 5 9
+  64     3 5 5 5 9
+  64     2 5 5 5 9
+  64     5 5 5 7 8
+  64     5 5 5 6 8
+  64     4 5 5 5 8
+  64     3 5 5 5 8
+  64     2 5 5 5 8
+  64     5 5 5 6 7
+  64     4 5 5 5 7
+  64     3 5 5 5 7
+  64     2 5 5 5 7
+  64     4 5 5 5 6
+  64     3 5 5 5 6
+  64     2 5 5 5 6
+  64     3 4 5 5 5
+  64     2 4 5 5 5
+  64     2 3 5 5 5
+  64     4 4 4 K A      Three Fours
+  64     4 4 4 Q A
+  64     4 4 4 J A
+  64     4 4 4 T A
+  64     4 4 4 9 A
+  64     4 4 4 8 A
+  64     4 4 4 7 A
+  64     4 4 4 6 A
+  64     4 4 4 5 A
+  64     3 4 4 4 A
+  64     2 4 4 4 A
+  64     4 4 4 Q K
+  64     4 4 4 J K
+  64     4 4 4 T K
+  64     4 4 4 9 K
+  64     4 4 4 8 K
+  64     4 4 4 7 K
+  64     4 4 4 6 K
+  64     4 4 4 5 K
+  64     3 4 4 4 K
+  64     2 4 4 4 K
+  64     4 4 4 J Q
+  64     4 4 4 T Q
+  64     4 4 4 9 Q
+  64     4 4 4 8 Q
+  64     4 4 4 7 Q
+  64     4 4 4 6 Q
+  64     4 4 4 5 Q
+  64     3 4 4 4 Q
+  64     2 4 4 4 Q
+  64     4 4 4 T J
+  64     4 4 4 9 J
+  64     4 4 4 8 J
+  64     4 4 4 7 J
+  64     4 4 4 6 J
+  64     4 4 4 5 J
+  64     3 4 4 4 J
+  64     2 4 4 4 J
+  64     4 4 4 9 T
+  64     4 4 4 8 T
+  64     4 4 4 7 T
+  64     4 4 4 6 T
+  64     4 4 4 5 T
+  64     3 4 4 4 T
+  64     2 4 4 4 T
+  64     4 4 4 8 9
+  64     4 4 4 7 9
+  64     4 4 4 6 9
+  64     4 4 4 5 9
+  64     3 4 4 4 9
+  64     2 4 4 4 9
+  64     4 4 4 7 8
+  64     4 4 4 6 8
+  64     4 4 4 5 8
+  64     3 4 4 4 8
+  64     2 4 4 4 8
+  64     4 4 4 6 7
+  64     4 4 4 5 7
+  64     3 4 4 4 7
+  64     2 4 4 4 7
+  64     4 4 4 5 6
+  64     3 4 4 4 6
+  64     2 4 4 4 6
+  64     3 4 4 4 5
+  64     2 4 4 4 5
+  64     2 3 4 4 4
+  64     3 3 3 K A      Three Treys
+  64     3 3 3 Q A
+  64     3 3 3 J A
+  64     3 3 3 T A
+  64     3 3 3 9 A
+  64     3 3 3 8 A
+  64     3 3 3 7 A
+  64     3 3 3 6 A
+  64     3 3 3 5 A
+  64     3 3 3 4 A
+  64     2 3 3 3 A
+  64     3 3 3 Q K
+  64     3 3 3 J K
+  64     3 3 3 T K
+  64     3 3 3 9 K
+  64     3 3 3 8 K
+  64     3 3 3 7 K
+  64     3 3 3 6 K
+  64     3 3 3 5 K
+  64     3 3 3 4 K
+  64     2 3 3 3 K
+  64     3 3 3 J Q
+  64     3 3 3 T Q
+  64     3 3 3 9 Q
+  64     3 3 3 8 Q
+  64     3 3 3 7 Q
+  64     3 3 3 6 Q
+  64     3 3 3 5 Q
+  64     3 3 3 4 Q
+  64     2 3 3 3 Q
+  64     3 3 3 T J
+  64     3 3 3 9 J
+  64     3 3 3 8 J
+  64     3 3 3 7 J
+  64     3 3 3 6 J
+  64     3 3 3 5 J
+  64     3 3 3 4 J
+  64     2 3 3 3 J
+  64     3 3 3 9 T
+  64     3 3 3 8 T
+  64     3 3 3 7 T
+  64     3 3 3 6 T
+  64     3 3 3 5 T
+  64     3 3 3 4 T
+  64     2 3 3 3 T
+  64     3 3 3 8 9
+  64     3 3 3 7 9
+  64     3 3 3 6 9
+  64     3 3 3 5 9
+  64     3 3 3 4 9
+  64     2 3 3 3 9
+  64     3 3 3 7 8
+  64     3 3 3 6 8
+  64     3 3 3 5 8
+  64     3 3 3 4 8
+  64     2 3 3 3 8
+  64     3 3 3 6 7
+  64     3 3 3 5 7
+  64     3 3 3 4 7
+  64     2 3 3 3 7
+  64     3 3 3 5 6
+  64     3 3 3 4 6
+  64     2 3 3 3 6
+  64     3 3 3 4 5
+  64     2 3 3 3 5
+  64     2 3 3 3 4
+  64     2 2 2 K A      Three Deuces
+  64     2 2 2 Q A
+  64     2 2 2 J A
+  64     2 2 2 T A
+  64     2 2 2 9 A
+  64     2 2 2 8 A
+  64     2 2 2 7 A
+  64     2 2 2 6 A
+  64     2 2 2 5 A
+  64     2 2 2 4 A
+  64     2 2 2 3 A
+  64     2 2 2 Q K
+  64     2 2 2 J K
+  64     2 2 2 T K
+  64     2 2 2 9 K
+  64     2 2 2 8 K
+  64     2 2 2 7 K
+  64     2 2 2 6 K
+  64     2 2 2 5 K
+  64     2 2 2 4 K
+  64     2 2 2 3 K
+  64     2 2 2 J Q
+  64     2 2 2 T Q
+  64     2 2 2 9 Q
+  64     2 2 2 8 Q
+  64     2 2 2 7 Q
+  64     2 2 2 6 Q
+  64     2 2 2 5 Q
+  64     2 2 2 4 Q
+  64     2 2 2 3 Q
+  64     2 2 2 T J
+  64     2 2 2 9 J
+  64     2 2 2 8 J
+  64     2 2 2 7 J
+  64     2 2 2 6 J
+  64     2 2 2 5 J
+  64     2 2 2 4 J
+  64     2 2 2 3 J
+  64     2 2 2 9 T
+  64     2 2 2 8 T
+  64     2 2 2 7 T
+  64     2 2 2 6 T
+  64     2 2 2 5 T
+  64     2 2 2 4 T
+  64     2 2 2 3 T
+  64     2 2 2 8 9
+  64     2 2 2 7 9
+  64     2 2 2 6 9
+  64     2 2 2 5 9
+  64     2 2 2 4 9
+  64     2 2 2 3 9
+  64     2 2 2 7 8
+  64     2 2 2 6 8
+  64     2 2 2 5 8
+  64     2 2 2 4 8
+  64     2 2 2 3 8
+  64     2 2 2 6 7
+  64     2 2 2 5 7
+  64     2 2 2 4 7
+  64     2 2 2 3 7
+  64     2 2 2 5 6
+  64     2 2 2 4 6
+  64     2 2 2 3 6
+  64     2 2 2 4 5
+  64     2 2 2 3 5
+  64     2 2 2 3 4
+ 144     Q K K A A      Aces over Kings                TWO PAIR
+ 144     J K K A A
+ 144     T K K A A
+ 144     9 K K A A
+ 144     8 K K A A
+ 144     7 K K A A
+ 144     6 K K A A
+ 144     5 K K A A
+ 144     4 K K A A
+ 144     3 K K A A
+ 144     2 K K A A
+ 144     Q Q K A A      Aces over Queens
+ 144     J Q Q A A
+ 144     T Q Q A A
+ 144     9 Q Q A A
+ 144     8 Q Q A A
+ 144     7 Q Q A A
+ 144     6 Q Q A A
+ 144     5 Q Q A A
+ 144     4 Q Q A A
+ 144     3 Q Q A A
+ 144     2 Q Q A A
+ 144     J J K A A      Aces over Jacks
+ 144     J J Q A A
+ 144     T J J A A
+ 144     9 J J A A
+ 144     8 J J A A
+ 144     7 J J A A
+ 144     6 J J A A
+ 144     5 J J A A
+ 144     4 J J A A
+ 144     3 J J A A
+ 144     2 J J A A
+ 144     T T K A A      Aces over Tens
+ 144     T T Q A A
+ 144     T T J A A
+ 144     9 T T A A
+ 144     8 T T A A
+ 144     7 T T A A
+ 144     6 T T A A
+ 144     5 T T A A
+ 144     4 T T A A
+ 144     3 T T A A
+ 144     2 T T A A
+ 144     9 9 K A A      Aces over Nines
+ 144     9 9 Q A A
+ 144     9 9 J A A
+ 144     9 9 T A A
+ 144     8 9 9 A A
+ 144     7 9 9 A A
+ 144     6 9 9 A A
+ 144     5 9 9 A A
+ 144     4 9 9 A A
+ 144     3 9 9 A A
+ 144     2 9 9 A A
+ 144     8 8 K A A      Aces over Eights
+ 144     8 8 Q A A
+ 144     8 8 J A A
+ 144     8 8 T A A
+ 144     8 8 9 A A
+ 144     7 8 8 A A
+ 144     6 8 8 A A
+ 144     5 8 8 A A
+ 144     4 8 8 A A
+ 144     3 8 8 A A
+ 144     2 8 8 A A
+ 144     7 7 K A A      Aces over Sevens
+ 144     7 7 Q A A
+ 144     7 7 J A A
+ 144     7 7 T A A
+ 144     7 7 9 A A
+ 144     7 7 8 A A
+ 144     6 7 7 A A
+ 144     5 7 7 A A
+ 144     4 7 7 A A
+ 144     3 7 7 A A
+ 144     2 7 7 A A
+ 144     6 6 K A A      Aces over Sixes
+ 144     6 6 Q A A
+ 144     6 6 J A A
+ 144     6 6 T A A
+ 144     6 6 9 A A
+ 144     6 6 8 A A
+ 144     6 6 7 A A
+ 144     5 6 6 A A
+ 144     4 6 6 A A
+ 144     3 6 6 A A
+ 144     2 6 6 A A
+ 144     5 5 K A A      Aces over Fives
+ 144     5 5 Q A A
+ 144     5 5 J A A
+ 144     5 5 T A A
+ 144     5 5 9 A A
+ 144     5 5 8 A A
+ 144     5 5 7 A A
+ 144     5 5 6 A A
+ 144     4 5 5 A A
+ 144     3 5 5 A A
+ 144     2 5 5 A A
+ 144     4 4 K A A      Aces over Fours
+ 144     4 4 Q A A
+ 144     4 4 J A A
+ 144     4 4 T A A
+ 144     4 4 9 A A
+ 144     4 4 8 A A
+ 144     4 4 7 A A
+ 144     4 4 6 A A
+ 144     4 4 5 A A
+ 144     3 4 4 A A
+ 144     2 4 4 A A
+ 144     3 3 K A A      Aces over Treys
+ 144     3 3 Q A A
+ 144     3 3 J A A
+ 144     3 3 T A A
+ 144     3 3 9 A A
+ 144     3 3 8 A A
+ 144     3 3 7 A A
+ 144     3 3 6 A A
+ 144     3 3 5 A A
+ 144     3 3 4 A A
+ 144     2 3 3 A A
+ 144     2 2 K A A      Aces over Deuces
+ 144     2 2 Q A A
+ 144     2 2 J A A
+ 144     2 2 T A A
+ 144     2 2 9 A A
+ 144     2 2 8 A A
+ 144     2 2 7 A A
+ 144     2 2 6 A A
+ 144     2 2 5 A A
+ 144     2 2 4 A A
+ 144     2 2 3 A A
+ 144     Q Q K K A      Kings over Queens
+ 144     J Q Q K K
+ 144     T Q Q K K
+ 144     9 Q Q K K
+ 144     8 Q Q K K
+ 144     7 Q Q K K
+ 144     6 Q Q K K
+ 144     5 Q Q K K
+ 144     4 Q Q K K
+ 144     3 Q Q K K
+ 144     2 Q Q K K
+ 144     J J K K A      Kings over Jacks
+ 144     J J Q K K
+ 144     T J J K K
+ 144     9 J J K K
+ 144     8 J J K K
+ 144     7 J J K K
+ 144     6 J J K K
+ 144     5 J J K K
+ 144     4 J J K K
+ 144     3 J J K K
+ 144     2 J J K K
+ 144     T T K K A      Kings over Tens
+ 144     T T Q K K
+ 144     T T J K K
+ 144     9 T T K K
+ 144     8 T T K K
+ 144     7 T T K K
+ 144     6 T T K K
+ 144     5 T T K K
+ 144     4 T T K K
+ 144     3 T T K K
+ 144     2 T T K K
+ 144     9 9 K K A      Kings over Nines
+ 144     9 9 Q K K
+ 144     9 9 J K K
+ 144     9 9 T K K
+ 144     8 9 9 K K
+ 144     7 9 9 K K
+ 144     6 9 9 K K
+ 144     5 9 9 K K
+ 144     4 9 9 K K
+ 144     3 9 9 K K
+ 144     2 9 9 K K
+ 144     8 8 K K A      Kings over Eights
+ 144     8 8 Q K K
+ 144     8 8 J K K
+ 144     8 8 T K K
+ 144     8 8 9 K K
+ 144     7 8 8 K K
+ 144     6 8 8 K K
+ 144     5 8 8 K K
+ 144     4 8 8 K K
+ 144     3 8 8 K K
+ 144     2 8 8 K K
+ 144     7 7 K K A      Kings over Sevens
+ 144     7 7 Q K K
+ 144     7 7 J K K
+ 144     7 7 T K K
+ 144     7 7 9 K K
+ 144     7 7 8 K K
+ 144     6 7 7 K K
+ 144     5 7 7 K K
+ 144     4 7 7 K K
+ 144     3 7 7 K K
+ 144     2 7 7 K K
+ 144     6 6 K K A      Kings over Sixes
+ 144     6 6 Q K K
+ 144     6 6 J K K
+ 144     6 6 T K K
+ 144     6 6 9 K K
+ 144     6 6 8 K K
+ 144     6 6 7 K K
+ 144     5 6 6 K K
+ 144     4 6 6 K K
+ 144     3 6 6 K K
+ 144     2 6 6 K K
+ 144     5 5 K K A      Kings over Fives
+ 144     5 5 Q K K
+ 144     5 5 J K K
+ 144     5 5 T K K
+ 144     5 5 9 K K
+ 144     5 5 8 K K
+ 144     5 5 7 K K
+ 144     5 5 6 K K
+ 144     4 5 5 K K
+ 144     3 5 5 K K
+ 144     2 5 5 K K
+ 144     4 4 K K A      Kings over Fours
+ 144     4 4 Q K K
+ 144     4 4 J K K
+ 144     4 4 T K K
+ 144     4 4 9 K K
+ 144     4 4 8 K K
+ 144     4 4 7 K K
+ 144     4 4 6 K K
+ 144     4 4 5 K K
+ 144     3 4 4 K K
+ 144     2 4 4 K K
+ 144     3 3 K K A      Kings over Treys
+ 144     3 3 Q K K
+ 144     3 3 J K K
+ 144     3 3 T K K
+ 144     3 3 9 K K
+ 144     3 3 8 K K
+ 144     3 3 7 K K
+ 144     3 3 6 K K
+ 144     3 3 5 K K
+ 144     3 3 4 K K
+ 144     2 3 3 K K
+ 144     2 2 K K A      Kings over Deuces
+ 144     2 2 Q K K
+ 144     2 2 J K K
+ 144     2 2 T K K
+ 144     2 2 9 K K
+ 144     2 2 8 K K
+ 144     2 2 7 K K
+ 144     2 2 6 K K
+ 144     2 2 5 K K
+ 144     2 2 4 K K
+ 144     2 2 3 K K
+ 144     J J Q Q A      Queens over Jacks
+ 144     J J Q Q K
+ 144     T J J Q Q
+ 144     9 J J Q Q
+ 144     8 J J Q Q
+ 144     7 J J Q Q
+ 144     6 J J Q Q
+ 144     5 J J Q Q
+ 144     4 J J Q Q
+ 144     3 J J Q Q
+ 144     2 J J Q Q
+ 144     T T Q Q A      Queens over Tens
+ 144     T T Q Q K
+ 144     T T J Q Q
+ 144     9 T T Q Q
+ 144     8 T T Q Q
+ 144     7 T T Q Q
+ 144     6 T T Q Q
+ 144     5 T T Q Q
+ 144     4 T T Q Q
+ 144     3 T T Q Q
+ 144     2 T T Q Q
+ 144     9 9 Q Q A      Queens over Nines
+ 144     9 9 Q Q K
+ 144     9 9 J Q Q
+ 144     9 9 T Q Q
+ 144     8 9 9 Q Q
+ 144     7 9 9 Q Q
+ 144     6 9 9 Q Q
+ 144     5 9 9 Q Q
+ 144     4 9 9 Q Q
+ 144     3 9 9 Q Q
+ 144     2 9 9 Q Q
+ 144     8 8 Q Q A      Queens over Eights
+ 144     8 8 Q Q K
+ 144     8 8 J Q Q
+ 144     8 8 T Q Q
+ 144     8 8 9 Q Q
+ 144     7 8 8 Q Q
+ 144     6 8 8 Q Q
+ 144     5 8 8 Q Q
+ 144     4 8 8 Q Q
+ 144     3 8 8 Q Q
+ 144     2 8 8 Q Q
+ 144     7 7 Q Q A      Queens over Sevens
+ 144     7 7 Q Q K
+ 144     7 7 J Q Q
+ 144     7 7 T Q Q
+ 144     7 7 9 Q Q
+ 144     7 7 8 Q Q
+ 144     6 7 7 Q Q
+ 144     5 7 7 Q Q
+ 144     4 7 7 Q Q
+ 144     3 7 7 Q Q
+ 144     2 7 7 Q Q
+ 144     6 6 Q Q A      Queens over Sixes
+ 144     6 6 Q Q K
+ 144     6 6 J Q Q
+ 144     6 6 T Q Q
+ 144     6 6 9 Q Q
+ 144     6 6 8 Q Q
+ 144     6 6 7 Q Q
+ 144     5 6 6 Q Q
+ 144     4 6 6 Q Q
+ 144     3 6 6 Q Q
+ 144     2 6 6 Q Q
+ 144     5 5 Q Q A      Queens over Fives
+ 144     5 5 Q Q K
+ 144     5 5 J Q Q
+ 144     5 5 T Q Q
+ 144     5 5 9 Q Q
+ 144     5 5 8 Q Q
+ 144     5 5 7 Q Q
+ 144     5 5 6 Q Q
+ 144     4 5 5 Q Q
+ 144     3 5 5 Q Q
+ 144     2 5 5 Q Q
+ 144     4 4 Q Q A      Queens over Fours
+ 144     4 4 Q Q K
+ 144     4 4 J Q Q
+ 144     4 4 T Q Q
+ 144     4 4 9 Q Q
+ 144     4 4 8 Q Q
+ 144     4 4 7 Q Q
+ 144     4 4 6 Q Q
+ 144     4 4 5 Q Q
+ 144     3 4 4 Q Q
+ 144     2 4 4 Q Q
+ 144     3 3 Q Q A      Queens over Treys
+ 144     3 3 Q Q K
+ 144     3 3 J Q Q
+ 144     3 3 T Q Q
+ 144     3 3 9 Q Q
+ 144     3 3 8 Q Q
+ 144     3 3 7 Q Q
+ 144     3 3 6 Q Q
+ 144     3 3 5 Q Q
+ 144     3 3 4 Q Q
+ 144     2 3 3 Q Q
+ 144     2 2 Q Q A      Queens over Deuces
+ 144     2 2 Q Q K
+ 144     2 2 J Q Q
+ 144     2 2 T Q Q
+ 144     2 2 9 Q Q
+ 144     2 2 8 Q Q
+ 144     2 2 7 Q Q
+ 144     2 2 6 Q Q
+ 144     2 2 5 Q Q
+ 144     2 2 4 Q Q
+ 144     2 2 3 Q Q
+ 144     T T J J A      Jacks over Tens
+ 144     T T J J K
+ 144     T T J J Q
+ 144     9 T T J J
+ 144     8 T T J J
+ 144     7 T T J J
+ 144     6 T T J J
+ 144     5 T T J J
+ 144     4 T T J J
+ 144     3 T T J J
+ 144     2 T T J J
+ 144     9 9 J J A      Jacks over Nines
+ 144     9 9 J J K
+ 144     9 9 J J Q
+ 144     9 9 T J J
+ 144     8 9 9 J J
+ 144     7 9 9 J J
+ 144     6 9 9 J J
+ 144     5 9 9 J J
+ 144     4 9 9 J J
+ 144     3 9 9 J J
+ 144     2 9 9 J J
+ 144     8 8 J J A      Jacks over Eights
+ 144     8 8 J J K
+ 144     8 8 J J Q
+ 144     8 8 T J J
+ 144     8 8 9 J J
+ 144     7 8 8 J J
+ 144     6 8 8 J J
+ 144     5 8 8 J J
+ 144     4 8 8 J J
+ 144     3 8 8 J J
+ 144     2 8 8 J J
+ 144     7 7 J J A      Jacks over Sevens
+ 144     7 7 J J K
+ 144     7 7 J J Q
+ 144     7 7 T J J
+ 144     7 7 9 J J
+ 144     7 7 8 J J
+ 144     6 7 7 J J
+ 144     5 7 7 J J
+ 144     4 7 7 J J
+ 144     3 7 7 J J
+ 144     2 7 7 J J
+ 144     6 6 J J A      Jacks over Sixes
+ 144     6 6 J J K
+ 144     6 6 J J Q
+ 144     6 6 T J J
+ 144     6 6 9 J J
+ 144     6 6 8 J J
+ 144     6 6 7 J J
+ 144     5 6 6 J J
+ 144     4 6 6 J J
+ 144     3 6 6 J J
+ 144     2 6 6 J J
+ 144     5 5 J J A      Jacks over Fives
+ 144     5 5 J J K
+ 144     5 5 J J Q
+ 144     5 5 T J J
+ 144     5 5 9 J J
+ 144     5 5 8 J J
+ 144     5 5 7 J J
+ 144     5 5 6 J J
+ 144     4 5 5 J J
+ 144     3 5 5 J J
+ 144     2 5 5 J J
+ 144     4 4 J J A      Jacks over Fours
+ 144     4 4 J J K
+ 144     4 4 J J Q
+ 144     4 4 T J J
+ 144     4 4 9 J J
+ 144     4 4 8 J J
+ 144     4 4 7 J J
+ 144     4 4 6 J J
+ 144     4 4 5 J J
+ 144     3 4 4 J J
+ 144     2 4 4 J J
+ 144     3 3 J J A      Jacks over Treys
+ 144     3 3 J J K
+ 144     3 3 J J Q
+ 144     3 3 T J J
+ 144     3 3 9 J J
+ 144     3 3 8 J J
+ 144     3 3 7 J J
+ 144     3 3 6 J J
+ 144     3 3 5 J J
+ 144     3 3 4 J J
+ 144     2 3 3 J J
+ 144     2 2 J J A      Jacks over Deuces
+ 144     2 2 J J K
+ 144     2 2 J J Q
+ 144     2 2 T J J
+ 144     2 2 9 J J
+ 144     2 2 8 J J
+ 144     2 2 7 J J
+ 144     2 2 6 J J
+ 144     2 2 5 J J
+ 144     2 2 4 J J
+ 144     2 2 3 J J
+ 144     9 9 T T A      Tens over Nines
+ 144     9 9 T T K
+ 144     9 9 T T Q
+ 144     9 9 T T J
+ 144     8 9 9 T T
+ 144     7 9 9 T T
+ 144     6 9 9 T T
+ 144     5 9 9 T T
+ 144     4 9 9 T T
+ 144     3 9 9 T T
+ 144     2 9 9 T T
+ 144     8 8 T T A      Tens over Eights
+ 144     8 8 T T K
+ 144     8 8 T T Q
+ 144     8 8 T T J
+ 144     8 8 9 T T
+ 144     7 8 8 T T
+ 144     6 8 8 T T
+ 144     5 8 8 T T
+ 144     4 8 8 T T
+ 144     3 8 8 T T
+ 144     2 8 8 T T
+ 144     7 7 T T A      Tens over Sevens
+ 144     7 7 T T K
+ 144     7 7 T T Q
+ 144     7 7 T T J
+ 144     7 7 9 T T
+ 144     7 7 8 T T
+ 144     6 7 7 T T
+ 144     5 7 7 T T
+ 144     4 7 7 T T
+ 144     3 7 7 T T
+ 144     2 7 7 T T
+ 144     6 6 T T A      Tens over Sixes
+ 144     6 6 T T K
+ 144     6 6 T T Q
+ 144     6 6 T T J
+ 144     6 6 9 T T
+ 144     6 6 8 T T
+ 144     6 6 7 T T
+ 144     5 6 6 T T
+ 144     4 6 6 T T
+ 144     3 6 6 T T
+ 144     2 6 6 T T
+ 144     5 5 T T A      Tens over Fives
+ 144     5 5 T T K
+ 144     5 5 T T Q
+ 144     5 5 T T J
+ 144     5 5 9 T T
+ 144     5 5 8 T T
+ 144     5 5 7 T T
+ 144     5 5 6 T T
+ 144     4 5 5 T T
+ 144     3 5 5 T T
+ 144     2 5 5 T T
+ 144     4 4 T T A      Tens over Fours
+ 144     4 4 T T K
+ 144     4 4 T T Q
+ 144     4 4 T T J
+ 144     4 4 9 T T
+ 144     4 4 8 T T
+ 144     4 4 7 T T
+ 144     4 4 6 T T
+ 144     4 4 5 T T
+ 144     3 4 4 T T
+ 144     2 4 4 T T
+ 144     3 3 T T A      Tens over Treys
+ 144     3 3 T T K
+ 144     3 3 T T Q
+ 144     3 3 T T J
+ 144     3 3 9 T T
+ 144     3 3 8 T T
+ 144     3 3 7 T T
+ 144     3 3 6 T T
+ 144     3 3 5 T T
+ 144     3 3 4 T T
+ 144     2 3 3 T T
+ 144     2 2 T T A      Tens over Deuces
+ 144     2 2 T T K
+ 144     2 2 T T Q
+ 144     2 2 T T J
+ 144     2 2 9 T T
+ 144     2 2 8 T T
+ 144     2 2 7 T T
+ 144     2 2 6 T T
+ 144     2 2 5 T T
+ 144     2 2 4 T T
+ 144     2 2 3 T T
+ 144     8 8 9 9 A      Nines over Eights
+ 144     8 8 9 9 K
+ 144     8 8 9 9 Q
+ 144     8 8 9 9 J
+ 144     8 8 9 9 T
+ 144     7 8 8 9 9
+ 144     6 8 8 9 9
+ 144     5 8 8 9 9
+ 144     4 8 8 9 9
+ 144     3 8 8 9 9
+ 144     2 8 8 9 9
+ 144     7 7 9 9 A      Nines over Sevens
+ 144     7 7 9 9 K
+ 144     7 7 9 9 Q
+ 144     7 7 9 9 J
+ 144     7 7 9 9 T
+ 144     7 7 8 9 9
+ 144     6 7 7 9 9
+ 144     5 7 7 9 9
+ 144     4 7 7 9 9
+ 144     3 7 7 9 9
+ 144     2 7 7 9 9
+ 144     6 6 9 9 A      Nines over Sixes
+ 144     6 6 9 9 K
+ 144     6 6 9 9 Q
+ 144     6 6 9 9 J
+ 144     6 6 9 9 T
+ 144     6 6 8 9 9
+ 144     6 6 7 9 9
+ 144     5 6 6 9 9
+ 144     4 6 6 9 9
+ 144     3 6 6 9 9
+ 144     2 6 6 9 9
+ 144     5 5 9 9 A      Nines over Fives
+ 144     5 5 9 9 K
+ 144     5 5 9 9 Q
+ 144     5 5 9 9 J
+ 144     5 5 9 9 T
+ 144     5 5 8 9 9
+ 144     5 5 7 9 9
+ 144     5 5 6 9 9
+ 144     4 5 5 9 9
+ 144     3 5 5 9 9
+ 144     2 5 5 9 9
+ 144     4 4 9 9 A      Nines over Fours
+ 144     4 4 9 9 K
+ 144     4 4 9 9 Q
+ 144     4 4 9 9 J
+ 144     4 4 9 9 T
+ 144     4 4 8 9 9
+ 144     4 4 7 9 9
+ 144     4 4 6 9 9
+ 144     4 4 5 9 9
+ 144     3 4 4 9 9
+ 144     2 4 4 9 9
+ 144     3 3 9 9 A      Nines over Treys
+ 144     3 3 9 9 K
+ 144     3 3 9 9 Q
+ 144     3 3 9 9 J
+ 144     3 3 9 9 T
+ 144     3 3 8 9 9
+ 144     3 3 7 9 9
+ 144     3 3 6 9 9
+ 144     3 3 5 9 9
+ 144     3 3 4 9 9
+ 144     2 3 3 9 9
+ 144     2 2 9 9 A      Nines over Deuces
+ 144     2 2 9 9 K
+ 144     2 2 9 9 Q
+ 144     2 2 9 9 J
+ 144     2 2 9 9 T
+ 144     2 2 8 9 9
+ 144     2 2 7 9 9
+ 144     2 2 6 9 9
+ 144     2 2 5 9 9
+ 144     2 2 4 9 9
+ 144     2 2 3 9 9
+ 144     7 7 8 8 A      Eights over Sevens
+ 144     7 7 8 8 K
+ 144     7 7 8 8 Q
+ 144     7 7 8 8 J
+ 144     7 7 8 8 T
+ 144     7 7 8 8 9
+ 144     6 7 7 8 8
+ 144     5 7 7 8 8
+ 144     4 7 7 8 8
+ 144     3 7 7 8 8
+ 144     2 7 7 8 8
+ 144     6 6 8 8 A      Eights over Sixes
+ 144     6 6 8 8 K
+ 144     6 6 8 8 Q
+ 144     6 6 8 8 J
+ 144     6 6 8 8 T
+ 144     6 6 8 8 9
+ 144     6 6 7 8 8
+ 144     5 6 6 8 8
+ 144     4 6 6 8 8
+ 144     3 6 6 8 8
+ 144     2 6 6 8 8
+ 144     5 5 8 8 A      Eights over Fives
+ 144     5 5 8 8 K
+ 144     5 5 8 8 Q
+ 144     5 5 8 8 J
+ 144     5 5 8 8 T
+ 144     5 5 8 8 9
+ 144     5 5 7 8 8
+ 144     5 5 6 8 8
+ 144     4 5 5 8 8
+ 144     3 5 5 8 8
+ 144     2 5 5 8 8
+ 144     4 4 8 8 A      Eights over Fours
+ 144     4 4 8 8 K
+ 144     4 4 8 8 Q
+ 144     4 4 8 8 J
+ 144     4 4 8 8 T
+ 144     4 4 8 8 9
+ 144     4 4 7 8 8
+ 144     4 4 6 8 8
+ 144     4 4 5 8 8
+ 144     3 4 4 8 8
+ 144     2 4 4 8 8
+ 144     3 3 8 8 A      Eights over Treys
+ 144     3 3 8 8 K
+ 144     3 3 8 8 Q
+ 144     3 3 8 8 J
+ 144     3 3 8 8 T
+ 144     3 3 8 8 9
+ 144     3 3 7 8 8
+ 144     3 3 6 8 8
+ 144     3 3 5 8 8
+ 144     3 3 4 8 8
+ 144     2 3 3 8 8
+ 144     2 2 8 8 A      Eights over Deuces
+ 144     2 2 8 8 K
+ 144     2 2 8 8 Q
+ 144     2 2 8 8 J
+ 144     2 2 8 8 T
+ 144     2 2 8 8 9
+ 144     2 2 7 8 8
+ 144     2 2 6 8 8
+ 144     2 2 5 8 8
+ 144     2 2 4 8 8
+ 144     2 2 3 8 8
+ 144     6 6 7 7 A      Sevens over Sixes
+ 144     6 6 7 7 K
+ 144     6 6 7 7 Q
+ 144     6 6 7 7 J
+ 144     6 6 7 7 T
+ 144     6 6 7 7 9
+ 144     6 6 7 7 8
+ 144     5 6 6 7 7
+ 144     4 6 6 7 7
+ 144     3 6 6 7 7
+ 144     2 6 6 7 7
+ 144     5 5 7 7 A      Sevens over Fives
+ 144     5 5 7 7 K
+ 144     5 5 7 7 Q
+ 144     5 5 7 7 J
+ 144     5 5 7 7 T
+ 144     5 5 7 7 9
+ 144     5 5 7 7 8
+ 144     5 5 6 7 7
+ 144     4 5 5 7 7
+ 144     3 5 5 7 7
+ 144     2 5 5 7 7
+ 144     4 4 7 7 A      Sevens over Fours
+ 144     4 4 7 7 K
+ 144     4 4 7 7 Q
+ 144     4 4 7 7 J
+ 144     4 4 7 7 T
+ 144     4 4 7 7 9
+ 144     4 4 7 7 8
+ 144     4 4 6 7 7
+ 144     4 4 5 7 7
+ 144     3 4 4 7 7
+ 144     2 4 4 7 7
+ 144     3 3 7 7 A      Sevens over Treys
+ 144     3 3 7 7 K
+ 144     3 3 7 7 Q
+ 144     3 3 7 7 J
+ 144     3 3 7 7 T
+ 144     3 3 7 7 9
+ 144     3 3 7 7 8
+ 144     3 3 6 7 7
+ 144     3 3 5 7 7
+ 144     3 3 4 7 7
+ 144     2 3 3 7 7
+ 144     2 2 7 7 A      Sevens over Deuces
+ 144     2 2 7 7 K
+ 144     2 2 7 7 Q
+ 144     2 2 7 7 J
+ 144     2 2 7 7 T
+ 144     2 2 7 7 9
+ 144     2 2 7 7 8
+ 144     2 2 6 7 7
+ 144     2 2 5 7 7
+ 144     2 2 4 7 7
+ 144     2 2 3 7 7
+ 144     5 5 6 6 A      Sixes over Fives
+ 144     5 5 6 6 K
+ 144     5 5 6 6 Q
+ 144     5 5 6 6 J
+ 144     5 5 6 6 T
+ 144     5 5 6 6 9
+ 144     5 5 6 6 8
+ 144     5 5 6 6 7
+ 144     4 5 5 6 6
+ 144     3 5 5 6 6
+ 144     2 5 5 6 6
+ 144     4 4 6 6 A      Sixes over Fours
+ 144     4 4 6 6 K
+ 144     4 4 6 6 Q
+ 144     4 4 6 6 J
+ 144     4 4 6 6 T
+ 144     4 4 6 6 9
+ 144     4 4 6 6 8
+ 144     4 4 6 6 7
+ 144     4 4 5 6 6
+ 144     3 4 4 6 6
+ 144     2 4 4 6 6
+ 144     3 3 6 6 A      Sixes over Treys
+ 144     3 3 6 6 K
+ 144     3 3 6 6 Q
+ 144     3 3 6 6 J
+ 144     3 3 6 6 T
+ 144     3 3 6 6 9
+ 144     3 3 6 6 8
+ 144     3 3 6 6 7
+ 144     3 3 5 6 6
+ 144     3 3 4 6 6
+ 144     2 3 3 6 6
+ 144     2 2 6 6 A      Sixes over Deuces
+ 144     2 2 6 6 K
+ 144     2 2 6 6 Q
+ 144     2 2 6 6 J
+ 144     2 2 6 6 T
+ 144     2 2 6 6 9
+ 144     2 2 6 6 8
+ 144     2 2 6 6 7
+ 144     2 2 5 6 6
+ 144     2 2 4 6 6
+ 144     2 2 3 6 6
+ 144     4 4 5 5 A      Fives over Fours
+ 144     4 4 5 5 K
+ 144     4 4 5 5 Q
+ 144     4 4 5 5 J
+ 144     4 4 5 5 T
+ 144     4 4 5 5 9
+ 144     4 4 5 5 8
+ 144     4 4 5 5 7
+ 144     4 4 5 5 6
+ 144     3 4 4 5 5
+ 144     2 4 4 5 5
+ 144     3 3 5 5 A      Fives over Treys
+ 144     3 3 5 5 K
+ 144     3 3 5 5 Q
+ 144     3 3 5 5 J
+ 144     3 3 5 5 T
+ 144     3 3 5 5 9
+ 144     3 3 5 5 8
+ 144     3 3 5 5 7
+ 144     3 3 5 5 6
+ 144     3 3 4 5 5
+ 144     2 3 3 5 5
+ 144     2 2 5 5 A      Fives over Deuces
+ 144     2 2 5 5 K
+ 144     2 2 5 5 Q
+ 144     2 2 5 5 J
+ 144     2 2 5 5 T
+ 144     2 2 5 5 9
+ 144     2 2 5 5 8
+ 144     2 2 5 5 7
+ 144     2 2 5 5 6
+ 144     2 2 4 5 5
+ 144     2 2 3 5 5
+ 144     3 3 4 4 A      Fours over Treys
+ 144     3 3 4 4 K
+ 144     3 3 4 4 Q
+ 144     3 3 4 4 J
+ 144     3 3 4 4 T
+ 144     3 3 4 4 9
+ 144     3 3 4 4 8
+ 144     3 3 4 4 7
+ 144     3 3 4 4 6
+ 144     3 3 4 4 5
+ 144     3 3 4 4 2
+ 144     2 2 4 4 A      Fours over Deuces
+ 144     2 2 4 4 K
+ 144     2 2 4 4 Q
+ 144     2 2 4 4 J
+ 144     2 2 4 4 T
+ 144     2 2 4 4 9
+ 144     2 2 4 4 8
+ 144     2 2 4 4 7
+ 144     2 2 4 4 6
+ 144     2 2 4 4 5
+ 144     2 2 4 4 3
+ 144     2 2 3 3 A      Treys over Deuces
+ 144     2 2 3 3 K
+ 144     2 2 3 3 Q
+ 144     2 2 3 3 J
+ 144     2 2 3 3 T
+ 144     2 2 3 3 9
+ 144     2 2 3 3 8
+ 144     2 2 3 3 7
+ 144     2 2 3 3 6
+ 144     2 2 3 3 5
+ 144     2 2 3 3 4
+ 384     J Q K A A      Pair of Aces                   ONE PAIR
+ 384     T Q K A A
+ 384     9 Q K A A
+ 384     8 Q K A A
+ 384     7 Q K A A
+ 384     6 Q K A A
+ 384     5 Q K A A
+ 384     4 Q K A A
+ 384     3 Q K A A
+ 384     2 Q K A A
+ 384     T J K A A
+ 384     9 J K A A
+ 384     8 J K A A
+ 384     7 J K A A
+ 384     6 J K A A
+ 384     5 J K A A
+ 384     4 J K A A
+ 384     3 J K A A
+ 384     2 J K A A
+ 384     9 T K A A
+ 384     8 T K A A
+ 384     7 T K A A
+ 384     6 T K A A
+ 384     5 T K A A
+ 384     4 T K A A
+ 384     3 T K A A
+ 384     2 T K A A
+ 384     8 9 K A A
+ 384     7 9 K A A
+ 384     6 9 K A A
+ 384     5 9 K A A
+ 384     4 9 K A A
+ 384     3 9 K A A
+ 384     2 9 K A A
+ 384     7 8 K A A
+ 384     6 8 K A A
+ 384     5 8 K A A
+ 384     4 8 K A A
+ 384     3 8 K A A
+ 384     2 8 K A A
+ 384     6 7 K A A
+ 384     5 7 K A A
+ 384     4 7 K A A
+ 384     3 7 K A A
+ 384     2 7 K A A
+ 384     5 6 K A A
+ 384     4 6 K A A
+ 384     3 6 K A A
+ 384     2 6 K A A
+ 384     4 5 K A A
+ 384     3 5 K A A
+ 384     2 5 K A A
+ 384     3 4 K A A
+ 384     2 4 K A A
+ 384     2 3 K A A
+ 384     T J Q A A
+ 384     9 J Q A A
+ 384     8 J Q A A
+ 384     7 J Q A A
+ 384     6 J Q A A
+ 384     5 J Q A A
+ 384     4 J Q A A
+ 384     3 J Q A A
+ 384     2 J Q A A
+ 384     9 T Q A A
+ 384     8 T Q A A
+ 384     7 T Q A A
+ 384     6 T Q A A
+ 384     5 T Q A A
+ 384     4 T Q A A
+ 384     3 T Q A A
+ 384     2 T Q A A
+ 384     8 9 Q A A
+ 384     7 9 Q A A
+ 384     6 9 Q A A
+ 384     5 9 Q A A
+ 384     4 9 Q A A
+ 384     3 9 Q A A
+ 384     2 9 Q A A
+ 384     7 8 Q A A
+ 384     6 8 Q A A
+ 384     5 8 Q A A
+ 384     4 8 Q A A
+ 384     3 8 Q A A
+ 384     2 8 Q A A
+ 384     6 7 Q A A
+ 384     5 7 Q A A
+ 384     4 7 Q A A
+ 384     3 7 Q A A
+ 384     2 7 Q A A
+ 384     5 6 Q A A
+ 384     4 6 Q A A
+ 384     3 6 Q A A
+ 384     2 6 Q A A
+ 384     4 5 Q A A
+ 384     3 5 Q A A
+ 384     2 5 Q A A
+ 384     3 4 Q A A
+ 384     2 4 Q A A
+ 384     2 3 Q A A
+ 384     9 T J A A
+ 384     8 T J A A
+ 384     7 T J A A
+ 384     6 T J A A
+ 384     5 T J A A
+ 384     4 T J A A
+ 384     3 T J A A
+ 384     2 T J A A
+ 384     8 9 J A A
+ 384     7 9 J A A
+ 384     6 9 J A A
+ 384     5 9 J A A
+ 384     4 9 J A A
+ 384     3 9 J A A
+ 384     2 9 J A A
+ 384     7 8 J A A
+ 384     6 8 J A A
+ 384     5 8 J A A
+ 384     4 8 J A A
+ 384     3 8 J A A
+ 384     2 8 J A A
+ 384     6 7 J A A
+ 384     5 7 J A A
+ 384     4 7 J A A
+ 384     3 7 J A A
+ 384     2 7 J A A
+ 384     5 6 J A A
+ 384     4 6 J A A
+ 384     3 6 J A A
+ 384     2 6 J A A
+ 384     4 5 J A A
+ 384     3 5 J A A
+ 384     2 5 J A A
+ 384     3 4 J A A
+ 384     2 4 J A A
+ 384     2 3 J A A
+ 384     8 9 T A A
+ 384     7 9 T A A
+ 384     6 9 T A A
+ 384     5 9 T A A
+ 384     4 9 T A A
+ 384     3 9 T A A
+ 384     2 9 T A A
+ 384     7 8 T A A
+ 384     6 8 T A A
+ 384     5 8 T A A
+ 384     4 8 T A A
+ 384     3 8 T A A
+ 384     2 8 T A A
+ 384     6 7 T A A
+ 384     5 7 T A A
+ 384     4 7 T A A
+ 384     3 7 T A A
+ 384     2 7 T A A
+ 384     5 6 T A A
+ 384     4 6 T A A
+ 384     3 6 T A A
+ 384     2 6 T A A
+ 384     4 5 T A A
+ 384     3 5 T A A
+ 384     2 5 T A A
+ 384     3 4 T A A
+ 384     2 4 T A A
+ 384     2 3 T A A
+ 384     7 8 9 A A
+ 384     6 8 9 A A
+ 384     5 8 9 A A
+ 384     4 8 9 A A
+ 384     3 8 9 A A
+ 384     2 8 9 A A
+ 384     6 7 9 A A
+ 384     5 7 9 A A
+ 384     4 7 9 A A
+ 384     3 7 9 A A
+ 384     2 7 9 A A
+ 384     5 6 9 A A
+ 384     4 6 9 A A
+ 384     3 6 9 A A
+ 384     2 6 9 A A
+ 384     4 5 9 A A
+ 384     3 5 9 A A
+ 384     2 5 9 A A
+ 384     3 4 9 A A
+ 384     2 4 9 A A
+ 384     2 3 9 A A
+ 384     6 7 8 A A
+ 384     5 7 8 A A
+ 384     4 7 8 A A
+ 384     3 7 8 A A
+ 384     2 7 8 A A
+ 384     5 6 8 A A
+ 384     4 6 8 A A
+ 384     3 6 8 A A
+ 384     2 6 8 A A
+ 384     4 5 8 A A
+ 384     3 5 8 A A
+ 384     2 5 8 A A
+ 384     3 4 8 A A
+ 384     2 4 8 A A
+ 384     2 3 8 A A
+ 384     5 6 7 A A
+ 384     4 6 7 A A
+ 384     3 6 7 A A
+ 384     2 6 7 A A
+ 384     4 5 7 A A
+ 384     3 5 7 A A
+ 384     2 5 7 A A
+ 384     3 4 7 A A
+ 384     2 4 7 A A
+ 384     2 3 7 A A
+ 384     4 5 6 A A
+ 384     3 5 6 A A
+ 384     2 5 6 A A
+ 384     3 4 6 A A
+ 384     2 4 6 A A
+ 384     2 3 6 A A
+ 384     3 4 5 A A
+ 384     2 4 5 A A
+ 384     2 3 5 A A
+ 384     2 3 4 A A
+ 384     J Q K K A      Pair of Kings
+ 384     T Q K K A
+ 384     9 Q K K A
+ 384     8 Q K K A
+ 384     7 Q K K A
+ 384     6 Q K K A
+ 384     5 Q K K A
+ 384     4 Q K K A
+ 384     3 Q K K A
+ 384     2 Q K K A
+ 384     T J K K A
+ 384     9 J K K A
+ 384     8 J K K A
+ 384     7 J K K A
+ 384     6 J K K A
+ 384     5 J K K A
+ 384     4 J K K A
+ 384     3 J K K A
+ 384     2 J K K A
+ 384     9 T K K A
+ 384     8 T K K A
+ 384     7 T K K A
+ 384     6 T K K A
+ 384     5 T K K A
+ 384     4 T K K A
+ 384     3 T K K A
+ 384     2 T K K A
+ 384     8 9 K K A
+ 384     7 9 K K A
+ 384     6 9 K K A
+ 384     5 9 K K A
+ 384     4 9 K K A
+ 384     3 9 K K A
+ 384     2 9 K K A
+ 384     7 8 K K A
+ 384     6 8 K K A
+ 384     5 8 K K A
+ 384     4 8 K K A
+ 384     3 8 K K A
+ 384     2 8 K K A
+ 384     6 7 K K A
+ 384     5 7 K K A
+ 384     4 7 K K A
+ 384     3 7 K K A
+ 384     2 7 K K A
+ 384     5 6 K K A
+ 384     4 6 K K A
+ 384     3 6 K K A
+ 384     2 6 K K A
+ 384     4 5 K K A
+ 384     3 5 K K A
+ 384     2 5 K K A
+ 384     3 4 K K A
+ 384     2 4 K K A
+ 384     2 3 K K A
+ 384     T J Q K K
+ 384     9 J Q K K
+ 384     8 J Q K K
+ 384     7 J Q K K
+ 384     6 J Q K K
+ 384     5 J Q K K
+ 384     4 J Q K K
+ 384     3 J Q K K
+ 384     2 J Q K K
+ 384     9 T Q K K
+ 384     8 T Q K K
+ 384     7 T Q K K
+ 384     6 T Q K K
+ 384     5 T Q K K
+ 384     4 T Q K K
+ 384     3 T Q K K
+ 384     2 T Q K K
+ 384     8 9 Q K K
+ 384     7 9 Q K K
+ 384     6 9 Q K K
+ 384     5 9 Q K K
+ 384     4 9 Q K K
+ 384     3 9 Q K K
+ 384     2 9 Q K K
+ 384     7 8 Q K K
+ 384     6 8 Q K K
+ 384     5 8 Q K K
+ 384     4 8 Q K K
+ 384     3 8 Q K K
+ 384     2 8 Q K K
+ 384     6 7 Q K K
+ 384     5 7 Q K K
+ 384     4 7 Q K K
+ 384     3 7 Q K K
+ 384     2 7 Q K K
+ 384     5 6 Q K K
+ 384     4 6 Q K K
+ 384     3 6 Q K K
+ 384     2 6 Q K K
+ 384     4 5 Q K K
+ 384     3 5 Q K K
+ 384     2 5 Q K K
+ 384     3 4 Q K K
+ 384     2 4 Q K K
+ 384     2 3 Q K K
+ 384     9 T J K K
+ 384     8 T J K K
+ 384     7 T J K K
+ 384     6 T J K K
+ 384     5 T J K K
+ 384     4 T J K K
+ 384     3 T J K K
+ 384     2 T J K K
+ 384     8 9 J K K
+ 384     7 9 J K K
+ 384     6 9 J K K
+ 384     5 9 J K K
+ 384     4 9 J K K
+ 384     3 9 J K K
+ 384     2 9 J K K
+ 384     7 8 J K K
+ 384     6 8 J K K
+ 384     5 8 J K K
+ 384     4 8 J K K
+ 384     3 8 J K K
+ 384     2 8 J K K
+ 384     6 7 J K K
+ 384     5 7 J K K
+ 384     4 7 J K K
+ 384     3 7 J K K
+ 384     2 7 J K K
+ 384     5 6 J K K
+ 384     4 6 J K K
+ 384     3 6 J K K
+ 384     2 6 J K K
+ 384     4 5 J K K
+ 384     3 5 J K K
+ 384     2 5 J K K
+ 384     3 4 J K K
+ 384     2 4 J K K
+ 384     2 3 J K K
+ 384     8 9 T K K
+ 384     7 9 T K K
+ 384     6 9 T K K
+ 384     5 9 T K K
+ 384     4 9 T K K
+ 384     3 9 T K K
+ 384     2 9 T K K
+ 384     7 8 T K K
+ 384     6 8 T K K
+ 384     5 8 T K K
+ 384     4 8 T K K
+ 384     3 8 T K K
+ 384     2 8 T K K
+ 384     6 7 T K K
+ 384     5 7 T K K
+ 384     4 7 T K K
+ 384     3 7 T K K
+ 384     2 7 T K K
+ 384     5 6 T K K
+ 384     4 6 T K K
+ 384     3 6 T K K
+ 384     2 6 T K K
+ 384     4 5 T K K
+ 384     3 5 T K K
+ 384     2 5 T K K
+ 384     3 4 T K K
+ 384     2 4 T K K
+ 384     2 3 T K K
+ 384     7 8 9 K K
+ 384     6 8 9 K K
+ 384     5 8 9 K K
+ 384     4 8 9 K K
+ 384     3 8 9 K K
+ 384     2 8 9 K K
+ 384     6 7 9 K K
+ 384     5 7 9 K K
+ 384     4 7 9 K K
+ 384     3 7 9 K K
+ 384     2 7 9 K K
+ 384     5 6 9 K K
+ 384     4 6 9 K K
+ 384     3 6 9 K K
+ 384     2 6 9 K K
+ 384     4 5 9 K K
+ 384     3 5 9 K K
+ 384     2 5 9 K K
+ 384     3 4 9 K K
+ 384     2 4 9 K K
+ 384     2 3 9 K K
+ 384     6 7 8 K K
+ 384     5 7 8 K K
+ 384     4 7 8 K K
+ 384     3 7 8 K K
+ 384     2 7 8 K K
+ 384     5 6 8 K K
+ 384     4 6 8 K K
+ 384     3 6 8 K K
+ 384     2 6 8 K K
+ 384     4 5 8 K K
+ 384     3 5 8 K K
+ 384     2 5 8 K K
+ 384     3 4 8 K K
+ 384     2 4 8 K K
+ 384     2 3 8 K K
+ 384     5 6 7 K K
+ 384     4 6 7 K K
+ 384     3 6 7 K K
+ 384     2 6 7 K K
+ 384     4 5 7 K K
+ 384     3 5 7 K K
+ 384     2 5 7 K K
+ 384     3 4 7 K K
+ 384     2 4 7 K K
+ 384     2 3 7 K K
+ 384     4 5 6 K K
+ 384     3 5 6 K K
+ 384     2 5 6 K K
+ 384     3 4 6 K K
+ 384     2 4 6 K K
+ 384     2 3 6 K K
+ 384     3 4 5 K K
+ 384     2 4 5 K K
+ 384     2 3 5 K K
+ 384     2 3 4 K K
+ 384     J Q Q K A      Pair of Queens
+ 384     T Q Q K A
+ 384     9 Q Q K A
+ 384     8 Q Q K A
+ 384     7 Q Q K A
+ 384     6 Q Q K A
+ 384     5 Q Q K A
+ 384     4 Q Q K A
+ 384     3 Q Q K A
+ 384     2 Q Q K A
+ 384     T J Q Q A
+ 384     9 J Q Q A
+ 384     8 J Q Q A
+ 384     7 J Q Q A
+ 384     6 J Q Q A
+ 384     5 J Q Q A
+ 384     4 J Q Q A
+ 384     3 J Q Q A
+ 384     2 J Q Q A
+ 384     9 T Q Q A
+ 384     8 T Q Q A
+ 384     7 T Q Q A
+ 384     6 T Q Q A
+ 384     5 T Q Q A
+ 384     4 T Q Q A
+ 384     3 T Q Q A
+ 384     2 T Q Q A
+ 384     8 9 Q Q A
+ 384     7 9 Q Q A
+ 384     6 9 Q Q A
+ 384     5 9 Q Q A
+ 384     4 9 Q Q A
+ 384     3 9 Q Q A
+ 384     2 9 Q Q A
+ 384     7 8 Q Q A
+ 384     6 8 Q Q A
+ 384     5 8 Q Q A
+ 384     4 8 Q Q A
+ 384     3 8 Q Q A
+ 384     2 8 Q Q A
+ 384     6 7 Q Q A
+ 384     5 7 Q Q A
+ 384     4 7 Q Q A
+ 384     3 7 Q Q A
+ 384     2 7 Q Q A
+ 384     5 6 Q Q A
+ 384     4 6 Q Q A
+ 384     3 6 Q Q A
+ 384     2 6 Q Q A
+ 384     4 5 Q Q A
+ 384     3 5 Q Q A
+ 384     2 5 Q Q A
+ 384     3 4 Q Q A
+ 384     2 4 Q Q A
+ 384     2 3 Q Q A
+ 384     T J Q Q K
+ 384     9 J Q Q K
+ 384     8 J Q Q K
+ 384     7 J Q Q K
+ 384     6 J Q Q K
+ 384     5 J Q Q K
+ 384     4 J Q Q K
+ 384     3 J Q Q K
+ 384     2 J Q Q K
+ 384     9 T Q Q K
+ 384     8 T Q Q K
+ 384     7 T Q Q K
+ 384     6 T Q Q K
+ 384     5 T Q Q K
+ 384     4 T Q Q K
+ 384     3 T Q Q K
+ 384     2 T Q Q K
+ 384     8 9 Q Q K
+ 384     7 9 Q Q K
+ 384     6 9 Q Q K
+ 384     5 9 Q Q K
+ 384     4 9 Q Q K
+ 384     3 9 Q Q K
+ 384     2 9 Q Q K
+ 384     7 8 Q Q K
+ 384     6 8 Q Q K
+ 384     5 8 Q Q K
+ 384     4 8 Q Q K
+ 384     3 8 Q Q K
+ 384     2 8 Q Q K
+ 384     6 7 Q Q K
+ 384     5 7 Q Q K
+ 384     4 7 Q Q K
+ 384     3 7 Q Q K
+ 384     2 7 Q Q K
+ 384     5 6 Q Q K
+ 384     4 6 Q Q K
+ 384     3 6 Q Q K
+ 384     2 6 Q Q K
+ 384     4 5 Q Q K
+ 384     3 5 Q Q K
+ 384     2 5 Q Q K
+ 384     3 4 Q Q K
+ 384     2 4 Q Q K
+ 384     2 3 Q Q K
+ 384     9 T J Q Q
+ 384     8 T J Q Q
+ 384     7 T J Q Q
+ 384     6 T J Q Q
+ 384     5 T J Q Q
+ 384     4 T J Q Q
+ 384     3 T J Q Q
+ 384     2 T J Q Q
+ 384     8 9 J Q Q
+ 384     7 9 J Q Q
+ 384     6 9 J Q Q
+ 384     5 9 J Q Q
+ 384     4 9 J Q Q
+ 384     3 9 J Q Q
+ 384     2 9 J Q Q
+ 384     7 8 J Q Q
+ 384     6 8 J Q Q
+ 384     5 8 J Q Q
+ 384     4 8 J Q Q
+ 384     3 8 J Q Q
+ 384     2 8 J Q Q
+ 384     6 7 J Q Q
+ 384     5 7 J Q Q
+ 384     4 7 J Q Q
+ 384     3 7 J Q Q
+ 384     2 7 J Q Q
+ 384     5 6 J Q Q
+ 384     4 6 J Q Q
+ 384     3 6 J Q Q
+ 384     2 6 J Q Q
+ 384     4 5 J Q Q
+ 384     3 5 J Q Q
+ 384     2 5 J Q Q
+ 384     3 4 J Q Q
+ 384     2 4 J Q Q
+ 384     2 3 J Q Q
+ 384     8 9 T Q Q
+ 384     7 9 T Q Q
+ 384     6 9 T Q Q
+ 384     5 9 T Q Q
+ 384     4 9 T Q Q
+ 384     3 9 T Q Q
+ 384     2 9 T Q Q
+ 384     7 8 T Q Q
+ 384     6 8 T Q Q
+ 384     5 8 T Q Q
+ 384     4 8 T Q Q
+ 384     3 8 T Q Q
+ 384     2 8 T Q Q
+ 384     6 7 T Q Q
+ 384     5 7 T Q Q
+ 384     4 7 T Q Q
+ 384     3 7 T Q Q
+ 384     2 7 T Q Q
+ 384     5 6 T Q Q
+ 384     4 6 T Q Q
+ 384     3 6 T Q Q
+ 384     2 6 T Q Q
+ 384     4 5 T Q Q
+ 384     3 5 T Q Q
+ 384     2 5 T Q Q
+ 384     3 4 T Q Q
+ 384     2 4 T Q Q
+ 384     2 3 T Q Q
+ 384     7 8 9 Q Q
+ 384     6 8 9 Q Q
+ 384     5 8 9 Q Q
+ 384     4 8 9 Q Q
+ 384     3 8 9 Q Q
+ 384     2 8 9 Q Q
+ 384     6 7 9 Q Q
+ 384     5 7 9 Q Q
+ 384     4 7 9 Q Q
+ 384     3 7 9 Q Q
+ 384     2 7 9 Q Q
+ 384     5 6 9 Q Q
+ 384     4 6 9 Q Q
+ 384     3 6 9 Q Q
+ 384     2 6 9 Q Q
+ 384     4 5 9 Q Q
+ 384     3 5 9 Q Q
+ 384     2 5 9 Q Q
+ 384     3 4 9 Q Q
+ 384     2 4 9 Q Q
+ 384     2 3 9 Q Q
+ 384     6 7 8 Q Q
+ 384     5 7 8 Q Q
+ 384     4 7 8 Q Q
+ 384     3 7 8 Q Q
+ 384     2 7 8 Q Q
+ 384     5 6 8 Q Q
+ 384     4 6 8 Q Q
+ 384     3 6 8 Q Q
+ 384     2 6 8 Q Q
+ 384     4 5 8 Q Q
+ 384     3 5 8 Q Q
+ 384     2 5 8 Q Q
+ 384     3 4 8 Q Q
+ 384     2 4 8 Q Q
+ 384     2 3 8 Q Q
+ 384     5 6 7 Q Q
+ 384     4 6 7 Q Q
+ 384     3 6 7 Q Q
+ 384     2 6 7 Q Q
+ 384     4 5 7 Q Q
+ 384     3 5 7 Q Q
+ 384     2 5 7 Q Q
+ 384     3 4 7 Q Q
+ 384     2 4 7 Q Q
+ 384     2 3 7 Q Q
+ 384     4 5 6 Q Q
+ 384     3 5 6 Q Q
+ 384     2 5 6 Q Q
+ 384     3 4 6 Q Q
+ 384     2 4 6 Q Q
+ 384     2 3 6 Q Q
+ 384     3 4 5 Q Q
+ 384     2 4 5 Q Q
+ 384     2 3 5 Q Q
+ 384     2 3 4 Q Q
+ 384     J J Q K A      Pair of Jacks
+ 384     T J J K A
+ 384     9 J J K A
+ 384     8 J J K A
+ 384     7 J J K A
+ 384     6 J J K A
+ 384     5 J J K A
+ 384     4 J J K A
+ 384     3 J J K A
+ 384     2 J J K A
+ 384     T J J Q A
+ 384     9 J J Q A
+ 384     8 J J Q A
+ 384     7 J J Q A
+ 384     6 J J Q A
+ 384     5 J J Q A
+ 384     4 J J Q A
+ 384     3 J J Q A
+ 384     2 J J Q A
+ 384     9 T J J A
+ 384     8 T J J A
+ 384     7 T J J A
+ 384     6 T J J A
+ 384     5 T J J A
+ 384     4 T J J A
+ 384     3 T J J A
+ 384     2 T J J A
+ 384     8 9 J J A
+ 384     7 9 J J A
+ 384     6 9 J J A
+ 384     5 9 J J A
+ 384     4 9 J J A
+ 384     3 9 J J A
+ 384     2 9 J J A
+ 384     7 8 J J A
+ 384     6 8 J J A
+ 384     5 8 J J A
+ 384     4 8 J J A
+ 384     3 8 J J A
+ 384     2 8 J J A
+ 384     6 7 J J A
+ 384     5 7 J J A
+ 384     4 7 J J A
+ 384     3 7 J J A
+ 384     2 7 J J A
+ 384     5 6 J J A
+ 384     4 6 J J A
+ 384     3 6 J J A
+ 384     2 6 J J A
+ 384     4 5 J J A
+ 384     3 5 J J A
+ 384     2 5 J J A
+ 384     3 4 J J A
+ 384     2 4 J J A
+ 384     2 3 J J A
+ 384     T J J Q K
+ 384     9 J J Q K
+ 384     8 J J Q K
+ 384     7 J J Q K
+ 384     6 J J Q K
+ 384     5 J J Q K
+ 384     4 J J Q K
+ 384     3 J J Q K
+ 384     2 J J Q K
+ 384     9 T J J K
+ 384     8 T J J K
+ 384     7 T J J K
+ 384     6 T J J K
+ 384     5 T J J K
+ 384     4 T J J K
+ 384     3 T J J K
+ 384     2 T J J K
+ 384     8 9 J J K
+ 384     7 9 J J K
+ 384     6 9 J J K
+ 384     5 9 J J K
+ 384     4 9 J J K
+ 384     3 9 J J K
+ 384     2 9 J J K
+ 384     7 8 J J K
+ 384     6 8 J J K
+ 384     5 8 J J K
+ 384     4 8 J J K
+ 384     3 8 J J K
+ 384     2 8 J J K
+ 384     6 7 J J K
+ 384     5 7 J J K
+ 384     4 7 J J K
+ 384     3 7 J J K
+ 384     2 7 J J K
+ 384     5 6 J J K
+ 384     4 6 J J K
+ 384     3 6 J J K
+ 384     2 6 J J K
+ 384     4 5 J J K
+ 384     3 5 J J K
+ 384     2 5 J J K
+ 384     3 4 J J K
+ 384     2 4 J J K
+ 384     2 3 J J K
+ 384     9 T J J Q
+ 384     8 T J J Q
+ 384     7 T J J Q
+ 384     6 T J J Q
+ 384     5 T J J Q
+ 384     4 T J J Q
+ 384     3 T J J Q
+ 384     2 T J J Q
+ 384     8 9 J J Q
+ 384     7 9 J J Q
+ 384     6 9 J J Q
+ 384     5 9 J J Q
+ 384     4 9 J J Q
+ 384     3 9 J J Q
+ 384     2 9 J J Q
+ 384     7 8 J J Q
+ 384     6 8 J J Q
+ 384     5 8 J J Q
+ 384     4 8 J J Q
+ 384     3 8 J J Q
+ 384     2 8 J J Q
+ 384     6 7 J J Q
+ 384     5 7 J J Q
+ 384     4 7 J J Q
+ 384     3 7 J J Q
+ 384     2 7 J J Q
+ 384     5 6 J J Q
+ 384     4 6 J J Q
+ 384     3 6 J J Q
+ 384     2 6 J J Q
+ 384     4 5 J J Q
+ 384     3 5 J J Q
+ 384     2 5 J J Q
+ 384     3 4 J J Q
+ 384     2 4 J J Q
+ 384     2 3 J J Q
+ 384     8 9 T J J
+ 384     7 9 T J J
+ 384     6 9 T J J
+ 384     5 9 T J J
+ 384     4 9 T J J
+ 384     3 9 T J J
+ 384     2 9 T J J
+ 384     7 8 T J J
+ 384     6 8 T J J
+ 384     5 8 T J J
+ 384     4 8 T J J
+ 384     3 8 T J J
+ 384     2 8 T J J
+ 384     6 7 T J J
+ 384     5 7 T J J
+ 384     4 7 T J J
+ 384     3 7 T J J
+ 384     2 7 T J J
+ 384     5 6 T J J
+ 384     4 6 T J J
+ 384     3 6 T J J
+ 384     2 6 T J J
+ 384     4 5 T J J
+ 384     3 5 T J J
+ 384     2 5 T J J
+ 384     3 4 T J J
+ 384     2 4 T J J
+ 384     2 3 T J J
+ 384     7 8 9 J J
+ 384     6 8 9 J J
+ 384     5 8 9 J J
+ 384     4 8 9 J J
+ 384     3 8 9 J J
+ 384     2 8 9 J J
+ 384     6 7 9 J J
+ 384     5 7 9 J J
+ 384     4 7 9 J J
+ 384     3 7 9 J J
+ 384     2 7 9 J J
+ 384     5 6 9 J J
+ 384     4 6 9 J J
+ 384     3 6 9 J J
+ 384     2 6 9 J J
+ 384     4 5 9 J J
+ 384     3 5 9 J J
+ 384     2 5 9 J J
+ 384     3 4 9 J J
+ 384     2 4 9 J J
+ 384     2 3 9 J J
+ 384     6 7 8 J J
+ 384     5 7 8 J J
+ 384     4 7 8 J J
+ 384     3 7 8 J J
+ 384     2 7 8 J J
+ 384     5 6 8 J J
+ 384     4 6 8 J J
+ 384     3 6 8 J J
+ 384     2 6 8 J J
+ 384     4 5 8 J J
+ 384     3 5 8 J J
+ 384     2 5 8 J J
+ 384     3 4 8 J J
+ 384     2 4 8 J J
+ 384     2 3 8 J J
+ 384     5 6 7 J J
+ 384     4 6 7 J J
+ 384     3 6 7 J J
+ 384     2 6 7 J J
+ 384     4 5 7 J J
+ 384     3 5 7 J J
+ 384     2 5 7 J J
+ 384     3 4 7 J J
+ 384     2 4 7 J J
+ 384     2 3 7 J J
+ 384     4 5 6 J J
+ 384     3 5 6 J J
+ 384     2 5 6 J J
+ 384     3 4 6 J J
+ 384     2 4 6 J J
+ 384     2 3 6 J J
+ 384     3 4 5 J J
+ 384     2 4 5 J J
+ 384     2 3 5 J J
+ 384     2 3 4 J J
+ 384     T T Q K A      Pair of Tens
+ 384     T T J K A
+ 384     9 T T K A
+ 384     8 T T K A
+ 384     7 T T K A
+ 384     6 T T K A
+ 384     5 T T K A
+ 384     4 T T K A
+ 384     3 T T K A
+ 384     2 T T K A
+ 384     T T J Q A
+ 384     9 T T Q A
+ 384     8 T T Q A
+ 384     7 T T Q A
+ 384     6 T T Q A
+ 384     5 T T Q A
+ 384     4 T T Q A
+ 384     3 T T Q A
+ 384     2 T T Q A
+ 384     9 T T J A
+ 384     8 T T J A
+ 384     7 T T J A
+ 384     6 T T J A
+ 384     5 T T J A
+ 384     4 T T J A
+ 384     3 T T J A
+ 384     2 T T J A
+ 384     8 9 T T A
+ 384     7 9 T T A
+ 384     6 9 T T A
+ 384     5 9 T T A
+ 384     4 9 T T A
+ 384     3 9 T T A
+ 384     2 9 T T A
+ 384     7 8 T T A
+ 384     6 8 T T A
+ 384     5 8 T T A
+ 384     4 8 T T A
+ 384     3 8 T T A
+ 384     2 8 T T A
+ 384     6 7 T T A
+ 384     5 7 T T A
+ 384     4 7 T T A
+ 384     3 7 T T A
+ 384     2 7 T T A
+ 384     5 6 T T A
+ 384     4 6 T T A
+ 384     3 6 T T A
+ 384     2 6 T T A
+ 384     4 5 T T A
+ 384     3 5 T T A
+ 384     2 5 T T A
+ 384     3 4 T T A
+ 384     2 4 T T A
+ 384     2 3 T T A
+ 384     T T J Q K
+ 384     9 T T Q K
+ 384     8 T T Q K
+ 384     7 T T Q K
+ 384     6 T T Q K
+ 384     5 T T Q K
+ 384     4 T T Q K
+ 384     3 T T Q K
+ 384     2 T T Q K
+ 384     9 T T J K
+ 384     8 T T J K
+ 384     7 T T J K
+ 384     6 T T J K
+ 384     5 T T J K
+ 384     4 T T J K
+ 384     3 T T J K
+ 384     2 T T J K
+ 384     8 9 T T K
+ 384     7 9 T T K
+ 384     6 9 T T K
+ 384     5 9 T T K
+ 384     4 9 T T K
+ 384     3 9 T T K
+ 384     2 9 T T K
+ 384     7 8 T T K
+ 384     6 8 T T K
+ 384     5 8 T T K
+ 384     4 8 T T K
+ 384     3 8 T T K
+ 384     2 8 T T K
+ 384     6 7 T T K
+ 384     5 7 T T K
+ 384     4 7 T T K
+ 384     3 7 T T K
+ 384     2 7 T T K
+ 384     5 6 T T K
+ 384     4 6 T T K
+ 384     3 6 T T K
+ 384     2 6 T T K
+ 384     4 5 T T K
+ 384     3 5 T T K
+ 384     2 5 T T K
+ 384     3 4 T T K
+ 384     2 4 T T K
+ 384     2 3 T T K
+ 384     9 T T J Q
+ 384     8 T T J Q
+ 384     7 T T J Q
+ 384     6 T T J Q
+ 384     5 T T J Q
+ 384     4 T T J Q
+ 384     3 T T J Q
+ 384     2 T T J Q
+ 384     8 9 T T Q
+ 384     7 9 T T Q
+ 384     6 9 T T Q
+ 384     5 9 T T Q
+ 384     4 9 T T Q
+ 384     3 9 T T Q
+ 384     2 9 T T Q
+ 384     7 8 T T Q
+ 384     6 8 T T Q
+ 384     5 8 T T Q
+ 384     4 8 T T Q
+ 384     3 8 T T Q
+ 384     2 8 T T Q
+ 384     6 7 T T Q
+ 384     5 7 T T Q
+ 384     4 7 T T Q
+ 384     3 7 T T Q
+ 384     2 7 T T Q
+ 384     5 6 T T Q
+ 384     4 6 T T Q
+ 384     3 6 T T Q
+ 384     2 6 T T Q
+ 384     4 5 T T Q
+ 384     3 5 T T Q
+ 384     2 5 T T Q
+ 384     3 4 T T Q
+ 384     2 4 T T Q
+ 384     2 3 T T Q
+ 384     8 9 T T J
+ 384     7 9 T T J
+ 384     6 9 T T J
+ 384     5 9 T T J
+ 384     4 9 T T J
+ 384     3 9 T T J
+ 384     2 9 T T J
+ 384     7 8 T T J
+ 384     6 8 T T J
+ 384     5 8 T T J
+ 384     4 8 T T J
+ 384     3 8 T T J
+ 384     2 8 T T J
+ 384     6 7 T T J
+ 384     5 7 T T J
+ 384     4 7 T T J
+ 384     3 7 T T J
+ 384     2 7 T T J
+ 384     5 6 T T J
+ 384     4 6 T T J
+ 384     3 6 T T J
+ 384     2 6 T T J
+ 384     4 5 T T J
+ 384     3 5 T T J
+ 384     2 5 T T J
+ 384     3 4 T T J
+ 384     2 4 T T J
+ 384     2 3 T T J
+ 384     7 8 9 T T
+ 384     6 8 9 T T
+ 384     5 8 9 T T
+ 384     4 8 9 T T
+ 384     3 8 9 T T
+ 384     2 8 9 T T
+ 384     6 7 9 T T
+ 384     5 7 9 T T
+ 384     4 7 9 T T
+ 384     3 7 9 T T
+ 384     2 7 9 T T
+ 384     5 6 9 T T
+ 384     4 6 9 T T
+ 384     3 6 9 T T
+ 384     2 6 9 T T
+ 384     4 5 9 T T
+ 384     3 5 9 T T
+ 384     2 5 9 T T
+ 384     3 4 9 T T
+ 384     2 4 9 T T
+ 384     2 3 9 T T
+ 384     6 7 8 T T
+ 384     5 7 8 T T
+ 384     4 7 8 T T
+ 384     3 7 8 T T
+ 384     2 7 8 T T
+ 384     5 6 8 T T
+ 384     4 6 8 T T
+ 384     3 6 8 T T
+ 384     2 6 8 T T
+ 384     4 5 8 T T
+ 384     3 5 8 T T
+ 384     2 5 8 T T
+ 384     3 4 8 T T
+ 384     2 4 8 T T
+ 384     2 3 8 T T
+ 384     5 6 7 T T
+ 384     4 6 7 T T
+ 384     3 6 7 T T
+ 384     2 6 7 T T
+ 384     4 5 7 T T
+ 384     3 5 7 T T
+ 384     2 5 7 T T
+ 384     3 4 7 T T
+ 384     2 4 7 T T
+ 384     2 3 7 T T
+ 384     4 5 6 T T
+ 384     3 5 6 T T
+ 384     2 5 6 T T
+ 384     3 4 6 T T
+ 384     2 4 6 T T
+ 384     2 3 6 T T
+ 384     3 4 5 T T
+ 384     2 4 5 T T
+ 384     2 3 5 T T
+ 384     2 3 4 T T
+ 384     9 9 Q K A      Pair of Nines
+ 384     9 9 J K A
+ 384     9 9 T K A
+ 384     8 9 9 K A
+ 384     7 9 9 K A
+ 384     6 9 9 K A
+ 384     5 9 9 K A
+ 384     4 9 9 K A
+ 384     3 9 9 K A
+ 384     2 9 9 K A
+ 384     9 9 J Q A
+ 384     9 9 T Q A
+ 384     8 9 9 Q A
+ 384     7 9 9 Q A
+ 384     6 9 9 Q A
+ 384     5 9 9 Q A
+ 384     4 9 9 Q A
+ 384     3 9 9 Q A
+ 384     2 9 9 Q A
+ 384     9 9 T J A
+ 384     8 9 9 J A
+ 384     7 9 9 J A
+ 384     6 9 9 J A
+ 384     5 9 9 J A
+ 384     4 9 9 J A
+ 384     3 9 9 J A
+ 384     2 9 9 J A
+ 384     8 9 9 T A
+ 384     7 9 9 T A
+ 384     6 9 9 T A
+ 384     5 9 9 T A
+ 384     4 9 9 T A
+ 384     3 9 9 T A
+ 384     2 9 9 T A
+ 384     7 8 9 9 A
+ 384     6 8 9 9 A
+ 384     5 8 9 9 A
+ 384     4 8 9 9 A
+ 384     3 8 9 9 A
+ 384     2 8 9 9 A
+ 384     6 7 9 9 A
+ 384     5 7 9 9 A
+ 384     4 7 9 9 A
+ 384     3 7 9 9 A
+ 384     2 7 9 9 A
+ 384     5 6 9 9 A
+ 384     4 6 9 9 A
+ 384     3 6 9 9 A
+ 384     2 6 9 9 A
+ 384     4 5 9 9 A
+ 384     3 5 9 9 A
+ 384     2 5 9 9 A
+ 384     3 4 9 9 A
+ 384     2 4 9 9 A
+ 384     2 3 9 9 A
+ 384     9 9 J Q K
+ 384     9 9 T Q K
+ 384     8 9 9 Q K
+ 384     7 9 9 Q K
+ 384     6 9 9 Q K
+ 384     5 9 9 Q K
+ 384     4 9 9 Q K
+ 384     3 9 9 Q K
+ 384     2 9 9 Q K
+ 384     9 9 T J K
+ 384     8 9 9 J K
+ 384     7 9 9 J K
+ 384     6 9 9 J K
+ 384     5 9 9 J K
+ 384     4 9 9 J K
+ 384     3 9 9 J K
+ 384     2 9 9 J K
+ 384     8 9 9 T K
+ 384     7 9 9 T K
+ 384     6 9 9 T K
+ 384     5 9 9 T K
+ 384     4 9 9 T K
+ 384     3 9 9 T K
+ 384     2 9 9 T K
+ 384     7 8 9 9 K
+ 384     6 8 9 9 K
+ 384     5 8 9 9 K
+ 384     4 8 9 9 K
+ 384     3 8 9 9 K
+ 384     2 8 9 9 K
+ 384     6 7 9 9 K
+ 384     5 7 9 9 K
+ 384     4 7 9 9 K
+ 384     3 7 9 9 K
+ 384     2 7 9 9 K
+ 384     5 6 9 9 K
+ 384     4 6 9 9 K
+ 384     3 6 9 9 K
+ 384     2 6 9 9 K
+ 384     4 5 9 9 K
+ 384     3 5 9 9 K
+ 384     2 5 9 9 K
+ 384     3 4 9 9 K
+ 384     2 4 9 9 K
+ 384     2 3 9 9 K
+ 384     9 9 T J Q
+ 384     8 9 9 J Q
+ 384     7 9 9 J Q
+ 384     6 9 9 J Q
+ 384     5 9 9 J Q
+ 384     4 9 9 J Q
+ 384     3 9 9 J Q
+ 384     2 9 9 J Q
+ 384     8 9 9 T Q
+ 384     7 9 9 T Q
+ 384     6 9 9 T Q
+ 384     5 9 9 T Q
+ 384     4 9 9 T Q
+ 384     3 9 9 T Q
+ 384     2 9 9 T Q
+ 384     7 8 9 9 Q
+ 384     6 8 9 9 Q
+ 384     5 8 9 9 Q
+ 384     4 8 9 9 Q
+ 384     3 8 9 9 Q
+ 384     2 8 9 9 Q
+ 384     6 7 9 9 Q
+ 384     5 7 9 9 Q
+ 384     4 7 9 9 Q
+ 384     3 7 9 9 Q
+ 384     2 7 9 9 Q
+ 384     5 6 9 9 Q
+ 384     4 6 9 9 Q
+ 384     3 6 9 9 Q
+ 384     2 6 9 9 Q
+ 384     4 5 9 9 Q
+ 384     3 5 9 9 Q
+ 384     2 5 9 9 Q
+ 384     3 4 9 9 Q
+ 384     2 4 9 9 Q
+ 384     2 3 9 9 Q
+ 384     8 9 9 T J
+ 384     7 9 9 T J
+ 384     6 9 9 T J
+ 384     5 9 9 T J
+ 384     4 9 9 T J
+ 384     3 9 9 T J
+ 384     2 9 9 T J
+ 384     7 8 9 9 J
+ 384     6 8 9 9 J
+ 384     5 8 9 9 J
+ 384     4 8 9 9 J
+ 384     3 8 9 9 J
+ 384     2 8 9 9 J
+ 384     6 7 9 9 J
+ 384     5 7 9 9 J
+ 384     4 7 9 9 J
+ 384     3 7 9 9 J
+ 384     2 7 9 9 J
+ 384     5 6 9 9 J
+ 384     4 6 9 9 J
+ 384     3 6 9 9 J
+ 384     2 6 9 9 J
+ 384     4 5 9 9 J
+ 384     3 5 9 9 J
+ 384     2 5 9 9 J
+ 384     3 4 9 9 J
+ 384     2 4 9 9 J
+ 384     2 3 9 9 J
+ 384     7 8 9 9 T
+ 384     6 8 9 9 T
+ 384     5 8 9 9 T
+ 384     4 8 9 9 T
+ 384     3 8 9 9 T
+ 384     2 8 9 9 T
+ 384     6 7 9 9 T
+ 384     5 7 9 9 T
+ 384     4 7 9 9 T
+ 384     3 7 9 9 T
+ 384     2 7 9 9 T
+ 384     5 6 9 9 T
+ 384     4 6 9 9 T
+ 384     3 6 9 9 T
+ 384     2 6 9 9 T
+ 384     4 5 9 9 T
+ 384     3 5 9 9 T
+ 384     2 5 9 9 T
+ 384     3 4 9 9 T
+ 384     2 4 9 9 T
+ 384     2 3 9 9 T
+ 384     6 7 8 9 9
+ 384     5 7 8 9 9
+ 384     4 7 8 9 9
+ 384     3 7 8 9 9
+ 384     2 7 8 9 9
+ 384     5 6 8 9 9
+ 384     4 6 8 9 9
+ 384     3 6 8 9 9
+ 384     2 6 8 9 9
+ 384     4 5 8 9 9
+ 384     3 5 8 9 9
+ 384     2 5 8 9 9
+ 384     3 4 8 9 9
+ 384     2 4 8 9 9
+ 384     2 3 8 9 9
+ 384     5 6 7 9 9
+ 384     4 6 7 9 9
+ 384     3 6 7 9 9
+ 384     2 6 7 9 9
+ 384     4 5 7 9 9
+ 384     3 5 7 9 9
+ 384     2 5 7 9 9
+ 384     3 4 7 9 9
+ 384     2 4 7 9 9
+ 384     2 3 7 9 9
+ 384     4 5 6 9 9
+ 384     3 5 6 9 9
+ 384     2 5 6 9 9
+ 384     3 4 6 9 9
+ 384     2 4 6 9 9
+ 384     2 3 6 9 9
+ 384     3 4 5 9 9
+ 384     2 4 5 9 9
+ 384     2 3 5 9 9
+ 384     2 3 4 9 9
+ 384     8 8 Q K A      Pair of Eights
+ 384     8 8 J K A
+ 384     8 8 T K A
+ 384     8 8 9 K A
+ 384     7 8 8 K A
+ 384     6 8 8 K A
+ 384     5 8 8 K A
+ 384     4 8 8 K A
+ 384     3 8 8 K A
+ 384     2 8 8 K A
+ 384     8 8 J Q A
+ 384     8 8 T Q A
+ 384     8 8 9 Q A
+ 384     7 8 8 Q A
+ 384     6 8 8 Q A
+ 384     5 8 8 Q A
+ 384     4 8 8 Q A
+ 384     3 8 8 Q A
+ 384     2 8 8 Q A
+ 384     8 8 T J A
+ 384     8 8 9 J A
+ 384     7 8 8 J A
+ 384     6 8 8 J A
+ 384     5 8 8 J A
+ 384     4 8 8 J A
+ 384     3 8 8 J A
+ 384     2 8 8 J A
+ 384     8 8 9 T A
+ 384     7 8 8 T A
+ 384     6 8 8 T A
+ 384     5 8 8 T A
+ 384     4 8 8 T A
+ 384     3 8 8 T A
+ 384     2 8 8 T A
+ 384     7 8 8 9 A
+ 384     6 8 8 9 A
+ 384     5 8 8 9 A
+ 384     4 8 8 9 A
+ 384     3 8 8 9 A
+ 384     2 8 8 9 A
+ 384     6 7 8 8 A
+ 384     5 7 8 8 A
+ 384     4 7 8 8 A
+ 384     3 7 8 8 A
+ 384     2 7 8 8 A
+ 384     5 6 8 8 A
+ 384     4 6 8 8 A
+ 384     3 6 8 8 A
+ 384     2 6 8 8 A
+ 384     4 5 8 8 A
+ 384     3 5 8 8 A
+ 384     2 5 8 8 A
+ 384     3 4 8 8 A
+ 384     2 4 8 8 A
+ 384     2 3 8 8 A
+ 384     8 8 J Q K
+ 384     8 8 T Q K
+ 384     8 8 9 Q K
+ 384     7 8 8 Q K
+ 384     6 8 8 Q K
+ 384     5 8 8 Q K
+ 384     4 8 8 Q K
+ 384     3 8 8 Q K
+ 384     2 8 8 Q K
+ 384     8 8 T J K
+ 384     8 8 9 J K
+ 384     7 8 8 J K
+ 384     6 8 8 J K
+ 384     5 8 8 J K
+ 384     4 8 8 J K
+ 384     3 8 8 J K
+ 384     2 8 8 J K
+ 384     8 8 9 T K
+ 384     7 8 8 T K
+ 384     6 8 8 T K
+ 384     5 8 8 T K
+ 384     4 8 8 T K
+ 384     3 8 8 T K
+ 384     2 8 8 T K
+ 384     7 8 8 9 K
+ 384     6 8 8 9 K
+ 384     5 8 8 9 K
+ 384     4 8 8 9 K
+ 384     3 8 8 9 K
+ 384     2 8 8 9 K
+ 384     6 7 8 8 K
+ 384     5 7 8 8 K
+ 384     4 7 8 8 K
+ 384     3 7 8 8 K
+ 384     2 7 8 8 K
+ 384     5 6 8 8 K
+ 384     4 6 8 8 K
+ 384     3 6 8 8 K
+ 384     2 6 8 8 K
+ 384     4 5 8 8 K
+ 384     3 5 8 8 K
+ 384     2 5 8 8 K
+ 384     3 4 8 8 K
+ 384     2 4 8 8 K
+ 384     2 3 8 8 K
+ 384     8 8 T J Q
+ 384     8 8 9 J Q
+ 384     7 8 8 J Q
+ 384     6 8 8 J Q
+ 384     5 8 8 J Q
+ 384     4 8 8 J Q
+ 384     3 8 8 J Q
+ 384     2 8 8 J Q
+ 384     8 8 9 T Q
+ 384     7 8 8 T Q
+ 384     6 8 8 T Q
+ 384     5 8 8 T Q
+ 384     4 8 8 T Q
+ 384     3 8 8 T Q
+ 384     2 8 8 T Q
+ 384     7 8 8 9 Q
+ 384     6 8 8 9 Q
+ 384     5 8 8 9 Q
+ 384     4 8 8 9 Q
+ 384     3 8 8 9 Q
+ 384     2 8 8 9 Q
+ 384     6 7 8 8 Q
+ 384     5 7 8 8 Q
+ 384     4 7 8 8 Q
+ 384     3 7 8 8 Q
+ 384     2 7 8 8 Q
+ 384     5 6 8 8 Q
+ 384     4 6 8 8 Q
+ 384     3 6 8 8 Q
+ 384     2 6 8 8 Q
+ 384     4 5 8 8 Q
+ 384     3 5 8 8 Q
+ 384     2 5 8 8 Q
+ 384     3 4 8 8 Q
+ 384     2 4 8 8 Q
+ 384     2 3 8 8 Q
+ 384     8 8 9 T J
+ 384     7 8 8 T J
+ 384     6 8 8 T J
+ 384     5 8 8 T J
+ 384     4 8 8 T J
+ 384     3 8 8 T J
+ 384     2 8 8 T J
+ 384     7 8 8 9 J
+ 384     6 8 8 9 J
+ 384     5 8 8 9 J
+ 384     4 8 8 9 J
+ 384     3 8 8 9 J
+ 384     2 8 8 9 J
+ 384     6 7 8 8 J
+ 384     5 7 8 8 J
+ 384     4 7 8 8 J
+ 384     3 7 8 8 J
+ 384     2 7 8 8 J
+ 384     5 6 8 8 J
+ 384     4 6 8 8 J
+ 384     3 6 8 8 J
+ 384     2 6 8 8 J
+ 384     4 5 8 8 J
+ 384     3 5 8 8 J
+ 384     2 5 8 8 J
+ 384     3 4 8 8 J
+ 384     2 4 8 8 J
+ 384     2 3 8 8 J
+ 384     7 8 8 9 T
+ 384     6 8 8 9 T
+ 384     5 8 8 9 T
+ 384     4 8 8 9 T
+ 384     3 8 8 9 T
+ 384     2 8 8 9 T
+ 384     6 7 8 8 T
+ 384     5 7 8 8 T
+ 384     4 7 8 8 T
+ 384     3 7 8 8 T
+ 384     2 7 8 8 T
+ 384     5 6 8 8 T
+ 384     4 6 8 8 T
+ 384     3 6 8 8 T
+ 384     2 6 8 8 T
+ 384     4 5 8 8 T
+ 384     3 5 8 8 T
+ 384     2 5 8 8 T
+ 384     3 4 8 8 T
+ 384     2 4 8 8 T
+ 384     2 3 8 8 T
+ 384     6 7 8 8 9
+ 384     5 7 8 8 9
+ 384     4 7 8 8 9
+ 384     3 7 8 8 9
+ 384     2 7 8 8 9
+ 384     5 6 8 8 9
+ 384     4 6 8 8 9
+ 384     3 6 8 8 9
+ 384     2 6 8 8 9
+ 384     4 5 8 8 9
+ 384     3 5 8 8 9
+ 384     2 5 8 8 9
+ 384     3 4 8 8 9
+ 384     2 4 8 8 9
+ 384     2 3 8 8 9
+ 384     5 6 7 8 8
+ 384     4 6 7 8 8
+ 384     3 6 7 8 8
+ 384     2 6 7 8 8
+ 384     4 5 7 8 8
+ 384     3 5 7 8 8
+ 384     2 5 7 8 8
+ 384     3 4 7 8 8
+ 384     2 4 7 8 8
+ 384     2 3 7 8 8
+ 384     4 5 6 8 8
+ 384     3 5 6 8 8
+ 384     2 5 6 8 8
+ 384     3 4 6 8 8
+ 384     2 4 6 8 8
+ 384     2 3 6 8 8
+ 384     3 4 5 8 8
+ 384     2 4 5 8 8
+ 384     2 3 5 8 8
+ 384     2 3 4 8 8
+ 384     7 7 Q K A      Pair of Sevens
+ 384     7 7 J K A
+ 384     7 7 T K A
+ 384     7 7 9 K A
+ 384     7 7 8 K A
+ 384     6 7 7 K A
+ 384     5 7 7 K A
+ 384     4 7 7 K A
+ 384     3 7 7 K A
+ 384     2 7 7 K A
+ 384     7 7 J Q A
+ 384     7 7 T Q A
+ 384     7 7 9 Q A
+ 384     7 7 8 Q A
+ 384     6 7 7 Q A
+ 384     5 7 7 Q A
+ 384     4 7 7 Q A
+ 384     3 7 7 Q A
+ 384     2 7 7 Q A
+ 384     7 7 T J A
+ 384     7 7 9 J A
+ 384     7 7 8 J A
+ 384     6 7 7 J A
+ 384     5 7 7 J A
+ 384     4 7 7 J A
+ 384     3 7 7 J A
+ 384     2 7 7 J A
+ 384     7 7 9 T A
+ 384     7 7 8 T A
+ 384     6 7 7 T A
+ 384     5 7 7 T A
+ 384     4 7 7 T A
+ 384     3 7 7 T A
+ 384     2 7 7 T A
+ 384     7 7 8 9 A
+ 384     6 7 7 9 A
+ 384     5 7 7 9 A
+ 384     4 7 7 9 A
+ 384     3 7 7 9 A
+ 384     2 7 7 9 A
+ 384     6 7 7 8 A
+ 384     5 7 7 8 A
+ 384     4 7 7 8 A
+ 384     3 7 7 8 A
+ 384     2 7 7 8 A
+ 384     5 6 7 7 A
+ 384     4 6 7 7 A
+ 384     3 6 7 7 A
+ 384     2 6 7 7 A
+ 384     4 5 7 7 A
+ 384     3 5 7 7 A
+ 384     2 5 7 7 A
+ 384     3 4 7 7 A
+ 384     2 4 7 7 A
+ 384     2 3 7 7 A
+ 384     7 7 J Q K
+ 384     7 7 T Q K
+ 384     7 7 9 Q K
+ 384     7 7 8 Q K
+ 384     6 7 7 Q K
+ 384     5 7 7 Q K
+ 384     4 7 7 Q K
+ 384     3 7 7 Q K
+ 384     2 7 7 Q K
+ 384     7 7 T J K
+ 384     7 7 9 J K
+ 384     7 7 8 J K
+ 384     6 7 7 J K
+ 384     5 7 7 J K
+ 384     4 7 7 J K
+ 384     3 7 7 J K
+ 384     2 7 7 J K
+ 384     7 7 9 T K
+ 384     7 7 8 T K
+ 384     6 7 7 T K
+ 384     5 7 7 T K
+ 384     4 7 7 T K
+ 384     3 7 7 T K
+ 384     2 7 7 T K
+ 384     7 7 8 9 K
+ 384     6 7 7 9 K
+ 384     5 7 7 9 K
+ 384     4 7 7 9 K
+ 384     3 7 7 9 K
+ 384     2 7 7 9 K
+ 384     6 7 7 8 K
+ 384     5 7 7 8 K
+ 384     4 7 7 8 K
+ 384     3 7 7 8 K
+ 384     2 7 7 8 K
+ 384     5 6 7 7 K
+ 384     4 6 7 7 K
+ 384     3 6 7 7 K
+ 384     2 6 7 7 K
+ 384     4 5 7 7 K
+ 384     3 5 7 7 K
+ 384     2 5 7 7 K
+ 384     3 4 7 7 K
+ 384     2 4 7 7 K
+ 384     2 3 7 7 K
+ 384     7 7 T J Q
+ 384     7 7 9 J Q
+ 384     7 7 8 J Q
+ 384     6 7 7 J Q
+ 384     5 7 7 J Q
+ 384     4 7 7 J Q
+ 384     3 7 7 J Q
+ 384     2 7 7 J Q
+ 384     7 7 9 T Q
+ 384     7 7 8 T Q
+ 384     6 7 7 T Q
+ 384     5 7 7 T Q
+ 384     4 7 7 T Q
+ 384     3 7 7 T Q
+ 384     2 7 7 T Q
+ 384     7 7 8 9 Q
+ 384     6 7 7 9 Q
+ 384     5 7 7 9 Q
+ 384     4 7 7 9 Q
+ 384     3 7 7 9 Q
+ 384     2 7 7 9 Q
+ 384     6 7 7 8 Q
+ 384     5 7 7 8 Q
+ 384     4 7 7 8 Q
+ 384     3 7 7 8 Q
+ 384     2 7 7 8 Q
+ 384     5 6 7 7 Q
+ 384     4 6 7 7 Q
+ 384     3 6 7 7 Q
+ 384     2 6 7 7 Q
+ 384     4 5 7 7 Q
+ 384     3 5 7 7 Q
+ 384     2 5 7 7 Q
+ 384     3 4 7 7 Q
+ 384     2 4 7 7 Q
+ 384     2 3 7 7 Q
+ 384     7 7 9 T J
+ 384     7 7 8 T J
+ 384     6 7 7 T J
+ 384     5 7 7 T J
+ 384     4 7 7 T J
+ 384     3 7 7 T J
+ 384     2 7 7 T J
+ 384     7 7 8 9 J
+ 384     6 7 7 9 J
+ 384     5 7 7 9 J
+ 384     4 7 7 9 J
+ 384     3 7 7 9 J
+ 384     2 7 7 9 J
+ 384     6 7 7 8 J
+ 384     5 7 7 8 J
+ 384     4 7 7 8 J
+ 384     3 7 7 8 J
+ 384     2 7 7 8 J
+ 384     5 6 7 7 J
+ 384     4 6 7 7 J
+ 384     3 6 7 7 J
+ 384     2 6 7 7 J
+ 384     4 5 7 7 J
+ 384     3 5 7 7 J
+ 384     2 5 7 7 J
+ 384     3 4 7 7 J
+ 384     2 4 7 7 J
+ 384     2 3 7 7 J
+ 384     7 7 8 9 T
+ 384     6 7 7 9 T
+ 384     5 7 7 9 T
+ 384     4 7 7 9 T
+ 384     3 7 7 9 T
+ 384     2 7 7 9 T
+ 384     6 7 7 8 T
+ 384     5 7 7 8 T
+ 384     4 7 7 8 T
+ 384     3 7 7 8 T
+ 384     2 7 7 8 T
+ 384     5 6 7 7 T
+ 384     4 6 7 7 T
+ 384     3 6 7 7 T
+ 384     2 6 7 7 T
+ 384     4 5 7 7 T
+ 384     3 5 7 7 T
+ 384     2 5 7 7 T
+ 384     3 4 7 7 T
+ 384     2 4 7 7 T
+ 384     2 3 7 7 T
+ 384     6 7 7 8 9
+ 384     5 7 7 8 9
+ 384     4 7 7 8 9
+ 384     3 7 7 8 9
+ 384     2 7 7 8 9
+ 384     5 6 7 7 9
+ 384     4 6 7 7 9
+ 384     3 6 7 7 9
+ 384     2 6 7 7 9
+ 384     4 5 7 7 9
+ 384     3 5 7 7 9
+ 384     2 5 7 7 9
+ 384     3 4 7 7 9
+ 384     2 4 7 7 9
+ 384     2 3 7 7 9
+ 384     5 6 7 7 8
+ 384     4 6 7 7 8
+ 384     3 6 7 7 8
+ 384     2 6 7 7 8
+ 384     4 5 7 7 8
+ 384     3 5 7 7 8
+ 384     2 5 7 7 8
+ 384     3 4 7 7 8
+ 384     2 4 7 7 8
+ 384     2 3 7 7 8
+ 384     4 5 6 7 7
+ 384     3 5 6 7 7
+ 384     2 5 6 7 7
+ 384     3 4 6 7 7
+ 384     2 4 6 7 7
+ 384     2 3 6 7 7
+ 384     3 4 5 7 7
+ 384     2 4 5 7 7
+ 384     2 3 5 7 7
+ 384     2 3 4 7 7
+ 384     6 6 Q K A      Pair of Sixes
+ 384     6 6 J K A
+ 384     6 6 T K A
+ 384     6 6 9 K A
+ 384     6 6 8 K A
+ 384     6 6 7 K A
+ 384     5 6 6 K A
+ 384     4 6 6 K A
+ 384     3 6 6 K A
+ 384     2 6 6 K A
+ 384     6 6 J Q A
+ 384     6 6 T Q A
+ 384     6 6 9 Q A
+ 384     6 6 8 Q A
+ 384     6 6 7 Q A
+ 384     5 6 6 Q A
+ 384     4 6 6 Q A
+ 384     3 6 6 Q A
+ 384     2 6 6 Q A
+ 384     6 6 T J A
+ 384     6 6 9 J A
+ 384     6 6 8 J A
+ 384     6 6 7 J A
+ 384     5 6 6 J A
+ 384     4 6 6 J A
+ 384     3 6 6 J A
+ 384     2 6 6 J A
+ 384     6 6 9 T A
+ 384     6 6 8 T A
+ 384     6 6 7 T A
+ 384     5 6 6 T A
+ 384     4 6 6 T A
+ 384     3 6 6 T A
+ 384     2 6 6 T A
+ 384     6 6 8 9 A
+ 384     6 6 7 9 A
+ 384     5 6 6 9 A
+ 384     4 6 6 9 A
+ 384     3 6 6 9 A
+ 384     2 6 6 9 A
+ 384     6 6 7 8 A
+ 384     5 6 6 8 A
+ 384     4 6 6 8 A
+ 384     3 6 6 8 A
+ 384     2 6 6 8 A
+ 384     5 6 6 7 A
+ 384     4 6 6 7 A
+ 384     3 6 6 7 A
+ 384     2 6 6 7 A
+ 384     4 5 6 6 A
+ 384     3 5 6 6 A
+ 384     2 5 6 6 A
+ 384     3 4 6 6 A
+ 384     2 4 6 6 A
+ 384     2 3 6 6 A
+ 384     6 6 J Q K
+ 384     6 6 T Q K
+ 384     6 6 9 Q K
+ 384     6 6 8 Q K
+ 384     6 6 7 Q K
+ 384     5 6 6 Q K
+ 384     4 6 6 Q K
+ 384     3 6 6 Q K
+ 384     2 6 6 Q K
+ 384     6 6 T J K
+ 384     6 6 9 J K
+ 384     6 6 8 J K
+ 384     6 6 7 J K
+ 384     5 6 6 J K
+ 384     4 6 6 J K
+ 384     3 6 6 J K
+ 384     2 6 6 J K
+ 384     6 6 9 T K
+ 384     6 6 8 T K
+ 384     6 6 7 T K
+ 384     5 6 6 T K
+ 384     4 6 6 T K
+ 384     3 6 6 T K
+ 384     2 6 6 T K
+ 384     6 6 8 9 K
+ 384     6 6 7 9 K
+ 384     5 6 6 9 K
+ 384     4 6 6 9 K
+ 384     3 6 6 9 K
+ 384     2 6 6 9 K
+ 384     6 6 7 8 K
+ 384     5 6 6 8 K
+ 384     4 6 6 8 K
+ 384     3 6 6 8 K
+ 384     2 6 6 8 K
+ 384     5 6 6 7 K
+ 384     4 6 6 7 K
+ 384     3 6 6 7 K
+ 384     2 6 6 7 K
+ 384     4 5 6 6 K
+ 384     3 5 6 6 K
+ 384     2 5 6 6 K
+ 384     3 4 6 6 K
+ 384     2 4 6 6 K
+ 384     2 3 6 6 K
+ 384     6 6 T J Q
+ 384     6 6 9 J Q
+ 384     6 6 8 J Q
+ 384     6 6 7 J Q
+ 384     5 6 6 J Q
+ 384     4 6 6 J Q
+ 384     3 6 6 J Q
+ 384     2 6 6 J Q
+ 384     6 6 9 T Q
+ 384     6 6 8 T Q
+ 384     6 6 7 T Q
+ 384     5 6 6 T Q
+ 384     4 6 6 T Q
+ 384     3 6 6 T Q
+ 384     2 6 6 T Q
+ 384     6 6 8 9 Q
+ 384     6 6 7 9 Q
+ 384     5 6 6 9 Q
+ 384     4 6 6 9 Q
+ 384     3 6 6 9 Q
+ 384     2 6 6 9 Q
+ 384     6 6 7 8 Q
+ 384     5 6 6 8 Q
+ 384     4 6 6 8 Q
+ 384     3 6 6 8 Q
+ 384     2 6 6 8 Q
+ 384     5 6 6 7 Q
+ 384     4 6 6 7 Q
+ 384     3 6 6 7 Q
+ 384     2 6 6 7 Q
+ 384     4 5 6 6 Q
+ 384     3 5 6 6 Q
+ 384     2 5 6 6 Q
+ 384     3 4 6 6 Q
+ 384     2 4 6 6 Q
+ 384     2 3 6 6 Q
+ 384     6 6 9 T J
+ 384     6 6 8 T J
+ 384     6 6 7 T J
+ 384     5 6 6 T J
+ 384     4 6 6 T J
+ 384     3 6 6 T J
+ 384     2 6 6 T J
+ 384     6 6 8 9 J
+ 384     6 6 7 9 J
+ 384     5 6 6 9 J
+ 384     4 6 6 9 J
+ 384     3 6 6 9 J
+ 384     2 6 6 9 J
+ 384     6 6 7 8 J
+ 384     5 6 6 8 J
+ 384     4 6 6 8 J
+ 384     3 6 6 8 J
+ 384     2 6 6 8 J
+ 384     5 6 6 7 J
+ 384     4 6 6 7 J
+ 384     3 6 6 7 J
+ 384     2 6 6 7 J
+ 384     4 5 6 6 J
+ 384     3 5 6 6 J
+ 384     2 5 6 6 J
+ 384     3 4 6 6 J
+ 384     2 4 6 6 J
+ 384     2 3 6 6 J
+ 384     6 6 8 9 T
+ 384     6 6 7 9 T
+ 384     5 6 6 9 T
+ 384     4 6 6 9 T
+ 384     3 6 6 9 T
+ 384     2 6 6 9 T
+ 384     6 6 7 8 T
+ 384     5 6 6 8 T
+ 384     4 6 6 8 T
+ 384     3 6 6 8 T
+ 384     2 6 6 8 T
+ 384     5 6 6 7 T
+ 384     4 6 6 7 T
+ 384     3 6 6 7 T
+ 384     2 6 6 7 T
+ 384     4 5 6 6 T
+ 384     3 5 6 6 T
+ 384     2 5 6 6 T
+ 384     3 4 6 6 T
+ 384     2 4 6 6 T
+ 384     2 3 6 6 T
+ 384     6 6 7 8 9
+ 384     5 6 6 8 9
+ 384     4 6 6 8 9
+ 384     3 6 6 8 9
+ 384     2 6 6 8 9
+ 384     5 6 6 7 9
+ 384     4 6 6 7 9
+ 384     3 6 6 7 9
+ 384     2 6 6 7 9
+ 384     4 5 6 6 9
+ 384     3 5 6 6 9
+ 384     2 5 6 6 9
+ 384     3 4 6 6 9
+ 384     2 4 6 6 9
+ 384     2 3 6 6 9
+ 384     5 6 6 7 8
+ 384     4 6 6 7 8
+ 384     3 6 6 7 8
+ 384     2 6 6 7 8
+ 384     4 5 6 6 8
+ 384     3 5 6 6 8
+ 384     2 5 6 6 8
+ 384     3 4 6 6 8
+ 384     2 4 6 6 8
+ 384     2 3 6 6 8
+ 384     4 5 6 6 7
+ 384     3 5 6 6 7
+ 384     2 5 6 6 7
+ 384     3 4 6 6 7
+ 384     2 4 6 6 7
+ 384     2 3 6 6 7
+ 384     3 4 5 6 6
+ 384     2 4 5 6 6
+ 384     2 3 5 6 6
+ 384     2 3 4 6 6
+ 384     5 5 Q K A      Pair of Fives
+ 384     5 5 J K A
+ 384     5 5 T K A
+ 384     5 5 9 K A
+ 384     5 5 8 K A
+ 384     5 5 7 K A
+ 384     5 5 6 K A
+ 384     4 5 5 K A
+ 384     3 5 5 K A
+ 384     2 5 5 K A
+ 384     5 5 J Q A
+ 384     5 5 T Q A
+ 384     5 5 9 Q A
+ 384     5 5 8 Q A
+ 384     5 5 7 Q A
+ 384     5 5 6 Q A
+ 384     4 5 5 Q A
+ 384     3 5 5 Q A
+ 384     2 5 5 Q A
+ 384     5 5 T J A
+ 384     5 5 9 J A
+ 384     5 5 8 J A
+ 384     5 5 7 J A
+ 384     5 5 6 J A
+ 384     4 5 5 J A
+ 384     3 5 5 J A
+ 384     2 5 5 J A
+ 384     5 5 9 T A
+ 384     5 5 8 T A
+ 384     5 5 7 T A
+ 384     5 5 6 T A
+ 384     4 5 5 T A
+ 384     3 5 5 T A
+ 384     2 5 5 T A
+ 384     5 5 8 9 A
+ 384     5 5 7 9 A
+ 384     5 5 6 9 A
+ 384     4 5 5 9 A
+ 384     3 5 5 9 A
+ 384     2 5 5 9 A
+ 384     5 5 7 8 A
+ 384     5 5 6 8 A
+ 384     4 5 5 8 A
+ 384     3 5 5 8 A
+ 384     2 5 5 8 A
+ 384     5 5 6 7 A
+ 384     4 5 5 7 A
+ 384     3 5 5 7 A
+ 384     2 5 5 7 A
+ 384     4 5 5 6 A
+ 384     3 5 5 6 A
+ 384     2 5 5 6 A
+ 384     3 4 5 5 A
+ 384     2 4 5 5 A
+ 384     2 3 5 5 A
+ 384     5 5 J Q K
+ 384     5 5 T Q K
+ 384     5 5 9 Q K
+ 384     5 5 8 Q K
+ 384     5 5 7 Q K
+ 384     5 5 6 Q K
+ 384     4 5 5 Q K
+ 384     3 5 5 Q K
+ 384     2 5 5 Q K
+ 384     5 5 T J K
+ 384     5 5 9 J K
+ 384     5 5 8 J K
+ 384     5 5 7 J K
+ 384     5 5 6 J K
+ 384     4 5 5 J K
+ 384     3 5 5 J K
+ 384     2 5 5 J K
+ 384     5 5 9 T K
+ 384     5 5 8 T K
+ 384     5 5 7 T K
+ 384     5 5 6 T K
+ 384     4 5 5 T K
+ 384     3 5 5 T K
+ 384     2 5 5 T K
+ 384     5 5 8 9 K
+ 384     5 5 7 9 K
+ 384     5 5 6 9 K
+ 384     4 5 5 9 K
+ 384     3 5 5 9 K
+ 384     2 5 5 9 K
+ 384     5 5 7 8 K
+ 384     5 5 6 8 K
+ 384     4 5 5 8 K
+ 384     3 5 5 8 K
+ 384     2 5 5 8 K
+ 384     5 5 6 7 K
+ 384     4 5 5 7 K
+ 384     3 5 5 7 K
+ 384     2 5 5 7 K
+ 384     4 5 5 6 K
+ 384     3 5 5 6 K
+ 384     2 5 5 6 K
+ 384     3 4 5 5 K
+ 384     2 4 5 5 K
+ 384     2 3 5 5 K
+ 384     5 5 T J Q
+ 384     5 5 9 J Q
+ 384     5 5 8 J Q
+ 384     5 5 7 J Q
+ 384     5 5 6 J Q
+ 384     4 5 5 J Q
+ 384     3 5 5 J Q
+ 384     2 5 5 J Q
+ 384     5 5 9 T Q
+ 384     5 5 8 T Q
+ 384     5 5 7 T Q
+ 384     5 5 6 T Q
+ 384     4 5 5 T Q
+ 384     3 5 5 T Q
+ 384     2 5 5 T Q
+ 384     5 5 8 9 Q
+ 384     5 5 7 9 Q
+ 384     5 5 6 9 Q
+ 384     4 5 5 9 Q
+ 384     3 5 5 9 Q
+ 384     2 5 5 9 Q
+ 384     5 5 7 8 Q
+ 384     5 5 6 8 Q
+ 384     4 5 5 8 Q
+ 384     3 5 5 8 Q
+ 384     2 5 5 8 Q
+ 384     5 5 6 7 Q
+ 384     4 5 5 7 Q
+ 384     3 5 5 7 Q
+ 384     2 5 5 7 Q
+ 384     4 5 5 6 Q
+ 384     3 5 5 6 Q
+ 384     2 5 5 6 Q
+ 384     3 4 5 5 Q
+ 384     2 4 5 5 Q
+ 384     2 3 5 5 Q
+ 384     5 5 9 T J
+ 384     5 5 8 T J
+ 384     5 5 7 T J
+ 384     5 5 6 T J
+ 384     4 5 5 T J
+ 384     3 5 5 T J
+ 384     2 5 5 T J
+ 384     5 5 8 9 J
+ 384     5 5 7 9 J
+ 384     5 5 6 9 J
+ 384     4 5 5 9 J
+ 384     3 5 5 9 J
+ 384     2 5 5 9 J
+ 384     5 5 7 8 J
+ 384     5 5 6 8 J
+ 384     4 5 5 8 J
+ 384     3 5 5 8 J
+ 384     2 5 5 8 J
+ 384     5 5 6 7 J
+ 384     4 5 5 7 J
+ 384     3 5 5 7 J
+ 384     2 5 5 7 J
+ 384     4 5 5 6 J
+ 384     3 5 5 6 J
+ 384     2 5 5 6 J
+ 384     3 4 5 5 J
+ 384     2 4 5 5 J
+ 384     2 3 5 5 J
+ 384     5 5 8 9 T
+ 384     5 5 7 9 T
+ 384     5 5 6 9 T
+ 384     4 5 5 9 T
+ 384     3 5 5 9 T
+ 384     2 5 5 9 T
+ 384     5 5 7 8 T
+ 384     5 5 6 8 T
+ 384     4 5 5 8 T
+ 384     3 5 5 8 T
+ 384     2 5 5 8 T
+ 384     5 5 6 7 T
+ 384     4 5 5 7 T
+ 384     3 5 5 7 T
+ 384     2 5 5 7 T
+ 384     4 5 5 6 T
+ 384     3 5 5 6 T
+ 384     2 5 5 6 T
+ 384     3 4 5 5 T
+ 384     2 4 5 5 T
+ 384     2 3 5 5 T
+ 384     5 5 7 8 9
+ 384     5 5 6 8 9
+ 384     4 5 5 8 9
+ 384     3 5 5 8 9
+ 384     2 5 5 8 9
+ 384     5 5 6 7 9
+ 384     4 5 5 7 9
+ 384     3 5 5 7 9
+ 384     2 5 5 7 9
+ 384     4 5 5 6 9
+ 384     3 5 5 6 9
+ 384     2 5 5 6 9
+ 384     3 4 5 5 9
+ 384     2 4 5 5 9
+ 384     2 3 5 5 9
+ 384     5 5 6 7 8
+ 384     4 5 5 7 8
+ 384     3 5 5 7 8
+ 384     2 5 5 7 8
+ 384     4 5 5 6 8
+ 384     3 5 5 6 8
+ 384     2 5 5 6 8
+ 384     3 4 5 5 8
+ 384     2 4 5 5 8
+ 384     2 3 5 5 8
+ 384     4 5 5 6 7
+ 384     3 5 5 6 7
+ 384     2 5 5 6 7
+ 384     3 4 5 5 7
+ 384     2 4 5 5 7
+ 384     2 3 5 5 7
+ 384     3 4 5 5 6
+ 384     2 4 5 5 6
+ 384     2 3 5 5 6
+ 384     2 3 4 5 5
+ 384     4 4 Q K A      Pair of Fours
+ 384     4 4 J K A
+ 384     4 4 T K A
+ 384     4 4 9 K A
+ 384     4 4 8 K A
+ 384     4 4 7 K A
+ 384     4 4 6 K A
+ 384     4 4 5 K A
+ 384     3 4 4 K A
+ 384     2 4 4 K A
+ 384     4 4 J Q A
+ 384     4 4 T Q A
+ 384     4 4 9 Q A
+ 384     4 4 8 Q A
+ 384     4 4 7 Q A
+ 384     4 4 6 Q A
+ 384     4 4 5 Q A
+ 384     3 4 4 Q A
+ 384     2 4 4 Q A
+ 384     4 4 T J A
+ 384     4 4 9 J A
+ 384     4 4 8 J A
+ 384     4 4 7 J A
+ 384     4 4 6 J A
+ 384     4 4 5 J A
+ 384     3 4 4 J A
+ 384     2 4 4 J A
+ 384     4 4 9 T A
+ 384     4 4 8 T A
+ 384     4 4 7 T A
+ 384     4 4 6 T A
+ 384     4 4 5 T A
+ 384     3 4 4 T A
+ 384     2 4 4 T A
+ 384     4 4 8 9 A
+ 384     4 4 7 9 A
+ 384     4 4 6 9 A
+ 384     4 4 5 9 A
+ 384     3 4 4 9 A
+ 384     2 4 4 9 A
+ 384     4 4 7 8 A
+ 384     4 4 6 8 A
+ 384     4 4 5 8 A
+ 384     3 4 4 8 A
+ 384     2 4 4 8 A
+ 384     4 4 6 7 A
+ 384     4 4 5 7 A
+ 384     3 4 4 7 A
+ 384     2 4 4 7 A
+ 384     4 4 5 6 A
+ 384     3 4 4 6 A
+ 384     2 4 4 6 A
+ 384     3 4 4 5 A
+ 384     2 4 4 5 A
+ 384     2 3 4 4 A
+ 384     4 4 J Q K
+ 384     4 4 T Q K
+ 384     4 4 9 Q K
+ 384     4 4 8 Q K
+ 384     4 4 7 Q K
+ 384     4 4 6 Q K
+ 384     4 4 5 Q K
+ 384     3 4 4 Q K
+ 384     2 4 4 Q K
+ 384     4 4 T J K
+ 384     4 4 9 J K
+ 384     4 4 8 J K
+ 384     4 4 7 J K
+ 384     4 4 6 J K
+ 384     4 4 5 J K
+ 384     3 4 4 J K
+ 384     2 4 4 J K
+ 384     4 4 9 T K
+ 384     4 4 8 T K
+ 384     4 4 7 T K
+ 384     4 4 6 T K
+ 384     4 4 5 T K
+ 384     3 4 4 T K
+ 384     2 4 4 T K
+ 384     4 4 8 9 K
+ 384     4 4 7 9 K
+ 384     4 4 6 9 K
+ 384     4 4 5 9 K
+ 384     3 4 4 9 K
+ 384     2 4 4 9 K
+ 384     4 4 7 8 K
+ 384     4 4 6 8 K
+ 384     4 4 5 8 K
+ 384     3 4 4 8 K
+ 384     2 4 4 8 K
+ 384     4 4 6 7 K
+ 384     4 4 5 7 K
+ 384     3 4 4 7 K
+ 384     2 4 4 7 K
+ 384     4 4 5 6 K
+ 384     3 4 4 6 K
+ 384     2 4 4 6 K
+ 384     3 4 4 5 K
+ 384     2 4 4 5 K
+ 384     2 3 4 4 K
+ 384     4 4 T J Q
+ 384     4 4 9 J Q
+ 384     4 4 8 J Q
+ 384     4 4 7 J Q
+ 384     4 4 6 J Q
+ 384     4 4 5 J Q
+ 384     3 4 4 J Q
+ 384     2 4 4 J Q
+ 384     4 4 9 T Q
+ 384     4 4 8 T Q
+ 384     4 4 7 T Q
+ 384     4 4 6 T Q
+ 384     4 4 5 T Q
+ 384     3 4 4 T Q
+ 384     2 4 4 T Q
+ 384     4 4 8 9 Q
+ 384     4 4 7 9 Q
+ 384     4 4 6 9 Q
+ 384     4 4 5 9 Q
+ 384     3 4 4 9 Q
+ 384     2 4 4 9 Q
+ 384     4 4 7 8 Q
+ 384     4 4 6 8 Q
+ 384     4 4 5 8 Q
+ 384     3 4 4 8 Q
+ 384     2 4 4 8 Q
+ 384     4 4 6 7 Q
+ 384     4 4 5 7 Q
+ 384     3 4 4 7 Q
+ 384     2 4 4 7 Q
+ 384     4 4 5 6 Q
+ 384     3 4 4 6 Q
+ 384     2 4 4 6 Q
+ 384     3 4 4 5 Q
+ 384     2 4 4 5 Q
+ 384     2 3 4 4 Q
+ 384     4 4 9 T J
+ 384     4 4 8 T J
+ 384     4 4 7 T J
+ 384     4 4 6 T J
+ 384     4 4 5 T J
+ 384     3 4 4 T J
+ 384     2 4 4 T J
+ 384     4 4 8 9 J
+ 384     4 4 7 9 J
+ 384     4 4 6 9 J
+ 384     4 4 5 9 J
+ 384     3 4 4 9 J
+ 384     2 4 4 9 J
+ 384     4 4 7 8 J
+ 384     4 4 6 8 J
+ 384     4 4 5 8 J
+ 384     3 4 4 8 J
+ 384     2 4 4 8 J
+ 384     4 4 6 7 J
+ 384     4 4 5 7 J
+ 384     3 4 4 7 J
+ 384     2 4 4 7 J
+ 384     4 4 5 6 J
+ 384     3 4 4 6 J
+ 384     2 4 4 6 J
+ 384     3 4 4 5 J
+ 384     2 4 4 5 J
+ 384     2 3 4 4 J
+ 384     4 4 8 9 T
+ 384     4 4 7 9 T
+ 384     4 4 6 9 T
+ 384     4 4 5 9 T
+ 384     3 4 4 9 T
+ 384     2 4 4 9 T
+ 384     4 4 7 8 T
+ 384     4 4 6 8 T
+ 384     4 4 5 8 T
+ 384     3 4 4 8 T
+ 384     2 4 4 8 T
+ 384     4 4 6 7 T
+ 384     4 4 5 7 T
+ 384     3 4 4 7 T
+ 384     2 4 4 7 T
+ 384     4 4 5 6 T
+ 384     3 4 4 6 T
+ 384     2 4 4 6 T
+ 384     3 4 4 5 T
+ 384     2 4 4 5 T
+ 384     2 3 4 4 T
+ 384     4 4 7 8 9
+ 384     4 4 6 8 9
+ 384     4 4 5 8 9
+ 384     3 4 4 8 9
+ 384     2 4 4 8 9
+ 384     4 4 6 7 9
+ 384     4 4 5 7 9
+ 384     3 4 4 7 9
+ 384     2 4 4 7 9
+ 384     4 4 5 6 9
+ 384     3 4 4 6 9
+ 384     2 4 4 6 9
+ 384     3 4 4 5 9
+ 384     2 4 4 5 9
+ 384     2 3 4 4 9
+ 384     4 4 6 7 8
+ 384     4 4 5 7 8
+ 384     3 4 4 7 8
+ 384     2 4 4 7 8
+ 384     4 4 5 6 8
+ 384     3 4 4 6 8
+ 384     2 4 4 6 8
+ 384     3 4 4 5 8
+ 384     2 4 4 5 8
+ 384     2 3 4 4 8
+ 384     4 4 5 6 7
+ 384     3 4 4 6 7
+ 384     2 4 4 6 7
+ 384     3 4 4 5 7
+ 384     2 4 4 5 7
+ 384     2 3 4 4 7
+ 384     3 4 4 5 6
+ 384     2 4 4 5 6
+ 384     2 3 4 4 6
+ 384     2 3 4 4 5
+ 384     3 3 Q K A      Pair of Treys
+ 384     3 3 J K A
+ 384     3 3 T K A
+ 384     3 3 9 K A
+ 384     3 3 8 K A
+ 384     3 3 7 K A
+ 384     3 3 6 K A
+ 384     3 3 5 K A
+ 384     3 3 4 K A
+ 384     2 3 3 K A
+ 384     3 3 J Q A
+ 384     3 3 T Q A
+ 384     3 3 9 Q A
+ 384     3 3 8 Q A
+ 384     3 3 7 Q A
+ 384     3 3 6 Q A
+ 384     3 3 5 Q A
+ 384     3 3 4 Q A
+ 384     2 3 3 Q A
+ 384     3 3 T J A
+ 384     3 3 9 J A
+ 384     3 3 8 J A
+ 384     3 3 7 J A
+ 384     3 3 6 J A
+ 384     3 3 5 J A
+ 384     3 3 4 J A
+ 384     2 3 3 J A
+ 384     3 3 9 T A
+ 384     3 3 8 T A
+ 384     3 3 7 T A
+ 384     3 3 6 T A
+ 384     3 3 5 T A
+ 384     3 3 4 T A
+ 384     2 3 3 T A
+ 384     3 3 8 9 A
+ 384     3 3 7 9 A
+ 384     3 3 6 9 A
+ 384     3 3 5 9 A
+ 384     3 3 4 9 A
+ 384     2 3 3 9 A
+ 384     3 3 7 8 A
+ 384     3 3 6 8 A
+ 384     3 3 5 8 A
+ 384     3 3 4 8 A
+ 384     2 3 3 8 A
+ 384     3 3 6 7 A
+ 384     3 3 5 7 A
+ 384     3 3 4 7 A
+ 384     2 3 3 7 A
+ 384     3 3 5 6 A
+ 384     3 3 4 6 A
+ 384     2 3 3 6 A
+ 384     3 3 4 5 A
+ 384     2 3 3 5 A
+ 384     2 3 3 4 A
+ 384     3 3 J Q K
+ 384     3 3 T Q K
+ 384     3 3 9 Q K
+ 384     3 3 8 Q K
+ 384     3 3 7 Q K
+ 384     3 3 6 Q K
+ 384     3 3 5 Q K
+ 384     3 3 4 Q K
+ 384     2 3 3 Q K
+ 384     3 3 T J K
+ 384     3 3 9 J K
+ 384     3 3 8 J K
+ 384     3 3 7 J K
+ 384     3 3 6 J K
+ 384     3 3 5 J K
+ 384     3 3 4 J K
+ 384     2 3 3 J K
+ 384     3 3 9 T K
+ 384     3 3 8 T K
+ 384     3 3 7 T K
+ 384     3 3 6 T K
+ 384     3 3 5 T K
+ 384     3 3 4 T K
+ 384     2 3 3 T K
+ 384     3 3 8 9 K
+ 384     3 3 7 9 K
+ 384     3 3 6 9 K
+ 384     3 3 5 9 K
+ 384     3 3 4 9 K
+ 384     2 3 3 9 K
+ 384     3 3 7 8 K
+ 384     3 3 6 8 K
+ 384     3 3 5 8 K
+ 384     3 3 4 8 K
+ 384     2 3 3 8 K
+ 384     3 3 6 7 K
+ 384     3 3 5 7 K
+ 384     3 3 4 7 K
+ 384     2 3 3 7 K
+ 384     3 3 5 6 K
+ 384     3 3 4 6 K
+ 384     2 3 3 6 K
+ 384     3 3 4 5 K
+ 384     2 3 3 5 K
+ 384     2 3 3 4 K
+ 384     3 3 T J Q
+ 384     3 3 9 J Q
+ 384     3 3 8 J Q
+ 384     3 3 7 J Q
+ 384     3 3 6 J Q
+ 384     3 3 5 J Q
+ 384     3 3 4 J Q
+ 384     2 3 3 J Q
+ 384     3 3 9 T Q
+ 384     3 3 8 T Q
+ 384     3 3 7 T Q
+ 384     3 3 6 T Q
+ 384     3 3 5 T Q
+ 384     3 3 4 T Q
+ 384     2 3 3 T Q
+ 384     3 3 8 9 Q
+ 384     3 3 7 9 Q
+ 384     3 3 6 9 Q
+ 384     3 3 5 9 Q
+ 384     3 3 4 9 Q
+ 384     2 3 3 9 Q
+ 384     3 3 7 8 Q
+ 384     3 3 6 8 Q
+ 384     3 3 5 8 Q
+ 384     3 3 4 8 Q
+ 384     2 3 3 8 Q
+ 384     3 3 6 7 Q
+ 384     3 3 5 7 Q
+ 384     3 3 4 7 Q
+ 384     2 3 3 7 Q
+ 384     3 3 5 6 Q
+ 384     3 3 4 6 Q
+ 384     2 3 3 6 Q
+ 384     3 3 4 5 Q
+ 384     2 3 3 5 Q
+ 384     2 3 3 4 Q
+ 384     3 3 9 T J
+ 384     3 3 8 T J
+ 384     3 3 7 T J
+ 384     3 3 6 T J
+ 384     3 3 5 T J
+ 384     3 3 4 T J
+ 384     2 3 3 T J
+ 384     3 3 8 9 J
+ 384     3 3 7 9 J
+ 384     3 3 6 9 J
+ 384     3 3 5 9 J
+ 384     3 3 4 9 J
+ 384     2 3 3 9 J
+ 384     3 3 7 8 J
+ 384     3 3 6 8 J
+ 384     3 3 5 8 J
+ 384     3 3 4 8 J
+ 384     2 3 3 8 J
+ 384     3 3 6 7 J
+ 384     3 3 5 7 J
+ 384     3 3 4 7 J
+ 384     2 3 3 7 J
+ 384     3 3 5 6 J
+ 384     3 3 4 6 J
+ 384     2 3 3 6 J
+ 384     3 3 4 5 J
+ 384     2 3 3 5 J
+ 384     2 3 3 4 J
+ 384     3 3 8 9 T
+ 384     3 3 7 9 T
+ 384     3 3 6 9 T
+ 384     3 3 5 9 T
+ 384     3 3 4 9 T
+ 384     2 3 3 9 T
+ 384     3 3 7 8 T
+ 384     3 3 6 8 T
+ 384     3 3 5 8 T
+ 384     3 3 4 8 T
+ 384     2 3 3 8 T
+ 384     3 3 6 7 T
+ 384     3 3 5 7 T
+ 384     3 3 4 7 T
+ 384     2 3 3 7 T
+ 384     3 3 5 6 T
+ 384     3 3 4 6 T
+ 384     2 3 3 6 T
+ 384     3 3 4 5 T
+ 384     2 3 3 5 T
+ 384     2 3 3 4 T
+ 384     3 3 7 8 9
+ 384     3 3 6 8 9
+ 384     3 3 5 8 9
+ 384     3 3 4 8 9
+ 384     2 3 3 8 9
+ 384     3 3 6 7 9
+ 384     3 3 5 7 9
+ 384     3 3 4 7 9
+ 384     2 3 3 7 9
+ 384     3 3 5 6 9
+ 384     3 3 4 6 9
+ 384     2 3 3 6 9
+ 384     3 3 4 5 9
+ 384     2 3 3 5 9
+ 384     2 3 3 4 9
+ 384     3 3 6 7 8
+ 384     3 3 5 7 8
+ 384     3 3 4 7 8
+ 384     2 3 3 7 8
+ 384     3 3 5 6 8
+ 384     3 3 4 6 8
+ 384     2 3 3 6 8
+ 384     3 3 4 5 8
+ 384     2 3 3 5 8
+ 384     2 3 3 4 8
+ 384     3 3 5 6 7
+ 384     3 3 4 6 7
+ 384     2 3 3 6 7
+ 384     3 3 4 5 7
+ 384     2 3 3 5 7
+ 384     2 3 3 4 7
+ 384     3 3 4 5 6
+ 384     2 3 3 5 6
+ 384     2 3 3 4 6
+ 384     2 3 3 4 5
+ 384     2 2 Q K A      Pair of Deuces
+ 384     2 2 J K A
+ 384     2 2 T K A
+ 384     2 2 9 K A
+ 384     2 2 8 K A
+ 384     2 2 7 K A
+ 384     2 2 6 K A
+ 384     2 2 5 K A
+ 384     2 2 4 K A
+ 384     2 2 3 K A
+ 384     2 2 J Q A
+ 384     2 2 T Q A
+ 384     2 2 9 Q A
+ 384     2 2 8 Q A
+ 384     2 2 7 Q A
+ 384     2 2 6 Q A
+ 384     2 2 5 Q A
+ 384     2 2 4 Q A
+ 384     2 2 3 Q A
+ 384     2 2 T J A
+ 384     2 2 9 J A
+ 384     2 2 8 J A
+ 384     2 2 7 J A
+ 384     2 2 6 J A
+ 384     2 2 5 J A
+ 384     2 2 4 J A
+ 384     2 2 3 J A
+ 384     2 2 9 T A
+ 384     2 2 8 T A
+ 384     2 2 7 T A
+ 384     2 2 6 T A
+ 384     2 2 5 T A
+ 384     2 2 4 T A
+ 384     2 2 3 T A
+ 384     2 2 8 9 A
+ 384     2 2 7 9 A
+ 384     2 2 6 9 A
+ 384     2 2 5 9 A
+ 384     2 2 4 9 A
+ 384     2 2 3 9 A
+ 384     2 2 7 8 A
+ 384     2 2 6 8 A
+ 384     2 2 5 8 A
+ 384     2 2 4 8 A
+ 384     2 2 3 8 A
+ 384     2 2 6 7 A
+ 384     2 2 5 7 A
+ 384     2 2 4 7 A
+ 384     2 2 3 7 A
+ 384     2 2 5 6 A
+ 384     2 2 4 6 A
+ 384     2 2 3 6 A
+ 384     2 2 4 5 A
+ 384     2 2 3 5 A
+ 384     2 2 3 4 A
+ 384     2 2 J Q K
+ 384     2 2 T Q K
+ 384     2 2 9 Q K
+ 384     2 2 8 Q K
+ 384     2 2 7 Q K
+ 384     2 2 6 Q K
+ 384     2 2 5 Q K
+ 384     2 2 4 Q K
+ 384     2 2 3 Q K
+ 384     2 2 T J K
+ 384     2 2 9 J K
+ 384     2 2 8 J K
+ 384     2 2 7 J K
+ 384     2 2 6 J K
+ 384     2 2 5 J K
+ 384     2 2 4 J K
+ 384     2 2 3 J K
+ 384     2 2 9 T K
+ 384     2 2 8 T K
+ 384     2 2 7 T K
+ 384     2 2 6 T K
+ 384     2 2 5 T K
+ 384     2 2 4 T K
+ 384     2 2 3 T K
+ 384     2 2 8 9 K
+ 384     2 2 7 9 K
+ 384     2 2 6 9 K
+ 384     2 2 5 9 K
+ 384     2 2 4 9 K
+ 384     2 2 3 9 K
+ 384     2 2 7 8 K
+ 384     2 2 6 8 K
+ 384     2 2 5 8 K
+ 384     2 2 4 8 K
+ 384     2 2 3 8 K
+ 384     2 2 6 7 K
+ 384     2 2 5 7 K
+ 384     2 2 4 7 K
+ 384     2 2 3 7 K
+ 384     2 2 5 6 K
+ 384     2 2 4 6 K
+ 384     2 2 3 6 K
+ 384     2 2 4 5 K
+ 384     2 2 3 5 K
+ 384     2 2 3 4 K
+ 384     2 2 T J Q
+ 384     2 2 9 J Q
+ 384     2 2 8 J Q
+ 384     2 2 7 J Q
+ 384     2 2 6 J Q
+ 384     2 2 5 J Q
+ 384     2 2 4 J Q
+ 384     2 2 3 J Q
+ 384     2 2 9 T Q
+ 384     2 2 8 T Q
+ 384     2 2 7 T Q
+ 384     2 2 6 T Q
+ 384     2 2 5 T Q
+ 384     2 2 4 T Q
+ 384     2 2 3 T Q
+ 384     2 2 8 9 Q
+ 384     2 2 7 9 Q
+ 384     2 2 6 9 Q
+ 384     2 2 5 9 Q
+ 384     2 2 4 9 Q
+ 384     2 2 3 9 Q
+ 384     2 2 7 8 Q
+ 384     2 2 6 8 Q
+ 384     2 2 5 8 Q
+ 384     2 2 4 8 Q
+ 384     2 2 3 8 Q
+ 384     2 2 6 7 Q
+ 384     2 2 5 7 Q
+ 384     2 2 4 7 Q
+ 384     2 2 3 7 Q
+ 384     2 2 5 6 Q
+ 384     2 2 4 6 Q
+ 384     2 2 3 6 Q
+ 384     2 2 4 5 Q
+ 384     2 2 3 5 Q
+ 384     2 2 3 4 Q
+ 384     2 2 9 T J
+ 384     2 2 8 T J
+ 384     2 2 7 T J
+ 384     2 2 6 T J
+ 384     2 2 5 T J
+ 384     2 2 4 T J
+ 384     2 2 3 T J
+ 384     2 2 8 9 J
+ 384     2 2 7 9 J
+ 384     2 2 6 9 J
+ 384     2 2 5 9 J
+ 384     2 2 4 9 J
+ 384     2 2 3 9 J
+ 384     2 2 7 8 J
+ 384     2 2 6 8 J
+ 384     2 2 5 8 J
+ 384     2 2 4 8 J
+ 384     2 2 3 8 J
+ 384     2 2 6 7 J
+ 384     2 2 5 7 J
+ 384     2 2 4 7 J
+ 384     2 2 3 7 J
+ 384     2 2 5 6 J
+ 384     2 2 4 6 J
+ 384     2 2 3 6 J
+ 384     2 2 4 5 J
+ 384     2 2 3 5 J
+ 384     2 2 3 4 J
+ 384     2 2 8 9 T
+ 384     2 2 7 9 T
+ 384     2 2 6 9 T
+ 384     2 2 5 9 T
+ 384     2 2 4 9 T
+ 384     2 2 3 9 T
+ 384     2 2 7 8 T
+ 384     2 2 6 8 T
+ 384     2 2 5 8 T
+ 384     2 2 4 8 T
+ 384     2 2 3 8 T
+ 384     2 2 6 7 T
+ 384     2 2 5 7 T
+ 384     2 2 4 7 T
+ 384     2 2 3 7 T
+ 384     2 2 5 6 T
+ 384     2 2 4 6 T
+ 384     2 2 3 6 T
+ 384     2 2 4 5 T
+ 384     2 2 3 5 T
+ 384     2 2 3 4 T
+ 384     2 2 7 8 9
+ 384     2 2 6 8 9
+ 384     2 2 5 8 9
+ 384     2 2 4 8 9
+ 384     2 2 3 8 9
+ 384     2 2 6 7 9
+ 384     2 2 5 7 9
+ 384     2 2 4 7 9
+ 384     2 2 3 7 9
+ 384     2 2 5 6 9
+ 384     2 2 4 6 9
+ 384     2 2 3 6 9
+ 384     2 2 4 5 9
+ 384     2 2 3 5 9
+ 384     2 2 3 4 9
+ 384     2 2 6 7 8
+ 384     2 2 5 7 8
+ 384     2 2 4 7 8
+ 384     2 2 3 7 8
+ 384     2 2 5 6 8
+ 384     2 2 4 6 8
+ 384     2 2 3 6 8
+ 384     2 2 4 5 8
+ 384     2 2 3 5 8
+ 384     2 2 3 4 8
+ 384     2 2 5 6 7
+ 384     2 2 4 6 7
+ 384     2 2 3 6 7
+ 384     2 2 4 5 7
+ 384     2 2 3 5 7
+ 384     2 2 3 4 7
+ 384     2 2 4 5 6
+ 384     2 2 3 5 6
+ 384     2 2 3 4 6
+ 384     2 2 3 4 5
+1024     9 J Q K A      Ace High                       HIGH CARD
+1024     8 J Q K A
+1024     7 J Q K A
+1024     6 J Q K A
+1024     5 J Q K A
+1024     4 J Q K A
+1024     3 J Q K A
+1024     2 J Q K A
+1024     9 T Q K A
+1024     8 T Q K A
+1024     7 T Q K A
+1024     6 T Q K A
+1024     5 T Q K A
+1024     4 T Q K A
+1024     3 T Q K A
+1024     2 T Q K A
+1024     8 9 Q K A
+1024     7 9 Q K A
+1024     6 9 Q K A
+1024     5 9 Q K A
+1024     4 9 Q K A
+1024     3 9 Q K A
+1024     2 9 Q K A
+1024     7 8 Q K A
+1024     6 8 Q K A
+1024     5 8 Q K A
+1024     4 8 Q K A
+1024     3 8 Q K A
+1024     2 8 Q K A
+1024     6 7 Q K A
+1024     5 7 Q K A
+1024     4 7 Q K A
+1024     3 7 Q K A
+1024     2 7 Q K A
+1024     5 6 Q K A
+1024     4 6 Q K A
+1024     3 6 Q K A
+1024     2 6 Q K A
+1024     4 5 Q K A
+1024     3 5 Q K A
+1024     2 5 Q K A
+1024     3 4 Q K A
+1024     2 4 Q K A
+1024     2 3 Q K A
+1024     9 T J K A
+1024     8 T J K A
+1024     7 T J K A
+1024     6 T J K A
+1024     5 T J K A
+1024     4 T J K A
+1024     3 T J K A
+1024     2 T J K A
+1024     8 9 J K A
+1024     7 9 J K A
+1024     6 9 J K A
+1024     5 9 J K A
+1024     4 9 J K A
+1024     3 9 J K A
+1024     2 9 J K A
+1024     7 8 J K A
+1024     6 8 J K A
+1024     5 8 J K A
+1024     4 8 J K A
+1024     3 8 J K A
+1024     2 8 J K A
+1024     6 7 J K A
+1024     5 7 J K A
+1024     4 7 J K A
+1024     3 7 J K A
+1024     2 7 J K A
+1024     5 6 J K A
+1024     4 6 J K A
+1024     3 6 J K A
+1024     2 6 J K A
+1024     4 5 J K A
+1024     3 5 J K A
+1024     2 5 J K A
+1024     3 4 J K A
+1024     2 4 J K A
+1024     2 3 J K A
+1024     8 9 T K A
+1024     7 9 T K A
+1024     6 9 T K A
+1024     5 9 T K A
+1024     4 9 T K A
+1024     3 9 T K A
+1024     2 9 T K A
+1024     7 8 T K A
+1024     6 8 T K A
+1024     5 8 T K A
+1024     4 8 T K A
+1024     3 8 T K A
+1024     2 8 T K A
+1024     6 7 T K A
+1024     5 7 T K A
+1024     4 7 T K A
+1024     3 7 T K A
+1024     2 7 T K A
+1024     5 6 T K A
+1024     4 6 T K A
+1024     3 6 T K A
+1024     2 6 T K A
+1024     4 5 T K A
+1024     3 5 T K A
+1024     2 5 T K A
+1024     3 4 T K A
+1024     2 4 T K A
+1024     2 3 T K A
+1024     7 8 9 K A
+1024     6 8 9 K A
+1024     5 8 9 K A
+1024     4 8 9 K A
+1024     3 8 9 K A
+1024     2 8 9 K A
+1024     6 7 9 K A
+1024     5 7 9 K A
+1024     4 7 9 K A
+1024     3 7 9 K A
+1024     2 7 9 K A
+1024     5 6 9 K A
+1024     4 6 9 K A
+1024     3 6 9 K A
+1024     2 6 9 K A
+1024     4 5 9 K A
+1024     3 5 9 K A
+1024     2 5 9 K A
+1024     3 4 9 K A
+1024     2 4 9 K A
+1024     2 3 9 K A
+1024     6 7 8 K A
+1024     5 7 8 K A
+1024     4 7 8 K A
+1024     3 7 8 K A
+1024     2 7 8 K A
+1024     5 6 8 K A
+1024     4 6 8 K A
+1024     3 6 8 K A
+1024     2 6 8 K A
+1024     4 5 8 K A
+1024     3 5 8 K A
+1024     2 5 8 K A
+1024     3 4 8 K A
+1024     2 4 8 K A
+1024     2 3 8 K A
+1024     5 6 7 K A
+1024     4 6 7 K A
+1024     3 6 7 K A
+1024     2 6 7 K A
+1024     4 5 7 K A
+1024     3 5 7 K A
+1024     2 5 7 K A
+1024     3 4 7 K A
+1024     2 4 7 K A
+1024     2 3 7 K A
+1024     4 5 6 K A
+1024     3 5 6 K A
+1024     2 5 6 K A
+1024     3 4 6 K A
+1024     2 4 6 K A
+1024     2 3 6 K A
+1024     3 4 5 K A
+1024     2 4 5 K A
+1024     2 3 5 K A
+1024     2 3 4 K A
+1024     9 T J Q A
+1024     8 T J Q A
+1024     7 T J Q A
+1024     6 T J Q A
+1024     5 T J Q A
+1024     4 T J Q A
+1024     3 T J Q A
+1024     2 T J Q A
+1024     8 9 J Q A
+1024     7 9 J Q A
+1024     6 9 J Q A
+1024     5 9 J Q A
+1024     4 9 J Q A
+1024     3 9 J Q A
+1024     2 9 J Q A
+1024     7 8 J Q A
+1024     6 8 J Q A
+1024     5 8 J Q A
+1024     4 8 J Q A
+1024     3 8 J Q A
+1024     2 8 J Q A
+1024     6 7 J Q A
+1024     5 7 J Q A
+1024     4 7 J Q A
+1024     3 7 J Q A
+1024     2 7 J Q A
+1024     5 6 J Q A
+1024     4 6 J Q A
+1024     3 6 J Q A
+1024     2 6 J Q A
+1024     4 5 J Q A
+1024     3 5 J Q A
+1024     2 5 J Q A
+1024     3 4 J Q A
+1024     2 4 J Q A
+1024     2 3 J Q A
+1024     8 9 T Q A
+1024     7 9 T Q A
+1024     6 9 T Q A
+1024     5 9 T Q A
+1024     4 9 T Q A
+1024     3 9 T Q A
+1024     2 9 T Q A
+1024     7 8 T Q A
+1024     6 8 T Q A
+1024     5 8 T Q A
+1024     4 8 T Q A
+1024     3 8 T Q A
+1024     2 8 T Q A
+1024     6 7 T Q A
+1024     5 7 T Q A
+1024     4 7 T Q A
+1024     3 7 T Q A
+1024     2 7 T Q A
+1024     5 6 T Q A
+1024     4 6 T Q A
+1024     3 6 T Q A
+1024     2 6 T Q A
+1024     4 5 T Q A
+1024     3 5 T Q A
+1024     2 5 T Q A
+1024     3 4 T Q A
+1024     2 4 T Q A
+1024     2 3 T Q A
+1024     7 8 9 Q A
+1024     6 8 9 Q A
+1024     5 8 9 Q A
+1024     4 8 9 Q A
+1024     3 8 9 Q A
+1024     2 8 9 Q A
+1024     6 7 9 Q A
+1024     5 7 9 Q A
+1024     4 7 9 Q A
+1024     3 7 9 Q A
+1024     2 7 9 Q A
+1024     5 6 9 Q A
+1024     4 6 9 Q A
+1024     3 6 9 Q A
+1024     2 6 9 Q A
+1024     4 5 9 Q A
+1024     3 5 9 Q A
+1024     2 5 9 Q A
+1024     3 4 9 Q A
+1024     2 4 9 Q A
+1024     2 3 9 Q A
+1024     6 7 8 Q A
+1024     5 7 8 Q A
+1024     4 7 8 Q A
+1024     3 7 8 Q A
+1024     2 7 8 Q A
+1024     5 6 8 Q A
+1024     4 6 8 Q A
+1024     3 6 8 Q A
+1024     2 6 8 Q A
+1024     4 5 8 Q A
+1024     3 5 8 Q A
+1024     2 5 8 Q A
+1024     3 4 8 Q A
+1024     2 4 8 Q A
+1024     2 3 8 Q A
+1024     5 6 7 Q A
+1024     4 6 7 Q A
+1024     3 6 7 Q A
+1024     2 6 7 Q A
+1024     4 5 7 Q A
+1024     3 5 7 Q A
+1024     2 5 7 Q A
+1024     3 4 7 Q A
+1024     2 4 7 Q A
+1024     2 3 7 Q A
+1024     4 5 6 Q A
+1024     3 5 6 Q A
+1024     2 5 6 Q A
+1024     3 4 6 Q A
+1024     2 4 6 Q A
+1024     2 3 6 Q A
+1024     3 4 5 Q A
+1024     2 4 5 Q A
+1024     2 3 5 Q A
+1024     2 3 4 Q A
+1024     8 9 T J A
+1024     7 9 T J A
+1024     6 9 T J A
+1024     5 9 T J A
+1024     4 9 T J A
+1024     3 9 T J A
+1024     2 9 T J A
+1024     7 8 T J A
+1024     6 8 T J A
+1024     5 8 T J A
+1024     4 8 T J A
+1024     3 8 T J A
+1024     2 8 T J A
+1024     6 7 T J A
+1024     5 7 T J A
+1024     4 7 T J A
+1024     3 7 T J A
+1024     2 7 T J A
+1024     5 6 T J A
+1024     4 6 T J A
+1024     3 6 T J A
+1024     2 6 T J A
+1024     4 5 T J A
+1024     3 5 T J A
+1024     2 5 T J A
+1024     3 4 T J A
+1024     2 4 T J A
+1024     2 3 T J A
+1024     7 8 9 J A
+1024     6 8 9 J A
+1024     5 8 9 J A
+1024     4 8 9 J A
+1024     3 8 9 J A
+1024     2 8 9 J A
+1024     6 7 9 J A
+1024     5 7 9 J A
+1024     4 7 9 J A
+1024     3 7 9 J A
+1024     2 7 9 J A
+1024     5 6 9 J A
+1024     4 6 9 J A
+1024     3 6 9 J A
+1024     2 6 9 J A
+1024     4 5 9 J A
+1024     3 5 9 J A
+1024     2 5 9 J A
+1024     3 4 9 J A
+1024     2 4 9 J A
+1024     2 3 9 J A
+1024     6 7 8 J A
+1024     5 7 8 J A
+1024     4 7 8 J A
+1024     3 7 8 J A
+1024     2 7 8 J A
+1024     5 6 8 J A
+1024     4 6 8 J A
+1024     3 6 8 J A
+1024     2 6 8 J A
+1024     4 5 8 J A
+1024     3 5 8 J A
+1024     2 5 8 J A
+1024     3 4 8 J A
+1024     2 4 8 J A
+1024     2 3 8 J A
+1024     5 6 7 J A
+1024     4 6 7 J A
+1024     3 6 7 J A
+1024     2 6 7 J A
+1024     4 5 7 J A
+1024     3 5 7 J A
+1024     2 5 7 J A
+1024     3 4 7 J A
+1024     2 4 7 J A
+1024     2 3 7 J A
+1024     4 5 6 J A
+1024     3 5 6 J A
+1024     2 5 6 J A
+1024     3 4 6 J A
+1024     2 4 6 J A
+1024     2 3 6 J A
+1024     3 4 5 J A
+1024     2 4 5 J A
+1024     2 3 5 J A
+1024     2 3 4 J A
+1024     7 8 9 T A
+1024     6 8 9 T A
+1024     5 8 9 T A
+1024     4 8 9 T A
+1024     3 8 9 T A
+1024     2 8 9 T A
+1024     6 7 9 T A
+1024     5 7 9 T A
+1024     4 7 9 T A
+1024     3 7 9 T A
+1024     2 7 9 T A
+1024     5 6 9 T A
+1024     4 6 9 T A
+1024     3 6 9 T A
+1024     2 6 9 T A
+1024     4 5 9 T A
+1024     3 5 9 T A
+1024     2 5 9 T A
+1024     3 4 9 T A
+1024     2 4 9 T A
+1024     2 3 9 T A
+1024     6 7 8 T A
+1024     5 7 8 T A
+1024     4 7 8 T A
+1024     3 7 8 T A
+1024     2 7 8 T A
+1024     5 6 8 T A
+1024     4 6 8 T A
+1024     3 6 8 T A
+1024     2 6 8 T A
+1024     4 5 8 T A
+1024     3 5 8 T A
+1024     2 5 8 T A
+1024     3 4 8 T A
+1024     2 4 8 T A
+1024     2 3 8 T A
+1024     5 6 7 T A
+1024     4 6 7 T A
+1024     3 6 7 T A
+1024     2 6 7 T A
+1024     4 5 7 T A
+1024     3 5 7 T A
+1024     2 5 7 T A
+1024     3 4 7 T A
+1024     2 4 7 T A
+1024     2 3 7 T A
+1024     4 5 6 T A
+1024     3 5 6 T A
+1024     2 5 6 T A
+1024     3 4 6 T A
+1024     2 4 6 T A
+1024     2 3 6 T A
+1024     3 4 5 T A
+1024     2 4 5 T A
+1024     2 3 5 T A
+1024     2 3 4 T A
+1024     6 7 8 9 A
+1024     5 7 8 9 A
+1024     4 7 8 9 A
+1024     3 7 8 9 A
+1024     2 7 8 9 A
+1024     5 6 8 9 A
+1024     4 6 8 9 A
+1024     3 6 8 9 A
+1024     2 6 8 9 A
+1024     4 5 8 9 A
+1024     3 5 8 9 A
+1024     2 5 8 9 A
+1024     3 4 8 9 A
+1024     2 4 8 9 A
+1024     2 3 8 9 A
+1024     5 6 7 9 A
+1024     4 6 7 9 A
+1024     3 6 7 9 A
+1024     2 6 7 9 A
+1024     4 5 7 9 A
+1024     3 5 7 9 A
+1024     2 5 7 9 A
+1024     3 4 7 9 A
+1024     2 4 7 9 A
+1024     2 3 7 9 A
+1024     4 5 6 9 A
+1024     3 5 6 9 A
+1024     2 5 6 9 A
+1024     3 4 6 9 A
+1024     2 4 6 9 A
+1024     2 3 6 9 A
+1024     3 4 5 9 A
+1024     2 4 5 9 A
+1024     2 3 5 9 A
+1024     2 3 4 9 A
+1024     5 6 7 8 A
+1024     4 6 7 8 A
+1024     3 6 7 8 A
+1024     2 6 7 8 A
+1024     4 5 7 8 A
+1024     3 5 7 8 A
+1024     2 5 7 8 A
+1024     3 4 7 8 A
+1024     2 4 7 8 A
+1024     2 3 7 8 A
+1024     4 5 6 8 A
+1024     3 5 6 8 A
+1024     2 5 6 8 A
+1024     3 4 6 8 A
+1024     2 4 6 8 A
+1024     2 3 6 8 A
+1024     3 4 5 8 A
+1024     2 4 5 8 A
+1024     2 3 5 8 A
+1024     2 3 4 8 A
+1024     4 5 6 7 A
+1024     3 5 6 7 A
+1024     2 5 6 7 A
+1024     3 4 6 7 A
+1024     2 4 6 7 A
+1024     2 3 6 7 A
+1024     3 4 5 7 A
+1024     2 4 5 7 A
+1024     2 3 5 7 A
+1024     2 3 4 7 A
+1024     3 4 5 6 A
+1024     2 4 5 6 A
+1024     2 3 5 6 A
+1024     2 3 4 6 A
+1024     8 T J Q K      King High
+1024     7 T J Q K
+1024     6 T J Q K
+1024     5 T J Q K
+1024     4 T J Q K
+1024     3 T J Q K
+1024     2 T J Q K
+1024     8 9 J Q K
+1024     7 9 J Q K
+1024     6 9 J Q K
+1024     5 9 J Q K
+1024     4 9 J Q K
+1024     3 9 J Q K
+1024     2 9 J Q K
+1024     7 8 J Q K
+1024     6 8 J Q K
+1024     5 8 J Q K
+1024     4 8 J Q K
+1024     3 8 J Q K
+1024     2 8 J Q K
+1024     6 7 J Q K
+1024     5 7 J Q K
+1024     4 7 J Q K
+1024     3 7 J Q K
+1024     2 7 J Q K
+1024     5 6 J Q K
+1024     4 6 J Q K
+1024     3 6 J Q K
+1024     2 6 J Q K
+1024     4 5 J Q K
+1024     3 5 J Q K
+1024     2 5 J Q K
+1024     3 4 J Q K
+1024     2 4 J Q K
+1024     2 3 J Q K
+1024     8 9 T Q K
+1024     7 9 T Q K
+1024     6 9 T Q K
+1024     5 9 T Q K
+1024     4 9 T Q K
+1024     3 9 T Q K
+1024     2 9 T Q K
+1024     7 8 T Q K
+1024     6 8 T Q K
+1024     5 8 T Q K
+1024     4 8 T Q K
+1024     3 8 T Q K
+1024     2 8 T Q K
+1024     6 7 T Q K
+1024     5 7 T Q K
+1024     4 7 T Q K
+1024     3 7 T Q K
+1024     2 7 T Q K
+1024     5 6 T Q K
+1024     4 6 T Q K
+1024     3 6 T Q K
+1024     2 6 T Q K
+1024     4 5 T Q K
+1024     3 5 T Q K
+1024     2 5 T Q K
+1024     3 4 T Q K
+1024     2 4 T Q K
+1024     2 3 T Q K
+1024     7 8 9 Q K
+1024     6 8 9 Q K
+1024     5 8 9 Q K
+1024     4 8 9 Q K
+1024     3 8 9 Q K
+1024     2 8 9 Q K
+1024     6 7 9 Q K
+1024     5 7 9 Q K
+1024     4 7 9 Q K
+1024     3 7 9 Q K
+1024     2 7 9 Q K
+1024     5 6 9 Q K
+1024     4 6 9 Q K
+1024     3 6 9 Q K
+1024     2 6 9 Q K
+1024     4 5 9 Q K
+1024     3 5 9 Q K
+1024     2 5 9 Q K
+1024     3 4 9 Q K
+1024     2 4 9 Q K
+1024     2 3 9 Q K
+1024     6 7 8 Q K
+1024     5 7 8 Q K
+1024     4 7 8 Q K
+1024     3 7 8 Q K
+1024     2 7 8 Q K
+1024     5 6 8 Q K
+1024     4 6 8 Q K
+1024     3 6 8 Q K
+1024     2 6 8 Q K
+1024     4 5 8 Q K
+1024     3 5 8 Q K
+1024     2 5 8 Q K
+1024     3 4 8 Q K
+1024     2 4 8 Q K
+1024     2 3 8 Q K
+1024     5 6 7 Q K
+1024     4 6 7 Q K
+1024     3 6 7 Q K
+1024     2 6 7 Q K
+1024     4 5 7 Q K
+1024     3 5 7 Q K
+1024     2 5 7 Q K
+1024     3 4 7 Q K
+1024     2 4 7 Q K
+1024     2 3 7 Q K
+1024     4 5 6 Q K
+1024     3 5 6 Q K
+1024     2 5 6 Q K
+1024     3 4 6 Q K
+1024     2 4 6 Q K
+1024     2 3 6 Q K
+1024     3 4 5 Q K
+1024     2 4 5 Q K
+1024     2 3 5 Q K
+1024     2 3 4 Q K
+1024     8 9 T J K
+1024     7 9 T J K
+1024     6 9 T J K
+1024     5 9 T J K
+1024     4 9 T J K
+1024     3 9 T J K
+1024     2 9 T J K
+1024     7 8 T J K
+1024     6 8 T J K
+1024     5 8 T J K
+1024     4 8 T J K
+1024     3 8 T J K
+1024     2 8 T J K
+1024     6 7 T J K
+1024     5 7 T J K
+1024     4 7 T J K
+1024     3 7 T J K
+1024     2 7 T J K
+1024     5 6 T J K
+1024     4 6 T J K
+1024     3 6 T J K
+1024     2 6 T J K
+1024     4 5 T J K
+1024     3 5 T J K
+1024     2 5 T J K
+1024     3 4 T J K
+1024     2 4 T J K
+1024     2 3 T J K
+1024     7 8 9 J K
+1024     6 8 9 J K
+1024     5 8 9 J K
+1024     4 8 9 J K
+1024     3 8 9 J K
+1024     2 8 9 J K
+1024     6 7 9 J K
+1024     5 7 9 J K
+1024     4 7 9 J K
+1024     3 7 9 J K
+1024     2 7 9 J K
+1024     5 6 9 J K
+1024     4 6 9 J K
+1024     3 6 9 J K
+1024     2 6 9 J K
+1024     4 5 9 J K
+1024     3 5 9 J K
+1024     2 5 9 J K
+1024     3 4 9 J K
+1024     2 4 9 J K
+1024     2 3 9 J K
+1024     6 7 8 J K
+1024     5 7 8 J K
+1024     4 7 8 J K
+1024     3 7 8 J K
+1024     2 7 8 J K
+1024     5 6 8 J K
+1024     4 6 8 J K
+1024     3 6 8 J K
+1024     2 6 8 J K
+1024     4 5 8 J K
+1024     3 5 8 J K
+1024     2 5 8 J K
+1024     3 4 8 J K
+1024     2 4 8 J K
+1024     2 3 8 J K
+1024     5 6 7 J K
+1024     4 6 7 J K
+1024     3 6 7 J K
+1024     2 6 7 J K
+1024     4 5 7 J K
+1024     3 5 7 J K
+1024     2 5 7 J K
+1024     3 4 7 J K
+1024     2 4 7 J K
+1024     2 3 7 J K
+1024     4 5 6 J K
+1024     3 5 6 J K
+1024     2 5 6 J K
+1024     3 4 6 J K
+1024     2 4 6 J K
+1024     2 3 6 J K
+1024     3 4 5 J K
+1024     2 4 5 J K
+1024     2 3 5 J K
+1024     2 3 4 J K
+1024     7 8 9 T K
+1024     6 8 9 T K
+1024     5 8 9 T K
+1024     4 8 9 T K
+1024     3 8 9 T K
+1024     2 8 9 T K
+1024     6 7 9 T K
+1024     5 7 9 T K
+1024     4 7 9 T K
+1024     3 7 9 T K
+1024     2 7 9 T K
+1024     5 6 9 T K
+1024     4 6 9 T K
+1024     3 6 9 T K
+1024     2 6 9 T K
+1024     4 5 9 T K
+1024     3 5 9 T K
+1024     2 5 9 T K
+1024     3 4 9 T K
+1024     2 4 9 T K
+1024     2 3 9 T K
+1024     6 7 8 T K
+1024     5 7 8 T K
+1024     4 7 8 T K
+1024     3 7 8 T K
+1024     2 7 8 T K
+1024     5 6 8 T K
+1024     4 6 8 T K
+1024     3 6 8 T K
+1024     2 6 8 T K
+1024     4 5 8 T K
+1024     3 5 8 T K
+1024     2 5 8 T K
+1024     3 4 8 T K
+1024     2 4 8 T K
+1024     2 3 8 T K
+1024     5 6 7 T K
+1024     4 6 7 T K
+1024     3 6 7 T K
+1024     2 6 7 T K
+1024     4 5 7 T K
+1024     3 5 7 T K
+1024     2 5 7 T K
+1024     3 4 7 T K
+1024     2 4 7 T K
+1024     2 3 7 T K
+1024     4 5 6 T K
+1024     3 5 6 T K
+1024     2 5 6 T K
+1024     3 4 6 T K
+1024     2 4 6 T K
+1024     2 3 6 T K
+1024     3 4 5 T K
+1024     2 4 5 T K
+1024     2 3 5 T K
+1024     2 3 4 T K
+1024     6 7 8 9 K
+1024     5 7 8 9 K
+1024     4 7 8 9 K
+1024     3 7 8 9 K
+1024     2 7 8 9 K
+1024     5 6 8 9 K
+1024     4 6 8 9 K
+1024     3 6 8 9 K
+1024     2 6 8 9 K
+1024     4 5 8 9 K
+1024     3 5 8 9 K
+1024     2 5 8 9 K
+1024     3 4 8 9 K
+1024     2 4 8 9 K
+1024     2 3 8 9 K
+1024     5 6 7 9 K
+1024     4 6 7 9 K
+1024     3 6 7 9 K
+1024     2 6 7 9 K
+1024     4 5 7 9 K
+1024     3 5 7 9 K
+1024     2 5 7 9 K
+1024     3 4 7 9 K
+1024     2 4 7 9 K
+1024     2 3 7 9 K
+1024     4 5 6 9 K
+1024     3 5 6 9 K
+1024     2 5 6 9 K
+1024     3 4 6 9 K
+1024     2 4 6 9 K
+1024     2 3 6 9 K
+1024     3 4 5 9 K
+1024     2 4 5 9 K
+1024     2 3 5 9 K
+1024     2 3 4 9 K
+1024     5 6 7 8 K
+1024     4 6 7 8 K
+1024     3 6 7 8 K
+1024     2 6 7 8 K
+1024     4 5 7 8 K
+1024     3 5 7 8 K
+1024     2 5 7 8 K
+1024     3 4 7 8 K
+1024     2 4 7 8 K
+1024     2 3 7 8 K
+1024     4 5 6 8 K
+1024     3 5 6 8 K
+1024     2 5 6 8 K
+1024     3 4 6 8 K
+1024     2 4 6 8 K
+1024     2 3 6 8 K
+1024     3 4 5 8 K
+1024     2 4 5 8 K
+1024     2 3 5 8 K
+1024     2 3 4 8 K
+1024     4 5 6 7 K
+1024     3 5 6 7 K
+1024     2 5 6 7 K
+1024     3 4 6 7 K
+1024     2 4 6 7 K
+1024     2 3 6 7 K
+1024     3 4 5 7 K
+1024     2 4 5 7 K
+1024     2 3 5 7 K
+1024     2 3 4 7 K
+1024     3 4 5 6 K
+1024     2 4 5 6 K
+1024     2 3 5 6 K
+1024     2 3 4 6 K
+1024     2 3 4 5 K
+1024     7 9 T J Q      Queen High
+1024     6 9 T J Q
+1024     5 9 T J Q
+1024     4 9 T J Q
+1024     3 9 T J Q
+1024     2 9 T J Q
+1024     7 8 T J Q
+1024     6 8 T J Q
+1024     5 8 T J Q
+1024     4 8 T J Q
+1024     3 8 T J Q
+1024     2 8 T J Q
+1024     6 7 T J Q
+1024     5 7 T J Q
+1024     4 7 T J Q
+1024     3 7 T J Q
+1024     2 7 T J Q
+1024     5 6 T J Q
+1024     4 6 T J Q
+1024     3 6 T J Q
+1024     2 6 T J Q
+1024     4 5 T J Q
+1024     3 5 T J Q
+1024     2 5 T J Q
+1024     3 4 T J Q
+1024     2 4 T J Q
+1024     2 3 T J Q
+1024     7 8 9 J Q
+1024     6 8 9 J Q
+1024     5 8 9 J Q
+1024     4 8 9 J Q
+1024     3 8 9 J Q
+1024     2 8 9 J Q
+1024     6 7 9 J Q
+1024     5 7 9 J Q
+1024     4 7 9 J Q
+1024     3 7 9 J Q
+1024     2 7 9 J Q
+1024     5 6 9 J Q
+1024     4 6 9 J Q
+1024     3 6 9 J Q
+1024     2 6 9 J Q
+1024     4 5 9 J Q
+1024     3 5 9 J Q
+1024     2 5 9 J Q
+1024     3 4 9 J Q
+1024     2 4 9 J Q
+1024     2 3 9 J Q
+1024     6 7 8 J Q
+1024     5 7 8 J Q
+1024     4 7 8 J Q
+1024     3 7 8 J Q
+1024     2 7 8 J Q
+1024     5 6 8 J Q
+1024     4 6 8 J Q
+1024     3 6 8 J Q
+1024     2 6 8 J Q
+1024     4 5 8 J Q
+1024     3 5 8 J Q
+1024     2 5 8 J Q
+1024     3 4 8 J Q
+1024     2 4 8 J Q
+1024     2 3 8 J Q
+1024     5 6 7 J Q
+1024     4 6 7 J Q
+1024     3 6 7 J Q
+1024     2 6 7 J Q
+1024     4 5 7 J Q
+1024     3 5 7 J Q
+1024     2 5 7 J Q
+1024     3 4 7 J Q
+1024     2 4 7 J Q
+1024     2 3 7 J Q
+1024     4 5 6 J Q
+1024     3 5 6 J Q
+1024     2 5 6 J Q
+1024     3 4 6 J Q
+1024     2 4 6 J Q
+1024     2 3 6 J Q
+1024     3 4 5 J Q
+1024     2 4 5 J Q
+1024     2 3 5 J Q
+1024     2 3 4 J Q
+1024     7 8 9 T Q
+1024     6 8 9 T Q
+1024     5 8 9 T Q
+1024     4 8 9 T Q
+1024     3 8 9 T Q
+1024     2 8 9 T Q
+1024     6 7 9 T Q
+1024     5 7 9 T Q
+1024     4 7 9 T Q
+1024     3 7 9 T Q
+1024     2 7 9 T Q
+1024     5 6 9 T Q
+1024     4 6 9 T Q
+1024     3 6 9 T Q
+1024     2 6 9 T Q
+1024     4 5 9 T Q
+1024     3 5 9 T Q
+1024     2 5 9 T Q
+1024     3 4 9 T Q
+1024     2 4 9 T Q
+1024     2 3 9 T Q
+1024     6 7 8 T Q
+1024     5 7 8 T Q
+1024     4 7 8 T Q
+1024     3 7 8 T Q
+1024     2 7 8 T Q
+1024     5 6 8 T Q
+1024     4 6 8 T Q
+1024     3 6 8 T Q
+1024     2 6 8 T Q
+1024     4 5 8 T Q
+1024     3 5 8 T Q
+1024     2 5 8 T Q
+1024     3 4 8 T Q
+1024     2 4 8 T Q
+1024     2 3 8 T Q
+1024     5 6 7 T Q
+1024     4 6 7 T Q
+1024     3 6 7 T Q
+1024     2 6 7 T Q
+1024     4 5 7 T Q
+1024     3 5 7 T Q
+1024     2 5 7 T Q
+1024     3 4 7 T Q
+1024     2 4 7 T Q
+1024     2 3 7 T Q
+1024     4 5 6 T Q
+1024     3 5 6 T Q
+1024     2 5 6 T Q
+1024     3 4 6 T Q
+1024     2 4 6 T Q
+1024     2 3 6 T Q
+1024     3 4 5 T Q
+1024     2 4 5 T Q
+1024     2 3 5 T Q
+1024     2 3 4 T Q
+1024     6 7 8 9 Q
+1024     5 7 8 9 Q
+1024     4 7 8 9 Q
+1024     3 7 8 9 Q
+1024     2 7 8 9 Q
+1024     5 6 8 9 Q
+1024     4 6 8 9 Q
+1024     3 6 8 9 Q
+1024     2 6 8 9 Q
+1024     4 5 8 9 Q
+1024     3 5 8 9 Q
+1024     2 5 8 9 Q
+1024     3 4 8 9 Q
+1024     2 4 8 9 Q
+1024     2 3 8 9 Q
+1024     5 6 7 9 Q
+1024     4 6 7 9 Q
+1024     3 6 7 9 Q
+1024     2 6 7 9 Q
+1024     4 5 7 9 Q
+1024     3 5 7 9 Q
+1024     2 5 7 9 Q
+1024     3 4 7 9 Q
+1024     2 4 7 9 Q
+1024     2 3 7 9 Q
+1024     4 5 6 9 Q
+1024     3 5 6 9 Q
+1024     2 5 6 9 Q
+1024     3 4 6 9 Q
+1024     2 4 6 9 Q
+1024     2 3 6 9 Q
+1024     3 4 5 9 Q
+1024     2 4 5 9 Q
+1024     2 3 5 9 Q
+1024     2 3 4 9 Q
+1024     5 6 7 8 Q
+1024     4 6 7 8 Q
+1024     3 6 7 8 Q
+1024     2 6 7 8 Q
+1024     4 5 7 8 Q
+1024     3 5 7 8 Q
+1024     2 5 7 8 Q
+1024     3 4 7 8 Q
+1024     2 4 7 8 Q
+1024     2 3 7 8 Q
+1024     4 5 6 8 Q
+1024     3 5 6 8 Q
+1024     2 5 6 8 Q
+1024     3 4 6 8 Q
+1024     2 4 6 8 Q
+1024     2 3 6 8 Q
+1024     3 4 5 8 Q
+1024     2 4 5 8 Q
+1024     2 3 5 8 Q
+1024     2 3 4 8 Q
+1024     4 5 6 7 Q
+1024     3 5 6 7 Q
+1024     2 5 6 7 Q
+1024     3 4 6 7 Q
+1024     2 4 6 7 Q
+1024     2 3 6 7 Q
+1024     3 4 5 7 Q
+1024     2 4 5 7 Q
+1024     2 3 5 7 Q
+1024     2 3 4 7 Q
+1024     3 4 5 6 Q
+1024     2 4 5 6 Q
+1024     2 3 5 6 Q
+1024     2 3 4 6 Q
+1024     2 3 4 5 Q
+1024     6 8 9 T J      Jack High
+1024     5 8 9 T J
+1024     4 8 9 T J
+1024     3 8 9 T J
+1024     2 8 9 T J
+1024     6 7 9 T J
+1024     5 7 9 T J
+1024     4 7 9 T J
+1024     3 7 9 T J
+1024     2 7 9 T J
+1024     5 6 9 T J
+1024     4 6 9 T J
+1024     3 6 9 T J
+1024     2 6 9 T J
+1024     4 5 9 T J
+1024     3 5 9 T J
+1024     2 5 9 T J
+1024     3 4 9 T J
+1024     2 4 9 T J
+1024     2 3 9 T J
+1024     6 7 8 T J
+1024     5 7 8 T J
+1024     4 7 8 T J
+1024     3 7 8 T J
+1024     2 7 8 T J
+1024     5 6 8 T J
+1024     4 6 8 T J
+1024     3 6 8 T J
+1024     2 6 8 T J
+1024     4 5 8 T J
+1024     3 5 8 T J
+1024     2 5 8 T J
+1024     3 4 8 T J
+1024     2 4 8 T J
+1024     2 3 8 T J
+1024     5 6 7 T J
+1024     4 6 7 T J
+1024     3 6 7 T J
+1024     2 6 7 T J
+1024     4 5 7 T J
+1024     3 5 7 T J
+1024     2 5 7 T J
+1024     3 4 7 T J
+1024     2 4 7 T J
+1024     2 3 7 T J
+1024     4 5 6 T J
+1024     3 5 6 T J
+1024     2 5 6 T J
+1024     3 4 6 T J
+1024     2 4 6 T J
+1024     2 3 6 T J
+1024     3 4 5 T J
+1024     2 4 5 T J
+1024     2 3 5 T J
+1024     2 3 4 T J
+1024     6 7 8 9 J
+1024     5 7 8 9 J
+1024     4 7 8 9 J
+1024     3 7 8 9 J
+1024     2 7 8 9 J
+1024     5 6 8 9 J
+1024     4 6 8 9 J
+1024     3 6 8 9 J
+1024     2 6 8 9 J
+1024     4 5 8 9 J
+1024     3 5 8 9 J
+1024     2 5 8 9 J
+1024     3 4 8 9 J
+1024     2 4 8 9 J
+1024     2 3 8 9 J
+1024     5 6 7 9 J
+1024     4 6 7 9 J
+1024     3 6 7 9 J
+1024     2 6 7 9 J
+1024     4 5 7 9 J
+1024     3 5 7 9 J
+1024     2 5 7 9 J
+1024     3 4 7 9 J
+1024     2 4 7 9 J
+1024     2 3 7 9 J
+1024     4 5 6 9 J
+1024     3 5 6 9 J
+1024     2 5 6 9 J
+1024     3 4 6 9 J
+1024     2 4 6 9 J
+1024     2 3 6 9 J
+1024     3 4 5 9 J
+1024     2 4 5 9 J
+1024     2 3 5 9 J
+1024     2 3 4 9 J
+1024     5 6 7 8 J
+1024     4 6 7 8 J
+1024     3 6 7 8 J
+1024     2 6 7 8 J
+1024     4 5 7 8 J
+1024     3 5 7 8 J
+1024     2 5 7 8 J
+1024     3 4 7 8 J
+1024     2 4 7 8 J
+1024     2 3 7 8 J
+1024     4 5 6 8 J
+1024     3 5 6 8 J
+1024     2 5 6 8 J
+1024     3 4 6 8 J
+1024     2 4 6 8 J
+1024     2 3 6 8 J
+1024     3 4 5 8 J
+1024     2 4 5 8 J
+1024     2 3 5 8 J
+1024     2 3 4 8 J
+1024     4 5 6 7 J
+1024     3 5 6 7 J
+1024     2 5 6 7 J
+1024     3 4 6 7 J
+1024     2 4 6 7 J
+1024     2 3 6 7 J
+1024     3 4 5 7 J
+1024     2 4 5 7 J
+1024     2 3 5 7 J
+1024     2 3 4 7 J
+1024     3 4 5 6 J
+1024     2 4 5 6 J
+1024     2 3 5 6 J
+1024     2 3 4 6 J
+1024     2 3 4 5 J
+1024     5 7 8 9 T      Ten High
+1024     4 7 8 9 T
+1024     3 7 8 9 T
+1024     2 7 8 9 T
+1024     5 6 8 9 T
+1024     4 6 8 9 T
+1024     3 6 8 9 T
+1024     2 6 8 9 T
+1024     4 5 8 9 T
+1024     3 5 8 9 T
+1024     2 5 8 9 T
+1024     3 4 8 9 T
+1024     2 4 8 9 T
+1024     2 3 8 9 T
+1024     5 6 7 9 T
+1024     4 6 7 9 T
+1024     3 6 7 9 T
+1024     2 6 7 9 T
+1024     4 5 7 9 T
+1024     3 5 7 9 T
+1024     2 5 7 9 T
+1024     3 4 7 9 T
+1024     2 4 7 9 T
+1024     2 3 7 9 T
+1024     4 5 6 9 T
+1024     3 5 6 9 T
+1024     2 5 6 9 T
+1024     3 4 6 9 T
+1024     2 4 6 9 T
+1024     2 3 6 9 T
+1024     3 4 5 9 T
+1024     2 4 5 9 T
+1024     2 3 5 9 T
+1024     2 3 4 9 T
+1024     5 6 7 8 T
+1024     4 6 7 8 T
+1024     3 6 7 8 T
+1024     2 6 7 8 T
+1024     4 5 7 8 T
+1024     3 5 7 8 T
+1024     2 5 7 8 T
+1024     3 4 7 8 T
+1024     2 4 7 8 T
+1024     2 3 7 8 T
+1024     4 5 6 8 T
+1024     3 5 6 8 T
+1024     2 5 6 8 T
+1024     3 4 6 8 T
+1024     2 4 6 8 T
+1024     2 3 6 8 T
+1024     3 4 5 8 T
+1024     2 4 5 8 T
+1024     2 3 5 8 T
+1024     2 3 4 8 T
+1024     4 5 6 7 T
+1024     3 5 6 7 T
+1024     2 5 6 7 T
+1024     3 4 6 7 T
+1024     2 4 6 7 T
+1024     2 3 6 7 T
+1024     3 4 5 7 T
+1024     2 4 5 7 T
+1024     2 3 5 7 T
+1024     2 3 4 7 T
+1024     3 4 5 6 T
+1024     2 4 5 6 T
+1024     2 3 5 6 T
+1024     2 3 4 6 T
+1024     2 3 4 5 T
+1024     4 6 7 8 9      Nine High
+1024     3 6 7 8 9
+1024     2 6 7 8 9
+1024     4 5 7 8 9
+1024     3 5 7 8 9
+1024     2 5 7 8 9
+1024     3 4 7 8 9
+1024     2 4 7 8 9
+1024     2 3 7 8 9
+1024     4 5 6 8 9
+1024     3 5 6 8 9
+1024     2 5 6 8 9
+1024     3 4 6 8 9
+1024     2 4 6 8 9
+1024     2 3 6 8 9
+1024     3 4 5 8 9
+1024     2 4 5 8 9
+1024     2 3 5 8 9
+1024     2 3 4 8 9
+1024     4 5 6 7 9
+1024     3 5 6 7 9
+1024     2 5 6 7 9
+1024     3 4 6 7 9
+1024     2 4 6 7 9
+1024     2 3 6 7 9
+1024     3 4 5 7 9
+1024     2 4 5 7 9
+1024     2 3 5 7 9
+1024     2 3 4 7 9
+1024     3 4 5 6 9
+1024     2 4 5 6 9
+1024     2 3 5 6 9
+1024     2 3 4 6 9
+1024     2 3 4 5 9
+1024     3 5 6 7 8      Eight High
+1024     2 5 6 7 8
+1024     3 4 6 7 8
+1024     2 4 6 7 8
+1024     2 3 6 7 8
+1024     3 4 5 7 8
+1024     2 4 5 7 8
+1024     2 3 5 7 8
+1024     2 3 4 7 8
+1024     3 4 5 6 8
+1024     2 4 5 6 8
+1024     2 3 5 6 8
+1024     2 3 4 6 8
+1024     2 3 4 5 8
+1024     2 4 5 6 7      Seven High
+1024     2 3 5 6 7
+1024     2 3 4 6 7
+1024     2 3 4 5 7

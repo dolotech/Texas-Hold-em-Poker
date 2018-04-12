@@ -1,4 +1,4 @@
-package internal
+package model
 
 import (
 	"github.com/dolotech/leaf/db/mongodb"
@@ -23,12 +23,12 @@ func init()  {
 	}
 	mongoDB = db
 
-	err = db.EnsureCounter(DB, "counters", "users")
+	err = db.EnsureCounter(DB, "counters", USERDB)
 	if err != nil {
 		glog.Fatalf("ensure counter error: %v", err)
 	}
 
-	err = db.EnsureCounter(DB, "counters", "rooms")
+	err = db.EnsureCounter(DB, "counters", ROOMDB)
 	if err != nil {
 		glog.Fatalf("ensure counter error: %v", err)
 	}
@@ -40,6 +40,6 @@ func mongoDBDestroy()  {
 
 }
 
-func mongoDBNextSeq(id string) (int, error) {
+func mongoDBNextSeq(id string) (uint32, error) {
 	return mongoDB.NextSeq(DB, "counters", id)
 }

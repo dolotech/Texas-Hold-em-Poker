@@ -11,10 +11,11 @@ var Processor = json.NewProcessor()
 
 var (
 	// 用户数据
-	MSG_SUCCESS          = &CodeState{Code: 0, Message: "success"}      //注册成功
-	MSG_Register_Existed = &CodeState{Code: 1, Message: "existed user"} //注册用户已存在
-	MSG_Login_Error      = &CodeState{Code: 2, Message: "login fail"}   //登录失败 信息错误
-	MSG_DB_Error         = &CodeState{Code: 111, Message: "db error"}   //数据库出错
+	MSG_SUCCESS          = &CodeState{Code: 0, Message: "success"}       //注册成功
+	MSG_Register_Existed = &CodeState{Code: 1, Message: "existed user"}  //注册用户已存在
+	MSG_Login_Error      = &CodeState{Code: 2, Message: "login fail"}    //登录失败 信息错误
+	MSG_Version_Error    = &CodeState{Code: 3, Message: "version wrong"} //版本号不对
+	MSG_DB_Error         = &CodeState{Code: 111, Message: "db error"}    //数据库出错
 
 	//房间信息 1000开始标记
 	MSG_ROOM_NOTAUTH    = &CodeState{Code: 1001, Message: "Unauthorized"}     //没有权限
@@ -69,12 +70,12 @@ type RegisterUserInfo struct {
 
 type RoomInfo struct {
 	RoomName   string
-	Volume     int
-	GameType   int    //游戏类型 即玩法
-	PayValue   int    //倍数
-	BaseMoney  int    //最低资本 才能进房间
+	Volume     uint32
+	GameType   uint32    //游戏类型 即玩法
+	PayValue   uint32    //倍数
+	BaseMoney  uint32    //最低资本 才能进房间
 	RoomPwd    string //房间锁--密码
-	RoomID     int
+	RoomID     uint32
 	RoomNumber string
 }
 

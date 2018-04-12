@@ -4,6 +4,7 @@ import (
 	//"leaf/gate"
 	"github.com/dolotech/leaf/gate"
 	"server/msg"
+	"server/model"
 )
 
 var userLine *UserLine
@@ -12,14 +13,14 @@ type UserLine struct {
 	gate.Agent //申请代理
 	//*g.LinearContext
 	Cards    []*CardData //牌
-	UserData *UserData
+	UserData *model.UserData
 	RoomLine *Room
 	//RoomPosition	int	//房间里的座位号 1-4
 	ReadyState int //准备状态 是否可以开局 0否 1是
 }
 
 //初始化 用户登录后 进行
-func (u *UserLine) initUser(userInfo *UserData) {
+func (u *UserLine) initUser(userInfo *model.UserData) {
 	u.UserData = userInfo
 	u.RoomLine = nil
 	//u.Cards = nil
@@ -54,7 +55,6 @@ func (u *UserLine) createdRoom(roomInfo *msg.RoomInfo) {
 
 
 		})*/
-
 
 		room.gameStart()
 	} else {
@@ -124,4 +124,27 @@ func (u *UserLine) changeRoomInfo(roomInfo *msg.RoomInfo) {
 //解散(关闭)房间
 func (u *UserLine) closeRoom() {
 	CloseRoom(u)
+}
+
+func register(userInfo *msg.RegisterUserInfo) (err error) { //注册
+	skeleton.Go(func() {
+		u := &model.UserData{}
+		err = u.Register(userInfo)
+	}, nil)
+	return
+}
+
+func login(userInfo *msg.UserLoginInfo) (err error) {
+	skeleton.Go(func() {
+		result := &model.UserData{}
+		err = result.Login(userInfo)
+	}, nil)
+	return
+}
+
+//检查用户是否已注册过
+func checkExitedUser(userName string) (err error) {
+	u := &model.UserData{}
+	err = u.ExitedUser(userName)
+	return
 }
