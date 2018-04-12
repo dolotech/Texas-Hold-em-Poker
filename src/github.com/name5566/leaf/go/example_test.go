@@ -12,10 +12,10 @@ func Example() {
 	// go 1
 	var res int
 	d.Go(func() {
-		fmt.Println("1 + 1 = ?")
+		glog.Infoln("1 + 1 = ?")
 		res = 1 + 1
 	}, func() {
-		fmt.Println(res)
+		glog.Infoln(res)
 	})
 
 	d.Cb(<-d.ChanCb)
@@ -24,7 +24,7 @@ func Example() {
 	d.Go(func() {
 		fmt.Print("My name is ")
 	}, func() {
-		fmt.Println("Leaf")
+		glog.Infoln("Leaf")
 	})
 
 	d.Close()
@@ -41,10 +41,10 @@ func ExampleLinearContext() {
 	// parallel
 	d.Go(func() {
 		time.Sleep(time.Second / 2)
-		fmt.Println("1")
+		glog.Infoln("1")
 	}, nil)
 	d.Go(func() {
-		fmt.Println("2")
+		glog.Infoln("2")
 	}, nil)
 
 	d.Cb(<-d.ChanCb)
@@ -54,10 +54,10 @@ func ExampleLinearContext() {
 	c := d.NewLinearContext()
 	c.Go(func() {
 		time.Sleep(time.Second / 2)
-		fmt.Println("1")
+		glog.Infoln("1")
 	}, nil)
 	c.Go(func() {
-		fmt.Println("2")
+		glog.Infoln("2")
 	}, nil)
 
 	d.Close()

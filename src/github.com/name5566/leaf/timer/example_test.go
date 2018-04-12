@@ -11,12 +11,12 @@ func ExampleTimer() {
 
 	// timer 1
 	d.AfterFunc(1, func() {
-		fmt.Println("My name is Leaf")
+		glog.Infoln("My name is Leaf")
 	})
 
 	// timer 2
 	t := d.AfterFunc(1, func() {
-		fmt.Println("will not print")
+		glog.Infoln("will not print")
 	})
 	t.Stop()
 
@@ -33,7 +33,7 @@ func ExampleCronExpr() {
 		return
 	}
 
-	fmt.Println(cronExpr.Next(time.Date(
+	glog.Infoln(cronExpr.Next(time.Date(
 		2000, 1, 1,
 		20, 10, 5,
 		0, time.UTC,
@@ -55,7 +55,7 @@ func ExampleCron() {
 	// cron
 	var c *timer.Cron
 	c = d.CronFunc(cronExpr, func() {
-		fmt.Println("My name is Leaf")
+		glog.Infoln("My name is Leaf")
 		c.Stop()
 	})
 

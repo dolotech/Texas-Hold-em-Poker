@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"github.com/name5566/leaf/db/mongodb"
 	"gopkg.in/mgo.v2"
+	"github.com/golang/glog"
 )
 
 func Example() {
 	c, err := mongodb.Dial("localhost", 10)
 	if err != nil {
-		fmt.Println(err)
+		glog.Infoln(err)
 		return
 	}
 	defer c.Close()
@@ -19,23 +20,23 @@ func Example() {
 	defer c.UnRef(s)
 	err = s.DB("test").C("counters").RemoveId("test")
 	if err != nil && err != mgo.ErrNotFound {
-		fmt.Println(err)
+		glog.Infoln(err)
 		return
 	}
 
 	// auto increment
 	err = c.EnsureCounter("test", "counters", "test")
 	if err != nil {
-		fmt.Println(err)
+		glog.Infoln(err)
 		return
 	}
 	for i := 0; i < 3; i++ {
 		id, err := c.NextSeq("test", "counters", "test")
 		if err != nil {
-			fmt.Println(err)
+			glog.Infoln(err)
 			return
 		}
-		fmt.Println(id)
+		glog.Infoln(id)
 	}
 
 	// index

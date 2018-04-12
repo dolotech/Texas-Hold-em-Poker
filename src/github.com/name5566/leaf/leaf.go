@@ -10,15 +10,6 @@ import (
 )
 
 func Run(mods ...module.Module) {
-	// logger
-	//if conf.LogLevel != "" {
-	//logger, err := glog.New(conf.LogLevel, conf.LogPath, conf.LogFlag)
-	//if err != nil {
-	//	panic(err)
-	//}
-	//glog.Errorf(logger)
-	//defer logger.Close()
-	//}
 
 	glog.Errorf("Leaf %v starting up", version)
 

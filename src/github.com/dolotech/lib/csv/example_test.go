@@ -9,6 +9,7 @@ package csv
 
 import (
 	"fmt"
+	"github.com/golang/glog"
 )
 
 type Person struct {
@@ -44,10 +45,10 @@ John Doe,"32,000",45,Brooklyn,"7th Street"
 	err := Unmarshal(sample, &people)
 
 	if err != nil {
-		fmt.Println("Error: ", err)
+		glog.Infoln("Error: ", err)
 	}
 
-	fmt.Printf("%+v", people)
+	glog.Infof("%+v", people)
 
 	// Output:
 	// [{Name:John Doe income: Age:0 Address:{City:Brooklyn Street:7th Street}}]

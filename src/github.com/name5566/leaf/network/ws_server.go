@@ -58,7 +58,7 @@ func (handler *WSHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if len(handler.conns) >= handler.maxConnNum {
 		handler.mutexConns.Unlock()
 		conn.Close()
-		glog.Errorf("too many connections")
+		glog.Error("too many connections")
 		return
 	}
 	handler.conns[conn] = struct{}{}
@@ -79,7 +79,7 @@ func (handler *WSHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (server *WSServer) Start() {
 	ln, err := net.Listen("tcp", server.Addr)
 	if err != nil {
-		glog.Fatal("%v", err)
+		glog.Fatalf("%v", err)
 	}
 
 	if server.MaxConnNum <= 0 {
@@ -110,7 +110,7 @@ func (server *WSServer) Start() {
 		config.Certificates = make([]tls.Certificate, 1)
 		config.Certificates[0], err = tls.LoadX509KeyPair(server.CertFile, server.KeyFile)
 		if err != nil {
-			glog.Fatal("%v", err)
+			glog.Fatalf("%v", err)
 		}
 
 		ln = tls.NewListener(ln, config)

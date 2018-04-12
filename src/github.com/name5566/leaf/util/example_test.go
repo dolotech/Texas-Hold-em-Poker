@@ -8,17 +8,17 @@ import (
 func ExampleMap() {
 	m := new(util.Map)
 
-	fmt.Println(m.Get("key"))
+	glog.Infoln(m.Get("key"))
 	m.Set("key", "value")
-	fmt.Println(m.Get("key"))
+	glog.Infoln(m.Get("key"))
 	m.Del("key")
-	fmt.Println(m.Get("key"))
+	glog.Infoln(m.Get("key"))
 
 	m.Set(1, "1")
 	m.Set(2, 2)
 	m.Set("3", 3)
 
-	fmt.Println(m.Len())
+	glog.Infoln(m.Len())
 
 	// Output:
 	// <nil>
@@ -31,7 +31,7 @@ func ExampleRandGroup() {
 	i := util.RandGroup(0, 0, 50, 50)
 	switch i {
 	case 2, 3:
-		fmt.Println("ok")
+		glog.Infoln("ok")
 	}
 
 	// Output:
@@ -42,7 +42,7 @@ func ExampleRandInterval() {
 	v := util.RandInterval(-1, 1)
 	switch v {
 	case -1, 0, 1:
-		fmt.Println("ok")
+		glog.Infoln("ok")
 	}
 
 	// Output:
@@ -53,7 +53,7 @@ func ExampleRandIntervalN() {
 	r := util.RandIntervalN(-1, 0, 2)
 	if r[0] == -1 && r[1] == 0 ||
 		r[0] == 0 && r[1] == -1 {
-		fmt.Println("ok")
+		glog.Infoln("ok")
 	}
 
 	// Output:
@@ -67,7 +67,7 @@ func ExampleDeepCopy() {
 	util.DeepCopy(&dst, &src)
 
 	for _, v := range dst {
-		fmt.Println(v)
+		glog.Infoln(v)
 	}
 
 	// Output:
@@ -82,7 +82,7 @@ func ExampleDeepClone() {
 	dst := util.DeepClone(src).([]int)
 
 	for _, v := range dst {
-		fmt.Println(v)
+		glog.Infoln(v)
 	}
 
 	// Output:

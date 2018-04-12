@@ -3496,7 +3496,7 @@ func (q *Query) Iter() *Iter {
 //    iter := collection.Find(nil).Sort("$natural").Tail(5 * time.Second)
 //    for {
 //         for iter.Next(&result) {
-//             fmt.Println(result.Id)
+//             glog.Infoln(result.Id)
 //             lastId = result.Id
 //         }
 //         if iter.Err() != nil {
@@ -4113,7 +4113,7 @@ type MapReduceTime struct {
 //         return err
 //     }
 //     for _, item := range result {
-//         fmt.Println(item.Value)
+//         glog.Infoln(item.Value)
 //     }
 //
 // This function is compatible with MongoDB 1.7.4+.
@@ -4263,7 +4263,7 @@ type valueResult struct {
 //             ReturnNew: true,
 //     }
 //     info, err = col.Find(M{"_id": id}).Apply(change, &doc)
-//     fmt.Println(doc.N)
+//     glog.Infoln(doc.N)
 //
 // This method depends on MongoDB >= 2.0 to work properly.
 //

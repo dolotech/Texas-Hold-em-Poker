@@ -90,7 +90,7 @@ func (c *DialContext) Close() {
 	for _, s := range c.sessions {
 		s.Close()
 		if s.ref != 0 {
-			glog.Error("session ref = %v", s.ref)
+			glog.Errorf("session ref = %v", s.ref)
 		}
 	}
 	c.Unlock()

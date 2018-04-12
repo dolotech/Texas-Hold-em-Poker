@@ -116,7 +116,7 @@ func (a *agent) OnClose() {
 	if a.gate.AgentChanRPC != nil {
 		err := a.gate.AgentChanRPC.Call0("CloseAgent", a)
 		if err != nil {
-			glog.Error("chanrpc error: %v", err)
+			glog.Errorf("chanrpc error: %v", err)
 		}
 	}
 }
@@ -125,12 +125,12 @@ func (a *agent) WriteMsg(msg interface{}) {
 	if a.gate.Processor != nil {
 		data, err := a.gate.Processor.Marshal(msg)
 		if err != nil {
-			glog.Error("marshal message %v error: %v", reflect.TypeOf(msg), err)
+			glog.Errorf("marshal message %v error: %v", reflect.TypeOf(msg), err)
 			return
 		}
 		err = a.conn.WriteMsg(data...)
 		if err != nil {
-			glog.Error("write message %v error: %v", reflect.TypeOf(msg), err)
+			glog.Errorf("write message %v error: %v", reflect.TypeOf(msg), err)
 		}
 	}
 }

@@ -55,23 +55,23 @@ func Test_AES(t *testing.T) {
 	aesEnc.SetKey([]byte("aalk;lkasjd;lkfj;alk"))
 	doc := []byte("abcde号。")
 	arrEncrypt, err := aesEnc.Encrypt(doc)
-	fmt.Println(string(arrEncrypt))
+	glog.Infoln(string(arrEncrypt))
 	if err != nil {
-		fmt.Println(string(arrEncrypt))
+		glog.Infoln(string(arrEncrypt))
 		return
 	}
 	strMsg, err := aesEnc.Decrypt(arrEncrypt)
 	if err != nil {
-		fmt.Println(string(arrEncrypt))
+		glog.Infoln(string(arrEncrypt))
 		return
 	}
-	fmt.Println(string(strMsg))
+	glog.Infoln(string(strMsg))
 }
 func Test_XXTEA(t *testing.T) {
 	/*str := "Hello World! 你好，中国！"
 	key := "1234567890"
 	encrypt_data := Encrypt([]byte(str), []byte(key))
-	//fmt.Println(base64.StdEncoding.EncodeToString(encrypt_data))
+	//glog.Infoln(base64.StdEncoding.EncodeToString(encrypt_data))
 	decrypt_data := Decrypt(encrypt_data, []byte(key))*/
 
 }

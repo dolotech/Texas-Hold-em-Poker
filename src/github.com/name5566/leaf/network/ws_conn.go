@@ -75,7 +75,7 @@ func (wsConn *WSConn) Close() {
 
 func (wsConn *WSConn) doWrite(b []byte) {
 	if len(wsConn.writeChan) == cap(wsConn.writeChan) {
-		glog.Errorf("close conn: channel full")
+		glog.Error("close conn: channel full")
 		wsConn.doDestroy()
 		return
 	}

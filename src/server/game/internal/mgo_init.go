@@ -16,14 +16,14 @@ func init()  {
 
 	//db, err := mongodb.Dial(DB_INFO,10)
 	//if err != nil{
-	//	//fmt.Println("----connecting----")
+	//	//glog.Infoln("----connecting----")
 	//	//glog.Fatal("db %v",err)
 	//	glog.Fatal("db-err %v",err)
-	//	//fmt.Println("------connected----")
+	//	//glog.Infoln("------connected----")
 	//	return
 	//}
 	//mongoDB = db
-	////fmt.Println("------connected----")
+	////glog.Infoln("------connected----")
 	// mongodb
 	if conf.Server.DBMaxConnNum <= 0 {
 		conf.Server.DBMaxConnNum = 100

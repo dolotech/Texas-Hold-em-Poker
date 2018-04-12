@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"sort"
 	"unicode/utf8"
+	"github.com/golang/glog"
 )
 
 // In a trie, each node has many child nodes
@@ -136,12 +137,12 @@ func (T *Trie) DumpTrie(node *Node) {
 			sadr = snode
 		}
 
-		fmt.Printf("adr:%p  val:%c  depth:%d  padr:%p  pval:%c  sadr:%p  sval:%c  eow:%v\n", adr, val, node.Depth, padr, pval, sadr, sval, node.EOW)
+		glog.Infof("adr:%p  val:%c  depth:%d  padr:%p  pval:%c  sadr:%p  sval:%c  eow:%v\n", adr, val, node.Depth, padr, pval, sadr, sval, node.EOW)
 
 		for _, child := range node.ChildNodes {
 			cadr = child
 			cval = child.Val
-			fmt.Printf("-------------->cadr:%p  cval:%c\n", cadr, cval)
+			glog.Infof("-------------->cadr:%p  cval:%c\n", cadr, cval)
 			lst.PushBack(child)
 		}
 	}

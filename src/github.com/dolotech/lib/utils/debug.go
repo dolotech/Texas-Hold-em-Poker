@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
+	"github.com/golang/glog"
 )
 
 type variable struct {
@@ -83,7 +84,7 @@ func Dump(v interface{}) {
 	val := reflect.ValueOf(v)
 	dump := &variable{indent: -1}
 	dump.dump(val, "")
-	fmt.Printf("%s", dump.Out)
+	glog.Infof("%s", dump.Out)
 }
 
 // Return the value that is passed as the argument with indentation.

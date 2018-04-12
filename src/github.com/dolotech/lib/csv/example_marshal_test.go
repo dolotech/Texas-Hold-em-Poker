@@ -9,6 +9,7 @@ package csv
 
 import (
 	"fmt"
+	"github.com/golang/glog"
 )
 
 func ExampleMarshal() {
@@ -32,7 +33,7 @@ func ExampleMarshal() {
 	}
 
 	out, _ := Marshal(people)
-	fmt.Printf("%s", out)
+	glog.Infof("%s", out)
 	// Output:
 	// FullName,Gender,Age,Bank Account,Happy
 	// "Smith, Joe",M,23,19.07,Sad

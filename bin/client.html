@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>game test</title>
+</head>
+
+<body>
+	<input  type="submit" >
+	<button onclick="ok_button()">ok</button>
+	<p>return : <output id="result"></output></p>
+
+
+
+<script type="text/javascript">
+function ok_button(){
+	var ws = new WebSocket('ws://127.0.0.1:3653')
+	ws.onopen = function(){
+		ws.send(JSON.stringify({Hello:{Name:'leaf'}}))
+	}
+	ws.onmessage = function(evt){
+		var re = evt.data;
+		var reader = new FileReader()
+		reader.readAsText(re)
+//		document.getElementById("result").innerHTML = evt.data;
+//		alert("data re....",re)
+        reader.onload = function() {
+            console.log(this.result);//直接打印的就是服务端传回来的数据
+            document.getElementById("result").innerHTML = this.result;
+        }
+	}
+}
+</script>
+
+
+</body>
+
+</html>

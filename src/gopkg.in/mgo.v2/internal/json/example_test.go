@@ -27,7 +27,7 @@ func ExampleMarshal() {
 	}
 	b, err := json.Marshal(group)
 	if err != nil {
-		fmt.Println("error:", err)
+		glog.Infoln("error:", err)
 	}
 	os.Stdout.Write(b)
 	// Output:
@@ -46,7 +46,7 @@ func ExampleUnmarshal() {
 	var animals []Animal
 	err := json.Unmarshal(jsonBlob, &animals)
 	if err != nil {
-		fmt.Println("error:", err)
+		glog.Infoln("error:", err)
 	}
 	fmt.Printf("%+v", animals)
 	// Output:
@@ -213,7 +213,7 @@ func ExampleRawMessage() {
 		if err != nil {
 			log.Fatalln("error:", err)
 		}
-		fmt.Println(c.Space, dst)
+		glog.Infoln(c.Space, dst)
 	}
 	// Output:
 	// YCbCr &{255 0 -10}
