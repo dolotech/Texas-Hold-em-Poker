@@ -70,10 +70,10 @@ func (u *UserLine) FindRoom(roomNumber string) (room *Room) {
 		roomData := room.RoomData
 		//roomInfo := msg.RoomInfo{roomData.RoomName,}
 		u.WriteMsg(&msg.RoomInfo{
-			roomData.RoomName, roomData.Volume,
-			roomData.GameType, roomData.PayValue,
-			roomData.BaseMoney, "", roomData.RoomID,
-			roomData.RoomNumber})
+			roomData.Name, roomData.Max,
+			roomData.Kind, roomData.PayValue,
+			roomData.MinChips, "", roomData.Id,
+			roomData.Number})
 
 	} else {
 		u.WriteMsg(msg.MSG_ROOM_NOROOM)

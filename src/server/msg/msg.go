@@ -70,9 +70,9 @@ type RegisterUserInfo struct {
 
 type RoomInfo struct {
 	RoomName   string
-	Volume     uint32
+	Volume     uint8
 	GameType   uint32    //游戏类型 即玩法
-	PayValue   uint32    //倍数
+	PayValue   uint8    //倍数
 	BaseMoney  uint32    //最低资本 才能进房间
 	RoomPwd    string //房间锁--密码
 	RoomID     uint32

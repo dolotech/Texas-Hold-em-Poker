@@ -37,6 +37,9 @@ type User struct {
 	RoomID     uint32 `xorm:"'room_id'"`                 // 当前所在房间号，0表示不在房间,用于掉线重连
 }
 
+func (u *User) Insert( ) (int64,error) {
+	return db.C().Engine().InsertOne(u)
+}
 func (u *User) UpdateChips(value int32) error {
 	sql := fmt.Sprintf(`UPDATE public.user SET
 	chips = chips + %d WHERE uid = %d `, value, u.Uid)

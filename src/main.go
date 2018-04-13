@@ -12,7 +12,6 @@ import (
 	"github.com/golang/glog"
 	"github.com/dolotech/lib/db"
 	"server/model"
-	"github.com/dolotech/lib/server_info"
 )
 
 var Commit = ""
@@ -20,19 +19,24 @@ var BUILD_TIME = ""
 var VERSION = ""
 
 var createdb bool
-func main() {
-	flag.StringVar(&conf.Server.WSAddr, "addr", ":8989", "")
-	flag.IntVar(&conf.Server.MaxConnNum, "maxconn", 20000, "")
+
+func init() {
+	flag.StringVar(&conf.Server.WSAddr, "addr", ":8989", "websocket port")
+	flag.IntVar(&conf.Server.MaxConnNum, "maxconn", 20000, "Max Conn Num")
+	flag.IntVar(&conf.Server.ConsolePort, "consoleport", 20000, "Console Port")
+	flag.StringVar(&conf.Server.ProfilePath, "profilepath", "pprof", "Profile Path")
 	flag.StringVar(&conf.Server.DBUrl, "pg", "postgres://postgres:haosql@127.0.0.1:5432/postgres?sslmode=disable", "pg addr")
 	flag.BoolVar(&createdb, "createdb", false, "initial database")
 
 	flag.Parse()
+
 	db.Init(conf.Server.DBUrl)
-	serverInfo.SetInfo(Commit, BUILD_TIME, VERSION)
 	if createdb {
 		createDb()
 	}
+}
 
+func main() {
 	lconf.ConsolePort = conf.Server.ConsolePort
 	lconf.ProfilePath = conf.Server.ProfilePath
 	go leaf.Run(
@@ -40,7 +44,8 @@ func main() {
 		gate.Module,
 		login.Module,
 	)
-	http.HandleFunc("/release", hand)
+
+	// for test client
 	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./"))))
 	err := http.ListenAndServe(":12345", nil)
 	if err != nil {
@@ -48,14 +53,9 @@ func main() {
 	}
 }
 
-
-func hand(w http.ResponseWriter, r *http.Request) {
-	w.Write(serverInfo.GetInfoBytes())
-}
-
 func createDb() {
 	// 建表,只维护和服务器game里面有关的表
-	err := db.C().Sync(model.User{})
+	err := db.C().Sync(model.User{},model.Room{})
 	if err != nil {
 		glog.Errorln(err)
 	}
