@@ -6,6 +6,6 @@ type IRoom interface {
 	GetData() *Room
 	Close()
 	SetData(*Room)
-	RecvMsg(msg interface{})
+	RecvMsg(uid uint32,msg interface{})
 }
 

@@ -9,12 +9,12 @@ type Route struct {
 	hash map[string]*reflect.Value
 }
 
-func (this *Route) Route(msg interface{}) {
+func (this *Route) Route(msg ,arg interface{}) {
 	msgType := reflect.TypeOf(msg)
 	msgID := msgType.Elem().Name()
 	if f, ok := this.hash[msgID]; ok {
 		//glog.Errorln("Route")
-		f.Call([]reflect.Value{reflect.ValueOf(msg)})
+		f.Call([]reflect.Value{reflect.ValueOf(msg),reflect.ValueOf(arg)})
 	}
 }
 func (this *Route) Regist(msg, f interface{}) {

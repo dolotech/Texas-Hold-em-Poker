@@ -12,11 +12,11 @@ func TestRoom_RecvMsg(t *testing.T) {
 
 
 	msg:= &msg2.JoinRoom{RoomNumber:"9999"}
-	room.RecvMsg(msg)
+	room.RecvMsg(12,msg)
 
 
 	msg1:= &msg2.LeaveRoom{RoomNumber:"9999"}
-	room.RecvMsg(msg1)
+	room.RecvMsg(12,msg1)
 
 
 	time.Sleep(time.Second*2)
