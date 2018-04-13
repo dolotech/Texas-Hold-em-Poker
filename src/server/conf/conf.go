@@ -22,3 +22,17 @@ var (
 	AsynCallLen        = 10000
 	ChanRPCLen         = 10000
 )
+
+
+
+var Server struct {
+	WSAddr       string
+	CertFile     string
+	KeyFile      string
+	TCPAddr      string
+	MaxConnNum   int
+	ConsolePort  int
+	ProfilePath  string
+	DBMaxConnNum int
+	DBUrl        string
+}

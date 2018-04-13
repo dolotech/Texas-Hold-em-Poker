@@ -550,7 +550,7 @@ func BitOr(v int64) {
 			s = fmt.Sprintf("%s %d", s, i)
 		}
 	}
-	glog.Infoln((s)
+	glog.Infoln(s)
 }
 
 func Byte2uint32(in []byte) []uint32 {

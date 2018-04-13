@@ -13,14 +13,14 @@ type UserLine struct {
 	gate.Agent //申请代理
 	//*g.LinearContext
 	Cards    []*CardData //牌
-	UserData *model.UserData
+	UserData *model.User
 	RoomLine *Room
 	//RoomPosition	int	//房间里的座位号 1-4
 	ReadyState int //准备状态 是否可以开局 0否 1是
 }
 
 //初始化 用户登录后 进行
-func (u *UserLine) initUser(userInfo *model.UserData) {
+func (u *UserLine) initUser(userInfo *model.User) {
 	u.UserData = userInfo
 	u.RoomLine = nil
 	//u.Cards = nil
@@ -128,24 +128,25 @@ func (u *UserLine) closeRoom() {
 
 func register(userInfo *msg.RegisterUserInfo) (err error) { //注册
 	skeleton.Go(func() {
-		u := &model.UserData{
-			AccountID:userInfo.Name,
-		}
-		err = u.Register()
+		//u := &model.UserData{
+		//	AccountID:userInfo.Name,
+		//}
+		//err = u.Register()
 	}, nil)
 	return
 }
 
 func login(userInfo *msg.UserLoginInfo) (err error) {
 	skeleton.Go(func() {
-		result := &model.UserData{}
-		err = result.Login(userInfo)
+		//result := &model.UserData{}
+		//err = result.Login(userInfo)
 	}, nil)
 	return
 }
 
 //检查用户是否已注册过
 func checkExitedUser(userName string)bool {
-	u := &model.UserData{AccountID:userName}
-	return u.ExistByAccountID()
+	//u := &model.UserData{AccountID:userName}
+	//return u.ExistByAccountID()
+	return false
 }

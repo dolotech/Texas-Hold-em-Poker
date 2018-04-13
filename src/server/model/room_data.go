@@ -33,19 +33,3 @@ type RoomData struct {
 	MaxChips  uint32
 	MinChips  uint32
 }
-
-//func (R *RoomData) InitValue(userID int) error {
-//	roomID, err := mongoDBNextSeq("rooms")
-//	if err != nil {
-//		return fmt.Errorf("get next rooms id error: %v", err)
-//	}
-//
-//	R.RoomID = roomID
-//	R.RoomNumber = fmt.Sprintf("%06d", roomID)
-//	R.OriginalOwnerID = userID
-//	R.RoomOwner = userID
-//	R.CreatedAt = time.Now().Unix()
-//	return nil
-//}
-
-//创建 往数据库写入

@@ -11,9 +11,9 @@ var allRooms []*Room
 
 type Room struct {
 	RoomData *model.RoomData
-	MapUsers map[uint32]*model.UserData //玩家信息以及座位 int 为位置 1-4
+	MapUsers map[uint32]*model.User //玩家信息以及座位 int 为位置 1-4
 	//RoomState	int	//房间状态
-	RoomOwner *model.UserData //房管
+	RoomOwner *model.User //房管
 	//*g.LinearContext
 	gate.Agent
 	Players        uint32 //玩家数量
