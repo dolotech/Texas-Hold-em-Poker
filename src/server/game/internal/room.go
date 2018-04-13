@@ -63,7 +63,7 @@ func FindRoomsByRoomNumber(roomNumber string) (room *Room) {
 //通过 房间的 RoomID 确定某个房间
 func FindRoomByRoomNameAndOwner(roomID uint32) (room *Room) {
 	for _, v := range allRooms {
-		if v.RoomData.Id == roomID {
+		if v.RoomData.Rid == roomID {
 			room = v
 		}
 	}

@@ -16,7 +16,7 @@ func TestUser_UpdateChips(t *testing.T) {
 
 	t.Log(room.Insert())
 
-	room = &Room{Id: 5}
+	room = &Room{Rid: 5}
 
 
 	id,err:= room.GetById()

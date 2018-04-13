@@ -8,8 +8,8 @@ import (
 //房间基本信息
 
 type Room struct {
-	Id              uint32    `xorm:"'uid' pk autoincr BIGINT"`
-	Number          string    `xorm:"'number' index VARCHAR(8)"`
+	Rid             uint32    `xorm:"'rid' pk autoincr BIGINT"`
+	Number          string    `xorm:"'number' index not null VARCHAR(8)"`
 	Pwd             string    `xorm:"'pwd' VARCHAR(16)"`           //房间锁--密码
 	State           uint8     `xorm:"'state' smallint"`            //房间状态 0默认可用 1不可用
 	Name            string    `xorm:"'name' VARCHAR(16)"`          //房间名字
@@ -38,5 +38,5 @@ func (u *Room) Insert() (int64, error) {
 }
 
 func (this *Room) GetById() (bool, error) {
-	return db.C().Engine().Where("uid = ?", this.Id).Get(this)
+	return db.C().Engine().Where("uid = ?", this.Rid).Get(this)
 }

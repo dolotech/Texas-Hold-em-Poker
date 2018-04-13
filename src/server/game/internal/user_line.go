@@ -5,6 +5,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"server/msg"
 	"server/model"
+	"github.com/golang/glog"
 )
 
 var userLine *UserLine
@@ -72,7 +73,7 @@ func (u *UserLine) FindRoom(roomNumber string) (room *Room) {
 		u.WriteMsg(&msg.RoomInfo{
 			roomData.Name, roomData.Max,
 			roomData.Kind, roomData.PayValue,
-			roomData.MinChips, "", roomData.Id,
+			roomData.MinChips, "", roomData.Rid,
 			roomData.Number})
 
 	} else {
@@ -128,10 +129,13 @@ func (u *UserLine) closeRoom() {
 
 func register(userInfo *msg.RegisterUserInfo) (err error) { //注册
 	skeleton.Go(func() {
-		//u := &model.UserData{
-		//	AccountID:userInfo.Name,
-		//}
-		//err = u.Register()
+		u := &model.User{
+			Account:userInfo.Name,
+		}
+		_,err = u.Insert()
+		if err != nil{
+			glog.Errorln(err)
+		}
 	}, nil)
 	return
 }
