@@ -12,6 +12,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/dolotech/lib/db"
 	"server/model"
+	"github.com/dolotech/lib/server_info"
 )
 
 var Commit = ""
@@ -27,7 +28,7 @@ func main() {
 
 	flag.Parse()
 	db.Init(conf.Server.DBUrl)
-
+	serverInfo.SetInfo(Commit, BUILD_TIME, VERSION)
 	if createdb {
 		createDb()
 	}
@@ -39,12 +40,17 @@ func main() {
 		gate.Module,
 		login.Module,
 	)
-
+	http.HandleFunc("/release", hand)
 	http.Handle("/", http.StripPrefix("/", http.FileServer(http.Dir("./"))))
 	err := http.ListenAndServe(":12345", nil)
 	if err != nil {
 		glog.Fatalf("ListenAndServe: %v ", err)
 	}
+}
+
+
+func hand(w http.ResponseWriter, r *http.Request) {
+	w.Write(serverInfo.GetInfoBytes())
 }
 
 func createDb() {
