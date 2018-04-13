@@ -2,7 +2,6 @@ package module
 
 import (
 	"github.com/dolotech/leaf/chanrpc"
-	"github.com/dolotech/leaf/console"
 	"github.com/dolotech/leaf/timer"
 	"time"
 	"github.com/dolotech/lib/grpool"
@@ -127,6 +126,3 @@ func (s *Skeleton) RegisterChanRPC(id interface{}, f interface{}) {
 	s.server.Register(id, f)
 }
 
-func (s *Skeleton) RegisterCommand(name string, help string, f interface{}) {
-	console.Register(name, help, f, s.commandServer)
-}

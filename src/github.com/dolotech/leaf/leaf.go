@@ -1,8 +1,6 @@
 package leaf
 
 import (
-	"github.com/dolotech/leaf/cluster"
-	"github.com/dolotech/leaf/console"
 	"github.com/golang/glog"
 	"github.com/dolotech/leaf/module"
 	"os"
@@ -19,18 +17,10 @@ func Run(mods ...module.Module) {
 	}
 	module.Init()
 
-	// cluster
-	cluster.Init()
-
-	// console
-	console.Init()
-
 	// close
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt, os.Kill)
 	sig := <-c
 	glog.Errorf("Leaf closing down (signal: %v)", sig)
-	console.Destroy()
-	cluster.Destroy()
 	module.Destroy()
 }

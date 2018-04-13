@@ -23,16 +23,16 @@ func rpcCloseAgent(a gate.Agent)  {
 
 func rpcLoginAgent(m *msg.UserLoginInfo,a gate.Agent)  {
 	glog.Errorln("rpcLoginAgent", m)
-	err := login(m)
+	/*err := login(m)
 	if err != nil {
 		a.WriteMsg( msg.MSG_DB_Error)
 		return
-	}
+	}*/
 }
 
 func rpcRigesterAgent(m *msg.RegisterUserInfo,a gate.Agent,str string)   {
 	glog.Errorln("rpcRigesterAgent---",m,str)
-	if checkExitedUser(m.Name) {
+	/*if checkExitedUser(m.Name) {
 		a.WriteMsg(msg.MSG_Register_Existed)
 		return
 	}
@@ -40,7 +40,7 @@ func rpcRigesterAgent(m *msg.RegisterUserInfo,a gate.Agent,str string)   {
 	if err != nil {
 		a.WriteMsg(msg.MSG_DB_Error)
 		return
-	}
+	}*/
 }
 
 func rpcJoinRoomAgent(args []interface{}) {

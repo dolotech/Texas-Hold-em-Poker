@@ -34,11 +34,18 @@ func init() {
 	Processor.Register(&RegisterUserInfo{})
 
 	Processor.Register(&CodeState{})
+	Processor.Register(&Version{})
 
 	//房间会话注册
 	Processor.Register(&RoomInfo{})     //基本信息
-	Processor.Register(&JoinRoomInfo{}) //用户输入密码 点击进入
+	Processor.Register(&JoinRoom{}) //用户输入密码 点击进入
 }
+
+
+type Version struct {
+	Version string // 版本号
+}
+
 
 type CodeState struct {
 	Code    int    // const
@@ -79,7 +86,17 @@ type RoomInfo struct {
 	RoomNumber string
 }
 
-type JoinRoomInfo struct {
+type JoinRoom struct {
+	RoomNumber string
+	RoomPwd    string
+}
+
+type Bet struct {
+	RoomNumber string
+	RoomPwd    string
+}
+
+type LeaveRoom struct {
 	RoomNumber string
 	RoomPwd    string
 }
@@ -87,3 +104,6 @@ type JoinRoomInfo struct {
 type RoomPWDJoinCondition struct {
 	Pwd string
 }
+
+
+
