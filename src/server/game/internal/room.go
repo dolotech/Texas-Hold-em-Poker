@@ -47,7 +47,7 @@ func (r *Room) msgLoop() {
 			atomic.StoreInt32(&r.state, model.RoomStatus_Closed)
 			return
 		case m := <-r.msgChan:
-			r.route.Route(m.Occupant,m.Msg)
+			r.route.Route(m.Msg,m.Agre)
 		}
 	}
 }
@@ -83,16 +83,21 @@ func (r *Room) Close() {
 }
 
 type MsgObj struct {
-	Occupant *Occupant
-	Msg interface{}
+	Msg  interface{}
+	Agre interface{}
 }
+
 func (r *Room) RecvMsg(uid uint32, msg interface{}) {
-	o := r.getOccupant(uid)
-	if o != nil {
-		if atomic.LoadInt32(&r.state) != model.RoomStatus_Closed {
-			r.msgChan <- &MsgObj{o,msg}
+	if uid == 0{
+		glog.Errorln("uid is zero")
+		return
+	}
+	if atomic.LoadInt32(&r.state) != model.RoomStatus_Closed {
+		o := r.getOccupant(uid)
+		if o != nil {
+			r.msgChan <- &MsgObj{ msg,o}
+		} else {
+			r.msgChan <- &MsgObj{ msg,uid}
 		}
-	} else {
-		glog.Errorf("no in this room uid= %v rid=%v ", uid, r.data.Number)
 	}
 }

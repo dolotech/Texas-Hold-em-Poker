@@ -5,7 +5,7 @@ import (
 	"github.com/golang/glog"
 )
 
-func (r *Room) joinRoom(m *msg.JoinRoom,o *Occupant) {
+func (r *Room) joinRoom(m *msg.JoinRoom,uid uint32) {
 	glog.Errorln("joinRoom",m)
 }
 

@@ -9,25 +9,28 @@ type Route struct {
 	hash map[string]*reflect.Value
 }
 
-func (this *Route) Route(msg ,arg interface{}) {
-	msgType := reflect.TypeOf(msg)
-	msgID := msgType.Elem().Name()
+func (this *Route) Route(msg interface{}, arg ...interface{}) {
+	msgID := reflect.TypeOf(msg).Elem().Name()
 	if f, ok := this.hash[msgID]; ok {
-		//glog.Errorln("Route")
-		f.Call([]reflect.Value{reflect.ValueOf(msg),reflect.ValueOf(arg)})
+		array := make([]reflect.Value, len(arg)+1)
+		array[0] = reflect.ValueOf(msg)
+		for i := 0; i < len(arg); i++ {
+			array[i+1] = reflect.ValueOf(arg[i])
+		}
+		f.Call(array)
 	}
 }
 func (this *Route) Regist(msg, f interface{}) {
 	msgType := reflect.TypeOf(msg)
 	if msgType == nil || msgType.Kind() != reflect.Ptr {
-		glog.Fatal("json message pointer required")
+		glog.Error("message pointer required")
 	}
 	msgID := msgType.Elem().Name()
 	if msgID == "" {
-		glog.Fatal("unnamed json message")
+		glog.Error("unnamed  message")
 	}
 	if _, ok := this.hash[msgID]; ok {
-		glog.Fatal("message %v is already registered", msgID)
+		glog.Errorf("message %v is already registered", msgID)
 	}
 	v := reflect.ValueOf(f)
 	this.hash[msgID] = &v
@@ -38,5 +41,3 @@ func NewRoute() *Route {
 		hash: make(map[string]*reflect.Value),
 	}
 }
-
-//var route = NewRoute()
