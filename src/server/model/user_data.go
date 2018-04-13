@@ -12,6 +12,10 @@ func (this *User) GetById() (bool, error) {
 	return db.C().Engine().Where("uid = ?", this.Uid).Get(this)
 }
 
+func (this *User) GetByAccount() (bool, error) {
+	return db.C().Engine().Where("account = ?", this.Account).Get(this)
+}
+
 func (this *User) GetByUnionId() (bool, error) {
 	return db.C().Engine().Where("union_id = ?", this.UnionId).Get(this)
 }

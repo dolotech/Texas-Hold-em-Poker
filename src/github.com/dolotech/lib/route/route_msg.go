@@ -1,4 +1,4 @@
-package utils
+package route
 
 import (
 	"reflect"
@@ -9,7 +9,7 @@ type Route struct {
 	hash map[string]*reflect.Value
 }
 
-func (this *Route) Route(msg interface{}, arg ...interface{}) {
+func (this *Route) Emit(msg interface{}, arg ...interface{}) {
 	msgID := reflect.TypeOf(msg).Elem().Name()
 	if f, ok := this.hash[msgID]; ok {
 		array := make([]reflect.Value, len(arg)+1)

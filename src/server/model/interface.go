@@ -1,11 +1,8 @@
 package model
 
-
 type IRoom interface {
-	SendMsg(msg interface{})
-	GetData() *Room
+	Data() *Room
 	Close()
-	SetData(*Room)
-	RecvMsg(uid uint32,msg interface{})
+	Send(uint32, interface{})
+	Write(interface{})
 }
-

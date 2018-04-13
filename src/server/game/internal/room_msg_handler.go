@@ -13,3 +13,6 @@ func (r *Room) joinRoom(m *msg.JoinRoom,uid uint32) {
 func (r *Room) leaveRoom(m *msg.LeaveRoom,o *Occupant) {
 	glog.Errorln("leaveRoom",m)
 }
+func (r *Room) bet(m *msg.LeaveRoom,o *Occupant) {
+	glog.Errorln("leaveRoom",m)
+}

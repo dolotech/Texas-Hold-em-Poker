@@ -33,12 +33,12 @@ func rpcLoginAgent(m *msg.UserLoginInfo,a gate.Agent)  {
 func rpcRigesterAgent(m *msg.RegisterUserInfo,a gate.Agent,str string)   {
 	glog.Errorln("rpcRigesterAgent---",m,str)
 	/*if checkExitedUser(m.Name) {
-		a.WriteMsg(msg.MSG_Register_Existed)
+		a.WriteMsg(Msg.MSG_Register_Existed)
 		return
 	}
 	err := register(m)
 	if err != nil {
-		a.WriteMsg(msg.MSG_DB_Error)
+		a.WriteMsg(Msg.MSG_DB_Error)
 		return
 	}*/
 }

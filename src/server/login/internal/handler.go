@@ -6,6 +6,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"server/game"
 	"github.com/golang/glog"
+	"server/model"
 )
 
 func init() {
@@ -23,6 +24,7 @@ func handlVersion(m *msg.Version, a gate.Agent) {
 }
 
 func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
+
 	//交给 game 模块处理
 	game.ChanRPC.Go("RegisterAgent", m, a, "hello")
 	//a.WriteMsg(msg.MSG_SUCCESS)
@@ -31,7 +33,19 @@ func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
 
 func handlLoginUser(m *msg.UserLoginInfo, a gate.Agent) {
 	//交给 game
-	game.ChanRPC.Go("LoginAgent", m, a)
-	//a.WriteMsg(msg.MSG_SUCCESS)
+
+	u := &model.User{Account: m.Name}
+
+	_, err := u.GetByAccount()
+
+	if err != nil {
+		a.WriteMsg(msg.MSG_User_Not_Exist)
+		return
+	}
+
+	glog.Infoln("login success",m)
+	a.SetUserData(u)
+	//game.ChanRPC.Go("LoginAgent", m, a)
+	a.WriteMsg(msg.MSG_SUCCESS)
 
 }

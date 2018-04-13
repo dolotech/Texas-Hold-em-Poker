@@ -6,37 +6,45 @@ import (
 	"github.com/golang/glog"
 	"runtime/debug"
 	"server/msg"
-	"github.com/dolotech/lib/utils"
+	"github.com/dolotech/lib/route"
+)
+
+const (
+	RoomStatus_Closed  int32 = 9
+	RoomStatus_Started int32 = 1
+	RoomStatus_End     int32 = 2
+	RoomStatus_Ready   int32 = 0
 )
 
 func NewRoom(data *model.Room) model.IRoom {
 	r := &Room{
-		data:      data,
+		Room:      data,
 		closeChan: make(chan struct{}),
-		msgChan:   make(chan *MsgObj),
+		msgChan: make(chan *msgObj,64),
 		occupants: make([]*Occupant, data.N, data.Max),
-		route:     utils.NewRoute(),
+		Route:     route.NewRoute(),
 	}
 
-	r.route.Regist(&msg.JoinRoom{}, r.joinRoom)
-	r.route.Regist(&msg.LeaveRoom{}, r.leaveRoom)
+	r.Regist(&msg.JoinRoom{}, r.joinRoom)
+	r.Regist(&msg.LeaveRoom{}, r.leaveRoom)
+	r.Regist(&msg.Bet{}, r.bet)
 	skeleton.Go(r.msgLoop, nil)
 	return r
 }
 
 type Room struct {
-	data      *model.Room
+	*model.Room
 	occupants []*Occupant
 	closeChan chan struct{}
-	msgChan   chan *MsgObj
+	msgChan   chan *msgObj
 	state     int32
-	route     *utils.Route
+	*route.Route
 }
 
 func (r *Room) msgLoop() {
 	defer func() {
 		if err := recover(); err != nil {
-			glog.Errorf("roomid %v err: %v", r.data.Number, err)
+			glog.Errorf("roomid %v err: %v", r.Room.Number, err)
 			glog.Error(string(debug.Stack()))
 			skeleton.Go(r.msgLoop, nil)
 		}
@@ -44,14 +52,19 @@ func (r *Room) msgLoop() {
 	for {
 		select {
 		case <-r.closeChan:
-			atomic.StoreInt32(&r.state, model.RoomStatus_Closed)
+			atomic.StoreInt32(&r.state, RoomStatus_Closed)
 			return
 		case m := <-r.msgChan:
-			r.route.Route(m.Msg,m.Agre)
+			o := r.occupant(m.uid)
+			if o != nil {
+				r.Emit(m.msg, o)
+			} else {
+				r.Emit(m.msg, m.uid)
+			}
 		}
 	}
 }
-func (r *Room) SendMsg(msg interface{}) {
+func (r *Room) Write(msg interface{}) {
 	for _, v := range r.occupants {
 		if v != nil {
 			v.WriteMsg(msg)
@@ -59,17 +72,14 @@ func (r *Room) SendMsg(msg interface{}) {
 	}
 }
 
-func (r *Room) GetData() *model.Room {
-	return r.data
-}
-func (r *Room) SetData(data *model.Room) {
-	r.data = data
+func (r *Room) Data() *model.Room {
+	return r.Room
 }
 
-func (r *Room) getOccupant(uid uint32) *Occupant {
+func (r *Room) occupant(uid uint32) *Occupant {
 	for _, v := range r.occupants {
 		if v != nil {
-			if uid == v.data.Uid {
+			if uid == v.User.Uid {
 				return v
 			}
 		}
@@ -77,27 +87,22 @@ func (r *Room) getOccupant(uid uint32) *Occupant {
 	return nil
 }
 func (r *Room) Close() {
-	if atomic.LoadInt32(&r.state) != model.RoomStatus_Closed {
+	if atomic.LoadInt32(&r.state) != RoomStatus_Closed {
 		r.closeChan <- struct{}{}
 	}
 }
 
-type MsgObj struct {
-	Msg  interface{}
-	Agre interface{}
+type msgObj struct {
+	msg interface{}
+	uid uint32
 }
 
-func (r *Room) RecvMsg(uid uint32, msg interface{}) {
-	if uid == 0{
-		glog.Errorln("uid is zero")
+func (r *Room) Send(uid uint32, msg interface{}) {
+	if uid == 0 {
+		glog.Errorln("Uid is zero")
 		return
 	}
-	if atomic.LoadInt32(&r.state) != model.RoomStatus_Closed {
-		o := r.getOccupant(uid)
-		if o != nil {
-			r.msgChan <- &MsgObj{ msg,o}
-		} else {
-			r.msgChan <- &MsgObj{ msg,uid}
-		}
+	if atomic.LoadInt32(&r.state) != RoomStatus_Closed {
+		r.msgChan <- &msgObj{msg, uid}
 	}
 }

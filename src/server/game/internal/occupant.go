@@ -7,7 +7,7 @@ import (
 )
 
 type Occupant struct {
-	data *model.User
+	*model.User
 	gate.Agent
 	room *Room
 	//Actions chan *ws.Message
@@ -16,7 +16,7 @@ type Occupant struct {
 
 func NewOccupant(data *model.User, conn gate.Agent) *Occupant {
 	o := &Occupant{
-		data:  data,
+		User:  data,
 		Agent: conn,
 	}
 	return o

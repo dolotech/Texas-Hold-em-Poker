@@ -27,14 +27,14 @@ func GetRoom(rid uint32) IRoom {
 func SetRoom(room IRoom) {
 	rooms.Lock()
 
-	id := room.GetData().Rid
-	room.GetData().Rid = id
+	id := room.Data().Rid
+	room.Data().Rid = id
 	rooms.M[id] = room
 	rooms.Unlock()
 }
 func DelRoom(room IRoom) {
 	rooms.Lock()
-	delete(rooms.M, room.GetData().Rid)
-	room.GetData().Rid = 0
+	delete(rooms.M, room.Data().Rid)
+	room.Data().Rid = 0
 	rooms.Unlock()
 }
