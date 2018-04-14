@@ -14,11 +14,11 @@ func init() { //与gate 进行"交流"
 }
 
 func rpcNewAgent(a gate.Agent) {
-	glog.Errorln("rpcNewAgent ",a)
+	glog.Errorln("新建链接 ",a)
 }
 
 func rpcCloseAgent(a gate.Agent)  {
-	glog.Errorln("rpcCloseAgent ",a)
+	glog.Errorln("链接关闭 ",a)
 }
 
 func rpcLoginAgent(m *msg.UserLoginInfo,a gate.Agent)  {

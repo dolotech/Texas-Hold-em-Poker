@@ -37,15 +37,20 @@
     }
 
     function ok_button() {
-        console.log("ok_button");
+
         // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
         var msg = {
             JoinRoom: {
                 RoomNumber: "123456",
-                RoomPwd: "RoomPwd123456",
+                RoomPwd: "RoomPwd123456"
             }
         }
-        ws.send(JSON.stringify(msg))
+
+
+
+        var m=JSON.stringify(msg)
+        console.log("send data:  ",m);
+        ws.send( m)
 
         ws.onmessage = function (evt) {
             var re = evt.data;

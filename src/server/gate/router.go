@@ -15,4 +15,7 @@ func init() {
 	msg.Processor.SetRouter(&msg.RegisterUserInfo{},login.ChanRPC)
 	//登录
 	msg.Processor.SetRouter(&msg.UserLoginInfo{},login.ChanRPC)
+
+	msg.Processor.SetRouter(&msg.JoinRoom{},game.ChanRPC)
+	msg.Processor.SetRouter(&msg.LeaveRoom{},game.ChanRPC)
 }

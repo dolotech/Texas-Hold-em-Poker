@@ -5,6 +5,7 @@ import (
 	"server/conf"
 	"server/game"
 	"server/msg"
+	"github.com/golang/glog"
 )
 
 type Module struct {
@@ -27,3 +28,8 @@ func (m *Module) OnInit() {
 		AgentChanRPC:    game.ChanRPC,
 	}
 }
+func (gate *Module) OnDestroy() {
+	glog.Errorln("OnDestroy")
+}
+
+

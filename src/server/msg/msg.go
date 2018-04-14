@@ -42,6 +42,7 @@ func init() {
 	//房间会话注册
 	Processor.Register(&RoomInfo{}) //基本信息
 	Processor.Register(&JoinRoom{}) //用户输入密码 点击进入
+	Processor.Register(&LeaveRoom{}) //用户输入密码 点击进入
 }
 
 type Version struct {
@@ -105,7 +106,6 @@ type Bet struct {
 
 type LeaveRoom struct {
 	RoomNumber string
-	RoomPwd    string
 }
 
 type RoomPWDJoinCondition struct {

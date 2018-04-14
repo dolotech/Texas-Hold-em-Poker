@@ -3,6 +3,7 @@ package internal
 import (
 	"github.com/dolotech/leaf/module"
 	"server/base"
+	"github.com/golang/glog"
 )
 
 var (//定义
@@ -19,5 +20,5 @@ func (m *Module) OnInit() {//继承初始
 }
 
 func (m *Module) OnDestroy() {
-
+	glog.Errorln("OnDestroy")
 }

@@ -13,7 +13,12 @@ func init() {
 	handler(&msg.RegisterUserInfo{}, handlRegisterUserInfo)
 	handler(&msg.UserLoginInfo{}, handlLoginUser)
 	handler(&msg.Version{}, handlVersion)
+	//handler(&msg.JoinRoom{}, joinRoom)
 }
+
+/*func joinRoom(m *msg.JoinRoom, a gate.Agent) {
+	glog.Errorln(m)
+}*/
 
 func handler(m interface{}, h interface{}) {
 	skeleton.RegisterChanRPC(reflect.TypeOf(m), h)

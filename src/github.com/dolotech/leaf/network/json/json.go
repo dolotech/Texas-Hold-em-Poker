@@ -105,9 +105,9 @@ func (p *Processor) Route(msg, userData interface{}) error {
 		if i.msgRawHandler != nil {
 			i.msgRawHandler([]interface{}{msgRaw.msgID, msgRaw.msgRawData, userData})
 		}
+		glog.Infoln(msg)
 		return nil
 	}
-
 	// json
 	msgType := reflect.TypeOf(msg)
 	if msgType == nil || msgType.Kind() != reflect.Ptr {
@@ -115,6 +115,7 @@ func (p *Processor) Route(msg, userData interface{}) error {
 	}
 	msgID := msgType.Elem().Name()
 	i, ok := p.msgInfo[msgID]
+
 	if !ok {
 		return fmt.Errorf("message %v not registered", msgID)
 	}
@@ -124,6 +125,7 @@ func (p *Processor) Route(msg, userData interface{}) error {
 	if i.msgRouter != nil {
 		i.msgRouter.Go(msgType, msg, userData)
 	}
+
 	return nil
 }
 
