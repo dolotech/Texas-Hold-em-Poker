@@ -30,6 +30,7 @@ var (
 	MSG_ROOM_NOROOM     = &CodeState{Code: 1006, Message: "no room"}          //没有该房子记录
 	MSG_ROOM_FULL       = &CodeState{Code: 1007, Message: "room full"}        // 房间已满
 	MSG_NOT_IN_ROOM     = &CodeState{Code: 1008, Message: "not in room"}      // 你不在房间
+	MSG_ROOM_CLOSED     = &CodeState{Code: 1009, Message: "room closed"}      // 房间已经关闭
 )
 
 func init() {

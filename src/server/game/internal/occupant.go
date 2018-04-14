@@ -3,12 +3,14 @@ package internal
 import (
 	"server/model"
 	"github.com/dolotech/leaf/gate"
+	"server/algorithm"
 )
 
 type Occupant struct {
 	*model.User
 	gate.Agent
-	room *Room
+	room  *Room
+	cards algorithm.Cards
 	//Actions chan *ws.Message
 	//timer *time.Timer // action timer
 
