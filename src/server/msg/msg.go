@@ -5,6 +5,9 @@ import (
 	"github.com/dolotech/leaf/network/json"
 )
 
+//todo 掉线重连和挤号处理
+//
+
 //注册消息内容 即 类型(结构体)
 //var Processor =  protobuf.NewProcessor()
 var Processor = json.NewProcessor()
@@ -26,6 +29,7 @@ var (
 	MSG_ROOM_NOTEMPTY   = &CodeState{Code: 1005, Message: "room not empty"}   //房子不空
 	MSG_ROOM_NOROOM     = &CodeState{Code: 1006, Message: "no room"}          //没有该房子记录
 	MSG_ROOM_FULL       = &CodeState{Code: 1007, Message: "room full"}        // 房间已满
+	MSG_NOT_IN_ROOM     = &CodeState{Code: 1008, Message: "not in room"}      // 你不在房间
 )
 
 func init() {
@@ -40,8 +44,8 @@ func init() {
 	Processor.Register(&Version{})
 
 	//房间会话注册
-	Processor.Register(&RoomInfo{}) //基本信息
-	Processor.Register(&JoinRoom{}) //用户输入密码 点击进入
+	Processor.Register(&RoomInfo{})  //基本信息
+	Processor.Register(&JoinRoom{})  //用户输入密码 点击进入
 	Processor.Register(&LeaveRoom{}) //用户输入密码 点击进入
 }
 
@@ -57,18 +61,19 @@ type CodeState struct {
 type Hello struct {
 	Name string
 }
+
 //登录
 type UserLoginInfo struct {
-	UnionId string
+	UnionId  string
 	Nickname string
-}
-//登录
-type UserLoginInfoResp struct {
-	UnionId string
-	Nickname string
-	Account string
 }
 
+//登录
+type UserLoginInfoResp struct {
+	UnionId  string
+	Nickname string
+	Account  string
+}
 
 type LoginError struct {
 	State   int
@@ -84,7 +89,7 @@ type RegisterUserInfo struct {
 }
 
 type RoomInfo struct {
-	Number   string
+	Number     string
 	Volume     uint8
 	GameType   uint32 //游戏类型 即玩法
 	PayValue   uint8  //倍数
@@ -95,6 +100,7 @@ type RoomInfo struct {
 }
 
 type JoinRoom struct {
+	Uid        uint32
 	RoomNumber string
 	RoomPwd    string
 }
@@ -106,6 +112,7 @@ type Bet struct {
 
 type LeaveRoom struct {
 	RoomNumber string
+	Uid        uint32
 }
 
 type RoomPWDJoinCondition struct {

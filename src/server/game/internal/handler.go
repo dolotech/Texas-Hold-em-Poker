@@ -18,24 +18,30 @@ func handler(m interface{}, h interface{}) {
 	skeleton.RegisterChanRPC(reflect.TypeOf(m), h)
 }
 
-func leaveRoom(m *msg.LeaveRoom,a gate.Agent) {
-	o:= a.UserData().(*Occupant)
+func leaveRoom(m *msg.LeaveRoom, a gate.Agent) {
+	o := a.UserData().(*Occupant)
 
-	o.room.Send(o,m)
-	glog.Errorln(m,o)
-}
-func joinRoom(m *msg.JoinRoom,a gate.Agent) {
-	o:= a.UserData().(*Occupant)
-
-	if o.room !=nil{
-		//o.room.Send(o,m)
+	if o.room != nil{
+		o.room.Send(o, m)
 	}else{
-		r:= NewRoom(&model.Room{})
-		model.SetRoom(r)
-		r.Send(o,m)
+		a.WriteMsg(msg.MSG_NOT_IN_ROOM)
 	}
 
-	glog.Errorln(m,o)
+	glog.Errorln(m, o)
+}
+func joinRoom(m *msg.JoinRoom, a gate.Agent) {
+	o := a.UserData().(*Occupant)
+
+	//todo   从房间列表查找房间
+	if o.room != nil {
+		//o.room.Send(o,m)
+	} else {
+		r := NewRoom(&model.Room{})
+		model.SetRoom(r)
+		r.Send(o, m)
+	}
+
+	glog.Errorln(m, o)
 }
 func handleHello(m *msg.Hello, a gate.Agent) {
 	glog.Errorf("hello %v", m.Name)

@@ -6,7 +6,7 @@ type IRoom interface {
 	Data() *Room
 	Close()
 	Send(gate.Agent, interface{})
-	Write(interface{},...uint32)
+	WriteMsg(interface{},...uint32)
 }
 type IOccupant interface {
 	//Data() *U

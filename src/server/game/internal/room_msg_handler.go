@@ -23,21 +23,35 @@ ActButton = "button" //通报本局庄家
 ActState  = "state"  //房间信息*/
 
 func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
-
 	r.addOccupant(o)
-	rinfo:= &msg.RoomInfo{
-		Number:r.Number,
+	rinfo := &msg.RoomInfo{
+		Number: r.Number,
 	}
+
+	o.RoomID = r.Number
+	o.User.UpdateRoomId()
+
 	o.WriteMsg(rinfo)
-	// todo 下发玩家的座位和其他已在房间的玩家的数据
+
+	r.WriteMsg(&msg.JoinRoom{Uid: o.Uid},o.Uid)
 	glog.Errorln("joinRoom", m)
 }
 
 func (r *Room) leaveRoom(m *msg.LeaveRoom, o *Occupant) {
 	r.removeOccupant(o)
-	// todo 下房间其他完广播玩家离开房间消息
+	o.RoomID = ""
+	o.room = nil
+	o.User.UpdateRoomId()
+	leave := &msg.LeaveRoom{
+		RoomNumber: r.Number,
+		Uid:        o.Uid,
+	}
+	r.WriteMsg(leave)
 	glog.Errorln("leaveRoom", m)
 }
-func (r *Room) bet(m *msg.LeaveRoom, o *Occupant) {
+func (r *Room) bet(m *msg.Bet, o *Occupant) {
+
+
+
 	glog.Errorln("bet", m)
 }

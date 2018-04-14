@@ -8,21 +8,21 @@ import (
 )
 
 func init() { //与gate 进行"交流"
-	skeleton.RegisterChanRPC("NewAgent", rpcNewAgent)
-	skeleton.RegisterChanRPC("CloseAgent", rpcCloseAgent)
-	skeleton.RegisterChanRPC("LoginAgent", rpcLoginAgent)
-	skeleton.RegisterChanRPC("RegisterAgent", rpcRigesterAgent)
+	skeleton.RegisterChanRPC(model.Agent_New, rpcNewAgent)
+	skeleton.RegisterChanRPC(model.Agent_Close, rpcCloseAgent)
+	skeleton.RegisterChanRPC(model.Agent_Login, rpcLoginAgent)
+	skeleton.RegisterChanRPC(model.Agent_Register, rpcRigesterAgent)
 }
 
 func rpcNewAgent(a gate.Agent) {
-	glog.Errorln("新建链接 ",a)
+	glog.Errorln("新建链接 ", a)
 }
 
-func rpcCloseAgent(a gate.Agent)  {
-	glog.Errorln("链接关闭 ",a)
+func rpcCloseAgent(a gate.Agent) {
+	glog.Errorln("链接关闭 ", a)
 }
 
-func rpcLoginAgent(u *model.User,a gate.Agent)  {
+func rpcLoginAgent(u *model.User, a gate.Agent) {
 	o := NewOccupant(u, a)
 	a.SetUserData(o)
 
@@ -34,8 +34,8 @@ func rpcLoginAgent(u *model.User,a gate.Agent)  {
 	}*/
 }
 
-func rpcRigesterAgent(m *msg.RegisterUserInfo,a gate.Agent,str string)   {
-	glog.Errorln("rpcRigesterAgent---",m,str)
+func rpcRigesterAgent(m *msg.RegisterUserInfo, a gate.Agent, str string) {
+	glog.Errorln("rpcRigesterAgent---", m, str)
 	/*if checkExitedUser(m.Name) {
 		a.WriteMsg(Msg.MSG_Register_Existed)
 		return

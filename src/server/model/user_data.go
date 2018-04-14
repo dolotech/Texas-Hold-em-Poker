@@ -40,7 +40,7 @@ type User struct {
 	Signature  string    `xorm:"'signature' VARCHAR(64)"`             // 个性签名
 	Gps        string    `xorm:"'gps' VARCHAR(32)"`                   // gps定位数据
 	Black      bool      `xorm:"'black'"`                             // 黑名单列表
-	RoomID     uint32    `xorm:"'room_id'"`                           // 当前所在房间号，0表示不在房间,用于掉线重连
+	RoomID     string    `xorm:"'room_id'"`                           // 当前所在房间号，0表示不在房间,用于掉线重连
 }
 
 func (u *User) Insert() error {
@@ -69,11 +69,8 @@ func (u *User) UpdateChips(value int32) error {
 		glog.Errorln(err)
 	}
 
-	//glog.Errorln(res.RowsAffected())
 	return err
-
 	//s:=db.C().Engine().Table(u).Incr("chips",value)
-
 	//return nil
 }
 
@@ -89,7 +86,7 @@ func (u *User) UpdateLogin(ip string) error {
 
 func (u *User) UpdateRoomId() error {
 	sql := `UPDATE public.user SET
-	room_id = chips + $1 WHERE uid = $2 `
+	room_id =  $1 WHERE uid = $2 `
 	_, err := db.C().Engine().Exec(sql, u.RoomID, u.Uid)
 	if err != nil {
 		glog.Errorln(err)

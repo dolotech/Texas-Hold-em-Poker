@@ -66,7 +66,7 @@ func (r *Room) msgLoop() {
 		}
 	}
 }
-func (r *Room) Write(msg interface{}, exc ...uint32) {
+func (r *Room) WriteMsg(msg interface{}, exc ...uint32) {
 	for _, v := range r.occupants {
 		if v != nil {
 			for _, uid := range exc {

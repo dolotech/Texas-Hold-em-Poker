@@ -13,12 +13,7 @@ func init() {
 	handler(&msg.RegisterUserInfo{}, handlRegisterUserInfo)
 	handler(&msg.UserLoginInfo{}, handlLoginUser)
 	handler(&msg.Version{}, handlVersion)
-	//handler(&msg.JoinRoom{}, joinRoom)
 }
-
-/*func joinRoom(m *msg.JoinRoom, a gate.Agent) {
-	glog.Errorln(m)
-}*/
 
 func handler(m interface{}, h interface{}) {
 	skeleton.RegisterChanRPC(reflect.TypeOf(m), h)
@@ -31,14 +26,13 @@ func handlVersion(m *msg.Version, a gate.Agent) {
 func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
 
 	//交给 game 模块处理
-	game.ChanRPC.Go("RegisterAgent", m, a, "hello")
+	game.ChanRPC.Go(model.Agent_Login, m, a, "hello")
 	//a.WriteMsg(msg.MSG_SUCCESS)
 
 }
 
 func handlLoginUser(m *msg.UserLoginInfo, a gate.Agent) {
 	//交给 game
-
 	user := &model.User{UnionId: m.UnionId}
 	exist, _ := user.GetByUnionId()
 	if !exist {
@@ -51,16 +45,12 @@ func handlLoginUser(m *msg.UserLoginInfo, a gate.Agent) {
 		}
 	}
 
-	//o := game.NewOccupant(a.UserData().(*model.User), a)
-
 	resp := &msg.UserLoginInfoResp{
 		Nickname: user.Nickname,
 		Account:  user.Account,
 		UnionId:  user.UnionId,
 	}
-	glog.Infoln("login success", m)
-	//a.SetUserData(user)
 
 	a.WriteMsg(resp)
-	game.ChanRPC.Go("LoginAgent", user, a)
+	game.ChanRPC.Go(model.Agent_Login, user, a)
 }
