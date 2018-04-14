@@ -26,6 +26,7 @@ func Init(url string) error{
 	if db == nil {
 		db, err = NewClient("postgres", url)
 		//db.ShowSQL(config.GetCfgDatabase().ShowSql)
+		db.ShowSQL(true)
 	}
 	return err
 }

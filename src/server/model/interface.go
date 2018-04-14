@@ -1,8 +1,10 @@
 package model
 
+import "github.com/dolotech/leaf/gate"
+
 type IRoom interface {
 	Data() *Room
 	Close()
-	Send(uint32, interface{})
-	Write(interface{})
+	Send(gate.Agent, interface{})
+	Write(interface{},...uint32)
 }
