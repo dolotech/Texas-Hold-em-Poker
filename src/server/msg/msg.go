@@ -31,6 +31,7 @@ var (
 func init() {
 	Processor.Register(&Hello{})
 	Processor.Register(&UserLoginInfo{})
+	Processor.Register(&UserLoginInfoResp{})
 	Processor.Register(&LoginError{})
 
 	Processor.Register(&RegisterUserInfo{})
@@ -55,12 +56,18 @@ type CodeState struct {
 type Hello struct {
 	Name string
 }
-
+//登录
 type UserLoginInfo struct {
-	//登录
-	Name string
-	Pwd  string
+	UnionId string
+	Nickname string
 }
+//登录
+type UserLoginInfoResp struct {
+	UnionId string
+	Nickname string
+	Account string
+}
+
 
 type LoginError struct {
 	State   int

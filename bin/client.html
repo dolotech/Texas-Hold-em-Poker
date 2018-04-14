@@ -16,20 +16,36 @@
     var ws = new WebSocket('ws://127.0.0.1:8989')
     ws.onopen = function () {
         document.getElementById("result").innerHTML = "ok";
+
+        var msg = {
+            UserLoginInfo: {
+                Nickname: "Nickname",
+                UnionId: "MichaelUnionId",
+            }
+        }
+        ws.send(JSON.stringify(msg))
+
+        ws.onmessage = function (evt) {
+            var re = evt.data;
+            var reader = new FileReader()
+            reader.readAsText(re)
+            reader.onload = function () {
+                console.log(this.result);
+                document.getElementById("result").innerHTML = this.result;
+            }
+        }
     }
 
     function ok_button() {
-
-             // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
-            var msg= {
-                RegisterUserInfo: {
-                    Name: "Michael",
-                    Pwd: "123456",
-                    Age:25,
-                    Email :"dolotech@163.com"
-                }
+        console.log("ok_button");
+        // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
+        var msg = {
+            JoinRoom: {
+                RoomNumber: "123456",
+                RoomPwd: "RoomPwd123456",
             }
-            ws.send(JSON.stringify(msg))
+        }
+        ws.send(JSON.stringify(msg))
 
         ws.onmessage = function (evt) {
             var re = evt.data;

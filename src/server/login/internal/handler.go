@@ -34,18 +34,25 @@ func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
 func handlLoginUser(m *msg.UserLoginInfo, a gate.Agent) {
 	//交给 game
 
-	u := &model.User{Account: m.Name}
-
-	_, err := u.GetByAccount()
-
-	if err != nil {
-		a.WriteMsg(msg.MSG_User_Not_Exist)
-		return
+	user := &model.User{UnionId: m.UnionId}
+	exist, _ := user.GetByUnionId()
+	if !exist {
+		user = &model.User{Nickname: m.Nickname,
+			UnionId: m.UnionId}
+		err := user.Insert()
+		if err != nil {
+			a.WriteMsg(msg.MSG_User_Not_Exist)
+			return
+		}
 	}
-
-	glog.Infoln("login success",m)
-	a.SetUserData(u)
+	resp := &msg.UserLoginInfoResp{
+		Nickname: user.Nickname,
+		Account:  user.Account,
+		UnionId:  user.UnionId,
+	}
+	glog.Infoln("login success", m)
+	a.SetUserData(user)
 	//game.ChanRPC.Go("LoginAgent", m, a)
-	a.WriteMsg(msg.MSG_SUCCESS)
+	a.WriteMsg(resp)
 
 }

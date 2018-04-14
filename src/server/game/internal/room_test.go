@@ -6,12 +6,15 @@ import (
 	"time"
 	msg2 "server/msg"
 	"reflect"
+	"github.com/dolotech/leaf/gate"
 )
 
 func TestRoom_Value(t *testing.T) {
 	t.Log(reflect.ValueOf(12))
 }
 func TestRoom_RecvMsg(t *testing.T) {
+
+
 	/*room:= NewRoom(&model.Room{})
 
 

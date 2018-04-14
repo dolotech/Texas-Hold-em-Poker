@@ -6,9 +6,14 @@ import (
 	"math/rand"
 )
 
+func TestUser_UpdateChips2(t *testing.T) {
+	user:= &User{Uid:35}
+	t.Log(user.UpdateChips(100),user)
+}
+
 func TestUser_Insert(t *testing.T) {
-	user:= &User{Nickname:"Michael",UnionId:"abcc"}
-	t.Log(user.Insert())
+	user:= &User{Nickname:"Michael",UnionId:"aaasdfasd"}
+	t.Log(user.Insert(),user)
 }
 
 func BenchmarkUser_Insert(b *testing.B) {
