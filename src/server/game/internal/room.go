@@ -124,20 +124,6 @@ type msgObj struct {
 }
 
 func (r *Room) Send(o gate.Agent, msg interface{}) {
-	/*au := a.UserData()
-	if au == nil {
-		glog.Errorln("agent UserData is nil")
-		return
-	}
-	if u, ok := au.(*model.User); !ok {
-		glog.Errorln("agent UserData type error")
-		return
-	} else {
-		if u.Uid == 0 {
-			glog.Errorln("agent UserData Uid ==0")
-			return
-		}
-	}*/
 	if atomic.LoadInt32(&r.State) != RoomStatus_Closed {
 		r.msgChan <- &msgObj{msg, o}
 	}
