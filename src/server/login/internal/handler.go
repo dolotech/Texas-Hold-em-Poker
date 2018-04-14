@@ -50,14 +50,17 @@ func handlLoginUser(m *msg.UserLoginInfo, a gate.Agent) {
 			return
 		}
 	}
+
+	//o := game.NewOccupant(a.UserData().(*model.User), a)
+
 	resp := &msg.UserLoginInfoResp{
 		Nickname: user.Nickname,
 		Account:  user.Account,
 		UnionId:  user.UnionId,
 	}
 	glog.Infoln("login success", m)
-	a.SetUserData(user)
-	//game.ChanRPC.Go("LoginAgent", m, a)
-	a.WriteMsg(resp)
+	//a.SetUserData(user)
 
+	a.WriteMsg(resp)
+	game.ChanRPC.Go("LoginAgent", user, a)
 }

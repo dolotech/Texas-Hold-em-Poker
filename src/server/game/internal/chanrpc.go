@@ -4,6 +4,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"server/msg"
 	"github.com/golang/glog"
+	"server/model"
 )
 
 func init() { //与gate 进行"交流"
@@ -21,8 +22,11 @@ func rpcCloseAgent(a gate.Agent)  {
 	glog.Errorln("链接关闭 ",a)
 }
 
-func rpcLoginAgent(m *msg.UserLoginInfo,a gate.Agent)  {
-	glog.Errorln("rpcLoginAgent", m)
+func rpcLoginAgent(u *model.User,a gate.Agent)  {
+	o := NewOccupant(u, a)
+	a.SetUserData(o)
+
+	glog.Errorln("rpcLoginAgent", u)
 	/*err := login(m)
 	if err != nil {
 		a.WriteMsg( msg.MSG_DB_Error)

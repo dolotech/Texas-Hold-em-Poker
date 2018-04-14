@@ -84,7 +84,7 @@ type RegisterUserInfo struct {
 }
 
 type RoomInfo struct {
-	RoomName   string
+	Number   string
 	Volume     uint8
 	GameType   uint32 //游戏类型 即玩法
 	PayValue   uint8  //倍数

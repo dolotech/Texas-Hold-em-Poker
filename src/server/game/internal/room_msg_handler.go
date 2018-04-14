@@ -3,8 +3,6 @@ package internal
 import (
 	"server/msg"
 	"github.com/golang/glog"
-	"github.com/dolotech/leaf/gate"
-	"server/model"
 )
 
 /*
@@ -24,9 +22,13 @@ ActBet    = "bet"    //玩家下注
 ActButton = "button" //通报本局庄家
 ActState  = "state"  //房间信息*/
 
-func (r *Room) joinRoom(m *msg.JoinRoom, a gate.Agent) {
-	o := NewOccupant(a.UserData().(*model.User), a)
+func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
+
 	r.addOccupant(o)
+	rinfo:= &msg.RoomInfo{
+		Number:r.Number,
+	}
+	o.WriteMsg(rinfo)
 	// todo 下发玩家的座位和其他已在房间的玩家的数据
 	glog.Errorln("joinRoom", m)
 }

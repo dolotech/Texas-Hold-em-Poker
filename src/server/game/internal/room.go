@@ -55,12 +55,14 @@ func (r *Room) msgLoop() {
 			atomic.StoreInt32(&r.State, RoomStatus_Closed)
 			return
 		case m := <-r.msgChan:
-			o := r.occupant(m.agent.UserData().(*model.User).Uid)
-			if o != nil {
-				r.Emit(m.msg, o)
-			} else {
-				r.Emit(m.msg, m.agent)
-			}
+			//o := r.occupant(m.agent.UserData().(*model.User).Uid)
+			//if o != nil {
+			//	r.Emit(m.msg, o)
+			//} else {
+			//	r.Emit(m.msg, m.agent)
+			//}
+
+			r.Emit(m.msg, m.o)
 		}
 	}
 }
@@ -117,12 +119,12 @@ func (r *Room) Close() {
 }
 
 type msgObj struct {
-	msg   interface{}
-	agent gate.Agent
+	msg interface{}
+	o   gate.Agent
 }
 
-func (r *Room) Send(a gate.Agent, msg interface{}) {
-	au := a.UserData()
+func (r *Room) Send(o gate.Agent, msg interface{}) {
+	/*au := a.UserData()
 	if au == nil {
 		glog.Errorln("agent UserData is nil")
 		return
@@ -135,8 +137,8 @@ func (r *Room) Send(a gate.Agent, msg interface{}) {
 			glog.Errorln("agent UserData Uid ==0")
 			return
 		}
-	}
+	}*/
 	if atomic.LoadInt32(&r.State) != RoomStatus_Closed {
-		r.msgChan <- &msgObj{msg, a}
+		r.msgChan <- &msgObj{msg, o}
 	}
 }

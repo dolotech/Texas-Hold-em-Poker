@@ -8,3 +8,9 @@ type IRoom interface {
 	Send(gate.Agent, interface{})
 	Write(interface{},...uint32)
 }
+type IOccupant interface {
+	//Data() *U
+	//Close()
+	//Send(gate.Agent, interface{})
+	Write(interface{})
+}
