@@ -48,11 +48,8 @@ func joinRoom(m *msg.JoinRoom, a gate.Agent) {
 
 	// 已经在房间
 	if o.room != nil {
-
 		// todo 掉线重连处理
 		o.room.Send(o, m)
-
-		//o.WriteMsg(msg.MSG_ROOM_OVERVOLUME)
 		return
 	}
 	var r model.IRoom

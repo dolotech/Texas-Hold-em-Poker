@@ -24,10 +24,15 @@ ActButton = "button" //通报本局庄家
 ActState  = "state"  //房间信息*/
 
 func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
-	// todo 掉线重连处理
+
 	if o.room != nil {
 		for k, v := range r.occupants {
 			if v.Uid == o.Uid {
+
+
+				// todo 掉线重连现场数据替换处理
+
+
 				r.occupants[k] = o
 				if o != v {
 					v.Close()

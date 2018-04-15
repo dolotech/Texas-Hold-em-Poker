@@ -11,9 +11,5 @@ type IRoom interface {
 	WriteMsg(interface{}, ...uint32)
 }
 type IOccupant interface {
-	Online()
-	Offline()
 	Write(interface{})
-	GetId()uint32
-	SetData(d interface{})
 }
