@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	handler(&msg.RegisterUserInfo{}, handlRegisterUserInfo)
+	//handler(&msg.RegisterUserInfo{}, handlRegisterUserInfo)
 	handler(&msg.UserLoginInfo{}, handlLoginUser)
 	handler(&msg.Version{}, handlVersion)
 }
@@ -23,13 +23,13 @@ func handlVersion(m *msg.Version, a gate.Agent) {
 	glog.Infoln(m)
 }
 
-func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
+/*func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
 
 	//交给 game 模块处理
 	game.ChanRPC.Go(model.Agent_Login, m, a, "hello")
 	//a.WriteMsg(msg.MSG_SUCCESS)
 
-}
+}*/
 
 func handlLoginUser(m *msg.UserLoginInfo, a gate.Agent) {
 	//交给 game

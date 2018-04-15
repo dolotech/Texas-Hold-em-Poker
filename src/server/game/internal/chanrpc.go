@@ -23,9 +23,13 @@ func rpcCloseAgent(a gate.Agent) {
 }
 
 func rpcLoginAgent(u *model.User, a gate.Agent) {
+
 	o := NewOccupant(u, a)
 	a.SetUserData(o)
 
+	if len(u.RoomID) > 0 {
+		o.room = model.GetRoom(u.RoomID).(*Room)
+	}
 	glog.Errorln("rpcLoginAgent", u)
 	/*err := login(m)
 	if err != nil {

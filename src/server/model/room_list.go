@@ -7,17 +7,26 @@ import (
 	"math/rand"
 )
 
-var rooms = NewRoomList()
+var rooms = func() *roomlist {
+	return &roomlist{
+		M: make(map[string]IRoom, 1000),
+	}
+}()
 
 type roomlist struct {
 	M map[string]IRoom
 	sync.RWMutex
 }
 
-func NewRoomList() *roomlist {
-	return &roomlist{
-		M: make(map[string]IRoom, 1000),
+func FindRoom() IRoom {
+	rooms.Lock()
+	for _, v := range rooms.M {
+		if v.Data().N < v.Data().Max {
+			return v
+		}
 	}
+	rooms.Unlock()
+	return nil
 }
 
 func GetRoom(rid string) IRoom {
@@ -27,14 +36,14 @@ func GetRoom(rid string) IRoom {
 	return r
 }
 
-func SetRoom(room IRoom) string{
+func SetRoom(room IRoom) string {
 	rooms.Lock()
 
 	id := createNumber()
 	room.Data().Number = id
 	rooms.M[id] = room
 	rooms.Unlock()
-	return  id
+	return id
 }
 func DelRoom(room IRoom) {
 	rooms.Lock()
@@ -44,12 +53,12 @@ func DelRoom(room IRoom) {
 }
 
 func createNumber() string {
-	r:=rand.New(rand.NewSource(time.Now().UnixNano()))
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
 	var n string
-	for i:=0;i<100;i++{
+	for i := 0; i < 100; i++ {
 		n = strconv.Itoa(int(r.Int31n(999999-100000) + 100000))
-		if _,ok:=rooms.M[n];!ok{
-			return  n
+		if _, ok := rooms.M[n]; !ok {
+			return n
 		}
 	}
 	return n

@@ -4,6 +4,7 @@ import (
 	"server/model"
 	"github.com/dolotech/leaf/gate"
 	"server/algorithm"
+	"sync/atomic"
 )
 
 type Occupant struct {
@@ -14,7 +15,25 @@ type Occupant struct {
 	//Actions chan *ws.Message
 	//timer *time.Timer // action timer
 
-	Status uint8 // 1为离线状态
+	Status int32 // 1为离线状态
+}
+
+const (
+	Occupant_status_Offline int32 = 1
+	Occupant_status_Online  int32 = 0
+)
+
+func (o *Occupant) SetData(d interface{}) {
+	o.User = d.(*model.User)
+}
+func (o *Occupant) GetId()uint32 {
+	return  o.Uid
+}
+func (o *Occupant) Online() {
+	atomic.StoreInt32(&o.Status, Occupant_status_Online)
+}
+func (o *Occupant) Offline() {
+	atomic.StoreInt32(&o.Status, Occupant_status_Offline)
 }
 
 func NewOccupant(data *model.User, conn gate.Agent) *Occupant {
@@ -24,3 +43,6 @@ func NewOccupant(data *model.User, conn gate.Agent) *Occupant {
 	}
 	return o
 }
+
+
+

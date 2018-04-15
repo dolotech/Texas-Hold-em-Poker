@@ -9,7 +9,6 @@ import (
 	"github.com/dolotech/lib/route"
 	"github.com/dolotech/leaf/gate"
 	"errors"
-	"server/algorithm"
 )
 
 const (
@@ -24,10 +23,9 @@ type Room struct {
 	occupants []*Occupant
 	closeChan chan struct{}
 	msgChan   chan *msgObj
-	State     int32
+	state     int32
 	route.Route
 }
-
 
 func NewRoom(data *model.Room) model.IRoom {
 	r := &Room{
@@ -55,7 +53,7 @@ func (r *Room) msgLoop() {
 	for {
 		select {
 		case <-r.closeChan:
-			atomic.StoreInt32(&r.State, RoomStatus_Closed)
+			atomic.StoreInt32(&r.state, RoomStatus_Closed)
 			return
 		case m := <-r.msgChan:
 			r.Emit(m.msg, m.o)
@@ -109,7 +107,7 @@ func (r *Room) removeOccupant(o *Occupant) {
 }
 
 func (r *Room) Close() {
-	if atomic.LoadInt32(&r.State) != RoomStatus_Closed {
+	if atomic.LoadInt32(&r.state) != RoomStatus_Closed {
 		r.closeChan <- struct{}{}
 	}
 }
@@ -119,10 +117,12 @@ type msgObj struct {
 	o   gate.Agent
 }
 
-func (r *Room) Send(o gate.Agent, msg interface{})error {
-	if atomic.LoadInt32(&r.State) != RoomStatus_Closed {
-		r.msgChan <- &msgObj{msg, o}
+func (r *Room) Send(o gate.Agent, m interface{}) error {
+	if atomic.LoadInt32(&r.state) != RoomStatus_Closed {
+		r.msgChan <- &msgObj{m, o}
 		return nil
+	} else {
+		o.WriteMsg(msg.MSG_ROOM_CLOSED)
 	}
 	return errors.New("room closed")
 }
