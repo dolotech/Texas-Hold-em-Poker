@@ -37,7 +37,6 @@ func init() {
 	Processor.Register(&Hello{})
 	Processor.Register(&UserLoginInfo{})
 	Processor.Register(&UserLoginInfoResp{})
-	Processor.Register(&LoginError{})
 
 	Processor.Register(&RegisterUserInfo{})
 
@@ -46,12 +45,20 @@ func init() {
 
 	//房间会话注册
 	Processor.Register(&RoomInfo{})  //基本信息
-	Processor.Register(&JoinRoom{})  //用户输入密码 点击进入
-	Processor.Register(&LeaveRoom{}) //用户输入密码 点击进入
+	Processor.Register(&JoinRoom{})  //
+	Processor.Register(&LeaveRoom{}) //
+
+	Processor.Register(&Showdown{})
+	Processor.Register(&Deal{})
+	Processor.Register(&Pot{})
+	Processor.Register(&Bet{})
+	Processor.Register(&Button{})
 }
 
+
+// 版本号
 type Version struct {
-	Version string // 版本号
+	Version string
 }
 
 type CodeState struct {
@@ -74,11 +81,6 @@ type UserLoginInfoResp struct {
 	UnionId  string
 	Nickname string
 	Account  string
-}
-
-type LoginError struct {
-	State   int
-	Message string
 }
 
 type RegisterUserInfo struct {
@@ -106,7 +108,38 @@ type JoinRoom struct {
 	RoomPwd    string
 }
 
+/*"preflop" //底牌
+ "flop"    // 翻牌
+ "turn"    // 转牌
+ "river"   // 河牌
+*/
+
+// 发牌
+type Deal struct {
+	RoomNumber string
+	RoomPwd    string
+}
+
+//通报本局庄家
+type Button struct {
+	RoomNumber string
+	RoomPwd    string
+}
+
+//玩家下注
 type Bet struct {
+	RoomNumber string
+	RoomPwd    string
+}
+
+//通报奖池
+type Pot struct {
+	RoomNumber string
+	RoomPwd    string
+}
+
+//摊牌和比牌
+type Showdown struct {
 	RoomNumber string
 	RoomPwd    string
 }

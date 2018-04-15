@@ -40,8 +40,6 @@ func leaveRoom(m *msg.LeaveRoom, a gate.Agent) {
 	glog.Errorln(m, o)
 }
 
-
-
 func joinRoom(m *msg.JoinRoom, a gate.Agent) {
 
 	o := a.UserData().(*Occupant)
@@ -55,11 +53,11 @@ func joinRoom(m *msg.JoinRoom, a gate.Agent) {
 	var r model.IRoom
 	if len(m.RoomNumber) == 0 {
 		r = model.FindRoom()
-	}else{
+	} else {
 		r = model.GetRoom(m.RoomNumber)
 	}
 	if r == nil {
-		r = NewRoom(&model.Room{})
+		r = NewRoom(9, 5, 10)
 		model.SetRoom(r)
 	}
 	r.Send(o, m)

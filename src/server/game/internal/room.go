@@ -27,12 +27,21 @@ type Room struct {
 	route.Route
 }
 
-func NewRoom(data *model.Room) model.IRoom {
+func NewRoom(max int, sb, bb uint8) model.IRoom {
+	if max <= 0 || max > 10 {
+		max = 9 // default 9 occupants
+	}
+
 	r := &Room{
-		Room:      data,
+		Room: &model.Room{
+			Chips: make([]uint32, max, 10),
+			SB:    sb,
+			BB:    bb,
+			Pot:   make([]uint32, 1),
+		},
 		closeChan: make(chan struct{}),
 		msgChan:   make(chan *msgObj, 64),
-		occupants: make([]*Occupant, data.N, data.Max),
+		occupants: make([]*Occupant, max, 10),
 	}
 
 	r.Regist(&msg.JoinRoom{}, r.joinRoom)
