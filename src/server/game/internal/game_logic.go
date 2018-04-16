@@ -13,22 +13,24 @@ func (r *Room) start() {
 
 	var dealer *Occupant
 
-	occupants := make([]*Occupant, r.Max)
-	copy(occupants, r.occupants)
-
-	each(occupants, 0, func(o *Occupant) bool {
-		if o.Chips < r.BB {
-			o.Standup()
+	r.Each(0, func(o *Occupant) bool {
+		if o.Chips < r.BB || o.IsOffline() {
+			r.removeOccupant(o)
+			r.addObserve(o)
+			return true
 		}
+		o.SetGameing()
 		return true
 	})
 
 	// Select Dealer
 	button := r.Button - 1
-	each(occupants, (button+1)%r.Cap(), func(o *Occupant) bool {
-		r.Button = o.Pos
-		dealer = o
-		return false
+	r.Each((button+1)%r.Cap(), func(o *Occupant) bool {
+		if o.IsGameing(){
+			r.Button = o.Pos
+			dealer = o
+			return false
+		}
 		return true
 	})
 
@@ -39,31 +41,29 @@ func (r *Room) start() {
 	r.Cards.Shuffle()
 
 	// Small Blind
-	sb := r.next(occupants,dealer.Pos)
+	sb := r.next(dealer.Pos)
 	if r.n == 2 { // one-to-one
 		sb = dealer
 	}
 	// Big Blind
-	bb := r.next(occupants ,sb.Pos)
+	bb := r.next(sb.Pos)
 	bbPos := bb.Pos
 
-	each(occupants, 0, func(o *Occupant) bool {
-		o.Bet = 0
-		return true
-	})
 
 	r.WriteMsg(&msg.Button{Uid: dealer.Uid})
 
-	each(occupants, 0, func(o *Occupant) bool {
-		c1 := r.Cards.Take()
-		c2 := r.Cards.Take()
+	r.Each(0, func(o *Occupant) bool {
+		if o.IsGameing() {
+			c1 := r.Cards.Take()
+			c2 := r.Cards.Take()
+			m := &msg.PreFlop{[]byte{c1.Byte(), c2.Byte()}}
+			o.WriteMsg(m)
+		}
 
-		m := &msg.PreFlop{[]byte{c1.Byte(), c2.Byte()}}
-		o.WriteMsg(m)
 		return true
 	})
 
-	r.ready(occupants)
+	r.ready()
 
 	if r.remain <= 1 {
 		goto showdown
@@ -92,10 +92,12 @@ func (r *Room) calc() (pots []handPot) {
 	return
 }
 
-func (r *Room) ready(occupants []*Occupant) {
+func (r *Room) ready() {
 	r.Bet = 0
-	each(occupants, 0, func(o *Occupant) bool {
-		o.Bet = 0
+	r.Each(0, func(o *Occupant) bool {
+		if o !=nil{
+			o.Bet = 0
+		}
 		return true
 	})
 }
@@ -110,10 +112,10 @@ func (r *Room) betting() {
 
 }
 
-func (r *Room) next(occupants []*Occupant,pos uint8) *Occupant {
+func (r *Room) next(pos uint8) *Occupant {
 	volume := r.Cap()
 	for i := (pos) % volume; i != pos-1; i = (i + 1) % volume {
-		if r.occupants[i] != nil {
+		if r.occupants[i] != nil && r.occupants[i].IsGameing() {
 			return r.occupants[i]
 		}
 	}

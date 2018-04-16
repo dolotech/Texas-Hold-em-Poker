@@ -31,8 +31,6 @@ var Server struct {
 	KeyFile      string
 	TCPAddr      string
 	MaxConnNum   int
-	ConsolePort  int
-	ProfilePath  string
 	DBMaxConnNum int
 	DBUrl        string
 }

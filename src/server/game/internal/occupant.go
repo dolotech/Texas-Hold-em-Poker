@@ -4,7 +4,6 @@ import (
 	"server/model"
 	"github.com/dolotech/leaf/gate"
 	"server/algorithm"
-	"server/msg"
 )
 
 // todo 下注超时
@@ -21,10 +20,10 @@ type Occupant struct {
 }
 
 const (
-	Occupant_status_Standup int32 = 3
-	Occupant_status_Sitdown int32 = 2
+	Occupant_status_InGame  int32 = 3
 	Occupant_status_Offline int32 = 1
-	Occupant_status_Online  int32 = 0
+	Occupant_status_Observe int32 = 2
+	Occupant_status_Sitdown int32 = 0
 )
 
 func (o *Occupant) WriteMsg(msg interface{}) {
@@ -38,19 +37,38 @@ func (o *Occupant) SetData(d interface{}) {
 func (o *Occupant) GetId() uint32 {
 	return o.Uid
 }
-func (o *Occupant) Online() {
-	o.status = Occupant_status_Online
+
+func (o *Occupant) SetObserve() {
+	o.status = Occupant_status_Observe
 }
-func (o *Occupant) Offline() {
+
+func (o *Occupant) IsObserve() bool {
+	return o.status == Occupant_status_Observe
+}
+
+func (o *Occupant) SetOffline() {
 	o.status = Occupant_status_Offline
 }
 
-func (o *Occupant) Standup() {
-	o.status = Occupant_status_Standup
-	o.WriteMsg(&msg.StandUp{})
+func (o *Occupant) IsOffline() bool {
+	return o.status == Occupant_status_Offline
 }
-func (o *Occupant) Sitdown() {
+
+
+func (o *Occupant) SetSitdown() {
 	o.status = Occupant_status_Sitdown
+}
+
+func (o *Occupant) IsSitdown() bool {
+	return o.status == Occupant_status_Sitdown
+}
+
+func (o *Occupant) SetGameing() {
+	o.status = Occupant_status_InGame
+}
+
+func (o *Occupant) IsGameing() bool {
+	return o.status == Occupant_status_InGame
 }
 
 func (o *Occupant) Replace(value *Occupant) {

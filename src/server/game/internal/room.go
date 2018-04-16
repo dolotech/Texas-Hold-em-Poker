@@ -24,7 +24,7 @@ type Room struct {
 	route.Route
 
 	occupants []*Occupant
-	observes  []*Occupant
+	observes  []*Occupant // 旁观列表
 
 	closeChan chan struct{}
 	msgChan   chan *msgObj
@@ -117,6 +117,7 @@ func (r *Room) addOccupant(o *Occupant) uint8 {
 			r.occupants[k] = o
 			r.n ++
 			o.Pos = uint8(k + 1)
+			o.SetSitdown()
 			return o.Pos
 		}
 	}
@@ -140,6 +141,7 @@ func (r *Room) addObserve(o *Occupant) uint8 {
 			return 0
 		}
 	}
+	o.SetObserve()
 	r.observes = append(r.observes, o)
 
 	return 0
@@ -175,38 +177,22 @@ func (r *Room) Send(o gate.Agent, m interface{}) error {
 	return errors.New("room closed")
 }
 
-func each(occupants []*Occupant, start uint8, f func(o *Occupant) bool) {
-	volume := uint8(len(occupants))
-	end := (volume + start - 1) % volume
-	i := start
-	for ; i != end; i = (i + 1) % volume {
-		if occupants[i] != nil && !f(occupants[i]) {
-			return
-		}
-	}
-
-	// end
-	if occupants[i] != nil {
-		f(occupants[i])
-	}
-}
-
 // start starts from 0
-/*func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
+func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
 	volume := r.Cap()
 	end := (volume + start - 1) % volume
 	i := start
 	for ; i != end; i = (i + 1) % volume {
-		if r.occupants[i] != nil && !f(r.occupants[i]) {
+		if r.occupants[i] != nil && r.occupants[i].IsGameing() && !f(r.occupants[i]) {
 			return
 		}
 	}
 
 	// end
-	if r.occupants[i] != nil {
+	if r.occupants[i] != nil&& r.occupants[i].IsGameing() {
 		f(r.occupants[i])
 	}
-}*/
+}
 func (r *Room) Cap() uint8 {
 	return uint8(len(r.occupants))
 }

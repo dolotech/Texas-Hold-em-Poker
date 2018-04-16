@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/dolotech/leaf"
-	lconf "github.com/dolotech/leaf/conf"
 	"server/conf"
 	"server/game"
 	"server/gate"
@@ -23,8 +22,6 @@ var createdb bool
 func init() {
 	flag.StringVar(&conf.Server.WSAddr, "addr", ":8989", "websocket port")
 	flag.IntVar(&conf.Server.MaxConnNum, "maxconn", 20000, "Max Conn Num")
-	flag.IntVar(&conf.Server.ConsolePort, "consoleport", 20000, "Console Port")
-	flag.StringVar(&conf.Server.ProfilePath, "profilepath", "pprof", "Profile Path")
 	flag.StringVar(&conf.Server.DBUrl, "pg", "postgres://postgres:haosql@127.0.0.1:5432/postgres?sslmode=disable", "pg addr")
 	flag.BoolVar(&createdb, "createdb", false, "initial database")
 
@@ -37,8 +34,6 @@ func init() {
 }
 
 func main() {
-	lconf.ConsolePort = conf.Server.ConsolePort
-	lconf.ProfilePath = conf.Server.ProfilePath
 	go leaf.Run(
 		game.Module,
 		gate.Module,
@@ -55,7 +50,7 @@ func main() {
 
 func createDb() {
 	// 建表,只维护和服务器game里面有关的表
-	err := db.C().Sync(model.User{},model.Room{})
+	err := db.C().Sync(model.User{}, model.Room{})
 	if err != nil {
 		glog.Errorln(err)
 	}

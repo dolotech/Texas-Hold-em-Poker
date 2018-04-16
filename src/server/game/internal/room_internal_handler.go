@@ -3,7 +3,6 @@ package internal
 import (
 	"server/msg"
 	"github.com/golang/glog"
-	"sync/atomic"
 )
 
 func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
@@ -28,7 +27,12 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 		}
 	}
 	glog.Errorln(o)
-	r.addOccupant(o)
+	pos:=r.addOccupant(o)
+
+	if pos == 0{
+		r.addObserve(o)
+	}
+
 	rinfo := &msg.RoomInfo{
 		Number: r.Number,
 	}
@@ -44,11 +48,11 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 }
 
 func (r *Room) leaveRoom(m *msg.LeaveRoom, o *Occupant) {
-	if atomic.LoadInt32(&r.state) == RoomStatus_Started {
-		o.Offline()
+	if o.IsGameing() {
 		return
 	}
 
+	r.removeObserve(o)
 	r.removeOccupant(o)
 	o.RoomID = ""
 	o.room = nil
@@ -62,6 +66,10 @@ func (r *Room) leaveRoom(m *msg.LeaveRoom, o *Occupant) {
 }
 
 func (r *Room) bet(m *msg.Bet, o *Occupant) {
+	if !o.IsGameing() {
+		return
+	}
+
 	glog.Errorln("bet", m)
 }
 
