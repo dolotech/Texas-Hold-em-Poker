@@ -22,10 +22,16 @@ const (
 type Room struct {
 	*model.Room
 	route.Route
+
 	occupants []*Occupant
+	observes  []*Occupant
+
 	closeChan chan struct{}
 	msgChan   chan *msgObj
 	state     int32
+
+	remain int
+	n      uint8
 
 	SB       uint32          // 小盲注
 	BB       uint32          // 大盲注
@@ -60,6 +66,7 @@ func NewRoom(max uint8, sb, bb uint32) model.IRoom {
 	r.Regist(&msg.JoinRoom{}, r.joinRoom)
 	r.Regist(&msg.LeaveRoom{}, r.leaveRoom)
 	r.Regist(&msg.Bet{}, r.bet)
+	r.Regist(&msg.Fold{}, r.fold)
 	r.Regist(&msg.SitDown{}, r.sitDown) //
 	r.Regist(&msg.StandUp{}, r.standUp) //
 	go r.msgLoop()
@@ -98,26 +105,50 @@ func (r *Room) WriteMsg(msg interface{}, exc ...uint32) {
 	}
 }
 
-func (r *Room) addOccupant(o *Occupant) {
+func (r *Room) addOccupant(o *Occupant) uint8 {
 	for _, v := range r.occupants {
-		if v !=nil && v.Uid == o.Uid {
-			return
+		if v != nil && v.Uid == o.Uid {
+			return 0
 		}
 	}
 
 	for k, v := range r.occupants {
 		if v == nil {
 			r.occupants[k] = o
+			r.n ++
 			o.Pos = uint8(k + 1)
+			return o.Pos
 		}
 	}
+	return 0
 }
 
 func (r *Room) removeOccupant(o *Occupant) {
 	for k, v := range r.occupants {
-		if v!= nil && v.Uid == o.Uid {
+		if v != nil && v.Uid == o.Uid {
 			v.Pos = 0
 			r.occupants[k] = nil
+			r.n --
+			return
+		}
+	}
+}
+
+func (r *Room) addObserve(o *Occupant) uint8 {
+	for _, v := range r.observes {
+		if v != nil && v.Uid == o.Uid {
+			return 0
+		}
+	}
+	r.observes = append(r.observes, o)
+
+	return 0
+}
+
+func (r *Room) removeObserve(o *Occupant) {
+	for k, v := range r.observes {
+		if v != nil && v.Uid == o.Uid {
+			r.observes = append(r.observes[:k], r.observes[k+1:]...)
 			return
 		}
 	}
@@ -144,8 +175,24 @@ func (r *Room) Send(o gate.Agent, m interface{}) error {
 	return errors.New("room closed")
 }
 
+func each(occupants []*Occupant, start uint8, f func(o *Occupant) bool) {
+	volume := uint8(len(occupants))
+	end := (volume + start - 1) % volume
+	i := start
+	for ; i != end; i = (i + 1) % volume {
+		if occupants[i] != nil && !f(occupants[i]) {
+			return
+		}
+	}
+
+	// end
+	if occupants[i] != nil {
+		f(occupants[i])
+	}
+}
+
 // start starts from 0
-func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
+/*func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
 	volume := r.Cap()
 	end := (volume + start - 1) % volume
 	i := start
@@ -159,7 +206,7 @@ func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
 	if r.occupants[i] != nil {
 		f(r.occupants[i])
 	}
-}
+}*/
 func (r *Room) Cap() uint8 {
 	return uint8(len(r.occupants))
 }

@@ -1,15 +1,22 @@
 package internal
 
-import "github.com/golang/glog"
+import (
+	"github.com/golang/glog"
+	"server/msg"
+	"strconv"
+)
 
 func (r *Room) start() {
-	if r.inGameN() < 2 {
+	if r.n < 2 {
 		return
 	}
 
 	var dealer *Occupant
 
-	r.Each(0, func(o *Occupant) bool {
+	occupants := make([]*Occupant, r.Max)
+	copy(occupants, r.occupants)
+
+	each(occupants, 0, func(o *Occupant) bool {
 		if o.Chips < r.BB {
 			o.Standup()
 		}
@@ -18,72 +25,97 @@ func (r *Room) start() {
 
 	// Select Dealer
 	button := r.Button - 1
-	r.Each((button+1)%r.Cap(), func(o *Occupant) bool {
-		if o.inGame() {
-			r.Button = o.Pos
-			dealer = o
-			return false
-		}
+	each(occupants, (button+1)%r.Cap(), func(o *Occupant) bool {
+		r.Button = o.Pos
+		dealer = o
+		return false
 		return true
 	})
+
+	if dealer == nil {
+		return
+	}
 
 	r.Cards.Shuffle()
 
 	// Small Blind
-	sb := r.next(dealer.Pos)
-	if r.inGameN() == 2 { // one-to-one
+	sb := r.next(occupants,dealer.Pos)
+	if r.n == 2 { // one-to-one
 		sb = dealer
 	}
 	// Big Blind
-	bb := r.next(sb.Pos)
+	bb := r.next(occupants ,sb.Pos)
 	bbPos := bb.Pos
 
+	each(occupants, 0, func(o *Occupant) bool {
+		o.Bet = 0
+		return true
+	})
 
-	glog.Infoln(sb.Pos,bbPos)
+	r.WriteMsg(&msg.Button{Uid: dealer.Uid})
+
+	each(occupants, 0, func(o *Occupant) bool {
+		c1 := r.Cards.Take()
+		c2 := r.Cards.Take()
+
+		m := &msg.PreFlop{[]byte{c1.Byte(), c2.Byte()}}
+		o.WriteMsg(m)
+		return true
+	})
+
+	r.ready(occupants)
+
+	if r.remain <= 1 {
+		goto showdown
+	}
+	r.calc()
+
+showdown:
+	r.showdown()
+	// Final : Showdown
+
+	glog.Infoln(sb.Pos, bbPos)
 }
 
-func (r *Room) ready() {
+func (r *Room) calc() (pots []handPot) {
+	pots = calcPot(r.Chips)
+	r.Pot = nil
+	var ps []string
+	for _, pot := range pots {
+		r.Pot = append(r.Pot, pot.Pot)
+		ps = append(ps, strconv.Itoa(int(pot.Pot)))
+	}
 
+	r.WriteMsg(&msg.Pot{
+	})
+
+	return
+}
+
+func (r *Room) ready(occupants []*Occupant) {
+	r.Bet = 0
+	each(occupants, 0, func(o *Occupant) bool {
+		o.Bet = 0
+		return true
+	})
 }
 
 func (r *Room) showdown() {
+	r.WriteMsg(&msg.Showdown{
 
+	})
 }
 
 func (r *Room) betting() {
 
 }
 
-func (r *Room) next(pos uint8) *Occupant {
+func (r *Room) next(occupants []*Occupant,pos uint8) *Occupant {
 	volume := r.Cap()
 	for i := (pos) % volume; i != pos-1; i = (i + 1) % volume {
-		if r.occupants[i] != nil && r.occupants[i].inGame() {
+		if r.occupants[i] != nil {
 			return r.occupants[i]
 		}
 	}
 	return nil
-}
-
-func (r *Room) EachInGame(start uint8, f func(o *Occupant) bool) {
-	volume := r.Cap()
-	end := (volume + start - 1) % volume
-	i := start
-	for ; i != end; i = (i + 1) % volume {
-		if r.occupants[i] != nil && r.occupants[i].inGame() && !f(r.occupants[i]) {
-			return
-		}
-	}
-
-	// end
-	if r.occupants[i] != nil && r.occupants[i].inGame() {
-		f(r.occupants[i])
-	}
-}
-func (r *Room) inGameN() uint8 {
-	var n uint8
-	r.EachInGame(0, func(o *Occupant) bool {
-		n ++
-		return true
-	})
-	return n
 }

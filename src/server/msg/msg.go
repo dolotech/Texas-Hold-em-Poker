@@ -42,9 +42,10 @@ func init() {
 	Processor.Register(&LeaveRoom{}) //
 
 	Processor.Register(&Showdown{})
-	Processor.Register(&Deal{})
+	Processor.Register(&PreFlop{})
 	Processor.Register(&Pot{})
 	Processor.Register(&Bet{})
+	Processor.Register(&Fold{})
 	Processor.Register(&Button{})
 	Processor.Register(&StandUp{})
 	Processor.Register(&SitDown{})
@@ -94,6 +95,7 @@ type StandUp struct {
 
 type SitDown struct {
 	Uid uint32
+	Pos uint8
 }
 type JoinRoom struct {
 	Uid        uint32
@@ -101,22 +103,49 @@ type JoinRoom struct {
 	RoomPwd    string
 }
 
-// 发牌
-type Deal struct {
-	RoomNumber string
-	RoomPwd    string
+//底牌
+type PreFlop struct {
+	Cards []byte
+}
+
+// 翻牌
+type Flop struct {
+	Cards     []byte
+	KindCards []byte
+	Kind uint8
+}
+
+// 转牌
+type Turn struct {
+	Cards byte
+	KindCards []byte
+	Kind uint8
+}
+
+//河牌
+type River struct {
+	Cards byte
+	KindCards []byte
+	Kind uint8
 }
 
 //通报本局庄家
 type Button struct {
-	RoomNumber string
-	RoomPwd    string
+	Uid uint32
 }
 
-//玩家下注
+// 玩家有四种下注方式，下注数分别对应为：
+//跟注：等于单注额 (call)
+//看注：= 0 表示看注 (check)
+//加注：大于单注额 (raise)
+//全押：等于玩家手中所有筹码 (allin)
 type Bet struct {
-	RoomNumber string
-	RoomPwd    string
+	bet int32
+}
+
+//弃牌(fold)
+type Fold struct {
+	Uid uint32
 }
 
 //通报奖池

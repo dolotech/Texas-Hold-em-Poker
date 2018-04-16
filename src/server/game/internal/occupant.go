@@ -7,6 +7,8 @@ import (
 	"server/msg"
 )
 
+// todo 下注超时
+
 type Occupant struct {
 	*model.User
 	gate.Agent
@@ -14,6 +16,8 @@ type Occupant struct {
 	cards  algorithm.Cards
 	Pos    uint8 // 玩家座位号，从1开始
 	status int32 // 1为离线状态
+
+	Bet uint32 // 当前下注
 }
 
 const (
@@ -49,8 +53,10 @@ func (o *Occupant) Sitdown() {
 	o.status = Occupant_status_Sitdown
 }
 
-func (o *Occupant) inGame() bool {
-	return o.status == Occupant_status_Sitdown
+func (o *Occupant) Replace(value *Occupant) {
+	o.Pos = value.Pos
+	o.cards = value.cards
+	o.room = value.room
 }
 
 func NewOccupant(data *model.User, conn gate.Agent) *Occupant {

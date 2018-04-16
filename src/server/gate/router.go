@@ -16,7 +16,8 @@ func init() {
 	msg.Processor.SetRouter(&msg.Showdown{}, game.ChanRPC)
 	msg.Processor.SetRouter(&msg.Pot{}, game.ChanRPC)
 	msg.Processor.SetRouter(&msg.Button{}, game.ChanRPC)
-	msg.Processor.SetRouter(&msg.Deal{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.PreFlop{}, game.ChanRPC)
 	msg.Processor.SetRouter(&msg.Bet{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Fold{}, game.ChanRPC)
 	msg.Processor.SetRouter(&msg.Version{}, game.ChanRPC)
 }

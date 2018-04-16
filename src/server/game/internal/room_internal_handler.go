@@ -11,7 +11,10 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 		for k, v := range r.occupants {
 			if v.Uid == o.Uid {
 				// todo 掉线重连现场数据替换处理
+
+				o.Replace(r.occupants[k])
 				r.occupants[k] = o
+
 				if o != v {
 					v.Close()
 					glog.Infoln("掉线重连处理")
@@ -63,9 +66,32 @@ func (r *Room) bet(m *msg.Bet, o *Occupant) {
 }
 
 func (r *Room) sitDown(m *msg.SitDown, o *Occupant) {
+	pos := r.addOccupant(o)
+	if pos == 0 {
+		r.addObserve(o)
+	} else {
+
+	}
+	r.WriteMsg(&msg.SitDown{Uid: o.Uid, Pos: o.Pos})
+
 	glog.Errorln("sitDown", m)
 }
 
 func (r *Room) standUp(m *msg.StandUp, o *Occupant) {
+
+	r.removeOccupant(o)
+
+	r.addObserve(o)
+	r.WriteMsg(&msg.StandUp{Uid: o.Uid})
+
+	glog.Errorln("standUp", m)
+}
+
+func (r *Room) fold(m *msg.Fold, o *Occupant) {
+
+	r.removeOccupant(o)
+
+	r.addObserve(o)
+	r.WriteMsg(&msg.StandUp{Uid: o.Uid})
 	glog.Errorln("standUp", m)
 }

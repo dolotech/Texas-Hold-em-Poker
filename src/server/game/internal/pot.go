@@ -5,8 +5,8 @@ import (
 )
 
 type handBet struct {
-	Pos int
-	Bet int
+	Pos uint8
+	Bet uint32
 }
 
 type handBets []handBet
@@ -24,32 +24,28 @@ func (p handBets) Swap(i, j int) {
 }
 
 type handPot struct {
-	Pot  int
-	OPos []int
+	Pot  uint32
+	OPos []uint32
 }
 
 // main pot and side-pot calculation
-func calcPot(bets []int) (pots []handPot) {
+func calcPot(bets []uint32) (pots []handPot) {
 	var obs []handBet
-
-	//fmt.Println("amount bets:", bets)
 	for i, bet := range bets {
 		if bet > 0 {
-			obs = append(obs, handBet{Pos: i + 1, Bet: bet})
+			obs = append(obs, handBet{Pos: uint8(i) + 1, Bet: bet})
 		}
 	}
 	sort.Sort(handBets(obs))
 
-	//fmt.Println("amount bets(sorted):", obs)
-
 	for i, ob := range obs {
 		if ob.Bet > 0 {
 			s := obs[i:]
-			hpot := handPot{Pot: ob.Bet * len(s)}
+			hpot := handPot{Pot: ob.Bet * uint32(len(s))}
 
 			for j, _ := range s {
 				s[j].Bet -= ob.Bet
-				hpot.OPos = append(hpot.OPos, s[j].Pos)
+				hpot.OPos = append(hpot.OPos, uint32(s[j].Pos))
 			}
 			pots = append(pots, hpot)
 		}

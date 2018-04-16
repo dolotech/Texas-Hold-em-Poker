@@ -7,10 +7,7 @@ import (
 type IRoom interface {
 	Cap() uint8
 	MaxCap() uint8
-	//Data() *Room
-
-
-	GetNumber()string
+	GetNumber() string
 	SetNumber(string)
 	Close()
 	Send(gate.Agent, interface{}) error
