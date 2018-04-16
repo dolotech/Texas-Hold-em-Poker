@@ -10,7 +10,6 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 		for k, v := range r.occupants {
 			if v.Uid == o.Uid {
 				// todo 掉线重连现场数据替换处理
-
 				o.Replace(r.occupants[k])
 				r.occupants[k] = o
 
@@ -21,27 +20,40 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 					glog.Infoln("同一个链接重复请求加入房间")
 				}
 
-				r.WriteMsg(&msg.JoinRoom{Uid: o.Uid}, o.Uid)
+				r.WriteMsg(&msg.UserInfo{Uid: o.Uid}, o.Uid)
 				return
 			}
 		}
 	}
 	glog.Errorln(o)
-	pos:=r.addOccupant(o)
-
-	if pos == 0{
-		r.addObserve(o)
-	}
-
 	rinfo := &msg.RoomInfo{
 		Number: r.Number,
+	}
+	userinfos:= make([]*msg.UserInfo,0,r.Cap())
+	r.Each(0, func(o *Occupant) bool {
+		userinfo := &msg.UserInfo{
+			Nickname: o.Nickname,
+			Uid:      o.Uid,
+			Account:  o.Account,
+			Sex:      o.Sex,
+			Profile:  o.Profile,
+			Chips:    o.Chips,
+		}
+		userinfos =append(userinfos,userinfo)
+		return true
+	})
+
+	pos := r.addOccupant(o)
+
+	if pos == 0 {
+		r.addObserve(o)
 	}
 
 	o.RoomID = r.Number
 	o.UpdateRoomId()
 	o.room = r
 
-	o.WriteMsg(rinfo)
+	o.WriteMsg(&msg.JoinRoomResp{UserInfos:userinfos,RoomInfo:rinfo})
 
 	r.WriteMsg(&msg.JoinRoom{Uid: o.Uid}, o.Uid)
 	glog.Errorln("joinRoom", m)

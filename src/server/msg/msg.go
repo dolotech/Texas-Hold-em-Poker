@@ -50,6 +50,7 @@ func init() {
 	Processor.Register(&StandUp{})
 	Processor.Register(&SitDown{})
 	Processor.Register(&UserInfo{})
+	Processor.Register(&JoinRoomResp{})
 }
 
 // 版本号
@@ -85,17 +86,29 @@ type UserInfo struct {
 	Nickname string // 微信昵称
 	Sex      uint8  // 微信性别 0-未知，1-男，2-女
 	Profile  string // 微信头像
+	Chips    uint32 // 筹码
 }
 
 type RoomInfo struct {
-	Number     string
-	Volume     uint8
-	GameType   uint32 //游戏类型 即玩法
-	PayValue   uint8  //倍数
-	BaseMoney  uint32 //最低资本 才能进房间
-	RoomPwd    string //房间锁--密码
-	RoomID     uint32
-	RoomNumber string
+	Number    string
+	Volume    uint8
+	GameType  uint32 //游戏类型 即玩法
+	PayValue  uint8  //倍数
+	BaseMoney uint32 //最低资本 才能进房间
+	RoomPwd   string //房间锁--密码
+	RoomID    uint32
+
+	SB       uint32   // 小盲注
+	BB       uint32   // 大盲注
+	Cards    []byte   //公共牌
+	Pot      []uint32 // 当前奖池筹码数
+	Timeout  uint8    // 倒计时超时时间(秒)
+	Button   uint8    // 当前庄家座位号，从1开始
+	Chips    []uint32 // 玩家本局下注的总筹码数，与occupants一一对应
+	Bet      uint32   // 当前下注额
+	Max      uint8    // 房间最大玩家人数
+	MaxChips uint32
+	MinChips uint32
 }
 
 type StandUp struct {
@@ -110,6 +123,11 @@ type JoinRoom struct {
 	Uid        uint32
 	RoomNumber string
 	RoomPwd    string
+}
+
+type JoinRoomResp struct {
+	UserInfos []*UserInfo
+	RoomInfo  *RoomInfo
 }
 
 //底牌
