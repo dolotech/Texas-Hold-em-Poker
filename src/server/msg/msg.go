@@ -178,7 +178,9 @@ type Button struct {
 //加注：大于单注额 (raise)
 //全押：等于玩家手中所有筹码 (allin)
 type Bet struct {
-	bet int32
+	Value int32
+	Kind string
+	Uid uint32
 }
 
 //弃牌(fold)

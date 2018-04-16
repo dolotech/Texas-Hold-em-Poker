@@ -2,6 +2,9 @@ package algorithm
 
 type Cards []Card
 
+func (this *Cards) Len() int {
+	return len(*this)
+}
 func (this *Cards) Take() Card {
 	card := (*this)[0]
 	(*this) = (*this)[1:]

@@ -10,6 +10,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"errors"
 	"server/algorithm"
+	"time"
 )
 
 const (
@@ -31,13 +32,14 @@ type Room struct {
 	state     int32
 
 	remain int
+	allin  int
 	n      uint8
 
 	SB       uint32          // 小盲注
 	BB       uint32          // 大盲注
 	Cards    algorithm.Cards //公共牌
 	Pot      []uint32        // 当前奖池筹码数
-	Timeout  uint8           // 倒计时超时时间(秒)
+	Timeout  time.Duration   // 倒计时超时时间(秒)
 	Button   uint8           // 当前庄家座位号，从1开始
 	Chips    []uint32        // 玩家本局下注的总筹码数，与occupants一一对应
 	Bet      uint32          // 当前下注额
@@ -58,6 +60,7 @@ func NewRoom(max uint8, sb, bb uint32) model.IRoom {
 		occupants: make([]*Occupant, max),
 		Chips:     make([]uint32, max),
 		Pot:       make([]uint32, 1),
+		Timeout:   time.Second * 10,
 		SB:        sb,
 		BB:        bb,
 		Max:       max,
@@ -189,7 +192,7 @@ func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
 	}
 
 	// end
-	if r.occupants[i] != nil&& r.occupants[i].IsGameing() {
+	if r.occupants[i] != nil && r.occupants[i].IsGameing() {
 		f(r.occupants[i])
 	}
 }

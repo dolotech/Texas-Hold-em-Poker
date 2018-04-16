@@ -91,7 +91,7 @@ func (r *Room) bet(m *msg.Bet, o *Occupant) {
 		o.WriteMsg(msg.MSG_NOT_NOT_START)
 		return
 	}
-
+	o.SetAction(m.Value)
 	glog.Errorln("bet", m)
 }
 
@@ -108,7 +108,7 @@ func (r *Room) sitDown(m *msg.SitDown, o *Occupant) {
 }
 
 func (r *Room) standUp(m *msg.StandUp, o *Occupant) {
-
+	o.SetAction(-1)
 	r.removeOccupant(o)
 
 	r.addObserve(o)
@@ -122,9 +122,10 @@ func (r *Room) fold(m *msg.Fold, o *Occupant) {
 		o.WriteMsg(msg.MSG_NOT_NOT_START)
 		return
 	}
-	r.removeOccupant(o)
 
-	r.addObserve(o)
-	r.WriteMsg(&msg.StandUp{Uid: o.Uid})
+
+	o.SetAction(-1)
+	o.SetSitdown()
+	//r.WriteMsg(&msg.StandUp{Uid: o.Uid})
 	glog.Errorln("standUp", m)
 }

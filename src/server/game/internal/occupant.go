@@ -4,6 +4,7 @@ import (
 	"server/model"
 	"github.com/dolotech/leaf/gate"
 	"server/algorithm"
+	"time"
 )
 
 // todo 下注超时
@@ -16,7 +17,10 @@ type Occupant struct {
 	Pos    uint8 // 玩家座位号，从1开始
 	status int32 // 1为离线状态
 
-	Bet uint32 // 当前下注
+	Bet     uint32 // 当前下注
+	turn    bool
+	actions chan int32
+	Action  string
 }
 
 const (
@@ -25,6 +29,27 @@ const (
 	Occupant_status_Observe int32 = 2
 	Occupant_status_Sitdown int32 = 0
 )
+
+
+func (o *Occupant) SetAction(n int32) {
+	if o.turn {
+		o.actions <- n
+	}
+}
+func (o *Occupant) GetAction(timeout time.Duration) int32 {
+	timer := time.NewTimer(timeout)
+	o.turn = true
+	select {
+	case n := <-o.actions:
+		o.turn = false
+		timer.Stop()
+		return n
+	case <-timer.C:
+		o.turn = false
+		timer.Stop()
+		return -1 // 超时弃牌
+	}
+}
 
 func (o *Occupant) WriteMsg(msg interface{}) {
 	if o.status != Occupant_status_Offline {
@@ -54,7 +79,6 @@ func (o *Occupant) IsOffline() bool {
 	return o.status == Occupant_status_Offline
 }
 
-
 func (o *Occupant) SetSitdown() {
 	o.status = Occupant_status_Sitdown
 }
@@ -79,8 +103,9 @@ func (o *Occupant) Replace(value *Occupant) {
 
 func NewOccupant(data *model.User, conn gate.Agent) *Occupant {
 	o := &Occupant{
-		User:  data,
-		Agent: conn,
+		User:    data,
+		Agent:   conn,
+		actions: make(chan int32),
 	}
 	return o
 }
