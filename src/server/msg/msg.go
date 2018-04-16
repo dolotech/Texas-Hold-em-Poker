@@ -5,11 +5,6 @@ import (
 	"github.com/dolotech/leaf/network/json"
 )
 
-//todo 掉线重连和挤号处理
-//
-
-//注册消息内容 即 类型(结构体)
-//var Processor =  protobuf.NewProcessor()
 var Processor = json.NewProcessor()
 
 var (
@@ -21,7 +16,7 @@ var (
 	MSG_User_Not_Exist   = &CodeState{Code: 4, Message: "user not exist"} //用户不存在
 	MSG_DB_Error         = &CodeState{Code: 111, Message: "db error"}     //数据库出错
 
-	//房间信息 1000开始标记
+	//房间错误信息 1000开始标记
 	MSG_ROOM_NOTAUTH    = &CodeState{Code: 1001, Message: "Unauthorized"}     //没有权限
 	MSG_ROOM_ERRORPWD   = &CodeState{Code: 1002, Message: "pwd wrong"}        //密码错误
 	MSG_ROOM_OVERVOLUME = &CodeState{Code: 1003, Message: "aleady in room"}   //你已经在其他房间了 拒绝加入其他房间
@@ -38,8 +33,6 @@ func init() {
 	Processor.Register(&UserLoginInfo{})
 	Processor.Register(&UserLoginInfoResp{})
 
-	Processor.Register(&RegisterUserInfo{})
-
 	Processor.Register(&CodeState{})
 	Processor.Register(&Version{})
 
@@ -53,8 +46,9 @@ func init() {
 	Processor.Register(&Pot{})
 	Processor.Register(&Bet{})
 	Processor.Register(&Button{})
+	Processor.Register(&StandUp{})
+	Processor.Register(&SitDown{})
 }
-
 
 // 版本号
 type Version struct {
@@ -83,14 +77,6 @@ type UserLoginInfoResp struct {
 	Account  string
 }
 
-type RegisterUserInfo struct {
-	//注册
-	Name  string
-	Pwd   string
-	Age   int
-	Email string
-}
-
 type RoomInfo struct {
 	Number     string
 	Volume     uint8
@@ -102,17 +88,18 @@ type RoomInfo struct {
 	RoomNumber string
 }
 
+type StandUp struct {
+	Uid uint32
+}
+
+type SitDown struct {
+	Uid uint32
+}
 type JoinRoom struct {
 	Uid        uint32
 	RoomNumber string
 	RoomPwd    string
 }
-
-/*"preflop" //底牌
- "flop"    // 翻牌
- "turn"    // 转牌
- "river"   // 河牌
-*/
 
 // 发牌
 type Deal struct {
@@ -147,8 +134,4 @@ type Showdown struct {
 type LeaveRoom struct {
 	RoomNumber string
 	Uid        uint32
-}
-
-type RoomPWDJoinCondition struct {
-	Pwd string
 }

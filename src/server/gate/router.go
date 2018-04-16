@@ -6,16 +6,17 @@ import (
 	"server/login"
 )
 
-//消息在此进行交割
 func init() {
-	msg.Processor.SetRouter(&msg.Hello{},game.ChanRPC)//参数消息内容 通信桥chanRPC
-	//msg.Processor.SetRouter(&msg.UserLoginInfo{},game.ChanRPC)
-
-	//用注册
-	msg.Processor.SetRouter(&msg.RegisterUserInfo{},login.ChanRPC)
-	//登录
-	msg.Processor.SetRouter(&msg.UserLoginInfo{},login.ChanRPC)
-
-	msg.Processor.SetRouter(&msg.JoinRoom{},game.ChanRPC)
-	msg.Processor.SetRouter(&msg.LeaveRoom{},game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Hello{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.UserLoginInfo{}, login.ChanRPC)
+	msg.Processor.SetRouter(&msg.JoinRoom{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.LeaveRoom{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.SitDown{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.StandUp{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Showdown{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Pot{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Button{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Deal{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Bet{}, game.ChanRPC)
+	msg.Processor.SetRouter(&msg.Version{}, game.ChanRPC)
 }

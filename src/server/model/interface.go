@@ -10,6 +10,3 @@ type IRoom interface {
 	Send(gate.Agent, interface{}) error
 	WriteMsg(interface{}, ...uint32)
 }
-type IOccupant interface {
-	Write(interface{})
-}

@@ -34,19 +34,21 @@ func NewRoom(max int, sb, bb uint8) model.IRoom {
 
 	r := &Room{
 		Room: &model.Room{
-			Chips: make([]uint32, max, 10),
+			//Chips: make([]uint32, max, 10),
 			SB:    sb,
 			BB:    bb,
 			Pot:   make([]uint32, 1),
 		},
 		closeChan: make(chan struct{}),
 		msgChan:   make(chan *msgObj, 64),
-		occupants: make([]*Occupant, max, 10),
+		//occupants: make([]*Occupant, max, 10),
 	}
 
 	r.Regist(&msg.JoinRoom{}, r.joinRoom)
 	r.Regist(&msg.LeaveRoom{}, r.leaveRoom)
 	r.Regist(&msg.Bet{}, r.bet)
+	r.Regist(&msg.SitDown{}, r.sitDown)   //
+	r.Regist(&msg.StandUp{}, r.standUp)   //
 	go r.msgLoop()
 	return r
 }

@@ -6,33 +6,12 @@ import (
 	"sync/atomic"
 )
 
-/*
-
-//共有四轮发牌，按顺序分别为：
-ActPreflop = "preflop" //底牌
-ActFlop    = "flop"    // 翻牌
-ActTurn    = "turn"    // 转牌
-ActRiver   = "river"   // 河牌
-
-ActShowdown = "showdown" //摊牌和比牌
-ActPot      = "pot"      //通报奖池
-
-ActJoin   = "join"   //通报加入游戏的玩家
-ActLeave  = "gone"   //用户离开房间
-ActBet    = "bet"    //玩家下注
-ActButton = "button" //通报本局庄家
-ActState  = "state"  //房间信息*/
-
 func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 
 	if o.room != nil {
 		for k, v := range r.occupants {
 			if v.Uid == o.Uid {
-
-
 				// todo 掉线重连现场数据替换处理
-
-
 				r.occupants[k] = o
 				if o != v {
 					v.Close()
@@ -46,7 +25,7 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 			}
 		}
 	}
-
+	glog.Errorln(o)
 	r.addOccupant(o)
 	rinfo := &msg.RoomInfo{
 		Number: r.Number,
@@ -79,7 +58,15 @@ func (r *Room) leaveRoom(m *msg.LeaveRoom, o *Occupant) {
 	r.WriteMsg(leave)
 	glog.Errorln("leaveRoom", m)
 }
-func (r *Room) bet(m *msg.Bet, o *Occupant) {
 
+func (r *Room) bet(m *msg.Bet, o *Occupant) {
 	glog.Errorln("bet", m)
+}
+
+func (r *Room) sitDown(m *msg.SitDown, o *Occupant) {
+	glog.Errorln("sitDown", m)
+}
+
+func (r *Room) standUp(m *msg.StandUp, o *Occupant) {
+	glog.Errorln("standUp", m)
 }

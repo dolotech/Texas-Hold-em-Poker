@@ -6,11 +6,36 @@
 </head>
 
 <body>
-<input type="submit">
-<button onclick="ok_button()">ok</button>
-<p>return :
+
+
+<p>登录 :
     <output id="result"></output>
 </p>
+
+<p>
+    <button onclick="joinRoom()">加入房间</button>
+    <output id="joinRoomRes"></output>
+</p>
+<p>
+    <button onclick="leaveRoom()">离开房间</button>
+    <output id="leaveRoomRes"></output>
+</p>
+
+
+<p>
+    <button onclick="standUp()">站起</button>
+    <output id="standupRes"></output>
+</p>
+<p>
+    <button onclick="sitDown()">坐下</button>
+    <output id="sitdownRes"></output>
+</p>
+
+<p>
+    <button onclick="bet()">下注</button>
+    <output id="betRes"></output>
+</p>
+
 
 <script type="text/javascript">
     var ws = new WebSocket('ws://127.0.0.1:8989')
@@ -36,21 +61,17 @@
         }
     }
 
-    function ok_button() {
-
+    function standUp() {
         // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
         var msg = {
-            JoinRoom: {
+            StandUp: {
                 RoomNumber: "123456",
                 RoomPwd: "RoomPwd123456"
             }
         }
-
-
-
-        var m=JSON.stringify(msg)
-        console.log("send data:  ",m);
-        ws.send( m)
+        var m = JSON.stringify(msg)
+        console.log("send data:  ", m);
+        ws.send(m)
 
         ws.onmessage = function (evt) {
             var re = evt.data;
@@ -58,7 +79,100 @@
             reader.readAsText(re)
             reader.onload = function () {
                 console.log(this.result);
-                document.getElementById("result").innerHTML = this.result;
+                document.getElementById("standUpRes").innerHTML = this.result;
+            }
+        }
+    }
+
+    function sitDown() {
+        // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
+        var msg = {
+            SitDown: {
+                RoomNumber: "123456",
+                RoomPwd: "RoomPwd123456"
+            }
+        }
+        var m = JSON.stringify(msg)
+        console.log("send data:  ", m);
+        ws.send(m)
+
+        ws.onmessage = function (evt) {
+            var re = evt.data;
+            var reader = new FileReader()
+            reader.readAsText(re)
+            reader.onload = function () {
+                console.log(this.result);
+                document.getElementById("sitDownRes").innerHTML = this.result;
+            }
+        }
+    }
+
+    function leaveRoom() {
+        // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
+        var msg = {
+            LeaveRoom: {
+                RoomNumber: "123456",
+                RoomPwd: "RoomPwd123456"
+            }
+        }
+        var m = JSON.stringify(msg)
+        console.log("send data:  ", m);
+        ws.send(m)
+
+        ws.onmessage = function (evt) {
+            var re = evt.data;
+            var reader = new FileReader()
+            reader.readAsText(re)
+            reader.onload = function () {
+                console.log(this.result);
+                document.getElementById("leaveRoomRes").innerHTML = this.result;
+            }
+        }
+    }
+
+    function bet() {
+        // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
+        var msg = {
+            Bet: {
+                RoomNumber: "123456",
+                RoomPwd: "RoomPwd123456"
+            }
+        }
+        var m = JSON.stringify(msg)
+        console.log("send data:  ", m);
+        ws.send(m)
+
+        ws.onmessage = function (evt) {
+            var re = evt.data;
+            var reader = new FileReader()
+            reader.readAsText(re)
+            reader.onload = function () {
+                console.log(this.result);
+                document.getElementById("betRes").innerHTML = this.result;
+            }
+        }
+    }
+
+
+    function joinRoom() {
+        // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
+        var msg = {
+            JoinRoom: {
+                RoomNumber: "123456",
+                RoomPwd: "RoomPwd123456"
+            }
+        }
+        var m = JSON.stringify(msg)
+        console.log("send data:  ", m);
+        ws.send(m)
+
+        ws.onmessage = function (evt) {
+            var re = evt.data;
+            var reader = new FileReader()
+            reader.readAsText(re)
+            reader.onload = function () {
+                console.log(this.result);
+                document.getElementById("joinRoomRes").innerHTML = this.result;
             }
         }
     }

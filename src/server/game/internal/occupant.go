@@ -19,6 +19,11 @@ const (
 	Occupant_status_Online  int32 = 0
 )
 
+func (o *Occupant)WriteMsg(msg interface{}){
+	if o.status != Occupant_status_Offline{
+		o.Agent.WriteMsg(msg)
+	}
+}
 func (o *Occupant) SetData(d interface{}) {
 	o.User = d.(*model.User)
 }
