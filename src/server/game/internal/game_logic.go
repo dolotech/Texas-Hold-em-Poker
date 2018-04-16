@@ -106,7 +106,6 @@ func (r *Room) start() {
 	}
 	r.calc()
 
-
 	// Round 3 : Turn
 	r.ready()
 	r.Each(0, func(o *Occupant) bool {
@@ -114,11 +113,11 @@ func (r *Room) start() {
 			o.Bet = 0
 			o.Action = ""
 			r.remain++
-			card:= r.Cards.Take()
+			card := r.Cards.Take()
 
 			r.Cards = r.Cards.Append(card)
 
-			cs:=r.Cards.Append(o.cards...)
+			cs := r.Cards.Append(o.cards...)
 			kindCards, kind := cs.GetType()
 			m := &msg.Turn{
 				Cards:     card.Byte(),
@@ -136,7 +135,6 @@ func (r *Room) start() {
 		goto showdown
 	}
 	r.calc()
-
 
 	// Round 4 : River
 
@@ -146,11 +144,11 @@ func (r *Room) start() {
 			o.Bet = 0
 			o.Action = ""
 			r.remain++
-			card:= r.Cards.Take()
+			card := r.Cards.Take()
 
 			r.Cards = r.Cards.Append(card)
 
-			cs:=r.Cards.Append(o.cards...)
+			cs := r.Cards.Append(o.cards...)
 			kindCards, kind := cs.GetType()
 			m := &msg.Turn{
 				Cards:     card.Byte(),
@@ -163,18 +161,6 @@ func (r *Room) start() {
 	})
 
 	r.action(0)
-
-	if r.remain <= 1 {
-		goto showdown
-	}
-	r.calc()
-
-	r.action(bbPos%r.Cap() + 1)
-
-	if r.remain <= 1 {
-		goto showdown
-	}
-	r.calc()
 
 showdown:
 	r.showdown()
@@ -220,26 +206,13 @@ func (r *Room) action(pos uint8) {
 				return true
 			}
 
-			/*	r.WriteMsg(&msg.Message{
-					From:   room.Data.Id,
-					Type:   MsgPresence,
-					Action: ActAction,
-					Class:  fmt.Sprintf("%d,%d", o.Data.Pos, r.Data.Bet),
-				})
-*/
+			r.WriteMsg(&msg.Bet{Uid: o.Uid})
+
 			n := o.GetAction(r.Timeout)
 			if r.remain <= 1 {
 				return false
 			}
 
-			//var n uint32
-			// timeout or leave
-			/*if msg == nil || len(msg.Class) == 0 {
-				n = -1
-			} else {
-				n, _ = strconv.Atoi(msg.Class)
-			}
-*/
 			if r.betting(o.Pos, n) {
 				raised = o.Pos
 				return false
