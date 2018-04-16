@@ -49,6 +49,7 @@ func init() {
 	Processor.Register(&Button{})
 	Processor.Register(&StandUp{})
 	Processor.Register(&SitDown{})
+	Processor.Register(&UserInfo{})
 }
 
 // 版本号
@@ -76,6 +77,14 @@ type UserLoginInfoResp struct {
 	UnionId  string
 	Nickname string
 	Account  string
+}
+
+type UserInfo struct {
+	Uid      uint32 // 用户id
+	Account  string // 客户端玩家展示的账号
+	Nickname string // 微信昵称
+	Sex      uint8  // 微信性别 0-未知，1-男，2-女
+	Profile  string // 微信头像
 }
 
 type RoomInfo struct {
@@ -112,21 +121,21 @@ type PreFlop struct {
 type Flop struct {
 	Cards     []byte
 	KindCards []byte
-	Kind uint8
+	Kind      uint8
 }
 
 // 转牌
 type Turn struct {
-	Cards byte
+	Cards     byte
 	KindCards []byte
-	Kind uint8
+	Kind      uint8
 }
 
 //河牌
 type River struct {
-	Cards byte
+	Cards     byte
 	KindCards []byte
-	Kind uint8
+	Kind      uint8
 }
 
 //通报本局庄家
