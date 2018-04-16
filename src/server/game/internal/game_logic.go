@@ -241,9 +241,48 @@ func (r *Room) ready() {
 }
 
 func (r *Room) showdown() {
-	r.WriteMsg(&msg.Showdown{
+	//pots := r.calc()
 
-	})
+	for i, _ := range r.Chips {
+		r.Chips[i] = 0
+	}
+	/*
+
+	for _, pot := range pots {
+		var maxHand uint32
+		for _, pos := range pot.OPos {
+			o := r.occupants[pos-1]
+			if o != nil && o.Hand > maxHand {
+				maxHand = o.Hand
+			}
+		}
+
+		var winners []int
+
+		for _, pos := range pot.OPos {
+			o := r.occupants[pos-1]
+			if o != nil && o.Hand == maxHand && len(o.cards) > 0 {
+				winners = append(winners, pos)
+			}
+		}
+
+		if len(winners) == 0 {
+			fmt.Println("!!!no winners!!!")
+			return
+		}
+
+		for _, winner := range winners {
+			r.Chips[winner-1] += pot.Pot / len(winners)
+		}
+		r.Chips[winners[0]-1] += pot.Pot % len(winners) // odd chips
+	}
+	*/
+
+	for i, _ := range r.Chips {
+		if r.occupants[i] != nil {
+			r.occupants[i].Chips += r.Chips[i]
+		}
+	}
 }
 
 func (r *Room) betting(pos uint8, n int32) (raised bool) {
