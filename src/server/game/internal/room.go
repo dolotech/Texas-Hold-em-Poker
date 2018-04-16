@@ -9,6 +9,7 @@ import (
 	"github.com/dolotech/lib/route"
 	"github.com/dolotech/leaf/gate"
 	"errors"
+	"server/algorithm"
 )
 
 const (
@@ -20,35 +21,47 @@ const (
 
 type Room struct {
 	*model.Room
+	route.Route
 	occupants []*Occupant
 	closeChan chan struct{}
 	msgChan   chan *msgObj
 	state     int32
-	route.Route
+
+	SB       uint32          // 小盲注
+	BB       uint32          // 大盲注
+	Cards    algorithm.Cards //公共牌
+	Pot      []uint32        // 当前奖池筹码数
+	Timeout  uint8           // 倒计时超时时间(秒)
+	Button   uint8           // 当前庄家座位号，从1开始
+	Chips    []uint32        // 玩家本局下注的总筹码数，与occupants一一对应
+	Bet      uint32          // 当前下注额
+	Max      uint8           // 房间最大玩家人数
+	MaxChips uint32
+	MinChips uint32
 }
 
-func NewRoom(max int, sb, bb uint8) model.IRoom {
-	if max <= 0 || max > 10 {
+func NewRoom(max uint8, sb, bb uint32) model.IRoom {
+	if max <= 0 || max > 9 {
 		max = 9 // default 9 occupants
 	}
 
 	r := &Room{
-		Room: &model.Room{
-			//Chips: make([]uint32, max, 10),
-			SB:    sb,
-			BB:    bb,
-			Pot:   make([]uint32, 1),
-		},
+		Room:      &model.Room{},
 		closeChan: make(chan struct{}),
 		msgChan:   make(chan *msgObj, 64),
-		//occupants: make([]*Occupant, max, 10),
+		occupants: make([]*Occupant, max),
+		Chips:     make([]uint32, max),
+		Pot:       make([]uint32, 1),
+		SB:        sb,
+		BB:        bb,
+		Max:       max,
 	}
 
 	r.Regist(&msg.JoinRoom{}, r.joinRoom)
 	r.Regist(&msg.LeaveRoom{}, r.leaveRoom)
 	r.Regist(&msg.Bet{}, r.bet)
-	r.Regist(&msg.SitDown{}, r.sitDown)   //
-	r.Regist(&msg.StandUp{}, r.standUp)   //
+	r.Regist(&msg.SitDown{}, r.sitDown) //
+	r.Regist(&msg.StandUp{}, r.standUp) //
 	go r.msgLoop()
 	return r
 }
@@ -85,33 +98,26 @@ func (r *Room) WriteMsg(msg interface{}, exc ...uint32) {
 	}
 }
 
-func (r *Room) Data() *model.Room {
-	return r.Room
-}
-
-func (r *Room) occupant(uid uint32) *Occupant {
-	for _, v := range r.occupants {
-		if v != nil {
-			if uid == v.Uid {
-				return v
-			}
-		}
-	}
-	return nil
-}
 func (r *Room) addOccupant(o *Occupant) {
 	for _, v := range r.occupants {
-		if v.Uid == o.Uid {
+		if v !=nil && v.Uid == o.Uid {
 			return
 		}
 	}
-	r.occupants = append(r.occupants, o)
+
+	for k, v := range r.occupants {
+		if v == nil {
+			r.occupants[k] = o
+			o.Pos = uint8(k + 1)
+		}
+	}
 }
 
 func (r *Room) removeOccupant(o *Occupant) {
 	for k, v := range r.occupants {
-		if v.Uid == o.Uid {
-			r.occupants = append(r.occupants[:k], r.occupants[k+1:]...)
+		if v!= nil && v.Uid == o.Uid {
+			v.Pos = 0
+			r.occupants[k] = nil
 			return
 		}
 	}
@@ -136,4 +142,33 @@ func (r *Room) Send(o gate.Agent, m interface{}) error {
 		o.WriteMsg(msg.MSG_ROOM_CLOSED)
 	}
 	return errors.New("room closed")
+}
+
+// start starts from 0
+func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
+	volume := r.Cap()
+	end := (volume + start - 1) % volume
+	i := start
+	for ; i != end; i = (i + 1) % volume {
+		if r.occupants[i] != nil && !f(r.occupants[i]) {
+			return
+		}
+	}
+
+	// end
+	if r.occupants[i] != nil {
+		f(r.occupants[i])
+	}
+}
+func (r *Room) Cap() uint8 {
+	return uint8(len(r.occupants))
+}
+func (r *Room) MaxCap() uint8 {
+	return r.Max
+}
+func (r *Room) GetNumber() string {
+	return r.Number
+}
+func (r *Room) SetNumber(value string) {
+	r.Number = value
 }

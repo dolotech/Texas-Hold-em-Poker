@@ -7,7 +7,6 @@ import (
 )
 
 func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
-
 	if o.room != nil {
 		for k, v := range r.occupants {
 			if v.Uid == o.Uid {

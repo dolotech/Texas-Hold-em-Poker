@@ -21,7 +21,7 @@ type roomlist struct {
 func FindRoom() IRoom {
 	rooms.Lock()
 	for _, v := range rooms.M {
-		if v.Data().N < v.Data().Max {
+		if v.Cap()< v.MaxCap() {
 			return v
 		}
 	}
@@ -40,15 +40,15 @@ func SetRoom(room IRoom) string {
 	rooms.Lock()
 
 	id := createNumber()
-	room.Data().Number = id
+	room.SetNumber(id)
 	rooms.M[id] = room
 	rooms.Unlock()
 	return id
 }
 func DelRoom(room IRoom) {
 	rooms.Lock()
-	delete(rooms.M, room.Data().Number)
-	room.Data().Rid = 0
+	delete(rooms.M, room.GetNumber())
+
 	rooms.Unlock()
 }
 

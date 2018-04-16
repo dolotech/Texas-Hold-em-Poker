@@ -48,5 +48,5 @@ func BenchmarkCloseRoom(t *testing.B) {
 	<- time.After(time.Minute)*/
 
 	//room.CloseChan <- struct{}{}
-	//t.Log(cap(room.CloseChan))
+	//t.Log(Cap(room.CloseChan))
 }
