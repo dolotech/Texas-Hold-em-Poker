@@ -29,7 +29,7 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 	rinfo := &msg.RoomInfo{
 		Number: r.Number,
 	}
-	userinfos:= make([]*msg.UserInfo,0,r.Cap())
+	userinfos := make([]*msg.UserInfo, 0, r.Cap())
 	r.Each(0, func(o *Occupant) bool {
 		userinfo := &msg.UserInfo{
 			Nickname: o.Nickname,
@@ -39,23 +39,32 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 			Profile:  o.Profile,
 			Chips:    o.Chips,
 		}
-		userinfos =append(userinfos,userinfo)
+		userinfos = append(userinfos, userinfo)
 		return true
 	})
 
 	pos := r.addOccupant(o)
 
+	// 坐下失败转为旁观
 	if pos == 0 {
 		r.addObserve(o)
+	} else {
+		userInfo := &msg.UserInfo{
+			Nickname: o.Nickname,
+			Uid:      o.Uid,
+			Account:  o.Account,
+			Sex:      o.Sex,
+			Profile:  o.Profile,
+			Chips:    o.Chips,
+		}
+		r.WriteMsg(&msg.JoinRoomBroadcast{UserInfo: userInfo}, o.Uid)
 	}
 
 	o.RoomID = r.Number
 	o.UpdateRoomId()
 	o.room = r
+	o.WriteMsg(&msg.JoinRoomResp{UserInfos: userinfos, RoomInfo: rinfo})
 
-	o.WriteMsg(&msg.JoinRoomResp{UserInfos:userinfos,RoomInfo:rinfo})
-
-	r.WriteMsg(&msg.JoinRoom{Uid: o.Uid}, o.Uid)
 	glog.Errorln("joinRoom", m)
 }
 
@@ -79,6 +88,7 @@ func (r *Room) leaveRoom(m *msg.LeaveRoom, o *Occupant) {
 
 func (r *Room) bet(m *msg.Bet, o *Occupant) {
 	if !o.IsGameing() {
+		o.WriteMsg(msg.MSG_NOT_NOT_START)
 		return
 	}
 
@@ -108,7 +118,10 @@ func (r *Room) standUp(m *msg.StandUp, o *Occupant) {
 }
 
 func (r *Room) fold(m *msg.Fold, o *Occupant) {
-
+	if !o.IsGameing() {
+		o.WriteMsg(msg.MSG_NOT_NOT_START)
+		return
+	}
 	r.removeOccupant(o)
 
 	r.addObserve(o)

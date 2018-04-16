@@ -26,6 +26,8 @@ var (
 	MSG_ROOM_FULL       = &CodeState{Code: 1007, Message: "room full"}        // 房间已满
 	MSG_NOT_IN_ROOM     = &CodeState{Code: 1008, Message: "not in room"}      // 你不在房间
 	MSG_ROOM_CLOSED     = &CodeState{Code: 1009, Message: "room closed"}      // 房间已经关闭
+	MSG_NOT_TURN        = &CodeState{Code: 1010, Message: "not your turn"}    // 没轮到你下注
+	MSG_NOT_NOT_START   = &CodeState{Code: 1011, Message: "game not start"}   // 游戏未开始不能下注
 )
 
 func init() {
@@ -51,6 +53,7 @@ func init() {
 	Processor.Register(&SitDown{})
 	Processor.Register(&UserInfo{})
 	Processor.Register(&JoinRoomResp{})
+	Processor.Register(&JoinRoomBroadcast{})
 }
 
 // 版本号
@@ -76,8 +79,12 @@ type UserLoginInfo struct {
 //登录
 type UserLoginInfoResp struct {
 	UnionId  string
-	Nickname string
-	Account  string
+	Uid      uint32 // 用户id
+	Account  string // 客户端玩家展示的账号
+	Nickname string // 微信昵称
+	Sex      uint8  // 微信性别 0-未知，1-男，2-女
+	Profile  string // 微信头像
+	Chips    uint32 // 筹码
 }
 
 type UserInfo struct {
@@ -123,6 +130,10 @@ type JoinRoom struct {
 	Uid        uint32
 	RoomNumber string
 	RoomPwd    string
+}
+
+type JoinRoomBroadcast struct {
+	UserInfo *UserInfo
 }
 
 type JoinRoomResp struct {

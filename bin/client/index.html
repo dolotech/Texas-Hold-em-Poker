@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Hello</title>
+        <script src="phaser.js"></script>
+        <script src="user.js"></script>
+        <script src="betapi.js"></script>
+        <script src="server.js"></script>
+        <script src="animations.js"></script>
+        <script src="main.js"></script>
+        <script src="mainState.js"></script>
+        <script src="loginState.js"></script>
+
+        <style type="text/css">
+        body {
+        	background-color: black;
+            margin:0px;
+        }
+
+        #gamediv {
+        	margin: 0 auto;
+            position:absolute;
+        	width: 100%;
+            height: 100%;
+            z-index:-1;
+        }
+        </style>
+        <script>
+            var PLAT = "__PLAT__";
+            bindNative();
+        </script>
+    </head>
+    <body>
+    <div id="gamediv"></div>
+    </body>
+</html>
