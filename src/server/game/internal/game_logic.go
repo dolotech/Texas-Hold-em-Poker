@@ -5,6 +5,7 @@ import (
 	"server/msg"
 	"strconv"
 	"server/model"
+	"server/algorithm"
 )
 
 func (r *Room) start() {
@@ -58,25 +59,46 @@ func (r *Room) start() {
 	r.betting(bb.Pos, int32(r.BB))
 
 	// Round 1 : preflop
-	// Round 2 : Flop
-	// Round 3 : Turn
-	// Round 4 : River
 	r.Each(0, func(o *Occupant) bool {
 		if o.IsGameing() {
 			o.Bet = 0
+			o.Action = ""
 			r.remain++
-
-			c1 := r.Cards.Take()
-			c2 := r.Cards.Take()
-			m := &msg.PreFlop{[]byte{c1.Byte(), c2.Byte()}}
+			o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
+			m := &msg.PreFlop{}
+			m.Cards = o.cards.Bytes()
 			o.WriteMsg(m)
 		}
 		return true
 	})
 
-	r.action(bbPos%r.Cap() + 1)
+	// Round 2 : Flop
+	r.ready()
+	r.Each(0, func(o *Occupant) bool {
+		if o.IsGameing() {
+			o.Bet = 0
+			o.Action = ""
+			r.remain++
+			r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
+			cs := r.Cards.Append(o.cards)
+			kindCards, kind := cs.GetType()
+			m := &msg.Flop{
+				Cards:     cs.Bytes(),
+				Kind:      kind,
+				KindCards: kindCards.Bytes(),
+			}
+			o.WriteMsg(m)
+		}
+		return true
+	})
+
+	// Round 3 : Turn
 
 	r.ready()
+	// Round 4 : River
+	r.ready()
+
+	r.action(bbPos%r.Cap() + 1)
 
 	if r.remain <= 1 {
 		goto showdown

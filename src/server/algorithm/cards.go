@@ -2,6 +2,13 @@ package algorithm
 
 type Cards []Card
 
+func (this *Cards) Bytes() []byte {
+	b:= make([]byte,len(*this))
+	for k,v:=range *this{
+		b[k] = byte(v)
+	}
+	return b
+}
 func (this *Cards) Len() int {
 	return len(*this)
 }

@@ -28,7 +28,7 @@ func (this *Cards) PK(cards *Cards) int8 {
 
 
 
-func (this *Cards) GetType() ([]Card, uint8) {
+func (this *Cards) GetType() (Cards, uint8) {
 	if len(*this) == 0 {
 		return []Card{}, 0
 	}
