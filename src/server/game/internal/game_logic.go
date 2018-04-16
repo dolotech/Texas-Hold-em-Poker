@@ -72,6 +72,13 @@ func (r *Room) start() {
 		return true
 	})
 
+	r.action(0)
+
+	if r.remain <= 1 {
+		goto showdown
+	}
+	r.calc()
+
 	// Round 2 : Flop
 	r.ready()
 	r.Each(0, func(o *Occupant) bool {
@@ -80,7 +87,7 @@ func (r *Room) start() {
 			o.Action = ""
 			r.remain++
 			r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
-			cs := r.Cards.Append(o.cards)
+			cs := r.Cards.Append(o.cards...)
 			kindCards, kind := cs.GetType()
 			m := &msg.Flop{
 				Cards:     cs.Bytes(),
@@ -92,11 +99,75 @@ func (r *Room) start() {
 		return true
 	})
 
+	r.action(0)
+
+	if r.remain <= 1 {
+		goto showdown
+	}
+	r.calc()
+
+
 	// Round 3 : Turn
+	r.ready()
+	r.Each(0, func(o *Occupant) bool {
+		if o.IsGameing() {
+			o.Bet = 0
+			o.Action = ""
+			r.remain++
+			card:= r.Cards.Take()
+
+			r.Cards = r.Cards.Append(card)
+
+			cs:=r.Cards.Append(o.cards...)
+			kindCards, kind := cs.GetType()
+			m := &msg.Turn{
+				Cards:     card.Byte(),
+				Kind:      kind,
+				KindCards: kindCards.Bytes(),
+			}
+			o.WriteMsg(m)
+		}
+		return true
+	})
+
+	r.action(0)
+
+	if r.remain <= 1 {
+		goto showdown
+	}
+	r.calc()
+
+
+	// Round 4 : River
 
 	r.ready()
-	// Round 4 : River
-	r.ready()
+	r.Each(0, func(o *Occupant) bool {
+		if o.IsGameing() {
+			o.Bet = 0
+			o.Action = ""
+			r.remain++
+			card:= r.Cards.Take()
+
+			r.Cards = r.Cards.Append(card)
+
+			cs:=r.Cards.Append(o.cards...)
+			kindCards, kind := cs.GetType()
+			m := &msg.Turn{
+				Cards:     card.Byte(),
+				Kind:      kind,
+				KindCards: kindCards.Bytes(),
+			}
+			o.WriteMsg(m)
+		}
+		return true
+	})
+
+	r.action(0)
+
+	if r.remain <= 1 {
+		goto showdown
+	}
+	r.calc()
 
 	r.action(bbPos%r.Cap() + 1)
 

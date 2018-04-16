@@ -17,7 +17,7 @@ func (this *Cards) Take() Card {
 	(*this) = (*this)[1:]
 	return card
 }
-func (this *Cards) Append(cards Cards) Cards {
+func (this *Cards) Append(cards ...Card ) Cards {
 	cs := make([]Card,0,len(cards) + len(*this))
 	cs = append(cs,(*this)...)
 	cs = append(cs, cards...)
