@@ -40,21 +40,19 @@ type handPot struct {
 //首先，主池可以由三人中的任何一人得到胜利都可以拿走；
 // 但是边池一的争夺就只能在B与C之间产生，两人谁赢谁拿走，与A无关(就算A玩家的牌最大也只能拿走他参与的主池)。
 //而最后剩下的边池二不论三人谁输谁赢都只能由C拿走，因为边池二里的筹码只有C自己参与了，与其他人无关。
-//main pot and side-pot calculation
 func calcPot(bets []uint32) (pots []handPot) {
-	var obs []handBet
+	var obs handBets
 	for i, bet := range bets {
 		if bet > 0 {
 			obs = append(obs, handBet{Pos: uint8(i) + 1, Bet: bet})
 		}
 	}
-	sort.Sort(handBets(obs))
+	sort.Sort(obs)
 
 	for i, ob := range obs {
 		if ob.Bet > 0 {
 			s := obs[i:]
 			hpot := handPot{Pot: ob.Bet * uint32(len(s))}
-
 			for j, _ := range s {
 				s[j].Bet -= ob.Bet
 				hpot.OPos = append(hpot.OPos, uint32(s[j].Pos))

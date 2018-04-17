@@ -18,6 +18,10 @@ type Occupant struct {
 	Bet        uint32 // 当前下注
 	actions    chan int32
 	actionName string
+
+
+	kindCards algorithm.Cards
+	kind uint8
 }
 
 const (
@@ -50,6 +54,9 @@ func (o *Occupant) GetAction(timeout time.Duration) int32 {
 	}
 }
 
+func (o *Occupant) PK( target *Occupant)int8 {
+	return algorithm.PK(o.kindCards,target.kindCards,o.kind,target.kind)
+}
 func (o *Occupant) WriteMsg(msg interface{}) {
 	if o.status != Occupant_status_Offline {
 		o.Agent.WriteMsg(msg)

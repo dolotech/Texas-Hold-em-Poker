@@ -59,7 +59,7 @@ func NewRoom(max uint8, sb, bb uint32) model.IRoom {
 		msgChan:   make(chan *msgObj, 64),
 		occupants: make([]*Occupant, max),
 		Chips:     make([]uint32, max),
-		Pot:       make([]uint32, 1),
+		Pot:       make([]uint32,0, max),
 		Timeout:   time.Second * 10,
 		SB:        sb,
 		BB:        bb,

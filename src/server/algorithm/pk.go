@@ -3,7 +3,10 @@ package algorithm
 func (this *Cards) PK(cards *Cards) int8 {
 	cs, kind := this.GetType()
 	csa, kinda := cards.GetType()
+	return PK(cs, csa, kind, kinda)
+}
 
+func PK(cs, csa Cards, kind, kinda uint8) int8 {
 	if kind < kinda {
 		return 1
 	} else if kind == kinda {
@@ -24,9 +27,6 @@ func (this *Cards) PK(cards *Cards) int8 {
 
 	return -1
 }
-
-
-
 
 func (this *Cards) GetType() (Cards, uint8) {
 	if len(*this) == 0 {
@@ -58,14 +58,14 @@ func (this *Cards) GetType() (Cards, uint8) {
 	if cards := this.Straight(); cards > 0 {
 		return []Card{cards}, STRAIGHT
 	}
-	if cards := this.Three(); len(cards)  > 0 {
+	if cards := this.Three(); len(cards) > 0 {
 		return cards, THREE
 	}
 	if cards := this.TwoPair(); len(cards) > 0 {
 		return cards, TWO_PAIR
 	}
 
-	if cards := this.OnePair(); len(cards)  > 0 {
+	if cards := this.OnePair(); len(cards) > 0 {
 		return cards, ONE_PAIR
 	}
 

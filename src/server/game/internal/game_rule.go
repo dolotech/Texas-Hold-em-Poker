@@ -3,7 +3,6 @@ package internal
 import (
 	"github.com/golang/glog"
 	"server/msg"
-	"strconv"
 	"server/model"
 	"server/algorithm"
 )
@@ -62,11 +61,17 @@ func (r *Room) start() {
 	r.ready()
 	r.Each(0, func(o *Occupant) bool {
 		o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
-		m := &msg.PreFlop{Cards: o.cards.Bytes()}
+
+		kindCards, kind := o.cards.GetType()
+		m := &msg.PreFlop{
+			Cards:     o.cards.Bytes(),
+			Kind:      kind,
+			KindCards: kindCards.Bytes(),
+		}
 		o.WriteMsg(m)
 		return true
 	})
-	r.Broadcast(&msg.PreFlop{},false)
+	r.Broadcast(&msg.PreFlop{}, false)
 
 	r.action(0)
 
@@ -89,7 +94,7 @@ func (r *Room) start() {
 		o.WriteMsg(m)
 		return true
 	})
-	r.Broadcast(&msg.Flop{Cards: r.Cards.Bytes()},false)
+	r.Broadcast(&msg.Flop{Cards: r.Cards.Bytes()}, false)
 
 	r.action(0)
 
@@ -112,7 +117,7 @@ func (r *Room) start() {
 		o.WriteMsg(m)
 		return true
 	})
-	r.Broadcast(&msg.Turn{Cards: r.Cards[3].Byte()},false)
+	r.Broadcast(&msg.Turn{Cards: r.Cards[3].Byte()}, false)
 
 	r.action(0)
 
@@ -125,6 +130,7 @@ func (r *Room) start() {
 	r.ready()
 	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
+
 		cs := r.Cards.Append(o.cards...)
 		kindCards, kind := cs.GetType()
 		m := &msg.River{
@@ -133,31 +139,44 @@ func (r *Room) start() {
 			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
+
+		o.kindCards = kindCards
+		o.kind = kind
 		return true
 	})
-	r.Broadcast(&msg.River{Cards: r.Cards[4].Byte()},false)
+	r.Broadcast(&msg.River{Cards: r.Cards[4].Byte()}, false)
 
 	r.action(0)
 
 showdown:
 	r.showdown()
 	// Final : Showdown
+	showdown := &msg.Showdown{}
+	for _, o := range r.occupants {
+		if o != nil && o.IsGameing() {
+			item := &msg.ShowdownItem{
+				Uid:      o.Uid,
+				ChipsWin: r.Chips[o.Pos-1],
+				Chips:    o.Chips,
+			}
+			showdown.Showdown = append(showdown.Showdown, item)
+		}
+	}
 
+	r.Broadcast(showdown, true)
 	glog.Infoln(sb.Pos, bbPos)
 }
 
+// 计算并通报奖池
 func (r *Room) calc() (pots []handPot) {
 	pots = calcPot(r.Chips)
-	r.Pot = nil
-	var ps []string
+	r.Pot = r.Pot[:]
+	var ps []uint32
 	for _, pot := range pots {
 		r.Pot = append(r.Pot, pot.Pot)
-		ps = append(ps, strconv.Itoa(int(pot.Pot)))
+		ps = append(ps, pot.Pot)
 	}
-
-	r.WriteMsg(&msg.Pot{
-	})
-
+	r.Broadcast(&msg.Pot{Pot: ps}, true)
 	return
 }
 
@@ -165,43 +184,33 @@ func (r *Room) action(pos uint8) {
 	if r.allin+1 >= r.remain {
 		return
 	}
-
 	var skip uint8
 	if pos == 0 { // start from left hand of button
 		pos = (r.Button)%r.Cap() + 1
 	}
-
 	for {
 		var raised uint8
-
 		r.Each(pos-1, func(o *Occupant) bool {
 			if r.remain <= 1 {
 				return false
 			}
-
 			if o.Pos == skip || o.Chips == 0 {
 				return true
 			}
-
 			r.WriteMsg(&msg.BetPrompt{})
-
 			n := o.GetAction(r.Timeout)
 			if r.remain <= 1 {
 				return false
 			}
-
 			if r.betting(o, n) {
 				raised = o.Pos
 				return false
 			}
-
 			return true
 		})
-
 		if raised == 0 {
 			break
 		}
-
 		pos = raised
 		skip = pos
 	}
@@ -213,47 +222,54 @@ func (r *Room) ready() {
 		o.Bet = 0
 		o.actionName = ""
 		r.remain++
+		o.kind = 0
+		o.kindCards = nil
 		return true
 	})
 }
 
+// 比牌
 func (r *Room) showdown() {
-	//pots := r.calc()
+	pots := r.calc()
 
 	for i, _ := range r.Chips {
 		r.Chips[i] = 0
 	}
-	/*
 
 	for _, pot := range pots {
-		var maxHand uint32
+		var maxO *Occupant
 		for _, pos := range pot.OPos {
 			o := r.occupants[pos-1]
-			if o != nil && o.Hand > maxHand {
-				maxHand = o.Hand
+			if o != nil && len(o.cards) > 0 {
+				if maxO == nil {
+					maxO = o
+					continue
+				}
+				if maxO.PK(o) > 0 {
+					maxO = o
+				}
 			}
 		}
 
-		var winners []int
+		var winners []uint8
 
 		for _, pos := range pot.OPos {
 			o := r.occupants[pos-1]
-			if o != nil && o.Hand == maxHand && len(o.cards) > 0 {
-				winners = append(winners, pos)
+			if o != nil && maxO.PK(o) == 0 && o.IsGameing() {
+				winners = append(winners, o.Pos)
 			}
 		}
 
 		if len(winners) == 0 {
-			fmt.Println("!!!no winners!!!")
+			glog.Errorln("!!!no winners!!!")
 			return
 		}
 
 		for _, winner := range winners {
-			r.Chips[winner-1] += pot.Pot / len(winners)
+			r.Chips[winner-1] += pot.Pot / uint32(len(winners))
 		}
-		r.Chips[winners[0]-1] += pot.Pot % len(winners) // odd chips
+		r.Chips[winners[0]-1] += pot.Pot % uint32(len(winners)) // odd chips
 	}
-	*/
 
 	for i, _ := range r.Chips {
 		if r.occupants[i] != nil {
@@ -286,11 +302,11 @@ func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 	}
 	r.Chips[o.Pos-1] += uint32(n)
 
-	r.WriteMsg(&msg.BetBroadcast{
+	r.Broadcast(&msg.BetBroadcast{
 		Uid:   o.Uid,
 		Kind:  o.actionName,
 		Value: value,
-	})
+	}, true)
 
 	return
 }

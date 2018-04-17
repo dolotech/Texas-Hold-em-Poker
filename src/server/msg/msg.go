@@ -143,7 +143,9 @@ type JoinRoomResp struct {
 
 //底牌
 type PreFlop struct {
-	Cards []byte
+	Cards     []byte
+	KindCards []byte
+	Kind      uint8
 }
 
 // 翻牌
@@ -202,14 +204,18 @@ type BetResp struct {
 
 //通报奖池
 type Pot struct {
-	RoomNumber string
-	RoomPwd    string
+	Pot []uint32
 }
 
 //摊牌和比牌
 type Showdown struct {
-	RoomNumber string
-	RoomPwd    string
+	Showdown []*ShowdownItem
+}
+
+type ShowdownItem struct {
+	Uid      uint32
+	ChipsWin uint32
+	Chips    uint32
 }
 
 type LeaveRoom struct {
