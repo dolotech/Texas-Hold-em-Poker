@@ -107,6 +107,31 @@ func (r *Room) WriteMsg(msg interface{}, exc ...uint32) {
 	}
 }
 
+func (r *Room) Broadcast(msg interface{}, all bool, exc ...uint32) {
+	for _, v := range r.occupants {
+		if v != nil && (all || !v.IsGameing()) {
+			for _, uid := range exc {
+				if uid == v.Uid {
+					goto End1
+				}
+			}
+			v.WriteMsg(msg)
+		}
+	End1:
+	}
+	for _, v := range r.observes {
+		if v != nil {
+			for _, uid := range exc {
+				if uid == v.Uid {
+					goto End
+				}
+			}
+			v.WriteMsg(msg)
+		}
+	End:
+	}
+}
+
 func (r *Room) addOccupant(o *Occupant) uint8 {
 	for _, v := range r.occupants {
 		if v != nil && v.Uid == o.Uid {

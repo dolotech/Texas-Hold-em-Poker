@@ -7,8 +7,6 @@ import (
 	"time"
 )
 
-// todo 下注超时
-
 type Occupant struct {
 	*model.User
 	gate.Agent
@@ -42,6 +40,9 @@ func (o *Occupant) GetAction(timeout time.Duration) int32 {
 		timer.Stop()
 		o.actionName = ""
 		return n
+	case <-o.room.closeChan:
+		timer.Stop()
+		return -1
 	case <-timer.C:
 		o.actionName = ""
 		timer.Stop()
@@ -54,6 +55,7 @@ func (o *Occupant) WriteMsg(msg interface{}) {
 		o.Agent.WriteMsg(msg)
 	}
 }
+
 func (o *Occupant) SetData(d interface{}) {
 	o.User = d.(*model.User)
 }

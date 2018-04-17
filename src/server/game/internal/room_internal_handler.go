@@ -57,7 +57,7 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 			Profile:  o.Profile,
 			Chips:    o.Chips,
 		}
-		r.WriteMsg(&msg.JoinRoomBroadcast{UserInfo: userInfo}, o.Uid)
+		r.Broadcast(&msg.JoinRoomBroadcast{UserInfo: userInfo}, true,o.Uid)
 	}
 
 	o.RoomID = r.Number
@@ -78,11 +78,12 @@ func (r *Room) leaveRoom(m *msg.LeaveRoom, o *Occupant) {
 	o.RoomID = ""
 	o.room = nil
 	o.UpdateRoomId()
+
 	leave := &msg.LeaveRoom{
 		RoomNumber: r.Number,
 		Uid:        o.Uid,
 	}
-	r.WriteMsg(leave)
+	r.Broadcast(leave,true)
 	glog.Errorln("leaveRoom", m)
 }
 
@@ -109,7 +110,7 @@ func (r *Room) sitDown(m *msg.SitDown, o *Occupant) {
 	} else {
 
 	}
-	r.WriteMsg(&msg.SitDown{Uid: o.Uid, Pos: o.Pos})
+	r.Broadcast(&msg.SitDown{Uid: o.Uid, Pos: o.Pos},true)
 
 	glog.Errorln("sitDown", m)
 }
@@ -119,7 +120,7 @@ func (r *Room) standUp(m *msg.StandUp, o *Occupant) {
 	r.removeOccupant(o)
 
 	r.addObserve(o)
-	r.WriteMsg(&msg.StandUp{Uid: o.Uid})
+	r.Broadcast(&msg.StandUp{Uid: o.Uid},true)
 
 	glog.Errorln("standUp", m)
 }

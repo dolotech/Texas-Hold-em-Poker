@@ -97,6 +97,7 @@ func (a *agent) Run() {
 			break
 		}
 
+		glog.Infoln(string(data))
 		if a.gate.Processor != nil {
 			msg, err := a.gate.Processor.Unmarshal(data)
 			if err != nil {

@@ -44,7 +44,7 @@ var callbackClose = function(data)
 var callbackMessage = function(data)
 {
     console.log("callbackMessage " + data);
-    if(data.version && data.version == strVersion) // checkVersion result
+    if(data.Version && data.Version.Version == strVersion) // checkVersion result
     {
         game.state.states["LoginState"].initUserName();
     }

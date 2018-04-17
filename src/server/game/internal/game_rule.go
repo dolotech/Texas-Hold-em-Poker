@@ -13,7 +13,7 @@ func (r *Room) start() {
 	if r.n < 2 {
 		return
 	}
-	// 产生庄位
+	// 产生庄
 	var dealer *Occupant
 	button := r.Button - 1
 	r.Each((button+1)%r.Cap(), func(o *Occupant) bool {
@@ -42,12 +42,12 @@ func (r *Room) start() {
 	// 洗牌
 	r.Cards.Shuffle()
 
-	// 产生小盲位
+	// 产生小盲
 	sb := r.next(dealer.Pos)
 	if r.n == 2 { // one-to-one
 		sb = dealer
 	}
-	// 产生大盲位
+	// 产生大盲
 	bb := r.next(sb.Pos)
 	bbPos := bb.Pos
 
@@ -55,20 +55,18 @@ func (r *Room) start() {
 	r.WriteMsg(&msg.Button{Uid: dealer.Uid})
 
 	// 小大盲下注
-	r.betting(sb.Pos, int32(r.SB))
-	r.betting(bb.Pos, int32(r.BB))
+	r.betting(sb, int32(r.SB))
+	r.betting(bb, int32(r.BB))
 
 	// Round 1 : preflop
+	r.ready()
 	r.Each(0, func(o *Occupant) bool {
-		o.Bet = 0
-		o.actionName = ""
-		r.remain++
 		o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
-		m := &msg.PreFlop{}
-		m.Cards = o.cards.Bytes()
+		m := &msg.PreFlop{Cards: o.cards.Bytes()}
 		o.WriteMsg(m)
 		return true
 	})
+	r.Broadcast(&msg.PreFlop{},false)
 
 	r.action(0)
 
@@ -79,11 +77,8 @@ func (r *Room) start() {
 
 	// Round 2 : Flop
 	r.ready()
+	r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
 	r.Each(0, func(o *Occupant) bool {
-		o.Bet = 0
-		o.actionName = ""
-		r.remain++
-		r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
 		cs := r.Cards.Append(o.cards...)
 		kindCards, kind := cs.GetType()
 		m := &msg.Flop{
@@ -94,6 +89,7 @@ func (r *Room) start() {
 		o.WriteMsg(m)
 		return true
 	})
+	r.Broadcast(&msg.Flop{Cards: r.Cards.Bytes()},false)
 
 	r.action(0)
 
@@ -104,24 +100,19 @@ func (r *Room) start() {
 
 	// Round 3 : Turn
 	r.ready()
+	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
-		o.Bet = 0
-		o.actionName = ""
-		r.remain++
-		card := r.Cards.Take()
-
-		r.Cards = r.Cards.Append(card)
-
 		cs := r.Cards.Append(o.cards...)
 		kindCards, kind := cs.GetType()
 		m := &msg.Turn{
-			Cards:     card.Byte(),
+			Cards:     r.Cards[3].Byte(),
 			Kind:      kind,
 			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
 		return true
 	})
+	r.Broadcast(&msg.Turn{Cards: r.Cards[3].Byte()},false)
 
 	r.action(0)
 
@@ -131,26 +122,20 @@ func (r *Room) start() {
 	r.calc()
 
 	// Round 4 : River
-
 	r.ready()
+	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
-		o.Bet = 0
-		o.actionName = ""
-		r.remain++
-		card := r.Cards.Take()
-
-		r.Cards = r.Cards.Append(card)
-
 		cs := r.Cards.Append(o.cards...)
 		kindCards, kind := cs.GetType()
-		m := &msg.Turn{
-			Cards:     card.Byte(),
+		m := &msg.River{
+			Cards:     r.Cards[4].Byte(),
 			Kind:      kind,
 			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
 		return true
 	})
+	r.Broadcast(&msg.River{Cards: r.Cards[4].Byte()},false)
 
 	r.action(0)
 
@@ -194,18 +179,18 @@ func (r *Room) action(pos uint8) {
 				return false
 			}
 
-			if o.Pos == skip || o.Chips == 0 || o.cards.Len() == 0 {
+			if o.Pos == skip || o.Chips == 0 {
 				return true
 			}
 
-			r.WriteMsg(&msg.Bet{Uid: o.Uid})
+			r.WriteMsg(&msg.BetPrompt{})
 
 			n := o.GetAction(r.Timeout)
 			if r.remain <= 1 {
 				return false
 			}
 
-			if r.betting(o.Pos, n) {
+			if r.betting(o, n) {
 				raised = o.Pos
 				return false
 			}
@@ -226,6 +211,8 @@ func (r *Room) ready() {
 	r.Bet = 0
 	r.Each(0, func(o *Occupant) bool {
 		o.Bet = 0
+		o.actionName = ""
+		r.remain++
 		return true
 	})
 }
@@ -275,20 +262,10 @@ func (r *Room) showdown() {
 	}
 }
 
-func (r *Room) betting(pos uint8, n int32) (raised bool) {
-	if pos <= 0 {
-		return
-	}
-
-	o := r.occupants[pos-1]
-	if o == nil {
-		return
-	}
-
+func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 	value := n
 	if n < 0 {
 		o.actionName = model.BET_FOLD
-		o.cards = nil
 		n = 0
 		r.remain--
 	} else if n == 0 {
@@ -309,7 +286,7 @@ func (r *Room) betting(pos uint8, n int32) (raised bool) {
 	}
 	r.Chips[o.Pos-1] += uint32(n)
 
-	r.WriteMsg(&msg.Bet{
+	r.WriteMsg(&msg.BetBroadcast{
 		Uid:   o.Uid,
 		Kind:  o.actionName,
 		Value: value,

@@ -53,6 +53,7 @@ func init() {
 	Processor.Register(&UserInfo{})
 	Processor.Register(&JoinRoomResp{})
 	Processor.Register(&JoinRoomBroadcast{})
+	Processor.Register(&BetResp{})
 }
 
 // 版本号
@@ -171,7 +172,8 @@ type Button struct {
 	Uid uint32
 }
 
-// 玩家有四种下注方式，下注数分别对应为：
+// 玩家提交下注数据
+// 有四种下注方式，下注数分别对应为：
 //弃牌: <0 (fold)
 //跟注：等于单注额 (call)
 //看注：= 0 表示看注 (check)
@@ -179,8 +181,23 @@ type Button struct {
 //全押：等于玩家手中所有筹码 (allin)
 type Bet struct {
 	Value int32
-	Kind string
-	Uid uint32
+}
+
+// 提示指定的玩家下注
+type BetPrompt struct {
+}
+
+// 通报玩家下注
+type BetBroadcast struct {
+	Value int32
+	Kind  string
+	Uid   uint32
+}
+
+type BetResp struct {
+	Value int32
+	Kind  string
+	Uid   uint32
 }
 
 //通报奖池

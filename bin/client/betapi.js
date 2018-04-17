@@ -31,15 +31,15 @@ BetApi.prototype = {
 
 	checkVersion:function(strVersion, callback) {
 
-		var data = {version:strVersion}
-		this.betServer.sendCommand(data, callback);
-	},
+        var data = {Version:strVersion}
+        this.betServer.sendCommand({Version:data}, callback);
+    },
 
-	loginCertification:function(strName, callback) {
+    loginCertification:function(strName, callback) {
 
-		var data = {mechanism:"plain", text:strName}
-		this.betServer.sendCommand(data, callback);
-	},
+        var data = {mechanism:"plain", text:strName}
+        this.betServer.sendCommand(data, callback);
+    },
 
 
 	createRoom:function(strRoomID, nSB, nBB, nTimeout, nMaxPlayer, callback) {

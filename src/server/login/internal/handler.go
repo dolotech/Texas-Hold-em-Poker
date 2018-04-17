@@ -21,6 +21,7 @@ func handler(m interface{}, h interface{}) {
 
 func handlVersion(m *msg.Version, a gate.Agent) {
 	glog.Infoln(m)
+	a.WriteMsg(m)
 }
 
 /*func handlRegisterUserInfo(m *msg.RegisterUserInfo, a gate.Agent) {
