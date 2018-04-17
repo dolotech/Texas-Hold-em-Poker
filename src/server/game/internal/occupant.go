@@ -17,10 +17,9 @@ type Occupant struct {
 	Pos    uint8 // 玩家座位号，从1开始
 	status int32 // 1为离线状态
 
-	Bet     uint32 // 当前下注
-	turn    bool
-	actions chan int32
-	Action  string
+	Bet        uint32 // 当前下注
+	actions    chan int32
+	actionName string
 }
 
 const (
@@ -30,22 +29,21 @@ const (
 	Occupant_status_Sitdown int32 = 0
 )
 
-
 func (o *Occupant) SetAction(n int32) {
-	if o.turn {
+	if o.actionName == model.BET_ {
 		o.actions <- n
 	}
 }
 func (o *Occupant) GetAction(timeout time.Duration) int32 {
 	timer := time.NewTimer(timeout)
-	o.turn = true
+	o.actionName = model.BET_
 	select {
 	case n := <-o.actions:
-		o.turn = false
 		timer.Stop()
+		o.actionName = ""
 		return n
 	case <-timer.C:
-		o.turn = false
+		o.actionName = ""
 		timer.Stop()
 		return -1 // 超时弃牌
 	}

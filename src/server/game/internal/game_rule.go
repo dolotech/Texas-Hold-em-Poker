@@ -62,7 +62,7 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		if o.IsGameing() {
 			o.Bet = 0
-			o.Action = ""
+			o.actionName = ""
 			r.remain++
 			o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
 			m := &msg.PreFlop{}
@@ -84,7 +84,7 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		if o.IsGameing() {
 			o.Bet = 0
-			o.Action = ""
+			o.actionName = ""
 			r.remain++
 			r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
 			cs := r.Cards.Append(o.cards...)
@@ -111,7 +111,7 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		if o.IsGameing() {
 			o.Bet = 0
-			o.Action = ""
+			o.actionName = ""
 			r.remain++
 			card := r.Cards.Take()
 
@@ -142,7 +142,7 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		if o.IsGameing() {
 			o.Bet = 0
-			o.Action = ""
+			o.actionName = ""
 			r.remain++
 			card := r.Cards.Take()
 
@@ -297,31 +297,31 @@ func (r *Room) betting(pos uint8, n int32) (raised bool) {
 
 	value := n
 	if n < 0 {
-		o.Action = model.BET_FOLD
+		o.actionName = model.BET_FOLD
 		o.cards = nil
 		n = 0
 		r.remain--
 	} else if n == 0 {
-		o.Action = model.BET_CHECK
+		o.actionName = model.BET_CHECK
 	} else if uint32(n)+o.Bet <= r.Bet {
-		o.Action = model.BET_CALL
+		o.actionName = model.BET_CALL
 		o.Chips -= uint32(n)
 		o.Bet += uint32(n)
 	} else {
-		o.Action = model.BET_RAISE
+		o.actionName = model.BET_RAISE
 		o.Chips -= uint32(n)
 		o.Bet += uint32(n)
 		r.Bet = o.Bet
 		raised = true
 	}
 	if o.Chips == 0 {
-		o.Action = model.BET_ALLIN
+		o.actionName = model.BET_ALLIN
 	}
 	r.Chips[o.Pos-1] += uint32(n)
 
 	r.WriteMsg(&msg.Bet{
 		Uid:   o.Uid,
-		Kind:  o.Action,
+		Kind:  o.actionName,
 		Value: value,
 	})
 

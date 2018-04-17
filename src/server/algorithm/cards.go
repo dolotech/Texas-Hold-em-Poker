@@ -2,27 +2,6 @@ package algorithm
 
 type Cards []Card
 
-func (this *Cards) Bytes() []byte {
-	b:= make([]byte,len(*this))
-	for k,v:=range *this{
-		b[k] = byte(v)
-	}
-	return b
-}
-func (this *Cards) Len() int {
-	return len(*this)
-}
-func (this *Cards) Take() Card {
-	card := (*this)[0]
-	(*this) = (*this)[1:]
-	return card
-}
-func (this *Cards) Append(cards ...Card ) Cards {
-	cs := make([]Card,0,len(cards) + len(*this))
-	cs = append(cs,(*this)...)
-	cs = append(cs, cards...)
-	return cs
-}
 
 
 // todo 两对和四张起脚牌的判定
