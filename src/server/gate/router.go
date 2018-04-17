@@ -18,6 +18,5 @@ func init() {
 	msg.Processor.SetRouter(&msg.Button{}, game.ChanRPC)
 	msg.Processor.SetRouter(&msg.PreFlop{}, game.ChanRPC)
 	msg.Processor.SetRouter(&msg.Bet{}, game.ChanRPC)
-	msg.Processor.SetRouter(&msg.Fold{}, game.ChanRPC)
 	msg.Processor.SetRouter(&msg.Version{}, game.ChanRPC)
 }

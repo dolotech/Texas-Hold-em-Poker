@@ -69,7 +69,6 @@ func NewRoom(max uint8, sb, bb uint32) model.IRoom {
 	r.Regist(&msg.JoinRoom{}, r.joinRoom)
 	r.Regist(&msg.LeaveRoom{}, r.leaveRoom)
 	r.Regist(&msg.Bet{}, r.bet)
-	r.Regist(&msg.Fold{}, r.fold)
 	r.Regist(&msg.SitDown{}, r.sitDown) //
 	r.Regist(&msg.StandUp{}, r.standUp) //
 	go r.msgLoop()

@@ -60,15 +60,13 @@ func (r *Room) start() {
 
 	// Round 1 : preflop
 	r.Each(0, func(o *Occupant) bool {
-		if o.IsGameing() {
-			o.Bet = 0
-			o.actionName = ""
-			r.remain++
-			o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
-			m := &msg.PreFlop{}
-			m.Cards = o.cards.Bytes()
-			o.WriteMsg(m)
-		}
+		o.Bet = 0
+		o.actionName = ""
+		r.remain++
+		o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
+		m := &msg.PreFlop{}
+		m.Cards = o.cards.Bytes()
+		o.WriteMsg(m)
 		return true
 	})
 
@@ -82,20 +80,18 @@ func (r *Room) start() {
 	// Round 2 : Flop
 	r.ready()
 	r.Each(0, func(o *Occupant) bool {
-		if o.IsGameing() {
-			o.Bet = 0
-			o.actionName = ""
-			r.remain++
-			r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
-			cs := r.Cards.Append(o.cards...)
-			kindCards, kind := cs.GetType()
-			m := &msg.Flop{
-				Cards:     cs.Bytes(),
-				Kind:      kind,
-				KindCards: kindCards.Bytes(),
-			}
-			o.WriteMsg(m)
+		o.Bet = 0
+		o.actionName = ""
+		r.remain++
+		r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
+		cs := r.Cards.Append(o.cards...)
+		kindCards, kind := cs.GetType()
+		m := &msg.Flop{
+			Cards:     cs.Bytes(),
+			Kind:      kind,
+			KindCards: kindCards.Bytes(),
 		}
+		o.WriteMsg(m)
 		return true
 	})
 
@@ -109,23 +105,21 @@ func (r *Room) start() {
 	// Round 3 : Turn
 	r.ready()
 	r.Each(0, func(o *Occupant) bool {
-		if o.IsGameing() {
-			o.Bet = 0
-			o.actionName = ""
-			r.remain++
-			card := r.Cards.Take()
+		o.Bet = 0
+		o.actionName = ""
+		r.remain++
+		card := r.Cards.Take()
 
-			r.Cards = r.Cards.Append(card)
+		r.Cards = r.Cards.Append(card)
 
-			cs := r.Cards.Append(o.cards...)
-			kindCards, kind := cs.GetType()
-			m := &msg.Turn{
-				Cards:     card.Byte(),
-				Kind:      kind,
-				KindCards: kindCards.Bytes(),
-			}
-			o.WriteMsg(m)
+		cs := r.Cards.Append(o.cards...)
+		kindCards, kind := cs.GetType()
+		m := &msg.Turn{
+			Cards:     card.Byte(),
+			Kind:      kind,
+			KindCards: kindCards.Bytes(),
 		}
+		o.WriteMsg(m)
 		return true
 	})
 
@@ -140,23 +134,21 @@ func (r *Room) start() {
 
 	r.ready()
 	r.Each(0, func(o *Occupant) bool {
-		if o.IsGameing() {
-			o.Bet = 0
-			o.actionName = ""
-			r.remain++
-			card := r.Cards.Take()
+		o.Bet = 0
+		o.actionName = ""
+		r.remain++
+		card := r.Cards.Take()
 
-			r.Cards = r.Cards.Append(card)
+		r.Cards = r.Cards.Append(card)
 
-			cs := r.Cards.Append(o.cards...)
-			kindCards, kind := cs.GetType()
-			m := &msg.Turn{
-				Cards:     card.Byte(),
-				Kind:      kind,
-				KindCards: kindCards.Bytes(),
-			}
-			o.WriteMsg(m)
+		cs := r.Cards.Append(o.cards...)
+		kindCards, kind := cs.GetType()
+		m := &msg.Turn{
+			Cards:     card.Byte(),
+			Kind:      kind,
+			KindCards: kindCards.Bytes(),
 		}
+		o.WriteMsg(m)
 		return true
 	})
 
@@ -233,9 +225,7 @@ func (r *Room) action(pos uint8) {
 func (r *Room) ready() {
 	r.Bet = 0
 	r.Each(0, func(o *Occupant) bool {
-		if o != nil {
-			o.Bet = 0
-		}
+		o.Bet = 0
 		return true
 	})
 }

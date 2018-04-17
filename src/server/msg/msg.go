@@ -47,7 +47,6 @@ func init() {
 	Processor.Register(&PreFlop{})
 	Processor.Register(&Pot{})
 	Processor.Register(&Bet{})
-	Processor.Register(&Fold{})
 	Processor.Register(&Button{})
 	Processor.Register(&StandUp{})
 	Processor.Register(&SitDown{})
@@ -173,6 +172,7 @@ type Button struct {
 }
 
 // 玩家有四种下注方式，下注数分别对应为：
+//弃牌: <0 (fold)
 //跟注：等于单注额 (call)
 //看注：= 0 表示看注 (check)
 //加注：大于单注额 (raise)
@@ -180,11 +180,6 @@ type Button struct {
 type Bet struct {
 	Value int32
 	Kind string
-	Uid uint32
-}
-
-//弃牌(fold)
-type Fold struct {
 	Uid uint32
 }
 
