@@ -1,4 +1,4 @@
-package msg
+package protocol
 
 import (
 	//"github.com/dolotech/leaf/network/protobuf"
@@ -126,6 +126,12 @@ type SitDown struct {
 	Uid uint32
 	Pos uint8
 }
+
+type LeaveRoom struct {
+	RoomNumber string
+	Uid        uint32
+}
+
 type JoinRoom struct {
 	Uid        uint32
 	RoomNumber string
@@ -157,14 +163,14 @@ type Flop struct {
 
 // 转牌
 type Turn struct {
-	Cards     byte
+	Card     byte
 	KindCards []byte
 	Kind      uint8
 }
 
 //河牌
 type River struct {
-	Cards     byte
+	Card     byte
 	KindCards []byte
 	Kind      uint8
 }
@@ -216,9 +222,4 @@ type ShowdownItem struct {
 	Uid      uint32
 	ChipsWin uint32
 	Chips    uint32
-}
-
-type LeaveRoom struct {
-	RoomNumber string
-	Uid        uint32
 }

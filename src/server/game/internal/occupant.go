@@ -19,9 +19,9 @@ type Occupant struct {
 	actions    chan int32
 	actionName string
 
-
+	chips     uint32 // 带入的筹码
 	kindCards algorithm.Cards
-	kind uint8
+	kind      uint8
 }
 
 const (

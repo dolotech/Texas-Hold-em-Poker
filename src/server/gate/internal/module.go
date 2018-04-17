@@ -4,7 +4,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"server/conf"
 	"server/game"
-	"server/msg"
+	"server/protocol"
 	"github.com/golang/glog"
 )
 
@@ -24,7 +24,7 @@ func (m *Module) OnInit() {
 		TCPAddr:         conf.Server.TCPAddr,
 		LenMsgLen:       conf.LenMsgLen,
 		LittleEndian:    conf.LittleEndian,
-		Processor:       msg.Processor,
+		Processor:       protocol.Processor,
 		AgentChanRPC:    game.ChanRPC,
 	}
 }

@@ -14,10 +14,10 @@ func TestRoom_RecvMsg(t *testing.T) {
 	/*room:= NewRoom(&model.Room{})
 
 
-	msg:= &msg2.JoinRoom{RoomNumber:"9999"}
+	protocol:= &msg2.JoinRoom{RoomNumber:"9999"}
 
 
-	room.Send(12,msg)
+	room.Send(12,protocol)
 
 */
 	//msg1:= &msg2.LeaveRoom{RoomNumber:"9999"}

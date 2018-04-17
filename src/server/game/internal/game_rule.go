@@ -2,7 +2,7 @@ package internal
 
 import (
 	"github.com/golang/glog"
-	"server/msg"
+	"server/protocol"
 	"server/model"
 	"server/algorithm"
 )
@@ -29,9 +29,8 @@ func (r *Room) start() {
 
 	// 剔除筹码小于大盲和离线的玩家
 	r.Each(0, func(o *Occupant) bool {
-		if o.Chips < r.BB || o.IsOffline() {
-			r.removeOccupant(o)
-			r.addObserve(o)
+		if o.chips < r.BB || o.IsOffline() {
+			o.SetSitdown()
 			return true
 		}
 		o.SetGameing()
@@ -51,7 +50,7 @@ func (r *Room) start() {
 	bbPos := bb.Pos
 
 	// 通报本局庄家
-	r.WriteMsg(&msg.Button{Uid: dealer.Uid})
+	r.WriteMsg(&protocol.Button{Uid: dealer.Uid})
 
 	// 小大盲下注
 	r.betting(sb, int32(r.SB))
@@ -63,7 +62,7 @@ func (r *Room) start() {
 		o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
 
 		kindCards, kind := o.cards.GetType()
-		m := &msg.PreFlop{
+		m := &protocol.PreFlop{
 			Cards:     o.cards.Bytes(),
 			Kind:      kind,
 			KindCards: kindCards.Bytes(),
@@ -71,7 +70,7 @@ func (r *Room) start() {
 		o.WriteMsg(m)
 		return true
 	})
-	r.Broadcast(&msg.PreFlop{}, false)
+	r.Broadcast(&protocol.PreFlop{}, false)
 
 	r.action(0)
 
@@ -86,7 +85,7 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
 		kindCards, kind := cs.GetType()
-		m := &msg.Flop{
+		m := &protocol.Flop{
 			Cards:     cs.Bytes(),
 			Kind:      kind,
 			KindCards: kindCards.Bytes(),
@@ -94,7 +93,7 @@ func (r *Room) start() {
 		o.WriteMsg(m)
 		return true
 	})
-	r.Broadcast(&msg.Flop{Cards: r.Cards.Bytes()}, false)
+	r.Broadcast(&protocol.Flop{Cards: r.Cards.Bytes()}, false)
 
 	r.action(0)
 
@@ -109,15 +108,15 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
 		kindCards, kind := cs.GetType()
-		m := &msg.Turn{
-			Cards:     r.Cards[3].Byte(),
+		m := &protocol.Turn{
+			Card:      r.Cards[3].Byte(),
 			Kind:      kind,
 			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
 		return true
 	})
-	r.Broadcast(&msg.Turn{Cards: r.Cards[3].Byte()}, false)
+	r.Broadcast(&protocol.Turn{Card: r.Cards[3].Byte()}, false)
 
 	r.action(0)
 
@@ -130,44 +129,39 @@ func (r *Room) start() {
 	r.ready()
 	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
-
 		cs := r.Cards.Append(o.cards...)
 		kindCards, kind := cs.GetType()
-		m := &msg.River{
-			Cards:     r.Cards[4].Byte(),
+		m := &protocol.River{
+			Card:      r.Cards[4].Byte(),
 			Kind:      kind,
 			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
-
 		o.kindCards = kindCards
 		o.kind = kind
 		return true
 	})
-	r.Broadcast(&msg.River{Cards: r.Cards[4].Byte()}, false)
+	r.Broadcast(&protocol.River{Card: r.Cards[4].Byte()}, false)
 
 	r.action(0)
 
 showdown:
 	r.showdown()
-	// Final : Showdown
-	showdown := &msg.Showdown{}
+	showdown := &protocol.Showdown{}
 	for _, o := range r.occupants {
 		if o != nil && o.IsGameing() {
-			item := &msg.ShowdownItem{
+			item := &protocol.ShowdownItem{
 				Uid:      o.Uid,
 				ChipsWin: r.Chips[o.Pos-1],
-				Chips:    o.Chips,
+				Chips:    o.chips,
 			}
 			showdown.Showdown = append(showdown.Showdown, item)
 		}
 	}
-
 	r.Broadcast(showdown, true)
 	glog.Infoln(sb.Pos, bbPos)
 }
 
-// 计算并通报奖池
 func (r *Room) calc() (pots []handPot) {
 	pots = calcPot(r.Chips)
 	r.Pot = r.Pot[:]
@@ -176,7 +170,7 @@ func (r *Room) calc() (pots []handPot) {
 		r.Pot = append(r.Pot, pot.Pot)
 		ps = append(ps, pot.Pot)
 	}
-	r.Broadcast(&msg.Pot{Pot: ps}, true)
+	r.Broadcast(&protocol.Pot{Pot: ps}, true)
 	return
 }
 
@@ -194,10 +188,10 @@ func (r *Room) action(pos uint8) {
 			if r.remain <= 1 {
 				return false
 			}
-			if o.Pos == skip || o.Chips == 0 {
+			if o.Pos == skip || o.chips == 0 {
 				return true
 			}
-			r.WriteMsg(&msg.BetPrompt{})
+			r.WriteMsg(&protocol.BetPrompt{})
 			n := o.GetAction(r.Timeout)
 			if r.remain <= 1 {
 				return false
@@ -273,7 +267,7 @@ func (r *Room) showdown() {
 
 	for i, _ := range r.Chips {
 		if r.occupants[i] != nil {
-			r.occupants[i].Chips += r.Chips[i]
+			r.occupants[i].chips += r.Chips[i]
 		}
 	}
 }
@@ -288,21 +282,21 @@ func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 		o.actionName = model.BET_CHECK
 	} else if uint32(n)+o.Bet <= r.Bet {
 		o.actionName = model.BET_CALL
-		o.Chips -= uint32(n)
+		o.chips -= uint32(n)
 		o.Bet += uint32(n)
 	} else {
 		o.actionName = model.BET_RAISE
-		o.Chips -= uint32(n)
+		o.chips -= uint32(n)
 		o.Bet += uint32(n)
 		r.Bet = o.Bet
 		raised = true
 	}
-	if o.Chips == 0 {
+	if o.chips == 0 {
 		o.actionName = model.BET_ALLIN
 	}
 	r.Chips[o.Pos-1] += uint32(n)
 
-	r.Broadcast(&msg.BetBroadcast{
+	r.Broadcast(&protocol.BetBroadcast{
 		Uid:   o.Uid,
 		Kind:  o.actionName,
 		Value: value,

@@ -30,7 +30,7 @@ type User struct {
 	Sex        uint8     `xorm:"'sex' smallint"`                      // 微信性别 0-未知，1-男，2-女
 	Profile    string    `xorm:"'profile' VARCHAR(64)"`               // 微信头像
 	Invitecode string    `xorm:"'invitecode' VARCHAR(6)"`             // 绑定的邀请码
-	Chips      uint32    `xorm:"'chips'"`                             // 筹码
+	Coin       uint32    `xorm:"'coin'"`                              // 筹码
 	Lv         uint8     `xorm:"'lv' smallint"`                       // 等级
 	CreatedAt  time.Time `xorm:"'created_at' index  created"`         // 注册时间
 	LastTime   time.Time `xorm:"'last_time'"`                         // 上次登录时间

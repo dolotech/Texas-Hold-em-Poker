@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"github.com/golang/glog"
 	"runtime/debug"
-	"server/msg"
+	"server/protocol"
 	"github.com/dolotech/lib/route"
 	"github.com/dolotech/leaf/gate"
 	"errors"
@@ -46,9 +46,10 @@ type Room struct {
 	Max      uint8           // 房间最大玩家人数
 	MaxChips uint32
 	MinChips uint32
+	LvChips uint32
 }
 
-func NewRoom(max uint8, sb, bb uint32) model.IRoom {
+func NewRoom(max uint8, sb, bb uint32,chips uint32) model.IRoom {
 	if max <= 0 || max > 9 {
 		max = 9 // default 9 occupants
 	}
@@ -64,13 +65,14 @@ func NewRoom(max uint8, sb, bb uint32) model.IRoom {
 		SB:        sb,
 		BB:        bb,
 		Max:       max,
+		LvChips:chips,
 	}
 
-	r.Regist(&msg.JoinRoom{}, r.joinRoom)
-	r.Regist(&msg.LeaveRoom{}, r.leaveRoom)
-	r.Regist(&msg.Bet{}, r.bet)
-	r.Regist(&msg.SitDown{}, r.sitDown) //
-	r.Regist(&msg.StandUp{}, r.standUp) //
+	r.Regist(&protocol.JoinRoom{}, r.joinRoom)
+	r.Regist(&protocol.LeaveRoom{}, r.leaveRoom)
+	r.Regist(&protocol.Bet{}, r.bet)
+	r.Regist(&protocol.SitDown{}, r.sitDown) //
+	r.Regist(&protocol.StandUp{}, r.standUp) //
 	go r.msgLoop()
 	return r
 }
@@ -151,15 +153,16 @@ func (r *Room) addOccupant(o *Occupant) uint8 {
 	return 0
 }
 
-func (r *Room) removeOccupant(o *Occupant) {
+func (r *Room) removeOccupant(o *Occupant)uint8 {
 	for k, v := range r.occupants {
 		if v != nil && v.Uid == o.Uid {
 			v.Pos = 0
 			r.occupants[k] = nil
 			r.n --
-			return
+			return uint8(k +1)
 		}
 	}
+	return  0
 }
 
 func (r *Room) addObserve(o *Occupant) uint8 {
@@ -199,7 +202,7 @@ func (r *Room) Send(o gate.Agent, m interface{}) error {
 		r.msgChan <- &msgObj{m, o}
 		return nil
 	} else {
-		o.WriteMsg(msg.MSG_ROOM_CLOSED)
+		o.WriteMsg(protocol.MSG_ROOM_CLOSED)
 	}
 	return errors.New("room closed")
 }

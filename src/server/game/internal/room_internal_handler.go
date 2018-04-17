@@ -1,11 +1,11 @@
 package internal
 
 import (
-	"server/msg"
+	"server/protocol"
 	"github.com/golang/glog"
 )
 
-func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
+func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 	if o.room != nil {
 		for k, v := range r.occupants {
 			if v.Uid == o.Uid {
@@ -20,24 +20,24 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 					glog.Infoln("同一个链接重复请求加入房间")
 				}
 
-				r.WriteMsg(&msg.UserInfo{Uid: o.Uid}, o.Uid)
+				r.WriteMsg(&protocol.UserInfo{Uid: o.Uid}, o.Uid)
 				return
 			}
 		}
 	}
 	glog.Errorln(o)
-	rinfo := &msg.RoomInfo{
+	rinfo := &protocol.RoomInfo{
 		Number: r.Number,
 	}
-	userinfos := make([]*msg.UserInfo, 0, r.Cap())
+	userinfos := make([]*protocol.UserInfo, 0, r.Cap())
 	r.Each(0, func(o *Occupant) bool {
-		userinfo := &msg.UserInfo{
+		userinfo := &protocol.UserInfo{
 			Nickname: o.Nickname,
 			Uid:      o.Uid,
 			Account:  o.Account,
 			Sex:      o.Sex,
 			Profile:  o.Profile,
-			Chips:    o.Chips,
+			Chips:    o.chips,
 		}
 		userinfos = append(userinfos, userinfo)
 		return true
@@ -49,47 +49,53 @@ func (r *Room) joinRoom(m *msg.JoinRoom, o *Occupant) {
 	if pos == 0 {
 		r.addObserve(o)
 	} else {
-		userInfo := &msg.UserInfo{
+		userInfo := &protocol.UserInfo{
 			Nickname: o.Nickname,
 			Uid:      o.Uid,
 			Account:  o.Account,
 			Sex:      o.Sex,
 			Profile:  o.Profile,
-			Chips:    o.Chips,
+			Chips:    o.chips,
 		}
-		r.Broadcast(&msg.JoinRoomBroadcast{UserInfo: userInfo}, true,o.Uid)
+		r.Broadcast(&protocol.JoinRoomBroadcast{UserInfo: userInfo}, true, o.Uid)
 	}
 
 	o.RoomID = r.Number
 	o.UpdateRoomId()
 	o.room = r
-	o.WriteMsg(&msg.JoinRoomResp{UserInfos: userinfos, RoomInfo: rinfo})
+	o.WriteMsg(&protocol.JoinRoomResp{UserInfos: userinfos, RoomInfo: rinfo})
 
 	glog.Errorln("joinRoom", m)
 }
 
-func (r *Room) leaveRoom(m *msg.LeaveRoom, o *Occupant) {
-	if o.IsGameing() {
-		return
+func (r *Room) leaveAndRecycleChips(o *Occupant) {
+	if r.removeOccupant(o) > 0 {
+		// 玩家站起回收带入筹码
+		gap := int32(o.chips) - int32(r.LvChips)
+		if gap == 0 {
+			o.UpdateChips(gap)
+		}
 	}
-
+}
+func (r *Room) leaveRoom(m *protocol.LeaveRoom, o *Occupant) {
 	r.removeObserve(o)
-	r.removeOccupant(o)
+	r.leaveAndRecycleChips(o)
+
 	o.RoomID = ""
 	o.room = nil
 	o.UpdateRoomId()
 
-	leave := &msg.LeaveRoom{
+	leave := &protocol.LeaveRoom{
 		RoomNumber: r.Number,
 		Uid:        o.Uid,
 	}
-	r.Broadcast(leave,true)
+	r.Broadcast(leave, true)
 	glog.Errorln("leaveRoom", m)
 }
 
-func (r *Room) bet(m *msg.Bet, o *Occupant) {
+func (r *Room) bet(m *protocol.Bet, o *Occupant) {
 	if !o.IsGameing() {
-		o.WriteMsg(msg.MSG_NOT_NOT_START)
+		o.WriteMsg(protocol.MSG_NOT_NOT_START)
 		return
 	}
 
@@ -103,24 +109,27 @@ func (r *Room) bet(m *msg.Bet, o *Occupant) {
 	glog.Errorln("bet", m)
 }
 
-func (r *Room) sitDown(m *msg.SitDown, o *Occupant) {
+func (r *Room) sitDown(m *protocol.SitDown, o *Occupant) {
 	pos := r.addOccupant(o)
 	if pos == 0 {
+		// 给进入房间的玩家带入筹码
+		o.chips = r.LvChips
 		r.addObserve(o)
 	} else {
 
 	}
-	r.Broadcast(&msg.SitDown{Uid: o.Uid, Pos: o.Pos},true)
+	r.Broadcast(&protocol.SitDown{Uid: o.Uid, Pos: o.Pos}, true)
 
 	glog.Errorln("sitDown", m)
 }
 
-func (r *Room) standUp(m *msg.StandUp, o *Occupant) {
+func (r *Room) standUp(m *protocol.StandUp, o *Occupant) {
+
 	o.SetAction(-1)
-	r.removeOccupant(o)
+	r.leaveAndRecycleChips(o)
 
 	r.addObserve(o)
-	r.Broadcast(&msg.StandUp{Uid: o.Uid},true)
+	r.Broadcast(&protocol.StandUp{Uid: o.Uid}, true)
 
 	glog.Errorln("standUp", m)
 }

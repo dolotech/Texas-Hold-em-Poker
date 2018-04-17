@@ -2,7 +2,7 @@ package internal
 
 import (
 	"reflect"
-	"server/msg"
+	"server/protocol"
 	"github.com/golang/glog"
 	"github.com/dolotech/leaf/gate"
 	"server/model"
@@ -12,11 +12,11 @@ func handler(m interface{}, h interface{}) {
 	skeleton.RegisterChanRPC(reflect.TypeOf(m), h)
 }
 func init() {
-	handler(&msg.JoinRoom{}, joinRoom)   //
-	handler(&msg.LeaveRoom{}, onMessage) //
-	handler(&msg.Bet{}, onMessage)       //
-	handler(&msg.SitDown{}, onMessage)   //
-	handler(&msg.StandUp{}, onMessage)   //
+	handler(&protocol.JoinRoom{}, joinRoom)   //
+	handler(&protocol.LeaveRoom{}, onMessage) //
+	handler(&protocol.Bet{}, onMessage)       //
+	handler(&protocol.SitDown{}, onMessage)   //
+	handler(&protocol.StandUp{}, onMessage)   //
 }
 
 func onMessage(m interface{}, a gate.Agent) {
@@ -24,12 +24,12 @@ func onMessage(m interface{}, a gate.Agent) {
 	if o.room != nil {
 		o.room.Send(o, m)
 	} else {
-		a.WriteMsg(msg.MSG_NOT_IN_ROOM)
+		a.WriteMsg(protocol.MSG_NOT_IN_ROOM)
 	}
 	glog.Errorln(m, o)
 }
 
-func joinRoom(m *msg.JoinRoom, a gate.Agent) {
+func joinRoom(m *protocol.JoinRoom, a gate.Agent) {
 
 	o := a.UserData().(*Occupant)
 
@@ -51,7 +51,7 @@ func joinRoom(m *msg.JoinRoom, a gate.Agent) {
 		return
 	}
 
-	r = NewRoom(9, 5, 10)
+	r = NewRoom(9, 5, 10,500)
 	model.SetRoom(r)
 	r.Send(o, m)
 
