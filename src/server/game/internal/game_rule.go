@@ -8,10 +8,7 @@ import (
 )
 
 func (r *Room) start() {
-	// 2人及以上才开始游戏
-	if r.n < 2 {
-		return
-	}
+
 	// 产生庄
 	var dealer *Occupant
 	button := r.Button - 1
@@ -28,21 +25,29 @@ func (r *Room) start() {
 	r.remain = 0
 	r.allin = 0
 	// 剔除筹码小于大盲和离线的玩家
+
+	n := 0
 	r.Each(0, func(o *Occupant) bool {
 		if o.chips < r.BB || o.IsOffline() {
 			o.SetSitdown()
 			return true
 		}
 		o.SetGameing()
+		n ++
 		return true
 	})
+
+	// 2人及以上才开始游戏
+	if n < 2 {
+		return
+	}
 
 	// 洗牌
 	r.Cards.Shuffle()
 
 	// 产生小盲
 	sb := r.next(dealer.Pos)
-	if r.n == 2 { // one-to-one
+	if n == 2 { // one-to-one
 		sb = dealer
 	}
 	// 产生大盲
@@ -150,6 +155,8 @@ showdown:
 	showdown := &protocol.Showdown{}
 	for _, o := range r.occupants {
 		if o != nil && o.IsGameing() {
+			o.SetSitdown()
+
 			item := &protocol.ShowdownItem{
 				Uid:      o.Uid,
 				ChipsWin: r.Chips[o.Pos-1],
@@ -274,11 +281,12 @@ func (r *Room) showdown() {
 
 func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 	value := n
-	actionName:=""
+	actionName := ""
 	if n < 0 {
 		actionName = model.BET_FOLD
 		n = 0
 		r.remain--
+		o.SetSitdown()
 	} else if n == 0 {
 		actionName = model.BET_CHECK
 	} else if uint32(n)+o.Bet <= r.Bet {

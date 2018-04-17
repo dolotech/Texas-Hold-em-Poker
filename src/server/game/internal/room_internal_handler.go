@@ -103,7 +103,7 @@ func (r *Room) bet(m *protocol.Bet, o *Occupant) {
 
 	if m.Value < 0 {
 		o.SetAction(-1)
-		o.SetSitdown()
+
 	} else {
 		o.SetAction(m.Value)
 	}

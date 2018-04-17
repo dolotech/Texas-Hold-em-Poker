@@ -49,7 +49,7 @@ type Room struct {
 	//LvChips  uint32
 }
 
-func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8)*Room{
+func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	if max <= 0 || max > 9 {
 		max = 9 // default 9 occupants
 	}
@@ -143,7 +143,6 @@ func (r *Room) addOccupant(o *Occupant) uint8 {
 	for k, v := range r.occupants {
 		if v == nil {
 			r.occupants[k] = o
-			r.n ++
 			o.Pos = uint8(k + 1)
 			o.SetSitdown()
 			return o.Pos
@@ -157,7 +156,6 @@ func (r *Room) removeOccupant(o *Occupant) uint8 {
 		if v != nil && v.Uid == o.Uid {
 			v.Pos = 0
 			r.occupants[k] = nil
-			r.n --
 			return uint8(k + 1)
 		}
 	}
@@ -228,7 +226,7 @@ func (r *Room) CreatedTime() uint32 {
 func (r *Room) GetDragin() uint32 {
 	return r.DraginChips
 }
-func (r *Room) ID() uint32{
+func (r *Room) ID() uint32 {
 	return r.Rid
 }
 func (r *Room) Cap() uint8 {
@@ -237,7 +235,7 @@ func (r *Room) Cap() uint8 {
 func (r *Room) Len() uint8 {
 	var num uint8
 	for _, v := range r.occupants {
-		if v != nil  {
+		if v != nil {
 			num ++
 		}
 	}
