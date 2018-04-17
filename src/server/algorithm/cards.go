@@ -2,38 +2,26 @@ package algorithm
 
 type Cards []Card
 
-
-
 // todo 两对和四张起脚牌的判定
 
+var StraightMask = []uint16{15872, 7936, 3968, 1984, 992, 496, 248, 124, 62, 31}
 //顺子（Straight，亦称“蛇”）
 //此牌由五张顺序扑克牌组成。
 //平手牌：如果不止一人抓到此牌，则五张牌中点数最大的赢得此局，
 // 如果所有牌点数都相同，平分彩池。
 func (this *Cards) Straight() Card {
-	lenght := int8(len(*this))
-	for i := lenght - 1; i > 2; i-- {
-		icard := (*this)[i] & 0xF
-		var last = icard
-		var count int8
-		for j := i - 1; j >= 0; j-- {
-			jcard := (*this)[j] & 0xF
-			if jcard+1 == last {
-				last = jcard
-				count ++
-				if count == TYPE_LEN-1 {
-					return icard
-				} else if count == TYPE_LEN-2 && icard == 0x5 {
-					for n := 0; n < SUITSIZE; n++ {
-						index := int(lenght) - 1 - n
-						tc := (*this)[index]
-						if tc&0xF != 0xE {
-							break
-						}
-						return icard
-					}
-				}
-			}
+	var handvalue uint16
+	for _, v := range (*this) {
+		value := v & 0xF
+		if value == 0xE {
+			handvalue |= 1
+		}
+		handvalue |= (1 << (value - 1 ) )
+	}
+
+	for i := uint8(0); i < 10; i++ {
+		if handvalue&StraightMask[i] == StraightMask[i] {
+			return Card(10 - i + 4)
 		}
 	}
 	return 0
@@ -44,7 +32,26 @@ func (this *Cards) Straight() Card {
 //平手牌：如果摊牌时有两副或多副同花顺，连续牌的头张牌大的获得筹码。
 //如果是两副或多副相同的连续牌，平分筹码。
 func (this *Cards) StraightFlush() Card {
-	lenght := int8(len(*this))
+	for i := Card(0); i < SUITSIZE; i++ {
+		var handvalue uint16
+		for _, v := range (*this) {
+			if (v >> 4) == i {
+				value := v & 0xF
+				if value == 0xE {
+					handvalue |= 1
+				}
+				handvalue |= (1 << (value - 1 ) )
+				for i := uint8(0); i < 10; i++ {
+					if handvalue&StraightMask[i] == StraightMask[i] {
+						return Card(10 - i + 4)
+					}
+				}
+
+			}
+		}
+	}
+
+	/*lenght := int8(len(*this))
 	for k := int8(0); k < SUITSIZE; k++ {
 		for i := lenght - 1; i > 2; i-- {
 			if int8((*this)[i]>>SUITSIZE) == k {
@@ -77,7 +84,7 @@ func (this *Cards) StraightFlush() Card {
 				}
 			}
 		}
-	}
+	}*/
 	return 0
 }
 
@@ -85,7 +92,23 @@ func (this *Cards) StraightFlush() Card {
 //同花色的A, K, Q, J和10。
 //平手牌：在摊牌的时候有两副多副皇家同花顺时，平分筹码。
 func (this *Cards) RoyalFlush() bool {
-	lenght := int8(len(*this))
+	for i := Card(0); i < SUITSIZE; i++ {
+		var handvalue uint16
+		for _, v := range (*this) {
+			if (v >> 4) == i {
+				value := v & 0xF
+				if value == 0xE {
+					handvalue |= 1
+				}
+				handvalue |= (1 << (value - 1 ) )
+				if handvalue&StraightMask[0] == StraightMask[0] {
+					return true
+				}
+			}
+		}
+	}
+
+	/*lenght := int8(len(*this))
 	var last = (*this)[lenght-1]
 	if last&0xF == 0xE {
 		var count int8
@@ -102,7 +125,7 @@ func (this *Cards) RoyalFlush() bool {
 				break
 			}
 		}
-	}
+	}*/
 	return false
 }
 
@@ -262,4 +285,14 @@ func (this *Cards) HighCard() Cards {
 		return cards
 	}
 	return Cards{}
+}
+
+//我是升序排的，所以反着来
+func turnToValue(cards []byte) int {
+	res := 0
+	for i := len(cards) - 1; i >= 0; i-- {
+		res *= 10
+		res += int(cards[i] & 0xF)
+	}
+	return res
 }

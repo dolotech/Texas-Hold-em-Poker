@@ -32,7 +32,6 @@ func (this *Cards) GetType() (Cards, uint8) {
 	if len(*this) == 0 {
 		return []Card{}, 0
 	}
-
 	SortCards(*this, 0, int8(len(*this))-1)
 
 	if this.RoyalFlush() {

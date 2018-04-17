@@ -48,15 +48,20 @@ func TestCards_Straight(t *testing.T) {
 
 	cards := Cards{0x12, 0x03, 0x24, 0x35, 0x26, 0x17, 0x33}
 	SortCards(cards, 0, int8(len(cards))-1)
-	t.Log(cards.Straight() == 0x7)
+	t.Log(cards.Straight() == 0x7,cards.Straight())
 
 	cards = Cards{0x12, 0x03, 0x24, 0x34, 0x26, 0x17, 0x37}
 	SortCards(cards, 0, int8(len(cards))-1)
-	t.Log(cards.Straight() == 0x0)
+	t.Log(cards.Straight() == 0x0,cards.Straight() )
 
 	cards = Cards{0x12, 0x03, 0x24, 0x34, 0x25, 0x17, 0x3E}
 	SortCards(cards, 0, int8(len(cards))-1)
-	t.Log(cards.Straight() == 0x5)
+	t.Log(cards.Straight() == 0x5,cards.Straight())
+
+
+	cards = Cards{0x12, 0x03, 0x2a, 0x3c, 0x2b, 0x1d, 0x3E}
+	SortCards(cards, 0, int8(len(cards))-1)
+	t.Log(cards.Straight() == 0xe,cards.Straight())
 }
 
 func TestCards_Flush(t *testing.T) {
@@ -210,7 +215,16 @@ func Test_Straight1(t *testing.T) {
 }
 func Test_Append(t *testing.T) {
 	cards:=Cards{0x33, 0x35, 0x25, 0x35, 0x28}
-	cards = cards.Append(Cards{0x33, 0x33})
+	cards = cards.Append(Cards{0x33, 0x33}...)
 	cs, hand := cards.GetType()
 	t.Logf("%#v %v  %#v",cs, hand,cards)
 }
+
+func Test_turnToValue(t *testing.T) {
+
+
+	t.Logf("%#v ",turnToValue([]byte{0x33, 0x35, 0x25, 0x35, 0x28}))
+	t.Logf("%#v ",turnToValue([]byte{0x33, 0x35, 0x25, 0x35, 0x28}))
+}
+
+
