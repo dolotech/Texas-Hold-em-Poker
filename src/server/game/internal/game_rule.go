@@ -214,7 +214,7 @@ func (r *Room) ready() {
 	r.Bet = 0
 	r.Each(0, func(o *Occupant) bool {
 		o.Bet = 0
-		o.actionName = ""
+		o.waitAction = false
 		r.remain++
 		o.kind = 0
 		o.kindCards = nil
@@ -274,31 +274,32 @@ func (r *Room) showdown() {
 
 func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 	value := n
+	actionName:=""
 	if n < 0 {
-		o.actionName = model.BET_FOLD
+		actionName = model.BET_FOLD
 		n = 0
 		r.remain--
 	} else if n == 0 {
-		o.actionName = model.BET_CHECK
+		actionName = model.BET_CHECK
 	} else if uint32(n)+o.Bet <= r.Bet {
-		o.actionName = model.BET_CALL
+		actionName = model.BET_CALL
 		o.chips -= uint32(n)
 		o.Bet += uint32(n)
 	} else {
-		o.actionName = model.BET_RAISE
+		actionName = model.BET_RAISE
 		o.chips -= uint32(n)
 		o.Bet += uint32(n)
 		r.Bet = o.Bet
 		raised = true
 	}
 	if o.chips == 0 {
-		o.actionName = model.BET_ALLIN
+		actionName = model.BET_ALLIN
 	}
 	r.Chips[o.Pos-1] += uint32(n)
 
 	r.Broadcast(&protocol.BetBroadcast{
 		Uid:   o.Uid,
-		Kind:  o.actionName,
+		Kind:  actionName,
 		Value: value,
 	}, true)
 

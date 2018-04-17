@@ -78,6 +78,8 @@ func (r *Room) leaveAndRecycleChips(o *Occupant) {
 	}
 }
 func (r *Room) leaveRoom(m *protocol.LeaveRoom, o *Occupant) {
+
+
 	r.removeObserve(o)
 	r.leaveAndRecycleChips(o)
 

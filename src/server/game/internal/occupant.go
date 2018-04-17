@@ -17,7 +17,7 @@ type Occupant struct {
 
 	Bet        uint32 // 当前下注
 	actions    chan int32
-	actionName string
+	waitAction bool
 
 	chips     uint32 // 带入的筹码
 	kindCards algorithm.Cards
@@ -32,23 +32,24 @@ const (
 )
 
 func (o *Occupant) SetAction(n int32) {
-	if o.actionName == model.BET_ {
+	if o.waitAction {
 		o.actions <- n
 	}
 }
 func (o *Occupant) GetAction(timeout time.Duration) int32 {
 	timer := time.NewTimer(timeout)
-	o.actionName = model.BET_
+	o.waitAction = true
 	select {
 	case n := <-o.actions:
 		timer.Stop()
-		o.actionName = ""
+		o.waitAction = false
 		return n
 	case <-o.room.closeChan:
 		timer.Stop()
+		o.waitAction = false
 		return -1
 	case <-timer.C:
-		o.actionName = ""
+		o.waitAction = false
 		timer.Stop()
 		return -1 // 超时弃牌
 	}

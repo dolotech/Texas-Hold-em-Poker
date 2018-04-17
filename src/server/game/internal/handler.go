@@ -51,7 +51,7 @@ func joinRoom(m *protocol.JoinRoom, a gate.Agent) {
 		return
 	}
 
-	r = NewRoom(9, 5, 10,500)
+	r = NewRoom(9, 5, 10,1000)
 	model.SetRoom(r)
 	r.Send(o, m)
 
