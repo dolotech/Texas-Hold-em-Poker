@@ -7,7 +7,6 @@ import (
 )
 
 func init() {
-	protocol.Processor.SetRouter(&protocol.Hello{}, game.ChanRPC)
 	protocol.Processor.SetRouter(&protocol.UserLoginInfo{}, login.ChanRPC)
 	protocol.Processor.SetRouter(&protocol.JoinRoom{}, game.ChanRPC)
 	protocol.Processor.SetRouter(&protocol.LeaveRoom{}, game.ChanRPC)
@@ -19,4 +18,5 @@ func init() {
 	protocol.Processor.SetRouter(&protocol.PreFlop{}, game.ChanRPC)
 	protocol.Processor.SetRouter(&protocol.Bet{}, game.ChanRPC)
 	protocol.Processor.SetRouter(&protocol.Version{}, game.ChanRPC)
+	protocol.Processor.SetRouter(&protocol.RoomList{}, game.ChanRPC)
 }

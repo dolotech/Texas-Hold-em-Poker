@@ -54,6 +54,8 @@ func init() {
 	Processor.Register(&JoinRoomResp{})
 	Processor.Register(&JoinRoomBroadcast{})
 	Processor.Register(&BetResp{})
+	Processor.Register(&RoomList{})
+	Processor.Register(&RoomListResp{})
 }
 
 // 版本号
@@ -163,14 +165,14 @@ type Flop struct {
 
 // 转牌
 type Turn struct {
-	Card     byte
+	Card      byte
 	KindCards []byte
 	Kind      uint8
 }
 
 //河牌
 type River struct {
-	Card     byte
+	Card      byte
 	KindCards []byte
 	Kind      uint8
 }
@@ -222,4 +224,25 @@ type ShowdownItem struct {
 	Uid      uint32
 	ChipsWin uint32
 	Chips    uint32
+}
+
+type RoomList struct {
+}
+
+type Room struct {
+	Rid             uint32
+	Number          string // 给玩家展示的房间号
+	State           uint8  //房间状态 0默认可用 1不可用
+	Name            string //房间名字
+	CreatedAt       uint32 //创建时间
+	OriginalOwnerID uint32 //原始创建人的信息
+	Owner           uint32 //房管
+	Kind            uint32 //游戏类型 即玩法
+	DraginChips     uint32  // 带入筹码
+	Cap       uint8
+	MaxCap       uint8
+}
+
+type RoomListResp struct {
+	Room []*Room
 }

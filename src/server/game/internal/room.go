@@ -46,26 +46,25 @@ type Room struct {
 	Max      uint8           // 房间最大玩家人数
 	MaxChips uint32
 	MinChips uint32
-	LvChips uint32
+	//LvChips  uint32
 }
 
-func NewRoom(max uint8, sb, bb uint32,chips uint32) model.IRoom {
+func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8)*Room{
 	if max <= 0 || max > 9 {
 		max = 9 // default 9 occupants
 	}
 
 	r := &Room{
-		Room:      &model.Room{},
+		Room:      &model.Room{DraginChips: chips,},
 		closeChan: make(chan struct{}),
 		msgChan:   make(chan *msgObj, 64),
 		occupants: make([]*Occupant, max),
 		Chips:     make([]uint32, max),
-		Pot:       make([]uint32,0, max),
-		Timeout:   time.Second * 10,
+		Pot:       make([]uint32, 0, max),
+		Timeout:   time.Second * time.Duration(timeout),
 		SB:        sb,
 		BB:        bb,
 		Max:       max,
-		LvChips:chips,
 	}
 
 	r.Regist(&protocol.JoinRoom{}, r.joinRoom)
@@ -153,16 +152,16 @@ func (r *Room) addOccupant(o *Occupant) uint8 {
 	return 0
 }
 
-func (r *Room) removeOccupant(o *Occupant)uint8 {
+func (r *Room) removeOccupant(o *Occupant) uint8 {
 	for k, v := range r.occupants {
 		if v != nil && v.Uid == o.Uid {
 			v.Pos = 0
 			r.occupants[k] = nil
 			r.n --
-			return uint8(k +1)
+			return uint8(k + 1)
 		}
 	}
-	return  0
+	return 0
 }
 
 func (r *Room) addObserve(o *Occupant) uint8 {
@@ -223,12 +222,32 @@ func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
 		f(r.occupants[i])
 	}
 }
-func (r *Room) Cap() uint8 {
-	return uint8(len(r.occupants))
+func (r *Room) CreatedTime() uint32 {
+	return uint32(r.CreatedAt.Unix())
 }
-func (r *Room) MaxCap() uint8 {
+func (r *Room) GetDragin() uint32 {
+	return r.DraginChips
+}
+func (r *Room) ID() uint32{
+	return r.Rid
+}
+func (r *Room) Cap() uint8 {
 	return r.Max
 }
+func (r *Room) Len() uint8 {
+	var num uint8
+	for _, v := range r.occupants {
+		if v != nil  {
+			num ++
+		}
+	}
+	return num
+}
+
+
+/*func (r *Room) MaxCap() uint8 {
+	return r.Max
+}*/
 func (r *Room) GetNumber() string {
 	return r.Number
 }

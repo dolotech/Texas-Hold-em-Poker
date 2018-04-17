@@ -17,7 +17,7 @@ type Room struct {
 	OriginalOwnerID uint32    `xorm:"'original_owner_id'"`                //原始创建人的信息
 	Owner           uint32    `xorm:"'owner'"`                            //房管
 	Kind            uint32    `xorm:"'kind'"`                             //游戏类型 即玩法
-	PayValue        uint8     `xorm:"'pay_value' smallint"`               //倍数
+	DraginChips     uint32    `xorm:"'dragin_chips'"`                     //带入筹码
 
 	//Occupants       []*uint32 `xorm:"'occupants'"`                        // 玩家列表，列表第一项为庄家
 }

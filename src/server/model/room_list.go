@@ -21,7 +21,7 @@ type roomlist struct {
 func FindRoom() IRoom {
 	rooms.Lock()
 	for _, v := range rooms.M {
-		if v.Cap()< v.MaxCap() {
+		if v.Len()< v.Cap() {
 			return v
 		}
 	}
@@ -62,4 +62,18 @@ func createNumber() string {
 		}
 	}
 	return n
+}
+
+
+func GetRooms()[]IRoom {
+	rooms.RLock()
+	r:= make([]IRoom,len(rooms.M))
+
+	var n = 0
+	for _,v:=range rooms.M{
+		r[n] = v
+		n ++
+	}
+	rooms.RUnlock()
+	return r
 }

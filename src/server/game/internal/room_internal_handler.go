@@ -71,7 +71,7 @@ func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 func (r *Room) leaveAndRecycleChips(o *Occupant) {
 	if r.removeOccupant(o) > 0 {
 		// 玩家站起回收带入筹码
-		gap := int32(o.chips) - int32(r.LvChips)
+		gap := int32(o.chips) - int32(r.DraginChips)
 		if gap == 0 {
 			o.UpdateChips(gap)
 		}
@@ -115,7 +115,7 @@ func (r *Room) sitDown(m *protocol.SitDown, o *Occupant) {
 	pos := r.addOccupant(o)
 	if pos == 0 {
 		// 给进入房间的玩家带入筹码
-		o.chips = r.LvChips
+		o.chips = r.DraginChips
 		r.addObserve(o)
 	} else {
 

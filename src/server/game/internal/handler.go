@@ -17,6 +17,27 @@ func init() {
 	handler(&protocol.Bet{}, onMessage)       //
 	handler(&protocol.SitDown{}, onMessage)   //
 	handler(&protocol.StandUp{}, onMessage)   //
+	handler(&protocol.RoomList{}, onRoomList) //
+}
+
+func onRoomList(m *protocol.RoomList, a gate.Agent) {
+	msg := &protocol.RoomListResp{}
+
+	array := model.GetRooms()
+	rooms := make([]*protocol.Room, len(array))
+
+	for k, v := range array {
+		rooms[k] = &protocol.Room{
+			Number:      v.GetNumber(),
+			MaxCap:      v.Cap(),
+			Cap:         v.Len(),
+			DraginChips: v.GetDragin(),
+			CreatedAt:   v.CreatedTime(),
+			Rid:         v.ID(),
+		}
+	}
+	msg.Room = rooms
+	a.WriteMsg(msg)
 }
 
 func onMessage(m interface{}, a gate.Agent) {
@@ -51,8 +72,8 @@ func joinRoom(m *protocol.JoinRoom, a gate.Agent) {
 		return
 	}
 
-	r = NewRoom(9, 5, 10,1000)
-	model.SetRoom(r)
-	r.Send(o, m)
-
+	room := NewRoom(9, 5, 10, 1000, model.Timeout)
+	model.SetRoom(room)
+	room.Insert()
+	room.Send(o, m)
 }

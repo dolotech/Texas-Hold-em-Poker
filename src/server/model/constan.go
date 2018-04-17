@@ -3,7 +3,7 @@ package model
 const (
 	MaxN     = 10
 	MaxLevel = 40
-	Timeout  = 30
+	Timeout  = 10 // 下注超时
 )
 
 const (
@@ -13,7 +13,6 @@ const (
 )
 
 const (
-	BET_  = "BET_"  // 等待下注
 	BET_CALL  = "call"  //跟注：等于单注额 (call)
 	BET_FOLD  = "fold"  //弃牌: <0 (fold)
 	BET_CHECK = "check" //看注：= 0 表示看注 (check)
