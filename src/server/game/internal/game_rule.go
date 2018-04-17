@@ -26,7 +26,7 @@ func (r *Room) start() {
 	}
 
 	r.remain = 0
-
+	r.allin = 0
 	// 剔除筹码小于大盲和离线的玩家
 	r.Each(0, func(o *Occupant) bool {
 		if o.chips < r.BB || o.IsOffline() {
@@ -293,6 +293,7 @@ func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 		raised = true
 	}
 	if o.chips == 0 {
+		r.allin++
 		actionName = model.BET_ALLIN
 	}
 	r.Chips[o.Pos-1] += uint32(n)

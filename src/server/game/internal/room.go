@@ -244,10 +244,6 @@ func (r *Room) Len() uint8 {
 	return num
 }
 
-
-/*func (r *Room) MaxCap() uint8 {
-	return r.Max
-}*/
 func (r *Room) GetNumber() string {
 	return r.Number
 }
