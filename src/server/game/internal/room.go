@@ -2,7 +2,6 @@ package internal
 
 import (
 	"server/model"
-	"sync/atomic"
 	"github.com/golang/glog"
 	"runtime/debug"
 	"server/protocol"
@@ -28,9 +27,9 @@ type Room struct {
 	observes    []*Occupant // 站起的玩家
 	AutoSitdown []*Occupant // 自动坐下队列
 
-	closeChan chan struct{}
-	msgChan   chan *msgObj
-	state     int32
+	ClosedBroadcastChan chan struct{}
+	closeChan           chan struct{}
+	msgChan             chan *msgObj
 
 	remain int
 	allin  int
@@ -55,16 +54,17 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	}
 
 	r := &Room{
-		Room:      &model.Room{DraginChips: chips,},
-		closeChan: make(chan struct{}),
-		msgChan:   make(chan *msgObj, 64),
-		occupants: make([]*Occupant, max),
-		Chips:     make([]uint32, max),
-		Pot:       make([]uint32, 0, max),
-		Timeout:   time.Second * time.Duration(timeout),
-		SB:        sb,
-		BB:        bb,
-		Max:       max,
+		Room:                &model.Room{DraginChips: chips,},
+		closeChan:           make(chan struct{}),
+		ClosedBroadcastChan: make(chan struct{}),
+		msgChan:             make(chan *msgObj, 128),
+		occupants:           make([]*Occupant, max),
+		Chips:               make([]uint32, max),
+		Pot:                 make([]uint32, 0, max),
+		Timeout:             time.Second * time.Duration(timeout),
+		SB:                  sb,
+		BB:                  bb,
+		Max:                 max,
 	}
 
 	r.Regist(&protocol.JoinRoom{}, r.joinRoom)
@@ -87,7 +87,7 @@ func (r *Room) msgLoop() {
 	for {
 		select {
 		case <-r.closeChan:
-			atomic.StoreInt32(&r.state, RoomStatus_Closed)
+			close(r.ClosedBroadcastChan)
 			return
 		case m := <-r.msgChan:
 			r.Emit(m.msg, m.o)
@@ -184,8 +184,9 @@ func (r *Room) removeObserve(o *Occupant) {
 }
 
 func (r *Room) Close() {
-	if atomic.LoadInt32(&r.state) != RoomStatus_Closed {
-		r.closeChan <- struct{}{}
+	select {
+	case r.closeChan <- struct{}{}:
+	default:
 	}
 }
 
@@ -195,10 +196,9 @@ type msgObj struct {
 }
 
 func (r *Room) Send(o gate.Agent, m interface{}) error {
-	if atomic.LoadInt32(&r.state) != RoomStatus_Closed {
-		r.msgChan <- &msgObj{m, o}
-		return nil
-	} else {
+	select {
+	case r.msgChan <- &msgObj{m, o}:
+	default:
 		o.WriteMsg(protocol.MSG_ROOM_CLOSED)
 	}
 	return errors.New("room closed")

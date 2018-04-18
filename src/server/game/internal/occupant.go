@@ -47,7 +47,7 @@ func (o *Occupant) GetAction(timeout time.Duration) int32 {
 		timer.Stop()
 		o.waitAction = false
 		return n
-	case <-o.room.closeChan:
+	case <-o.room.ClosedBroadcastChan:
 		timer.Stop()
 		o.waitAction = false
 		return -1

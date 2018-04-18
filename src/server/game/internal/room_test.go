@@ -25,6 +25,20 @@ func TestRoom_RecvMsg(t *testing.T) {
 
 	time.Sleep(time.Second * 2)
 }
+func TestClose(t *testing.T) {
+
+	c:= make(chan struct{})
+
+
+	//close(c)
+
+	select {
+		case c<- struct{}{}:
+	default:
+		t.Log("default")
+	}
+
+}
 func BenchmarkCloseRoom(t *testing.B) {
 
 	/*

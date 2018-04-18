@@ -125,8 +125,8 @@ func (this *Cards) SetByString(str string) {
 }
 func (this *Cards) String() (str string) {
 	for k, v := range *this {
-		color := Color(ToC(v))
-		value := Num2String(ToV(v))
+		color := Color(v)
+		value := Num2String(v)
 		str += string(color) + string(value)
 		if k < len(*this)-1 {
 			str += " "
