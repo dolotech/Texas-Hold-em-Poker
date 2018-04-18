@@ -120,7 +120,7 @@ func TestCards_PK(t *testing.T) {
 	cards2 := Cards{0x32, 0x32, 0x33, 0x34, 0x25, 0x36}
 	v1:=cards1.GetType()
 	v2:=cards2.GetType()
-	assert.Equal(t,PK(v1,v2) ,int8(1))
+	assert.Equal(t,v1 > v2 ,true)
 
 }
 func TestCards_StraightFlush(t *testing.T) {

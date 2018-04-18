@@ -1,6 +1,6 @@
 package algorithm
 
-func PK(value1, value2 uint32) int8 {
+/*func PK(value1, value2 uint32) int8 {
 	kind, value := De(value1)
 	kinda, valuea := De(value2)
 
@@ -18,7 +18,7 @@ func PK(value1, value2 uint32) int8 {
 		}
 	}
 	return 0
-}
+}*/
 
 func (this *Cards) Counter() *ValueCounter {
 	var counter ValueCounter
