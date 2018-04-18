@@ -5,11 +5,9 @@ import (
 	"fmt"
 )
 
-
-
 func (this *Cards) Bytes() []byte {
-	b:= make([]byte,len(*this))
-	for k,v:=range *this{
+	b := make([]byte, len(*this))
+	for k, v := range *this {
 		b[k] = byte(v)
 	}
 	return b
@@ -17,19 +15,19 @@ func (this *Cards) Bytes() []byte {
 func (this *Cards) Len() int {
 	return len(*this)
 }
-func (this *Cards) Take() Card {
+func (this *Cards) Take() byte {
 	card := (*this)[0]
 	(*this) = (*this)[1:]
 	return card
 }
-func (this *Cards) Append(cards ...Card ) Cards {
-	cs := make([]Card,0,len(cards) + len(*this))
-	cs = append(cs,(*this)...)
+func (this *Cards) Append(cards ...byte) Cards {
+	cs := make([]byte, 0, len(cards)+len(*this))
+	cs = append(cs, (*this)...)
 	cs = append(cs, cards...)
 	return cs
 }
 
-func (this *Cards) Equal(cards []Card) bool {
+func (this *Cards) Equal(cards []byte) bool {
 	if len(*this) != len(cards) {
 		return false
 	}
@@ -117,21 +115,18 @@ func Num2String(n byte) (c byte) {
 	return
 }
 
-func (this *Cards) Sort() {
-	SortCards(*this, 0, int8(len(*this))-1)
-}
 func (this *Cards) SetByString(str string) {
 	array := strings.Split(str, " ")
-	*this = make([]Card, len(array))
+	*this = make([]byte, len(array))
 	for k, v := range array {
-		(*this)[k] = Card(String2Num(byte(v[0])))
+		(*this)[k] = String2Num(byte(v[0]))
 	}
 
 }
 func (this *Cards) String() (str string) {
 	for k, v := range *this {
-		color := Color(v.Color())
-		value := Num2String(v.Value())
+		color := Color(ToC(v))
+		value := Num2String(ToV(v))
 		str += string(color) + string(value)
 		if k < len(*this)-1 {
 			str += " "
@@ -143,4 +138,3 @@ func (this *Cards) String() (str string) {
 func (this *Cards) Hex() string {
 	return fmt.Sprintf("%#v", *this)
 }
-

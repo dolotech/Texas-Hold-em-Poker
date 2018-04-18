@@ -66,11 +66,10 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
 
-		kindCards, kind := o.cards.GetType()
+		kind, _ :=algorithm.De( o.cards.GetType())
 		m := &protocol.PreFlop{
 			Cards:     o.cards.Bytes(),
 			Kind:      kind,
-			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
 		return true
@@ -89,11 +88,11 @@ func (r *Room) start() {
 	r.Cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take(), r.Cards.Take()}
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
-		kindCards, kind := cs.GetType()
+
+		kind, _ :=algorithm.De( cs.GetType())
 		m := &protocol.Flop{
 			Cards:     cs.Bytes(),
 			Kind:      kind,
-			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
 		return true
@@ -112,16 +111,15 @@ func (r *Room) start() {
 	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
-		kindCards, kind := cs.GetType()
+		kind, _ :=algorithm.De( cs.GetType())
 		m := &protocol.Turn{
-			Card:      r.Cards[3].Byte(),
+			Card:      r.Cards[3],
 			Kind:      kind,
-			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
 		return true
 	})
-	r.Broadcast(&protocol.Turn{Card: r.Cards[3].Byte()}, false)
+	r.Broadcast(&protocol.Turn{Card: r.Cards[3]}, false)
 
 	r.action(0)
 
@@ -135,18 +133,17 @@ func (r *Room) start() {
 	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
-		kindCards, kind := cs.GetType()
+		value:=cs.GetType()
+		kind, _ :=algorithm.De(value)
 		m := &protocol.River{
-			Card:      r.Cards[4].Byte(),
+			Card:      r.Cards[4],
 			Kind:      kind,
-			KindCards: kindCards.Bytes(),
 		}
 		o.WriteMsg(m)
-		o.kindCards = kindCards
-		o.kind = kind
+		o.HandValue = value
 		return true
 	})
-	r.Broadcast(&protocol.River{Card: r.Cards[4].Byte()}, false)
+	r.Broadcast(&protocol.River{Card: r.Cards[4]}, false)
 
 	r.action(0)
 
@@ -223,8 +220,7 @@ func (r *Room) ready() {
 		o.Bet = 0
 		o.waitAction = false
 		r.remain++
-		o.kind = 0
-		o.kindCards = nil
+		o.HandValue = 0
 		return true
 	})
 }

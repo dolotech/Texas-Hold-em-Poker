@@ -1,4 +1,5 @@
 package algorithm
+/*
 
 type Card byte
 
@@ -17,3 +18,13 @@ func (this *Card) Color() byte {
 }
 
 const NilCard = Card(0)
+
+*/
+
+func  ToV(v byte) byte {
+	return v& 0xF
+}
+
+func  ToC(v byte) byte {
+	return v >> SUITSIZE
+}

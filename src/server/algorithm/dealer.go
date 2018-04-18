@@ -11,7 +11,7 @@ import (
 //var a int64= 1<<62
 // 洗牌
 func (this *Cards) Shuffle() {
-	*this = make([]Card, TOTAL)
+	*this = make([]byte, TOTAL)
 	copy(*this, CARDS)
 	source := rand.NewSource(time.Now().UnixNano() )
 	//n ++

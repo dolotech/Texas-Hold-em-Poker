@@ -152,28 +152,24 @@ type JoinRoomResp struct {
 //底牌
 type PreFlop struct {
 	Cards     []byte
-	KindCards []byte
 	Kind      uint8
 }
 
 // 翻牌
 type Flop struct {
 	Cards     []byte
-	KindCards []byte
 	Kind      uint8
 }
 
 // 转牌
 type Turn struct {
 	Card      byte
-	KindCards []byte
 	Kind      uint8
 }
 
 //河牌
 type River struct {
 	Card      byte
-	KindCards []byte
 	Kind      uint8
 }
 
