@@ -242,7 +242,7 @@ func (r *Room) showdown() {
 					maxO = o
 					continue
 				}
-				if maxO.PK(o) > 0 {
+				if o.HandValue > maxO.HandValue {
 					maxO = o
 				}
 			}
@@ -252,7 +252,7 @@ func (r *Room) showdown() {
 
 		for _, pos := range pot.OPos {
 			o := r.occupants[pos-1]
-			if o != nil && maxO.PK(o) == 0 && o.IsGameing() {
+			if o != nil &&o.HandValue == maxO.HandValue && o.IsGameing() {
 				winners = append(winners, o.Pos)
 			}
 		}

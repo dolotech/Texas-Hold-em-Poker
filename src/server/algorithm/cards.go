@@ -123,9 +123,9 @@ func (this *Cards) Flush() uint32 {
 				count ++
 				if count == 5 {
 					var handvalue uint16
-					for _, v := range cards {
-						if (v >> 4) == i {
-							value := v & 0xF
+					for _, v1 := range cards {
+						if (v1 >> 4) == i {
+							value := v1 & 0xF
 							if value == 0xE {
 								handvalue |= 1
 							}

@@ -55,9 +55,6 @@ func (o *Occupant) GetAction(timeout time.Duration) int32 {
 	}
 }
 
-func (o *Occupant) PK( target *Occupant)int8 {
-	return algorithm.PK(o.HandValue,target.HandValue)
-}
 func (o *Occupant) WriteMsg(msg interface{}) {
 	if o.status != Occupant_status_Offline {
 		o.Agent.WriteMsg(msg)
