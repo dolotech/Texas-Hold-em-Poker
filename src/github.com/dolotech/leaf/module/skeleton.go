@@ -6,8 +6,6 @@ import (
 	"time"
 	"github.com/dolotech/lib/grpool"
 	"runtime"
-	"github.com/golang/glog"
-	"github.com/dolotech/leaf/conf"
 )
 
 type Skeleton struct {
@@ -15,17 +13,17 @@ type Skeleton struct {
 	TimerDispatcherLen int
 	AsynCallLen        int
 	ChanRPCServer      *chanrpc.Server
-	dispatcher    *timer.Dispatcher
-	client        *chanrpc.Client
-	server        *chanrpc.Server
-	commandServer *chanrpc.Server
+	dispatcher         *timer.Dispatcher
+	client             *chanrpc.Client
+	server             *chanrpc.Server
+	commandServer      *chanrpc.Server
 
 	pool *grpool.Pool
 }
 
 func (s *Skeleton) Init() {
 	if s.GoLen < runtime.NumCPU()*2 {
-		s.GoLen = runtime.NumCPU()*4
+		s.GoLen = runtime.NumCPU() * 4
 	}
 
 	s.pool = grpool.NewPool(runtime.NumCPU()*2, s.GoLen)
@@ -89,7 +87,7 @@ func (s *Skeleton) CronFunc(cronExpr *timer.CronExpr, cb func()) *timer.Cron {
 	return s.dispatcher.CronFunc(cronExpr, cb)
 }
 
-func (s *Skeleton) Go(f func(), cb func()) {
+/*func (s *Skeleton) Go(f func(), cb func()) {
 	s.pool.JobQueue <- func() {
 		defer func() {
 			if nil != cb {
@@ -107,7 +105,7 @@ func (s *Skeleton) Go(f func(), cb func()) {
 		}()
 		f()
 	}
-}
+}*/
 
 func (s *Skeleton) AsynCall(server *chanrpc.Server, id interface{}, args ...interface{}) {
 	if s.AsynCallLen == 0 {
@@ -125,4 +123,3 @@ func (s *Skeleton) RegisterChanRPC(id interface{}, f interface{}) {
 
 	s.server.Register(id, f)
 }
-

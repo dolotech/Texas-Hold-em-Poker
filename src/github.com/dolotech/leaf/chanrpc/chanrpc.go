@@ -9,15 +9,7 @@ import (
 	"reflect"
 )
 
-// one server per goroutine (goroutine not safe)
-// one client per goroutine (goroutine not safe)
 type Server struct {
-	// id -> function
-	//
-	// function:
-	// func(args []interface{})
-	// func(args []interface{}) interface{}
-	// func(args []interface{}) []interface{}
 	functions map[interface{}]*reflect.Value
 	ChanCall  chan *CallInfo
 }
@@ -30,16 +22,9 @@ type CallInfo struct {
 }
 
 type RetInfo struct {
-	// nil
-	// interface{}
-	// []interface{}
 	ret interface{}
 	err error
-	// callback:
-	// func(err error)
-	// func(ret interface{}, err error)
-	// func(ret []interface{}, err error)
-	cb interface{}
+	cb  interface{}
 }
 
 type Client struct {
@@ -195,15 +180,15 @@ func (c *Client) call(ci *CallInfo, block bool) (err error) {
 	return
 }
 
-func (c *Client) f(id interface{}, n int) (*reflect.Value,  error) {
+func (c *Client) f(id interface{}, n int) (*reflect.Value, error) {
 	if c.s == nil {
 		return nil, errors.New("server not attached")
 	}
 	f := c.s.functions[id]
 	if f == nil {
-		return nil,fmt.Errorf("function id %v: function not registered", id)
+		return nil, fmt.Errorf("function id %v: function not registered", id)
 	}
-	return f,nil
+	return f, nil
 }
 
 func (c *Client) Call0(id interface{}, args ...interface{}) error {
