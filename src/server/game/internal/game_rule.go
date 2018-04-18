@@ -66,10 +66,10 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		o.cards = algorithm.Cards{r.Cards.Take(), r.Cards.Take()}
 
-		kind, _ :=algorithm.De( o.cards.GetType())
+		kind, _ := algorithm.De(o.cards.GetType())
 		m := &protocol.PreFlop{
-			Cards:     o.cards.Bytes(),
-			Kind:      kind,
+			Cards: o.cards.Bytes(),
+			Kind:  kind,
 		}
 		o.WriteMsg(m)
 		return true
@@ -89,10 +89,10 @@ func (r *Room) start() {
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
 
-		kind, _ :=algorithm.De( cs.GetType())
+		kind, _ := algorithm.De(cs.GetType())
 		m := &protocol.Flop{
-			Cards:     cs.Bytes(),
-			Kind:      kind,
+			Cards: cs.Bytes(),
+			Kind:  kind,
 		}
 		o.WriteMsg(m)
 		return true
@@ -111,10 +111,10 @@ func (r *Room) start() {
 	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
-		kind, _ :=algorithm.De( cs.GetType())
+		kind, _ := algorithm.De(cs.GetType())
 		m := &protocol.Turn{
-			Card:      r.Cards[3],
-			Kind:      kind,
+			Card: r.Cards[3],
+			Kind: kind,
 		}
 		o.WriteMsg(m)
 		return true
@@ -133,11 +133,11 @@ func (r *Room) start() {
 	r.Cards = r.Cards.Append(r.Cards.Take())
 	r.Each(0, func(o *Occupant) bool {
 		cs := r.Cards.Append(o.cards...)
-		value:=cs.GetType()
-		kind, _ :=algorithm.De(value)
+		value := cs.GetType()
+		kind, _ := algorithm.De(value)
 		m := &protocol.River{
-			Card:      r.Cards[4],
-			Kind:      kind,
+			Card: r.Cards[4],
+			Kind: kind,
 		}
 		o.WriteMsg(m)
 		o.HandValue = value
@@ -252,7 +252,7 @@ func (r *Room) showdown() {
 
 		for _, pos := range pot.OPos {
 			o := r.occupants[pos-1]
-			if o != nil &&o.HandValue == maxO.HandValue && o.IsGameing() {
+			if o != nil && o.HandValue == maxO.HandValue && o.IsGameing() {
 				winners = append(winners, o.Pos)
 			}
 		}
@@ -276,6 +276,13 @@ func (r *Room) showdown() {
 }
 
 func (r *Room) betting(o *Occupant, n int32) (raised bool) {
+	if n > int32(o.chips) || // 手上筹码不足
+		(n == 0 && o.Bet != r.Bet) || // 让牌
+		(n > 0 && n != int32(o.chips) && ((n + int32(o.Bet)) < int32(r.Bet))) {
+		glog.Errorf("下注筹码不合法!!！ n:%d  p.Bet:%d  p.Chips:%d  t.Bet:%d", n,o.Bet, o.chips, r.Bet)
+		return
+	}
+
 	value := n
 	actionName := ""
 	if n < 0 {

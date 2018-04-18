@@ -5,6 +5,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"server/algorithm"
 	"time"
+	"errors"
 )
 
 type Occupant struct {
@@ -31,10 +32,12 @@ const (
 	Occupant_status_Sitdown int32 = 0
 )
 
-func (o *Occupant) SetAction(n int32) {
+func (o *Occupant) SetAction(n int32)error {
 	if o.waitAction {
 		o.actions <- n
+		return  nil
 	}
+	return  errors.New("not your action")
 }
 func (o *Occupant) GetAction(timeout time.Duration) int32 {
 	timer := time.NewTimer(timeout)

@@ -79,7 +79,6 @@ func (r *Room) leaveAndRecycleChips(o *Occupant) {
 }
 func (r *Room) leaveRoom(m *protocol.LeaveRoom, o *Occupant) {
 
-
 	r.removeObserve(o)
 	r.leaveAndRecycleChips(o)
 
@@ -102,10 +101,16 @@ func (r *Room) bet(m *protocol.Bet, o *Occupant) {
 	}
 
 	if m.Value < 0 {
-		o.SetAction(-1)
+		err := o.SetAction(-1)
+		if err != nil {
+			o.WriteMsg(protocol.MSG_NOT_TURN)
+		}
 
 	} else {
-		o.SetAction(m.Value)
+		err := o.SetAction(m.Value)
+		if err != nil {
+			o.WriteMsg(protocol.MSG_NOT_TURN)
+		}
 	}
 
 	glog.Errorln("bet", m)

@@ -24,8 +24,9 @@ type Room struct {
 	*model.Room
 	route.Route
 
-	occupants []*Occupant
-	observes  []*Occupant // 旁观列表
+	occupants   []*Occupant // 坐下的玩家
+	observes    []*Occupant // 站起的玩家
+	AutoSitdown []*Occupant // 自动坐下队列
 
 	closeChan chan struct{}
 	msgChan   chan *msgObj
@@ -37,16 +38,15 @@ type Room struct {
 
 	SB       uint32          // 小盲注
 	BB       uint32          // 大盲注
-	Cards    algorithm.Cards //公共牌
-	Pot      []uint32        // 当前奖池筹码数
+	Cards    algorithm.Cards // 公共牌
+	Pot      []uint32        // 奖池筹码数, 第一项为主池，其他项(若存在)为边池
 	Timeout  time.Duration   // 倒计时超时时间(秒)
 	Button   uint8           // 当前庄家座位号，从1开始
 	Chips    []uint32        // 玩家本局下注的总筹码数，与occupants一一对应
-	Bet      uint32          // 当前下注额
+	Bet      uint32          // 当前回合 上一玩家下注额
 	Max      uint8           // 房间最大玩家人数
 	MaxChips uint32
 	MinChips uint32
-	//LvChips  uint32
 }
 
 func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {

@@ -56,6 +56,7 @@ func init() {
 	Processor.Register(&BetResp{})
 	Processor.Register(&RoomList{})
 	Processor.Register(&RoomListResp{})
+	Processor.Register(&Chat{})
 }
 
 // 版本号
@@ -151,26 +152,26 @@ type JoinRoomResp struct {
 
 //底牌
 type PreFlop struct {
-	Cards     []byte
-	Kind      uint8
+	Cards []byte
+	Kind  uint8
 }
 
 // 翻牌
 type Flop struct {
-	Cards     []byte
-	Kind      uint8
+	Cards []byte
+	Kind  uint8
 }
 
 // 转牌
 type Turn struct {
-	Card      byte
-	Kind      uint8
+	Card byte
+	Kind uint8
 }
 
 //河牌
 type River struct {
-	Card      byte
-	Kind      uint8
+	Card byte
+	Kind uint8
 }
 
 //通报本局庄家
@@ -234,11 +235,16 @@ type Room struct {
 	OriginalOwnerID uint32 //原始创建人的信息
 	Owner           uint32 //房管
 	Kind            uint32 //游戏类型 即玩法
-	DraginChips     uint32  // 带入筹码
-	Cap       uint8
-	MaxCap       uint8
+	DraginChips     uint32 // 带入筹码
+	Cap             uint8
+	MaxCap          uint8
 }
 
 type RoomListResp struct {
 	Room []*Room
+}
+
+type Chat struct {
+	Uid  uint32
+	Text string
 }
