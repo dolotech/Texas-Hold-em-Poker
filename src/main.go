@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/dolotech/leaf"
 	"server/conf"
-	"server/game"
 	"server/gate"
 	"server/login"
 	"net/http"
@@ -11,6 +10,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/dolotech/lib/db"
 	"server/model"
+	"server/game"
 )
 
 var Commit = ""

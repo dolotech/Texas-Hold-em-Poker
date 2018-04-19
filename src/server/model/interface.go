@@ -1,9 +1,18 @@
 package model
 
-import (
-	"github.com/dolotech/leaf/gate"
-)
-
+type IOccupant interface {
+	GetRoom() IRoom
+	SetRoom(IRoom)
+	WriteMsg(msg interface{})
+	GetUid() uint32
+	IsGameing() bool
+	GetPos() uint8
+	SetPos(uint8)
+}
+type IHandler interface {
+	NewRoom() IRoom
+	NoRoomHandler(m interface{}) IRoom
+}
 type IRoom interface {
 	ID() uint32
 	Cap() uint8
@@ -13,6 +22,8 @@ type IRoom interface {
 	GetNumber() string
 	SetNumber(string)
 	Close()
-	Send(gate.Agent, interface{}) error
+	Closed() chan struct{}
+	Send(IOccupant, interface{}) error
 	WriteMsg(interface{}, ...uint32)
+	Regist(interface{}, interface{})
 }

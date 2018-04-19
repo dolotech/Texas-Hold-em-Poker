@@ -6,12 +6,14 @@ import (
 )
 
 func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
+
 	if o.room != nil {
-		for k, v := range r.occupants {
+		for k, v := range r.Occupants {
+			glog.Infoln(v,o)
 			if v.Uid == o.Uid {
 				// todo 掉线重连现场数据替换处理
-				o.Replace(r.occupants[k])
-				r.occupants[k] = o
+				o.Replace(r.Occupants[k])
+				r.Occupants[k] = o
 
 				if o != v {
 					v.Close()
@@ -25,6 +27,8 @@ func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 			}
 		}
 	}
+
+
 	glog.Errorln(o)
 	rinfo := &protocol.RoomInfo{
 		Number: r.Number,
@@ -62,7 +66,7 @@ func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 
 	o.RoomID = r.Number
 	o.UpdateRoomId()
-	o.room = r
+
 	o.WriteMsg(&protocol.JoinRoomResp{UserInfos: userinfos, RoomInfo: rinfo})
 
 	glog.Errorln("joinRoom", m)

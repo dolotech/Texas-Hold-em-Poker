@@ -12,6 +12,7 @@ import (
 func init() {
 	handler(&protocol.UserLoginInfo{}, handlLoginUser)
 	handler(&protocol.Version{}, handlVersion)
+	handler(&protocol.RoomList{}, onRoomList) //
 }
 
 func handler(m interface{}, h interface{}) {
@@ -25,7 +26,12 @@ func handlVersion(m *protocol.Version, a gate.Agent) {
 
 func handlLoginUser(m *protocol.UserLoginInfo, a gate.Agent) {
 	user := &model.User{UnionId: m.UnionId}
-	exist, _ := user.GetByUnionId()
+	exist, err := user.GetByUnionId()
+	if err != nil{
+		a.WriteMsg(protocol.MSG_DB_Error)
+		return
+	}
+
 	if !exist {
 		user = &model.User{Nickname: m.Nickname,
 			UnionId: m.UnionId}
@@ -44,4 +50,24 @@ func handlLoginUser(m *protocol.UserLoginInfo, a gate.Agent) {
 
 	a.WriteMsg(resp)
 	game.ChanRPC.Go(model.Agent_Login, user, a)
+}
+
+func onRoomList(m *protocol.RoomList, a gate.Agent) {
+	msg := &protocol.RoomListResp{}
+
+	/*	array := GetRooms()
+		rooms := make([]*protocol.Room, len(array))
+
+		for k, v := range array {
+			rooms[k] = &protocol.Room{
+				Number:      v.GetNumber(),
+				MaxCap:      v.Cap(),
+				Cap:         v.Len(),
+				DraginChips: v.GetDragin(),
+				CreatedAt:   v.CreatedTime(),
+				Rid:         v.ID(),
+			}
+		}
+	msg.Room = rooms*/
+	a.WriteMsg(msg)
 }

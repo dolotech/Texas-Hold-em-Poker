@@ -2,34 +2,18 @@ package internal
 
 import (
 	"server/model"
-	"github.com/golang/glog"
-	"runtime/debug"
 	"server/protocol"
-	"github.com/dolotech/lib/route"
-	"github.com/dolotech/leaf/gate"
-	"errors"
 	"server/algorithm"
 	"time"
-)
-
-const (
-	RoomStatus_Closed  int32 = 9
-	RoomStatus_Started int32 = 1
-	RoomStatus_End     int32 = 2
-	RoomStatus_Ready   int32 = 0
+	"github.com/dolotech/lib/room"
 )
 
 type Room struct {
 	*model.Room
-	route.Route
-
-	occupants   []*Occupant // 坐下的玩家
+	*room.BaseRoom
+	Occupants  []*Occupant
 	observes    []*Occupant // 站起的玩家
 	AutoSitdown []*Occupant // 自动坐下队列
-
-	ClosedBroadcastChan chan struct{}
-	closeChan           chan struct{}
-	msgChan             chan *msgObj
 
 	remain int
 	allin  int
@@ -50,56 +34,59 @@ type Room struct {
 
 func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	if max <= 0 || max > 9 {
-		max = 9 // default 9 occupants
+		max = 9 // default 9 Occupants
 	}
 
 	r := &Room{
-		Room:                &model.Room{DraginChips: chips,},
-		closeChan:           make(chan struct{}),
-		ClosedBroadcastChan: make(chan struct{}),
-		msgChan:             make(chan *msgObj, 128),
-		occupants:           make([]*Occupant, max),
-		Chips:               make([]uint32, max),
-		Pot:                 make([]uint32, 0, max),
-		Timeout:             time.Second * time.Duration(timeout),
-		SB:                  sb,
-		BB:                  bb,
-		Max:                 max,
+		Room: &model.Room{DraginChips: chips,},
+		BaseRoom:  room.NewRoom(),
+
+		Chips:     make([]uint32, max),
+		Occupants:     make([]*Occupant, max),
+		Pot:       make([]uint32, 0, max),
+		Timeout:   time.Second * time.Duration(timeout),
+		SB:        sb,
+		BB:        bb,
+		Max:       max,
+
 	}
 
-	r.Regist(&protocol.JoinRoom{}, r.joinRoom)
-	r.Regist(&protocol.LeaveRoom{}, r.leaveRoom)
-	r.Regist(&protocol.Bet{}, r.bet)
-	r.Regist(&protocol.SitDown{}, r.sitDown) //
-	r.Regist(&protocol.StandUp{}, r.standUp) //
-	r.Regist(&protocol.Chat{}, r.chat) //
-	go r.msgLoop()
+	room.Regist(r, &protocol.JoinRoom{}, r.joinRoom)
+	room.Regist(r, &protocol.LeaveRoom{}, r.leaveRoom)
+	room.Regist(r, &protocol.Bet{}, r.bet)
+	room.Regist(r, &protocol.SitDown{}, r.sitDown) //
+	room.Regist(r, &protocol.StandUp{}, r.standUp) //
+	room.Regist(r, &protocol.Chat{}, r.chat)       //
 	return r
 }
 
-func (r *Room) msgLoop() {
-	defer func() {
-		if err := recover(); err != nil {
-			glog.Errorf("roomid %v err: %v", r.Room.Number, err)
-			glog.Error(string(debug.Stack()))
-			go r.msgLoop()
-		}
-	}()
-	for {
-		select {
-		case <-r.closeChan:
-			close(r.ClosedBroadcastChan)
-			return
-		case m := <-r.msgChan:
-			r.Emit(m.msg, m.o)
-		}
-	}
+type Handler struct{}
+
+func (this *Handler) NewRoom() model.IRoom {
+	return NewRoom(9, 5, 10, 1000, model.Timeout)
 }
+func (this *Handler) NoRoomHandler(m interface{}) model.IRoom {
+	if msg, ok := m.(*protocol.JoinRoom); ok {
+		if len(msg.RoomNumber) == 0 {
+			r := room.FindRoom()
+			return r
+		}
+		r := room.GetRoom(msg.RoomNumber)
+		if r != nil {
+			return r
+		}
+		room := NewRoom(9, 5, 10, 1000, model.Timeout)
+		room.Insert()
+		return room
+	}
+	return nil
+}
+
 func (r *Room) WriteMsg(msg interface{}, exc ...uint32) {
-	for _, v := range r.occupants {
+	for _, v := range r.Occupants {
 		if v != nil {
 			for _, uid := range exc {
-				if uid == v.Uid {
+				if uid == v.GetUid() {
 					goto End
 				}
 			}
@@ -110,10 +97,10 @@ func (r *Room) WriteMsg(msg interface{}, exc ...uint32) {
 }
 
 func (r *Room) Broadcast(msg interface{}, all bool, exc ...uint32) {
-	for _, v := range r.occupants {
+	for _, v := range r.Occupants {
 		if v != nil && (all || !v.IsGameing()) {
 			for _, uid := range exc {
-				if uid == v.Uid {
+				if uid == v.GetUid() {
 					goto End1
 				}
 			}
@@ -135,15 +122,16 @@ func (r *Room) Broadcast(msg interface{}, all bool, exc ...uint32) {
 }
 
 func (r *Room) addOccupant(o *Occupant) uint8 {
-	for _, v := range r.occupants {
-		if v != nil && v.Uid == o.Uid {
+	for _, v := range r.Occupants {
+		if v != nil && v.GetUid() == o.Uid {
 			return 0
 		}
 	}
 
-	for k, v := range r.occupants {
+	for k, v := range r.Occupants {
 		if v == nil {
-			r.occupants[k] = o
+			r.Occupants[k] = o
+			o.SetRoom(r)
 			o.Pos = uint8(k + 1)
 			o.SetSitdown()
 			return o.Pos
@@ -153,10 +141,10 @@ func (r *Room) addOccupant(o *Occupant) uint8 {
 }
 
 func (r *Room) removeOccupant(o *Occupant) uint8 {
-	for k, v := range r.occupants {
-		if v != nil && v.Uid == o.Uid {
-			v.Pos = 0
-			r.occupants[k] = nil
+	for k, v := range r.Occupants {
+		if v != nil && v.GetUid() == o.Uid {
+			v.SetPos(0)
+			r.Occupants[k] = nil
 			return uint8(k + 1)
 		}
 	}
@@ -184,41 +172,20 @@ func (r *Room) removeObserve(o *Occupant) {
 	}
 }
 
-func (r *Room) Close() {
-	select {
-	case r.closeChan <- struct{}{}:
-	default:
-	}
-}
-
-type msgObj struct {
-	msg interface{}
-	o   gate.Agent
-}
-
-func (r *Room) Send(o gate.Agent, m interface{}) error {
-	select {
-	case r.msgChan <- &msgObj{m, o}:
-	default:
-		o.WriteMsg(protocol.MSG_ROOM_CLOSED)
-	}
-	return errors.New("room closed")
-}
-
 // start starts from 0
 func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
 	volume := r.Cap()
 	end := (volume + start - 1) % volume
 	i := start
 	for ; i != end; i = (i + 1) % volume {
-		if r.occupants[i] != nil && r.occupants[i].IsGameing() && !f(r.occupants[i]) {
+		if r.Occupants[i] != nil && r.Occupants[i].IsGameing() && !f(r.Occupants[i]) {
 			return
 		}
 	}
 
 	// end
-	if r.occupants[i] != nil && r.occupants[i].IsGameing() {
-		f(r.occupants[i])
+	if r.Occupants[i] != nil && r.Occupants[i].IsGameing() {
+		f(r.Occupants[i])
 	}
 }
 func (r *Room) CreatedTime() uint32 {
@@ -235,7 +202,7 @@ func (r *Room) Cap() uint8 {
 }
 func (r *Room) Len() uint8 {
 	var num uint8
-	for _, v := range r.occupants {
+	for _, v := range r.Occupants {
 		if v != nil {
 			num ++
 		}

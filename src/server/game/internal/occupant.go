@@ -11,7 +11,7 @@ import (
 type Occupant struct {
 	*model.User
 	gate.Agent
-	room   *Room
+	room   model.IRoom
 	cards  algorithm.Cards
 	Pos    uint8 // 玩家座位号，从1开始
 	status int32 // 1为离线状态
@@ -31,6 +31,12 @@ const (
 	Occupant_status_Sitdown int32 = 0
 )
 
+func (o *Occupant) GetRoom() model.IRoom {
+	return o.room
+}
+func (o *Occupant) SetRoom(m model.IRoom) {
+	o.room = m
+}
 func (o *Occupant) SetAction(n int32)error {
 	if o.waitAction {
 		o.actions <- n
@@ -46,7 +52,7 @@ func (o *Occupant) GetAction(timeout time.Duration) int32 {
 		timer.Stop()
 		o.waitAction = false
 		return n
-	case <-o.room.ClosedBroadcastChan:
+	case <-o.room.Closed():
 		timer.Stop()
 		o.waitAction = false
 		return -1
@@ -56,7 +62,15 @@ func (o *Occupant) GetAction(timeout time.Duration) int32 {
 		return -1 // 超时弃牌
 	}
 }
-
+func (o *Occupant)SetPos(pos uint8)  {
+	 o.Pos = pos
+}
+func (o *Occupant) GetPos() uint8 {
+	return o.Pos
+}
+func (o *Occupant) GetUid() uint32 {
+	return  o.Uid
+}
 func (o *Occupant) WriteMsg(msg interface{}) {
 	if o.status != Occupant_status_Offline {
 		o.Agent.WriteMsg(msg)

@@ -149,7 +149,7 @@ func (r *Room) start() {
 showdown:
 	r.showdown()
 	showdown := &protocol.Showdown{}
-	for _, o := range r.occupants {
+	for _, o := range r.Occupants {
 		if o != nil && o.IsGameing() {
 			o.SetSitdown()
 
@@ -235,7 +235,7 @@ func (r *Room) showdown() {
 	for _, pot := range pots {
 		var maxO *Occupant
 		for _, pos := range pot.OPos {
-			o := r.occupants[pos-1]
+			o := r.Occupants[pos-1]
 			if o != nil && len(o.cards) > 0 {
 				if maxO == nil {
 					maxO = o
@@ -250,7 +250,7 @@ func (r *Room) showdown() {
 		var winners []uint8
 
 		for _, pos := range pot.OPos {
-			o := r.occupants[pos-1]
+			o := r.Occupants[pos-1]
 			if o != nil && o.HandValue == maxO.HandValue && o.IsGameing() {
 				winners = append(winners, o.Pos)
 			}
@@ -268,8 +268,8 @@ func (r *Room) showdown() {
 	}
 
 	for i, _ := range r.Chips {
-		if r.occupants[i] != nil {
-			r.occupants[i].chips += r.Chips[i]
+		if r.Occupants[i] != nil {
+			r.Occupants[i].chips += r.Chips[i]
 		}
 	}
 }
@@ -320,8 +320,8 @@ func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 func (r *Room) next(pos uint8) *Occupant {
 	volume := r.Cap()
 	for i := (pos) % volume; i != pos-1; i = (i + 1) % volume {
-		if r.occupants[i] != nil && r.occupants[i].IsGameing() {
-			return r.occupants[i]
+		if r.Occupants[i] != nil && r.Occupants[i].IsGameing() {
+			return r.Occupants[i]
 		}
 	}
 	return nil

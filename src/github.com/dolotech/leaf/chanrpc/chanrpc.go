@@ -56,7 +56,8 @@ func (s *Server) Register(id interface{}, f interface{}) {
 		return
 	}
 	if _, ok := s.functions[id]; ok {
-		panic(fmt.Sprintf("function id %v: already registered", id))
+		return
+		//panic(fmt.Sprintf("function id %v: already registered", id))
 	}
 
 	v := reflect.ValueOf(f)

@@ -4,6 +4,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"github.com/golang/glog"
 	"server/model"
+	"github.com/dolotech/lib/room"
 )
 
 func init() {
@@ -26,7 +27,7 @@ func rpcLoginAgent(u *model.User, a gate.Agent) {
 	a.SetUserData(o)
 
 	if len(u.RoomID) > 0 {
-		o.room = model.GetRoom(u.RoomID).(*Room)
+		o.room = room.GetRoom(u.RoomID).(*Room)
 	}
 	glog.Errorln("rpcLoginAgent", u)
 }

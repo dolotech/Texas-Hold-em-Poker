@@ -4,6 +4,7 @@ import (
 	"github.com/dolotech/leaf/module"
 	"server/base"
 	"github.com/golang/glog"
+	"github.com/dolotech/lib/room"
 )
 
 var (//定义
@@ -17,6 +18,10 @@ type Module struct {//相当于继承父类定义
 
 func (m *Module) OnInit() {//继承初始
 	m.Skeleton = skeleton
+
+
+
+	room.Init(&Handler{},skeleton)
 }
 
 func (m *Module) OnDestroy() {
