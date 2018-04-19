@@ -184,15 +184,6 @@ func (this *Cards) onePair() uint32 {
 	return 0
 }
 
-//高牌（high card）
-//既不是同一花色也不是同一点数的五张牌组成。
-//平手牌：如果不止一人抓到此牌，则比较点数最大者，
-//如果点数最大的相同，则比较第二、第三、第四和第五大的，如果所有牌都相同，则平分彩池。
-func (this *Cards) highCard() uint32 {
-	return En(HIGH_CARD, ToValue(*this))
-}
-
-//我是升序排的，所以反着来
 func ToValue(cards []byte) uint32 {
 	var res uint32
 	for i := len(cards) - 1; i >= 0; i-- {

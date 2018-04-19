@@ -46,7 +46,9 @@ func (this *Cards) GetType() uint32 {
 	if res := this.onePair(); res > 0 {
 		return res
 	}
-
-	return this.highCard()
-
+	//高牌（high card）
+	//既不是同一花色也不是同一点数的五张牌组成。
+	//平手牌：如果不止一人抓到此牌，则比较点数最大者，
+	//如果点数最大的相同，则比较第二、第三、第四和第五大的，如果所有牌都相同，则平分彩池。
+	return En(HIGH_CARD, ToValue(*this))
 }
