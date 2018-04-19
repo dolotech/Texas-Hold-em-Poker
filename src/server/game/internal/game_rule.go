@@ -8,7 +8,6 @@ import (
 )
 
 func (r *Room) start() {
-
 	// 产生庄
 	var dealer *Occupant
 	button := r.Button - 1

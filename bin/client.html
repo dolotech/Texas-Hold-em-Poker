@@ -37,6 +37,12 @@
 </p>
 
 
+<p>
+    <button onclick="roomList()">房间列表</button>
+    <output id="roomList"></output>
+</p>
+
+
 <script type="text/javascript">
     var ws = new WebSocket('ws://127.0.0.1:8989')
     ws.onopen = function () {
@@ -61,13 +67,9 @@
         }
     }
 
-    function standUp() {
-        // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))
+    function roomList() {
         var msg = {
-            StandUp: {
-                RoomNumber: "123456",
-                RoomPwd: "RoomPwd123456"
-            }
+            RoomList: {}
         }
         var m = JSON.stringify(msg)
         console.log("send data:  ", m);
@@ -79,10 +81,11 @@
             reader.readAsText(re)
             reader.onload = function () {
                 console.log(this.result);
-                document.getElementById("standUpRes").innerHTML = this.result;
+                document.getElementById("roomList").innerHTML = this.result;
             }
         }
     }
+
 
     function sitDown() {
         // ws.send(JSON.stringify({Hello: {Name: 'leaf' }}))

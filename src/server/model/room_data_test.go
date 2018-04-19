@@ -11,7 +11,6 @@ func init() {
 
 func TestUser_UpdateChips(t *testing.T) {
 	room := &Room{
-		Cards: []byte{0x2a, 0x2d},
 	}
 
 	t.Log(room.Insert())

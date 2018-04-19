@@ -18,6 +18,7 @@ func init() {
 	handler(&protocol.SitDown{}, onMessage)   //
 	handler(&protocol.StandUp{}, onMessage)   //
 	handler(&protocol.RoomList{}, onRoomList) //
+	handler(&protocol.Chat{}, onMessage) //
 }
 
 func onRoomList(m *protocol.RoomList, a gate.Agent) {

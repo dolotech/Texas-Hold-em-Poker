@@ -21,7 +21,6 @@ type Occupant struct {
 	waitAction bool
 
 	chips     uint32 // 带入的筹码
-	//kindCards algorithm.Cards
 	HandValue      uint32
 }
 

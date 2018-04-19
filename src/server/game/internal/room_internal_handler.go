@@ -140,3 +140,9 @@ func (r *Room) standUp(m *protocol.StandUp, o *Occupant) {
 
 	glog.Errorln("standUp", m)
 }
+
+
+
+func (r *Room) chat(m *protocol.Chat, o *Occupant) {
+	r.Broadcast(m,true)
+}

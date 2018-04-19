@@ -19,4 +19,5 @@ func init() {
 	protocol.Processor.SetRouter(&protocol.Bet{}, game.ChanRPC)
 	protocol.Processor.SetRouter(&protocol.Version{}, game.ChanRPC)
 	protocol.Processor.SetRouter(&protocol.RoomList{}, game.ChanRPC)
+	protocol.Processor.SetRouter(&protocol.Chat{}, game.ChanRPC)
 }

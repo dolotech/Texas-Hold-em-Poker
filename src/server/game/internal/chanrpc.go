@@ -6,7 +6,7 @@ import (
 	"server/model"
 )
 
-func init() { //与gate 进行"交流"
+func init() {
 	skeleton.RegisterChanRPC(model.Agent_New, rpcNewAgent)
 	skeleton.RegisterChanRPC(model.Agent_Close, rpcCloseAgent)
 	skeleton.RegisterChanRPC(model.Agent_Login, rpcLoginAgent)

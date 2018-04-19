@@ -72,6 +72,7 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	r.Regist(&protocol.Bet{}, r.bet)
 	r.Regist(&protocol.SitDown{}, r.sitDown) //
 	r.Regist(&protocol.StandUp{}, r.standUp) //
+	r.Regist(&protocol.Chat{}, r.chat) //
 	go r.msgLoop()
 	return r
 }
