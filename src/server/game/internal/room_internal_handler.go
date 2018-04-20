@@ -4,12 +4,14 @@ import (
 	"server/protocol"
 	"github.com/golang/glog"
 	"github.com/davecgh/go-spew/spew"
+	"time"
+	"github.com/dolotech/lib/utils"
 )
 
 func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 	if o.room != nil {
 		for k, v := range r.Occupants {
-			glog.Infoln(v,o)
+			glog.Infoln(v, o)
 			if v.Uid == o.Uid {
 				// todo 掉线重连现场数据替换处理
 				o.Replace(r.Occupants[k])
@@ -28,7 +30,6 @@ func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 		}
 	}
 
-	r.Info("=============")
 	rinfo := &protocol.RoomInfo{
 		Number: r.Number,
 	}
@@ -67,8 +68,13 @@ func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 	o.UpdateRoomId()
 
 	o.WriteMsg(&protocol.JoinRoomResp{UserInfos: userinfos, RoomInfo: rinfo})
-	r.Info("=============")
-	r.Debug("joinRoom",  spew.Sdump(m))
+
+
+	time.AfterFunc(time.Second*2, func() {
+		defer utils.PrintPanicStack()
+		r.Send(o,&startDelay{})
+	})
+	r.Debug("joinRoom", spew.Sdump(m))
 }
 
 func (r *Room) leaveAndRecycleChips(o *Occupant) {
@@ -96,9 +102,10 @@ func (r *Room) leaveRoom(m *protocol.LeaveRoom, o *Occupant) {
 	}
 	r.Broadcast(leave, true)
 
-	r.Debug( )
+	r.Debug()
 
-	if r.Len() == 0{
+	// 房间里没有玩家时关闭并从列表中删除
+	if r.Len() == 0 {
 		r.Close(r)
 	}
 	glog.Errorln("leaveRoom", m)
@@ -151,8 +158,6 @@ func (r *Room) standUp(m *protocol.StandUp, o *Occupant) {
 	glog.Errorln("standUp", m)
 }
 
-
-
 func (r *Room) chat(m *protocol.Chat, o *Occupant) {
-	r.Broadcast(m,true)
+	r.Broadcast(m, true)
 }

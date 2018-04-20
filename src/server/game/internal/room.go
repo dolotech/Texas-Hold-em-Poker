@@ -9,6 +9,11 @@ import (
 	"github.com/golang/glog"
 )
 
+const (
+	RUNNING  uint8= 1
+	GAMEOVER uint8= 0
+)
+
 type Room struct {
 	*model.Room
 	*room.MsgLoop
@@ -20,6 +25,7 @@ type Room struct {
 	remain int
 	allin  int
 	n      uint8
+	status uint8
 
 	SB       uint32          // 小盲注
 	BB       uint32          // 大盲注

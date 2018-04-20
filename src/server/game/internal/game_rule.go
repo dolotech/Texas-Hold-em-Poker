@@ -5,12 +5,20 @@ import (
 	"server/protocol"
 	"server/model"
 	"server/algorithm"
+	"time"
+	"github.com/dolotech/lib/utils"
 )
 
-func (r *Room) startDelay(startDelay *startDelay) {
-
+func (r *Room) startDelay(startDelay *startDelay, o *Occupant) {
+	if startDelay.kind == 0 {
+		r.Info()
+		r.start()
+	}
 }
 func (r *Room) start() {
+	if r.status == RUNNING {
+		return
+	}
 	// 产生庄
 	var dealer *Occupant
 	button := r.Button - 1
@@ -44,6 +52,7 @@ func (r *Room) start() {
 		return
 	}
 
+	r.status = RUNNING
 	// 洗牌
 	r.Cards.Shuffle()
 
@@ -166,6 +175,13 @@ showdown:
 	}
 	r.Broadcast(showdown, true)
 	r.Info(sb.Pos, bbPos)
+
+	r.status = GAMEOVER
+
+	time.AfterFunc(time.Second*2, func() {
+		defer utils.PrintPanicStack()
+		r.Send(nil, &startDelay{})
+	})
 }
 
 func (r *Room) calc() (pots []handPot) {
@@ -188,6 +204,7 @@ func (r *Room) action(pos uint8) {
 	if pos == 0 { // start from left hand of button
 		pos = (r.Button)%r.Cap() + 1
 	}
+
 	for {
 		var raised uint8
 		r.Each(pos-1, func(o *Occupant) bool {

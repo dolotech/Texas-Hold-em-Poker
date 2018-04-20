@@ -10,7 +10,7 @@ import (
 	"server/model"
 )
 
-var ( //定义
+var (
 	skeleton = base.NewSkeleton()
 	ChanRPC  = skeleton.ChanRPCServer
 )
@@ -28,11 +28,10 @@ func init() {
 }
 
 type Module struct {
-	//相当于继承父类定义
 	*module.Skeleton
 }
 
-func (m *Module) OnInit() { //继承初始
+func (m *Module) OnInit() {
 	m.Skeleton = skeleton
 	room.Init(&Creator{})
 }
@@ -43,6 +42,7 @@ func (m *Module) OnDestroy() {
 
 type Creator struct{}
 
+// 对玩家未进入房间，或者没房间数据的处理
 func (this *Creator) Create(m interface{}) room.IRoom {
 	if msg, ok := m.(*protocol.JoinRoom); ok {
 		if len(msg.RoomNumber) == 0 {
