@@ -27,7 +27,7 @@ func rpcLoginAgent(u *model.User, a gate.Agent) {
 	a.SetUserData(o)
 
 	if len(u.RoomID) > 0 {
-		o.room = room.GetRoom(u.RoomID).(*Room)
+		o.room = room.GetRoom(u.RoomID)
 	}
 	glog.Errorln("rpcLoginAgent", u)
 }

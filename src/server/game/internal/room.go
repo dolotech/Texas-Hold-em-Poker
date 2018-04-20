@@ -6,6 +6,7 @@ import (
 	"server/algorithm"
 	"time"
 	"github.com/dolotech/leaf/room"
+	"github.com/golang/glog"
 )
 
 type Room struct {
@@ -57,7 +58,7 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	room.Regist(r, &protocol.StandUp{}, r.standUp) //
 	room.Regist(r, &protocol.Chat{}, r.chat)       //
 	room.Regist(r, &protocol.Chat{}, r.chat)       //
-	room.Regist(r, &startDelay{}, r.startDelay)       //
+	room.Regist(r, &startDelay{}, r.startDelay)    //
 	return r
 }
 
@@ -65,12 +66,27 @@ type startDelay struct {
 	kind uint8
 }
 
-type Handler struct{}
-
-func (this *Handler) NewRoom() room.IRoom {
-	return NewRoom(9, 5, 10, 1000, model.Timeout)
+func (r *Room) New(m interface{}) room.IRoom {
+	glog.Errorln(r, m)
+	if msg, ok := m.(*protocol.JoinRoom); ok {
+		if len(msg.RoomNumber) == 0 {
+			r := room.FindRoom()
+			return r
+		}
+		r := room.GetRoom(msg.RoomNumber)
+		if r != nil {
+			return r
+		}
+		room := NewRoom(9, 5, 10, 1000, model.Timeout)
+		room.Insert()
+		return room
+	}
+	return nil
 }
-func (this *Handler) NoRoomHandler(m interface{}) room.IRoom {
+
+type Creator struct{}
+
+func (this *Creator) Create(m interface{}) room.IRoom {
 	if msg, ok := m.(*protocol.JoinRoom); ok {
 		if len(msg.RoomNumber) == 0 {
 			r := room.FindRoom()

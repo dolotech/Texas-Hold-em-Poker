@@ -4,9 +4,8 @@ type IOccupant interface {
 	GetRoom() IRoom
 	WriteMsg(msg interface{})
 }
-type IHandler interface {
-	NewRoom() IRoom
-	NoRoomHandler(m interface{}) IRoom
+type ICreator interface {
+	Create(interface{}) IRoom
 }
 type IRoom interface {
 	Cap() uint8
@@ -21,11 +20,10 @@ type IRoom interface {
 	WriteMsg(interface{}, ...uint32)
 	Regist(interface{}, interface{})
 
+	New(interface{})IRoom
+
 	Info(args ...interface{})
-
 	Infof(format string, args ...interface{})
-
 	Error(args ...interface{})
-
 	Errorf(format string, args ...interface{})
 }

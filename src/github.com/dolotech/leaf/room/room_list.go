@@ -5,25 +5,20 @@ import (
 	"time"
 	"strconv"
 	"math/rand"
-	"reflect"
 	"github.com/golang/glog"
 	"server/protocol"
 	"github.com/dolotech/leaf/gate"
-	"github.com/dolotech/leaf/module"
+	"github.com/dolotech/lib/utils"
 )
 
-var skeleton *module.Skeleton
 
-func handler(m interface{}, h interface{}) {
-	skeleton.RegisterChanRPC(reflect.TypeOf(m), h)
-}
-
-func onMessage(m interface{}, a gate.Agent) {
+func OnMessage(m interface{}, a gate.Agent) {
+	defer utils.PrintPanicStack()
 	o := a.UserData().(IOccupant)
 	if o.GetRoom() != nil {
 		o.GetRoom().Send(o, m)
 	} else {
-		if r := hand.NoRoomHandler(m); r == nil {
+		if r := hand.Create(m); r == nil {
 			a.WriteMsg(protocol.MSG_NOT_IN_ROOM)
 		} else {
 			SetRoom(r)
@@ -35,12 +30,11 @@ func onMessage(m interface{}, a gate.Agent) {
 
 func Regist(r IRoom, m interface{}, h interface{}) {
 	r.Regist(m, h)
-	handler(m, onMessage)
 }
 
 var rooms *roomlist
 
-var hand IHandler
+var hand ICreator
 
 func init() {
 	rooms = &roomlist{
@@ -48,12 +42,8 @@ func init() {
 	}
 }
 
-func Init(h IHandler, s *module.Skeleton) {
+func Init(h ICreator) {
 	hand = h
-
-	skeleton = s
-
-	h.NewRoom()
 }
 
 type roomlist struct {
@@ -123,6 +113,7 @@ func GetRooms() []IRoom {
 		r[n] = v
 		n ++
 	}
+
 	rooms.RUnlock()
 	return r
 }

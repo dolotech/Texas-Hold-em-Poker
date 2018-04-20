@@ -54,21 +54,22 @@ func handlLoginUser(m *protocol.UserLoginInfo, a gate.Agent) {
 }
 
 func onRoomList(m *protocol.RoomList, a gate.Agent) {
+
 	msg := &protocol.RoomListResp{}
 
 	array := room.GetRooms()
 	rooms := make([]*protocol.Room, len(array))
 
 	for k, v := range array {
-		d:= v.Data()
-		data:= d.(*model.Room)
+		d := v.Data()
+		data := d.(*model.Room)
 		rooms[k] = &protocol.Room{
 
 			Number:      data.Number,
 			MaxCap:      v.Cap(),
 			Cap:         v.Len(),
-			DraginChips:  data.DraginChips,
-			CreatedAt:  data.CreatedTime(),
+			DraginChips: data.DraginChips,
+			CreatedAt:   data.CreatedTime(),
 			Rid:         data.Rid,
 		}
 	}

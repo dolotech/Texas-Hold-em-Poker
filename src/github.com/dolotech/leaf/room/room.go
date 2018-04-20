@@ -2,11 +2,11 @@ package room
 
 import (
 	"github.com/golang/glog"
-	"runtime/debug"
 	"server/protocol"
 	"github.com/dolotech/lib/route"
 	"errors"
 	"github.com/davecgh/go-spew/spew"
+	"github.com/dolotech/lib/utils"
 )
 
 func NewRoom() *BaseRoom {
@@ -32,9 +32,7 @@ func (r *BaseRoom) Closed() chan struct{} {
 }
 func (r *BaseRoom) msgLoop() {
 	defer func() {
-		if err := recover(); err != nil {
-			glog.Errorf("roomid %v err: %v", r, err)
-			glog.Error(string(debug.Stack()))
+		if err := utils.PrintPanicStack(); err != nil {
 			go r.msgLoop()
 		}
 	}()
@@ -80,33 +78,34 @@ func (r *BaseRoom) SetData(interface{}) {}
 func (r *BaseRoom) GetNumber() string               { return "" }
 func (r *BaseRoom) SetNumber(string)                {}
 func (r *BaseRoom) WriteMsg(interface{}, ...uint32) {}
+func (r *BaseRoom) New(interface{}) IRoom           { return nil }
 
 func (r *BaseRoom) Info(args ...interface{}) {
-	glog.InfoDepth(1,r.parseLog(args)...)
+	glog.InfoDepth(1, r.parseLog(args)...)
 }
 
 func (r *BaseRoom) Infof(format string, args ...interface{}) {
-	glog.InfofDepth(1,format, r.parseLog(args)...)
+	glog.InfofDepth(1, format, r.parseLog(args)...)
 }
 
 func (r *BaseRoom) Error(args ...interface{}) {
-	glog.ErrorDepth(1,r.parseLog(args)...)
+	glog.ErrorDepth(1, r.parseLog(args)...)
 }
 func (r *BaseRoom) Debug(args ...interface{}) {
-	for k,v := range args {
+	for k, v := range args {
 		args[k] = spew.Sdump(v)
 	}
-	glog.InfoDepth(1,r.parseLog(args)...)
+	glog.InfoDepth(1, r.parseLog(args)...)
 }
 
 func (r *BaseRoom) Debugf(format string, args ...interface{}) {
-	for k,v := range args {
+	for k, v := range args {
 		args[k] = spew.Sdump(v)
 	}
-	glog.InfofDepth(1,format, r.parseLog(args)...)
+	glog.InfofDepth(1, format, r.parseLog(args)...)
 }
 func (r *BaseRoom) Errorf(format string, args ...interface{}) {
-	glog.ErrorfDepth(1,format, r.parseLog(args)...)
+	glog.ErrorfDepth(1, format, r.parseLog(args)...)
 }
 
 func (r *BaseRoom) parseLog(args ...interface{}) []interface{} {
@@ -115,6 +114,6 @@ func (r *BaseRoom) parseLog(args ...interface{}) []interface{} {
 	param[1] = r.Cap()
 	param[2] = r.Len()
 	param[3] = r.Data()
-	copy(param[4:],args)
+	copy(param[4:], args)
 	return param
 }

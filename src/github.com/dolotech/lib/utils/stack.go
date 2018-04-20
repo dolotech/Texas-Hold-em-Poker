@@ -8,7 +8,7 @@ import (
 )
 
 // 产生panic时的调用栈打印
-func PrintPanicStack(extras ...interface{}) {
+func PrintPanicStack(extras ...interface{}) interface{}{
 	if x := recover(); x != nil {
 		glog.Errorln(x)
 		i := 0
@@ -22,5 +22,7 @@ func PrintPanicStack(extras ...interface{}) {
 		for k := range extras {
 			glog.Errorf("EXRAS#%v DATA:%v\n", k, spew.Sdump(extras[k]))
 		}
+		return x
 	}
+	return nil
 }

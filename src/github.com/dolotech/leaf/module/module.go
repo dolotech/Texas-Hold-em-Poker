@@ -1,10 +1,8 @@
 package module
 
 import (
-	"github.com/dolotech/leaf/conf"
-	"github.com/golang/glog"
-	"runtime"
 	"sync"
+	"github.com/dolotech/lib/utils"
 )
 
 type Module interface {
@@ -56,17 +54,7 @@ func run(m *module) {
 }
 
 func destroy(m *module) {
-	defer func() {
-		if r := recover(); r != nil {
-			if conf.LenStackBuf > 0 {
-				buf := make([]byte, conf.LenStackBuf)
-				l := runtime.Stack(buf, false)
-				glog.Error("%v: %s", r, buf[:l])
-			} else {
-				glog.Error("%v", r)
-			}
-		}
-	}()
+	defer utils.PrintPanicStack()
 
 	m.mi.OnDestroy()
 }

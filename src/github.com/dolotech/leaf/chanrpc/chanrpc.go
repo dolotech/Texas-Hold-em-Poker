@@ -3,10 +3,9 @@ package chanrpc
 import (
 	"errors"
 	"fmt"
-	"github.com/dolotech/leaf/conf"
 	"github.com/golang/glog"
-	"runtime"
 	"reflect"
+	"github.com/dolotech/lib/utils"
 )
 
 type Server struct {
@@ -69,11 +68,7 @@ func (s *Server) ret(ci *CallInfo, ri *RetInfo) (err error) {
 		return
 	}
 
-	defer func() {
-		if r := recover(); r != nil {
-			err = r.(error)
-		}
-	}()
+	defer utils.PrintPanicStack()
 
 	ri.cb = ci.cb
 	ci.chanRet <- ri
@@ -82,15 +77,7 @@ func (s *Server) ret(ci *CallInfo, ri *RetInfo) (err error) {
 
 func (s *Server) Exec(ci *CallInfo) {
 	defer func() {
-		if r := recover(); r != nil {
-			if conf.LenStackBuf > 0 {
-				buf := make([]byte, conf.LenStackBuf)
-				l := runtime.Stack(buf, false)
-				fmt.Errorf("%v: %s", r, buf[:l])
-			} else {
-				fmt.Errorf("%v", r)
-			}
-
+		if r := utils.PrintPanicStack(); r != nil {
 			s.ret(ci, &RetInfo{err: fmt.Errorf("%v", r)})
 		}
 	}()
@@ -109,9 +96,7 @@ func (s *Server) Go(id interface{}, args ...interface{}) {
 		return
 	}
 
-	defer func() {
-		recover()
-	}()
+	defer utils.PrintPanicStack()
 
 	s.ChanCall <- &CallInfo{
 		f:    f,
@@ -164,7 +149,7 @@ func (c *Client) Attach(s *Server) {
 
 func (c *Client) call(ci *CallInfo, block bool) (err error) {
 	defer func() {
-		if r := recover(); r != nil {
+		if r := utils.PrintPanicStack(); r != nil {
 			err = r.(error)
 		}
 	}()
@@ -297,17 +282,7 @@ func (c *Client) AsynCall(id interface{}, _args ...interface{}) {
 }
 
 func execCb(ri *RetInfo) {
-	defer func() {
-		if r := recover(); r != nil {
-			if conf.LenStackBuf > 0 {
-				buf := make([]byte, conf.LenStackBuf)
-				l := runtime.Stack(buf, false)
-				glog.Error("%v: %s", r, buf[:l])
-			} else {
-				glog.Error("%v", r)
-			}
-		}
-	}()
+	defer utils.PrintPanicStack()
 
 	// execute
 	switch ri.cb.(type) {
