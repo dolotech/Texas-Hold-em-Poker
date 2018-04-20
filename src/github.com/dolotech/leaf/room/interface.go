@@ -20,7 +20,6 @@ type IRoom interface {
 	WriteMsg(interface{}, ...uint32)
 	Regist(interface{}, interface{})
 
-	New(interface{})IRoom
 
 	Info(args ...interface{})
 	Infof(format string, args ...interface{})

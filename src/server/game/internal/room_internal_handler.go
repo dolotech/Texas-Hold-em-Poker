@@ -83,6 +83,7 @@ func (r *Room) leaveAndRecycleChips(o *Occupant) {
 func (r *Room) leaveRoom(m *protocol.LeaveRoom, o *Occupant) {
 
 	r.removeObserve(o)
+	r.removeOccupant(o)
 	r.leaveAndRecycleChips(o)
 
 	o.RoomID = ""
@@ -94,6 +95,12 @@ func (r *Room) leaveRoom(m *protocol.LeaveRoom, o *Occupant) {
 		Uid:        o.Uid,
 	}
 	r.Broadcast(leave, true)
+
+	r.Debug( )
+
+	if r.Len() == 0{
+		r.Close()
+	}
 	glog.Errorln("leaveRoom", m)
 }
 

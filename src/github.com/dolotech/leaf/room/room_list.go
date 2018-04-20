@@ -5,7 +5,6 @@ import (
 	"time"
 	"strconv"
 	"math/rand"
-	"github.com/golang/glog"
 	"server/protocol"
 	"github.com/dolotech/leaf/gate"
 )
@@ -22,11 +21,6 @@ func OnMessage(m interface{}, a gate.Agent) {
 			r.Send(o, m)
 		}
 	}
-	glog.Errorln(m, o)
-}
-
-func Regist(r IRoom, m interface{}, h interface{}) {
-	r.Regist(m, h)
 }
 
 var rooms *roomlist
