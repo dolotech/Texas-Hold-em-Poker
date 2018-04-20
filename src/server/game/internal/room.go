@@ -7,22 +7,15 @@ import (
 	"time"
 	"github.com/dolotech/leaf/room"
 	"github.com/golang/glog"
-	"github.com/dolotech/lib/route"
 )
 
 type Room struct {
 	*model.Room
-	//*room.BaseRoom
-	route.Route
+	*room.MsgLoop
+	*room.Log
 	Occupants   []*Occupant
 	observes    []*Occupant // 站起的玩家
 	AutoSitdown []*Occupant // 自动坐下队列
-
-	closedBroadcastChan chan struct{}
-	closeChan           chan struct{}
-	msgChan             chan *msgObj
-
-
 
 	remain int
 	allin  int
@@ -47,11 +40,8 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	}
 
 	r := &Room{
-		Room:     &model.Room{DraginChips: chips,},
-		closeChan:           make(chan struct{},1),
-		closedBroadcastChan: make(chan struct{}),
-		msgChan:             make(chan *msgObj, 128),
-
+		Room:      &model.Room{DraginChips: chips,},
+		MsgLoop:   room.NewMsgLoop(),
 		Chips:     make([]uint32, max),
 		Occupants: make([]*Occupant, max),
 		Pot:       make([]uint32, 0, max),
@@ -61,6 +51,7 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 		Max:       max,
 	}
 
+	r.Log = room.NewLog(r)
 	r.Regist(&protocol.JoinRoom{}, r.joinRoom)
 	r.Regist(&protocol.LeaveRoom{}, r.leaveRoom)
 	r.Regist(&protocol.Bet{}, r.bet)
@@ -70,14 +61,12 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	r.Regist(&protocol.Chat{}, r.chat)       //
 	r.Regist(&startDelay{}, r.startDelay)    //
 
-	go r.msgLoop()
 	return r
 }
 
 type startDelay struct {
 	kind uint8
 }
-
 
 func (r *Room) New(m interface{}) room.IRoom {
 	glog.Errorln(r, m)

@@ -14,10 +14,11 @@ var ( //定义
 	skeleton = base.NewSkeleton()
 	ChanRPC  = skeleton.ChanRPCServer
 )
+
 func handler(m interface{}, h interface{}) {
 	skeleton.RegisterChanRPC(reflect.TypeOf(m), h)
 }
-func init()  {
+func init() {
 	handler(&protocol.JoinRoom{}, room.OnMessage)
 	handler(&protocol.LeaveRoom{}, room.OnMessage)
 	handler(&protocol.Bet{}, room.OnMessage)
@@ -33,15 +34,12 @@ type Module struct {
 
 func (m *Module) OnInit() { //继承初始
 	m.Skeleton = skeleton
-
 	room.Init(&Creator{})
 }
 
 func (m *Module) OnDestroy() {
 	glog.Errorln("OnDestroy")
 }
-
-
 
 type Creator struct{}
 

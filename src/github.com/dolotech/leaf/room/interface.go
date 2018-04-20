@@ -14,7 +14,7 @@ type IRoom interface {
 	SetNumber(string)
 	Data() interface{}
 	SetData(interface{})
-	Close()
+	Close(room IRoom)
 	Closed() chan struct{}
 	Send(IOccupant, interface{}) error
 	WriteMsg(interface{}, ...uint32)

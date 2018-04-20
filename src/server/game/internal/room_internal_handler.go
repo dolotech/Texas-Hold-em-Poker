@@ -99,7 +99,7 @@ func (r *Room) leaveRoom(m *protocol.LeaveRoom, o *Occupant) {
 	r.Debug( )
 
 	if r.Len() == 0{
-		r.Close()
+		r.Close(r)
 	}
 	glog.Errorln("leaveRoom", m)
 }
