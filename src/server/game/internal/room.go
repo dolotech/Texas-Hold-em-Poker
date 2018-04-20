@@ -56,7 +56,13 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	room.Regist(r, &protocol.SitDown{}, r.sitDown) //
 	room.Regist(r, &protocol.StandUp{}, r.standUp) //
 	room.Regist(r, &protocol.Chat{}, r.chat)       //
+	room.Regist(r, &protocol.Chat{}, r.chat)       //
+	room.Regist(r, &startDelay{}, r.startDelay)       //
 	return r
+}
+
+type startDelay struct {
+	kind uint8
 }
 
 type Handler struct{}

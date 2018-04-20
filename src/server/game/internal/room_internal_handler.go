@@ -3,10 +3,10 @@ package internal
 import (
 	"server/protocol"
 	"github.com/golang/glog"
+	"github.com/davecgh/go-spew/spew"
 )
 
 func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
-
 	if o.room != nil {
 		for k, v := range r.Occupants {
 			glog.Infoln(v,o)
@@ -28,8 +28,7 @@ func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 		}
 	}
 
-
-	glog.Errorln(o)
+	r.Info("=============")
 	rinfo := &protocol.RoomInfo{
 		Number: r.Number,
 	}
@@ -68,8 +67,8 @@ func (r *Room) joinRoom(m *protocol.JoinRoom, o *Occupant) {
 	o.UpdateRoomId()
 
 	o.WriteMsg(&protocol.JoinRoomResp{UserInfos: userinfos, RoomInfo: rinfo})
-
-	glog.Errorln("joinRoom", m)
+	r.Info("=============")
+	r.Debug("joinRoom",  spew.Sdump(m))
 }
 
 func (r *Room) leaveAndRecycleChips(o *Occupant) {

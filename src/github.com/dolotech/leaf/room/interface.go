@@ -20,4 +20,12 @@ type IRoom interface {
 	Send(IOccupant, interface{}) error
 	WriteMsg(interface{}, ...uint32)
 	Regist(interface{}, interface{})
+
+	Info(args ...interface{})
+
+	Infof(format string, args ...interface{})
+
+	Error(args ...interface{})
+
+	Errorf(format string, args ...interface{})
 }

@@ -7,6 +7,9 @@ import (
 	"server/algorithm"
 )
 
+func (r *Room) startDelay(startDelay *startDelay) {
+
+}
 func (r *Room) start() {
 	// 产生庄
 	var dealer *Occupant
@@ -162,7 +165,7 @@ showdown:
 		}
 	}
 	r.Broadcast(showdown, true)
-	glog.Infoln(sb.Pos, bbPos)
+	r.Info(sb.Pos, bbPos)
 }
 
 func (r *Room) calc() (pots []handPot) {
@@ -278,7 +281,7 @@ func (r *Room) betting(o *Occupant, n int32) (raised bool) {
 	if n > int32(o.chips) || // 手上筹码不足
 		(n == 0 && o.Bet != r.Bet) || // 让牌
 		(n > 0 && n != int32(o.chips) && ((n + int32(o.Bet)) < int32(r.Bet))) {
-		glog.Errorf("下注筹码不合法!!！ n:%d  p.Bet:%d  p.Chips:%d  t.Bet:%d", n,o.Bet, o.chips, r.Bet)
+		glog.Errorf("下注筹码不合法!!！ n:%d  p.Bet:%d  p.Chips:%d  t.Bet:%d", n, o.Bet, o.chips, r.Bet)
 		return
 	}
 
