@@ -29,3 +29,8 @@ func (u *Room) Insert() (int64, error) {
 func (this *Room) GetById() (bool, error) {
 	return db.C().Engine().Where("uid = ?", this.Rid).Get(this)
 }
+
+
+func (r *Room) CreatedTime() uint32 {
+	return uint32(r.CreatedAt.Unix())
+}

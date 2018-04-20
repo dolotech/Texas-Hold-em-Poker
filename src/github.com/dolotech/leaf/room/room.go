@@ -6,7 +6,6 @@ import (
 	"server/protocol"
 	"github.com/dolotech/lib/route"
 	"errors"
-	"server/model"
 )
 
 func NewRoom() *BaseRoom {
@@ -42,6 +41,7 @@ func (r *BaseRoom) msgLoop() {
 		select {
 		case <-r.closeChan:
 			close(r.closedBroadcastChan)
+			DelRoom(r)
 			return
 		case m := <-r.msgChan:
 			r.Emit(m.msg, m.o)
@@ -58,10 +58,10 @@ func (r *BaseRoom) Close() {
 
 type msgObj struct {
 	msg interface{}
-	o   model.IOccupant
+	o   IOccupant
 }
 
-func (r *BaseRoom) Send(o model.IOccupant, m interface{}) error {
+func (r *BaseRoom) Send(o IOccupant, m interface{}) error {
 	select {
 	case r.msgChan <- &msgObj{m, o}:
 	default:
@@ -69,3 +69,12 @@ func (r *BaseRoom) Send(o model.IOccupant, m interface{}) error {
 	}
 	return errors.New("room closed")
 }
+
+func (r *BaseRoom) Cap() uint8          { return 0 }
+func (r *BaseRoom) Len() uint8          { return 0 }
+func (r *BaseRoom) Data() interface{}   { return nil }
+func (r *BaseRoom) SetData(interface{}) {}
+
+func (r *BaseRoom) GetNumber() string               { return "" }
+func (r *BaseRoom) SetNumber(string)                {}
+func (r *BaseRoom) WriteMsg(interface{}, ...uint32) {}

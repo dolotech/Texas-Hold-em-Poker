@@ -5,13 +5,13 @@ import (
 	"server/protocol"
 	"server/algorithm"
 	"time"
-	"github.com/dolotech/lib/room"
+	"github.com/dolotech/leaf/room"
 )
 
 type Room struct {
 	*model.Room
 	*room.BaseRoom
-	Occupants  []*Occupant
+	Occupants   []*Occupant
 	observes    []*Occupant // 站起的玩家
 	AutoSitdown []*Occupant // 自动坐下队列
 
@@ -38,17 +38,16 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 	}
 
 	r := &Room{
-		Room: &model.Room{DraginChips: chips,},
-		BaseRoom:  room.NewRoom(),
+		Room:     &model.Room{DraginChips: chips,},
+		BaseRoom: room.NewRoom(),
 
 		Chips:     make([]uint32, max),
-		Occupants:     make([]*Occupant, max),
+		Occupants: make([]*Occupant, max),
 		Pot:       make([]uint32, 0, max),
 		Timeout:   time.Second * time.Duration(timeout),
 		SB:        sb,
 		BB:        bb,
 		Max:       max,
-
 	}
 
 	room.Regist(r, &protocol.JoinRoom{}, r.joinRoom)
@@ -62,10 +61,10 @@ func NewRoom(max uint8, sb, bb uint32, chips uint32, timeout uint8) *Room {
 
 type Handler struct{}
 
-func (this *Handler) NewRoom() model.IRoom {
+func (this *Handler) NewRoom() room.IRoom {
 	return NewRoom(9, 5, 10, 1000, model.Timeout)
 }
-func (this *Handler) NoRoomHandler(m interface{}) model.IRoom {
+func (this *Handler) NoRoomHandler(m interface{}) room.IRoom {
 	if msg, ok := m.(*protocol.JoinRoom); ok {
 		if len(msg.RoomNumber) == 0 {
 			r := room.FindRoom()
@@ -188,15 +187,7 @@ func (r *Room) Each(start uint8, f func(o *Occupant) bool) {
 		f(r.Occupants[i])
 	}
 }
-func (r *Room) CreatedTime() uint32 {
-	return uint32(r.CreatedAt.Unix())
-}
-func (r *Room) GetDragin() uint32 {
-	return r.DraginChips
-}
-func (r *Room) ID() uint32 {
-	return r.Rid
-}
+
 func (r *Room) Cap() uint8 {
 	return r.Max
 }
@@ -215,4 +206,9 @@ func (r *Room) GetNumber() string {
 }
 func (r *Room) SetNumber(value string) {
 	r.Number = value
+}
+
+func (r *Room) Data() interface{} { return r.Room }
+func (r *Room) SetData(d interface{}) {
+	r.Room = d.(*model.Room)
 }

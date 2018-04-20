@@ -4,7 +4,7 @@ import (
 	"github.com/dolotech/leaf/gate"
 	"github.com/golang/glog"
 	"server/model"
-	"github.com/dolotech/lib/room"
+	"github.com/dolotech/leaf/room"
 )
 
 func init() {

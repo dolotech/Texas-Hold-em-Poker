@@ -7,7 +7,6 @@ import (
 	"math/rand"
 	"reflect"
 	"github.com/golang/glog"
-	"server/model"
 	"server/protocol"
 	"github.com/dolotech/leaf/gate"
 	"github.com/dolotech/leaf/module"
@@ -20,14 +19,13 @@ func handler(m interface{}, h interface{}) {
 }
 
 func onMessage(m interface{}, a gate.Agent) {
-	o := a.UserData().(model.IOccupant)
+	o := a.UserData().(IOccupant)
 	if o.GetRoom() != nil {
 		o.GetRoom().Send(o, m)
 	} else {
 		if r := hand.NoRoomHandler(m); r == nil {
 			a.WriteMsg(protocol.MSG_NOT_IN_ROOM)
 		} else {
-
 			SetRoom(r)
 			r.Send(o, m)
 		}
@@ -35,22 +33,22 @@ func onMessage(m interface{}, a gate.Agent) {
 	glog.Errorln(m, o)
 }
 
-func Regist(r model.IRoom, m interface{}, h interface{}) {
+func Regist(r IRoom, m interface{}, h interface{}) {
 	r.Regist(m, h)
 	handler(m, onMessage)
 }
 
 var rooms *roomlist
 
-var hand model.IHandler
+var hand IHandler
 
 func init() {
 	rooms = &roomlist{
-		M: make(map[string]model.IRoom, 1000),
+		M: make(map[string]IRoom, 1000),
 	}
 }
 
-func Init(h model.IHandler, s *module.Skeleton) {
+func Init(h IHandler, s *module.Skeleton) {
 	hand = h
 
 	skeleton = s
@@ -59,11 +57,11 @@ func Init(h model.IHandler, s *module.Skeleton) {
 }
 
 type roomlist struct {
-	M map[string]model.IRoom
+	M map[string]IRoom
 	sync.RWMutex
 }
 
-func FindRoom() model.IRoom {
+func FindRoom() IRoom {
 	rooms.Lock()
 	for _, v := range rooms.M {
 		if v.Len() < v.Cap() {
@@ -74,14 +72,14 @@ func FindRoom() model.IRoom {
 	return nil
 }
 
-func GetRoom(rid string) model.IRoom {
+func GetRoom(rid string) IRoom {
 	rooms.RLock()
 	r := rooms.M[rid]
 	rooms.RUnlock()
 	return r
 }
 
-func SetRoom(room model.IRoom) string {
+func SetRoom(room IRoom) string {
 
 	rooms.Lock()
 	id := rooms.createNumber()
@@ -90,7 +88,7 @@ func SetRoom(room model.IRoom) string {
 	rooms.Unlock()
 	return id
 }
-func DelRoom(room model.IRoom) {
+func DelRoom(room IRoom) {
 	rooms.Lock()
 	delete(rooms.M, room.GetNumber())
 	rooms.Unlock()
@@ -108,9 +106,17 @@ func (this *roomlist) createNumber() string {
 	return n
 }
 
-func GetRooms() []model.IRoom {
-
-	r := make([]model.IRoom, len(rooms.M))
+func Each(f func(o IRoom) bool) {
+	rooms.RLock()
+	for _, v := range rooms.M {
+		if !f(v) {
+			break
+		}
+	}
+	rooms.RUnlock()
+}
+func GetRooms() []IRoom {
+	r := make([]IRoom, len(rooms.M))
 	rooms.RLock()
 	var n = 0
 	for _, v := range rooms.M {

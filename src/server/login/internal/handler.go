@@ -7,6 +7,7 @@ import (
 	"server/game"
 	"github.com/golang/glog"
 	"server/model"
+	"github.com/dolotech/leaf/room"
 )
 
 func init() {
@@ -27,7 +28,7 @@ func handlVersion(m *protocol.Version, a gate.Agent) {
 func handlLoginUser(m *protocol.UserLoginInfo, a gate.Agent) {
 	user := &model.User{UnionId: m.UnionId}
 	exist, err := user.GetByUnionId()
-	if err != nil{
+	if err != nil {
 		a.WriteMsg(protocol.MSG_DB_Error)
 		return
 	}
@@ -55,19 +56,22 @@ func handlLoginUser(m *protocol.UserLoginInfo, a gate.Agent) {
 func onRoomList(m *protocol.RoomList, a gate.Agent) {
 	msg := &protocol.RoomListResp{}
 
-	/*	array := GetRooms()
-		rooms := make([]*protocol.Room, len(array))
+	array := room.GetRooms()
+	rooms := make([]*protocol.Room, len(array))
 
-		for k, v := range array {
-			rooms[k] = &protocol.Room{
-				Number:      v.GetNumber(),
-				MaxCap:      v.Cap(),
-				Cap:         v.Len(),
-				DraginChips: v.GetDragin(),
-				CreatedAt:   v.CreatedTime(),
-				Rid:         v.ID(),
-			}
+	for k, v := range array {
+		d:= v.Data()
+		data:= d.(*model.Room)
+		rooms[k] = &protocol.Room{
+
+			Number:      data.Number,
+			MaxCap:      v.Cap(),
+			Cap:         v.Len(),
+			DraginChips:  data.DraginChips,
+			CreatedAt:  data.CreatedTime(),
+			Rid:         data.Rid,
 		}
-	msg.Room = rooms*/
+	}
+	msg.Room = rooms
 	a.WriteMsg(msg)
 }

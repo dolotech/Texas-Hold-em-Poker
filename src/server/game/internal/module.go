@@ -4,7 +4,7 @@ import (
 	"github.com/dolotech/leaf/module"
 	"server/base"
 	"github.com/golang/glog"
-	"github.com/dolotech/lib/room"
+	"github.com/dolotech/leaf/room"
 )
 
 var (//定义

@@ -6,12 +6,13 @@ import (
 	"server/algorithm"
 	"time"
 	"errors"
+	"github.com/dolotech/leaf/room"
 )
 
 type Occupant struct {
 	*model.User
 	gate.Agent
-	room   model.IRoom
+	room   room.IRoom
 	cards  algorithm.Cards
 	Pos    uint8 // 玩家座位号，从1开始
 	status int32 // 1为离线状态
@@ -31,10 +32,10 @@ const (
 	Occupant_status_Sitdown int32 = 0
 )
 
-func (o *Occupant) GetRoom() model.IRoom {
+func (o *Occupant) GetRoom() room.IRoom {
 	return o.room
 }
-func (o *Occupant) SetRoom(m model.IRoom) {
+func (o *Occupant) SetRoom(m room.IRoom) {
 	o.room = m
 }
 func (o *Occupant) SetAction(n int32)error {
