@@ -84,25 +84,6 @@ func (r *Room) New(m interface{}) room.IRoom {
 	return nil
 }
 
-type Creator struct{}
-
-func (this *Creator) Create(m interface{}) room.IRoom {
-	if msg, ok := m.(*protocol.JoinRoom); ok {
-		if len(msg.RoomNumber) == 0 {
-			r := room.FindRoom()
-			return r
-		}
-		r := room.GetRoom(msg.RoomNumber)
-		if r != nil {
-			return r
-		}
-		room := NewRoom(9, 5, 10, 1000, model.Timeout)
-		room.Insert()
-		return room
-	}
-	return nil
-}
-
 func (r *Room) WriteMsg(msg interface{}, exc ...uint32) {
 	for _, v := range r.Occupants {
 		if v != nil {

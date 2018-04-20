@@ -7,6 +7,7 @@ import (
 	"server/protocol"
 	"github.com/dolotech/leaf/room"
 	"reflect"
+	"server/model"
 )
 
 var ( //定义
@@ -38,4 +39,25 @@ func (m *Module) OnInit() { //继承初始
 
 func (m *Module) OnDestroy() {
 	glog.Errorln("OnDestroy")
+}
+
+
+
+type Creator struct{}
+
+func (this *Creator) Create(m interface{}) room.IRoom {
+	if msg, ok := m.(*protocol.JoinRoom); ok {
+		if len(msg.RoomNumber) == 0 {
+			r := room.FindRoom()
+			return r
+		}
+		r := room.GetRoom(msg.RoomNumber)
+		if r != nil {
+			return r
+		}
+		room := NewRoom(9, 5, 10, 1000, model.Timeout)
+		room.Insert()
+		return room
+	}
+	return nil
 }

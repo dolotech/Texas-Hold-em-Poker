@@ -49,6 +49,7 @@ func Destroy() {
 }
 
 func run(m *module) {
+	defer utils.PrintPanicStack()
 	m.mi.Run(m.closeSig)
 	m.wg.Done()
 }

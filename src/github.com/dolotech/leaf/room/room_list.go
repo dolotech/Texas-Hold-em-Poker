@@ -8,12 +8,9 @@ import (
 	"github.com/golang/glog"
 	"server/protocol"
 	"github.com/dolotech/leaf/gate"
-	"github.com/dolotech/lib/utils"
 )
 
-
 func OnMessage(m interface{}, a gate.Agent) {
-	defer utils.PrintPanicStack()
 	o := a.UserData().(IOccupant)
 	if o.GetRoom() != nil {
 		o.GetRoom().Send(o, m)
