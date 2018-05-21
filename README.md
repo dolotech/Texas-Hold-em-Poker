@@ -1,9 +1,9 @@
-#德州扑克服务器Go实现
+# 德州扑克服务器Go实现
 
-#####Author:Michael 
-#####Email:<dolotech@163.com>
+##### Author:Michael 
+##### Email:<dolotech@163.com>
 
-##核心算法：
+## 核心算法：
 ```go
 type Cards []byte
 // todo 两对和四张起脚牌的判定
