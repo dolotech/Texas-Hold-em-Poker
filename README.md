@@ -1,8 +1,5 @@
 # 德州扑克服务器Go实现
 
-##### Author:Michael 
-##### Email:<dolotech@163.com>
-
 ## 核心算法：
 ```go
 type Cards []byte
